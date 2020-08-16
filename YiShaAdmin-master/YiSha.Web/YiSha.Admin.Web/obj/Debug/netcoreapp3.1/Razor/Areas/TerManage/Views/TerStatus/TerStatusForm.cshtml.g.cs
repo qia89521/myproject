@@ -11,10 +11,83 @@ namespace AspNetCore
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
-    using Microsoft.AspNetCore.Mvc.ViewFeatures;
+#nullable restore
+#line 2 "E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\TerManage\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\TerManage\_ViewImports.cshtml"
+using YiSha.Util;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\TerManage\_ViewImports.cshtml"
+using YiSha.Util.Extension;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\TerManage\_ViewImports.cshtml"
+using YiSha.Enum;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\TerManage\_ViewImports.cshtml"
+using YiSha.Enum.OrganizationManage;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 7 "E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\TerManage\_ViewImports.cshtml"
+using YiSha.Enum.SystemManage;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 8 "E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\TerManage\_ViewImports.cshtml"
+using YiSha.Web.Code;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"93168a7992fa75bb1dcd68a247ad98dfae0f6b4f", @"/Areas/TerManage/Views/TerStatus/TerStatusForm.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fff452d81302d3bae40575f5c9db46ed73b4e31f", @"/Areas/TerManage/_ViewImports.cshtml")]
     public class Areas_TerManage_Views_TerStatus_TerStatusForm : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("id", new global::Microsoft.AspNetCore.Html.HtmlString("form"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("form-horizontal m"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
+        #line hidden
+        #pragma warning disable 0649
+        private global::Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperExecutionContext __tagHelperExecutionContext;
+        #pragma warning restore 0649
+        private global::Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperRunner __tagHelperRunner = new global::Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperRunner();
+        #pragma warning disable 0169
+        private string __tagHelperStringValueBuffer;
+        #pragma warning restore 0169
+        private global::Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperScopeManager __backed__tagHelperScopeManager = null;
+        private global::Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperScopeManager __tagHelperScopeManager
+        {
+            get
+            {
+                if (__backed__tagHelperScopeManager == null)
+                {
+                    __backed__tagHelperScopeManager = new global::Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperScopeManager(StartTagHelperWritingScope, EndTagHelperWritingScope);
+                }
+                return __backed__tagHelperScopeManager;
+            }
+        }
+        private global::Microsoft.AspNetCore.Mvc.TagHelpers.FormTagHelper __Microsoft_AspNetCore_Mvc_TagHelpers_FormTagHelper;
+        private global::Microsoft.AspNetCore.Mvc.TagHelpers.RenderAtEndOfFormTagHelper __Microsoft_AspNetCore_Mvc_TagHelpers_RenderAtEndOfFormTagHelper;
         #pragma warning disable 1998
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
@@ -26,9 +99,9 @@ namespace AspNetCore
 #line default
 #line hidden
 #nullable disable
-            WriteLiteral(@"
-<div class=""wrapper animated fadeInRight"">
-    <form id=""form"" class=""form-horizontal m"">
+            WriteLiteral("\r\n<div class=\"wrapper animated fadeInRight\">\r\n    ");
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "93168a7992fa75bb1dcd68a247ad98dfae0f6b4f5464", async() => {
+                WriteLiteral(@"
         <div class=""form-group"">
             <label class=""col-sm-3 control-label "">CloseStatus<font class=""red""> *</font></label>
             <div class=""col-sm-8"">
@@ -48,10 +121,10 @@ namespace AspNetCore
             </div>
         </div>
         <div class=""form-group"">
-            <label class=""col-sm-3 control-label "">ErrorCod");
-            WriteLiteral(@"e</label>
+            <label class=""col-sm-3 control-label "">ErrorCode</label>
             <div class=""col-sm-8"">
-                <input id=""errorCode"" col=""ErrorCode"" type=""text"" class=""form-control"" />
+                <input id=""errorCode"" col=""Er");
+                WriteLiteral(@"rorCode"" type=""text"" class=""form-control"" />
             </div>
         </div>
         <div class=""form-group"">
@@ -66,7 +139,23 @@ namespace AspNetCore
                 <input id=""terId"" col=""TerId"" type=""text"" class=""form-control"" />
             </div>
         </div>
-    </form>
+    ");
+            }
+            );
+            __Microsoft_AspNetCore_Mvc_TagHelpers_FormTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.FormTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_TagHelpers_FormTagHelper);
+            __Microsoft_AspNetCore_Mvc_TagHelpers_RenderAtEndOfFormTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.RenderAtEndOfFormTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_TagHelpers_RenderAtEndOfFormTagHelper);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_1);
+            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
+            if (!__tagHelperExecutionContext.Output.IsContentModified)
+            {
+                await __tagHelperExecutionContext.SetOutputContentAsync();
+            }
+            Write(__tagHelperExecutionContext.Output);
+            __tagHelperExecutionContext = __tagHelperScopeManager.End();
+            WriteLiteral(@"
 </div>
 
 <script type=""text/javascript"">
@@ -83,8 +172,8 @@ namespace AspNetCore
 
     function getForm() {
         if (id > 0) {
-          ");
-            WriteLiteral("  ys.ajax({\r\n                url: \'");
+            ys.ajax({
+                url: '");
 #nullable restore
 #line 61 "E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\TerManage\Views\TerStatus\TerStatusForm.cshtml"
                  Write(Url.Content("~/TerManage/TerStatus/GetFormJson"));

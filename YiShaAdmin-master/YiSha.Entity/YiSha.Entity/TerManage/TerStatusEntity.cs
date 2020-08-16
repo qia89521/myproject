@@ -43,5 +43,17 @@ namespace YiSha.Entity.TerManage
         /// </summary>
         /// <returns></returns>
         public string TerId { get; set; }
+        /// <summary>
+        /// 设备编号
+        /// </summary>
+        /// <returns></returns>
+        [NotMapped]
+        public string TerNumber { get; set; }
+        /// <summary>
+        /// 设备名称
+        /// </summary>
+        /// <returns></returns>
+        [NotMapped]
+        public string TerName { get; set; }
     }
 }

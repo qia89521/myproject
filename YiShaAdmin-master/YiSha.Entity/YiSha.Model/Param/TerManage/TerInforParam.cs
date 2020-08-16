@@ -12,5 +12,15 @@ namespace YiSha.Model.Param.TerManage
     /// </summary>
     public class TerInforListParam
     {
+
+        /// <summary>
+        /// 设备名称
+        /// </summary>
+        public string TerName { get; set; }
+        /// <summary>
+        /// 设备编号
+        /// </summary>
+        public string TerNumber { get; set; }
+      
     }
 }

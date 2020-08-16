@@ -12,5 +12,25 @@ namespace YiSha.Model.Param.TerManage
     /// </summary>
     public class TerStatusListParam
     {
+        /// <summary>
+        /// 锁定状态
+        /// </summary>
+        public string CloseStatus { get; set; }
+        /// <summary>
+        /// 运行状态
+        /// </summary>
+        public string RunStatus { get; set; }
+        /// <summary>
+        /// 银离子可用百分比
+        /// </summary>
+        public string SilverRate { get; set; }
+        /// <summary>
+        /// 设备名称
+        /// </summary>
+        public string TerName { get; set; }
+        /// <summary>
+        /// 设备编号
+        /// </summary>
+        public string TerNumber { get; set; }
     }
 }

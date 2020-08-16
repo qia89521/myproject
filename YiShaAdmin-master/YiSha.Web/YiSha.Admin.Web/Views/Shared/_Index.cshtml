@@ -25,6 +25,7 @@
     @BundlerHelper.Render(HostingEnvironment.ContentRootPath, Url.Content("~/lib/select2/4.0.6/css/select2.min.css"))
     @BundlerHelper.Render(HostingEnvironment.ContentRootPath, Url.Content("~/lib/select2/4.0.6/js/select2.min.js"))
 
+
     @RenderSection("header", false)
     <script type="text/javascript">
         var ctx = '@Url.Content("~/")';

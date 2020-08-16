@@ -1,6 +1,13 @@
 ﻿@{
     Layout = "~/Views/Shared/_Index.cshtml";
- }
+}
+
+@section header{
+    <link href="@Url.Content("~/lib/bootstrap.table/1.12.0/extensions/editable/bootstrap-editable.css")" rel="stylesheet" type="text/css">
+    <script src='@Url.Content("~/lib/bootstrap.table/1.12.0/extensions/editable/bootstrap-editable.min.js")' type="text/javascript"></script>
+    <script src='@Url.Content("~/lib/bootstrap.table/1.12.0/extensions/editable/bootstrap-table-editable.js")' type="text/javascript"></script>
+    <script src='@Url.Content("~/lib/bootstrap.table/1.12.0/extensions/editable/bootstrap-datepicker.zh-CN.js")' type="text/javascript"></script>
+}
 <div class="container-div">
     <div class="row">
         <div id="searchDiv" class="col-sm-12 search-collapse">
@@ -38,14 +45,57 @@
         var queryUrl = '@Url.Content("~/TerManage/TerInfor/GetPageListJson")';
         $('#gridTable').ysTable({
             url: queryUrl,
+            onEditableSave: onEditableSave,
             columns: [
                 { checkbox: true, visible: true },
                 { field: 'Id', title: 'Id', visible: false },
-                { field: 'TerName', title: '设备名称' },
-                { field: 'TerNumber', title: '设备编号' },
+                {
+                    field: 'TerName', title: '设备名称',
+                    editable: {
+                        type: 'text',
+                        emptytext: "【设备名称】为空",
+                        validate: function (value) {
+                            if (value.length > 20) {
+                                return '设备名称不能超过20个字符';
+                            }
+                            if (value.length == 0) {
+                                return '设备名称为空';
+                            }
+                        }
+                    }
+                },
+                {
+                    field: 'TerNumber', title: '设备编号',
+                    editable: {
+                        type: 'text',
+                        emptytext: "【设备编号】为空",
+                        validate: function (value) {
+                            if (value.length > 20) {
+                                return '设备编号不能超过20个字符';
+                            }
+                            if (value.length == 0) {
+                                return '设备编号不能为空';
+                            }
+                        }
+                    }
+                },
                 { field: 'BusyName', title: '运营商' },
                 { field: 'BusyLink', title: '联系方式' },
                 { field: 'Position', title: '位置' },
+                {
+                    field: 'BaseCreateTime', title: '创建时间', align: "left",
+                    formatter: function (value, row, index) {
+                        return ys.formatDate(value, "yyyy-MM-dd HH:mm:ss");
+                    }
+                },
+                { field: 'BaseCreatorTxt', title: '创建人' },
+                {
+                    field: 'BaseModifyTime', title: '修改时间', align: "left",
+                    formatter: function (value, row, index) {
+                        return ys.formatDate(value, "yyyy-MM-dd HH:mm:ss");
+                    }
+                },
+                { field: 'BaseModifierTxt', title: '修改人' },
             ],
             queryParams: function (params) {
                 var pagination = $('#gridTable').ysTable('getPagination', params);
@@ -58,6 +108,33 @@
     function searchGrid() {
         $('#gridTable').ysTable('search');
         resetToolbarStatus();
+    }
+
+    function onEditableSave(field, row, oldValue, $el) {
+        //alert("字段名：" + field + "，当前值：" + row[field] + "，旧值：" + oldValue);
+        var url = '';
+        var data = { id: row["Id"], value: row[field] };
+        if (field == "TerName") {
+            url = '@Url.Content("~/TerManage/TerInfor/ModifyTerName")';
+        }
+        else {
+            url = '@Url.Content("~/TerManage/TerInfor/ModifyTerNumber")';
+        }
+        //long id, string terName
+        ys.ajax({
+            url: url,
+            type: 'post',
+            data: data,
+            success: function (obj) {
+                if (obj.Tag == 1) {
+                    ys.msgSuccess(obj.Message);
+                    searchGrid();
+                }
+                else {
+                    ys.msgError(obj.Message);
+                }
+            }
+        });
     }
 
     function showSaveForm(bAdd) {

@@ -40,12 +40,14 @@
                 { field: 'Id', title: 'Id', visible: false },
                 { field: 'PartName', title: '部件名称' },
                 { field: 'PartCode', title: '部件代码' },
+                { field: 'BaseCreatorTxt', title: '创建人' },
                 {
                     field: 'BaseCreateTime', title: '创建时间', align: "left",
                     formatter: function (value, row, index) {
                         return ys.formatDate(value, "yyyy-MM-dd HH:mm:ss");
                     }
                 },
+                { field: 'BaseModifierTxt', title: '修改人' },
                 {
                     field: 'BaseModifyTime', title: '修改时间', align: "left",
                     formatter: function (value, row, index) {

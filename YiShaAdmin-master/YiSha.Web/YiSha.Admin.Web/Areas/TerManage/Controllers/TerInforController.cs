@@ -80,5 +80,34 @@ namespace YiSha.Admin.Web.Areas.TerManage.Controllers
             return Json(obj);
         }
         #endregion
+
+        #region 修改数据
+        /// <summary>
+        /// 修改设备编号
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <param name="value">设备编号</param>
+        /// <returns></returns>
+        [HttpPost]
+        [AuthorizeFilter("ter:terinfor:ModifyTerNumber")]
+        public async Task<ActionResult> ModifyTerNumber(string id, string value)
+        {
+            TData obj = await terInforBLL.ModifyTerNumber(long.Parse(id), value);
+            return Json(obj);
+        }
+        /// <summary>
+        /// 修改设备名称
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <param name="value">设备名称</param>
+        /// <returns></returns>
+        [HttpPost]
+        [AuthorizeFilter("ter:terinfor:ModifyTerName")]
+        public async Task<ActionResult> ModifyTerName(string id, string value)
+        {
+            TData obj = await terInforBLL.ModifyTerName(long.Parse(id), value);
+            return Json(obj);
+        }
+        #endregion
     }
 }

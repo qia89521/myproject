@@ -130,6 +130,13 @@ namespace YiSha.Data.Repository
         {
             return await db.FindEntity<T>(id);
         }
+
+        public async Task<T> FindSignalModel<T>(string strSql) where T : class
+        {
+            var data = await FindList<T>(strSql);
+            return data.ToList<T>()[0];
+        }
+
         public async Task<T> FindEntity<T>(Expression<Func<T, bool>> condition) where T : class, new()
         {
             return await db.FindEntity<T>(condition);
@@ -160,10 +167,12 @@ namespace YiSha.Data.Repository
         }
         public async Task<IEnumerable<T>> FindList<T>(Expression<Func<T, bool>> condition, Pagination pagination) where T : class, new()
         {
+            //Task<(int total, IEnumerable<T> list)>
             var data = await db.FindList<T>(condition, pagination.Sort, pagination.SortType.ToLower() == "asc" ? true : false, pagination.PageSize, pagination.PageIndex);
             pagination.TotalCount = data.total;
             return data.list;
         }
+       
         public async Task<(int total, IEnumerable<T> list)> FindList<T>(string strSql, Pagination pagination) where T : class
         {
             int total = pagination.TotalCount;

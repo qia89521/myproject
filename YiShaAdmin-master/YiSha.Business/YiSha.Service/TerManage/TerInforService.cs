@@ -32,14 +32,24 @@ namespace YiSha.Service.TerManage
 
         public async Task<List<TerInforEntity>> GetPageList(TerInforListParam param, Pagination pagination)
         {
-            var expression = ListFilter(param);
-            var list= await this.BaseRepository().FindList(expression, pagination);
-            return list.ToList();
+            /*
+               var expression = ListFilter(param);
+                var list= await this.BaseRepository().FindList(expression, pagination);
+                return list.ToList();
+             */
+            StringBuilder sql = CreateListSql(param);
+            var data = await this.BaseRepository().FindList<TerInforEntity>(sql.ToString(), pagination);
+            return data.list.ToList<TerInforEntity>();
         }
 
         public async Task<TerInforEntity> GetEntity(long id)
         {
+            /*
             return await this.BaseRepository().FindEntity<TerInforEntity>(id);
+            */
+            StringBuilder sql = CreateSignalSql(id);
+            return await this.BaseRepository().FindSignalModel<TerInforEntity>(sql.ToString());
+
         }
         #endregion
 
@@ -71,8 +81,72 @@ namespace YiSha.Service.TerManage
             var expression = LinqExtensions.True<TerInforEntity>();
             if (param != null)
             {
+
+                if (!string.IsNullOrEmpty(param.TerName))
+                {
+                    expression = expression.And(t => t.TerName.Contains(param.TerName));
+                }
+                if (!string.IsNullOrEmpty(param.TerNumber))
+                {
+                    expression = expression.And(t => t.TerNumber.Contains(param.TerNumber));
+                }
             }
             return expression;
+        }
+
+        /// <summary>
+        /// 创建查询sql
+        /// </summary>
+        /// <param name="param">查询条件数据</param>
+        /// <returns></returns>
+        private StringBuilder CreateListSql(TerInforListParam param)
+        {
+            StringBuilder sql = new StringBuilder();
+
+            sql.AppendFormat(" SELECT * FROM (");
+            sql.AppendFormat(" SELECT a.*,b.RealName AS BaseCreatorTxt, ");
+            sql.AppendFormat(" c.RealName AS BaseModifierTxt, ");
+            sql.AppendFormat(" d.RealName AS ManageTxt ");
+            sql.AppendFormat(" FROM  ter_infor a ");
+            sql.AppendFormat(" JOIN sysuser b ON a.BaseCreatorId = b.Id ");
+            sql.AppendFormat(" LEFT JOIN sysuser c ON a.BaseModifierId = c.Id ");
+            sql.AppendFormat(" LEFT JOIN sysuser d ON a.ManageId = d.Id ");
+            sql.AppendFormat(" ) T WHERE 1=1 ");
+            if (param != null)
+            {
+                if (!string.IsNullOrEmpty(param.TerName))
+                {
+                    sql.AppendFormat(" AND TerName LIKE '%{0}%'", param.TerName);
+                }
+                if (!string.IsNullOrEmpty(param.TerNumber))
+                {
+                    sql.AppendFormat(" AND TerNumber LIKE '%{0}%'", param.TerNumber);
+                }
+            }
+            return sql;
+        }
+
+
+        /// <summary>
+        /// 创建查询sql
+        /// </summary>
+        /// <param name="id">主键Id</param>
+        /// <returns></returns>
+        private StringBuilder CreateSignalSql(long id)
+        {
+            StringBuilder sql = new StringBuilder();
+
+            sql.AppendFormat(" SELECT * FROM (");
+            sql.AppendFormat(" SELECT a.*,b.RealName AS BaseCreatorTxt, ");
+            sql.AppendFormat(" c.RealName AS BaseModifierTxt, ");
+            sql.AppendFormat(" d.RealName AS ManageTxt ");
+            sql.AppendFormat(" FROM  ter_infor a ");
+            sql.AppendFormat(" JOIN sysuser b ON a.BaseCreatorId = b.Id and a.Id={0}", id);
+            sql.AppendFormat(" LEFT JOIN sysuser c ON a.BaseModifierId = c.Id ");
+            sql.AppendFormat(" LEFT JOIN sysuser d ON a.ManageId = d.Id ");
+            sql.AppendFormat(" ) T WHERE 1=1 ");
+           
+            return sql;
         }
         #endregion
     }

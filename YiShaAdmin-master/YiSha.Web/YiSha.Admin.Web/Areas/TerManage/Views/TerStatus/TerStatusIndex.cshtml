@@ -1,13 +1,23 @@
 ﻿@{
     Layout = "~/Views/Shared/_Index.cshtml";
- }
+}
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnvironment
 <div class="container-div">
     <div class="row">
         <div id="searchDiv" class="col-sm-12 search-collapse">
             <div class="select-list">
                 <ul>
                     <li>
-                        关机状态：<input id="closeStatus" col="CloseStatus" type="text" />
+                        设备编号：<input id="terNumber" col="TerNumber" type="text" />
+                    </li>
+                    <li>
+                        设备名称：<input id="terName" col="TerName" type="text" />
+                    </li>
+                    <li>
+                        锁定状态：<span id="closeStatus" col="CloseStatus"></span>
+                    </li>
+                    <li>
+                        运行状态：<span id="runStatus" col="RunStatus"></span>
                     </li>
                     <li>
                         <a id="btnSearch" class="btn btn-primary btn-sm" onclick="searchGrid()"><i class="fa fa-search"></i>&nbsp;搜索</a>
@@ -15,11 +25,7 @@
                 </ul>
             </div>
         </div>
-        <div class="btn-group-sm hidden-xs" id="toolbar">
-            <a id="btnAdd" class="btn btn-success" onclick="showSaveForm(true)"><i class="fa fa-plus"></i> 新增</a>
-            <a id="btnEdit" class="btn btn-primary disabled" onclick="showSaveForm(false)"><i class="fa fa-edit"></i> 修改</a>
-            <a id="btnDelete" class="btn btn-danger disabled" onclick="deleteForm()"><i class="fa fa-remove"></i> 删除</a>
-        </div>
+
         <div class="col-sm-12 select-table table-striped">
             <table id="gridTable" data-mobile-responsive="true"></table>
         </div>
@@ -29,6 +35,11 @@
 <script type="text/javascript">
     $(function () {
         initGrid();
+
+        $("#closeStatus").ysComboBox({ data: ys.getJson(@Html.Raw(typeof(CloseStatusEnum).EnumToDictionaryString())) });
+
+        $("#runStatus").ysComboBox({ data: ys.getJson(@Html.Raw(typeof(RunStatusEnum).EnumToDictionaryString())) });
+
     });
 
     function initGrid() {
@@ -38,12 +49,19 @@
             columns: [
                 { checkbox: true, visible: true },
                 { field: 'Id', title: 'Id', visible: false },
+                { field: 'TerNumber', title: '设备编号' },
+                { field: 'TerName', title: '设备名称' },
                 { field: 'CloseStatus', title: '关机状态' },
                 { field: 'RunStatus', title: '运行状态' },
                 { field: 'SilverRate', title: '银离子含量' },
                 { field: 'ErrorCode', title: '故障代码' },
                 { field: 'ErrorMsg', title: '故障消息' },
-                { field: 'TerId', title: '设备编号' },
+                {
+                    field: 'BaseCreateTime', title: '创建时间', align: "left",
+                    formatter: function (value, row, index) {
+                        return ys.formatDate(value, "yyyy-MM-dd HH:mm:ss");
+                    }
+                },
             ],
             queryParams: function (params) {
                 var pagination = $('#gridTable').ysTable('getPagination', params);

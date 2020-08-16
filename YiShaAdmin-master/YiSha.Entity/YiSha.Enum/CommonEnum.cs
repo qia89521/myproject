@@ -91,4 +91,22 @@ namespace YiSha.Enum
         PayError = 7
     }
 
+
+    public enum RunStatusEnum
+    {
+        [Description("停止")]
+        Stop = 0,
+
+        [Description("运行")]
+        Run = 1,
+    }
+
+    public enum CloseStatusEnum
+    {
+        [Description("关机")]
+        Close = 0,
+
+        [Description("开机")]
+        Open = 1,
+    }
 }

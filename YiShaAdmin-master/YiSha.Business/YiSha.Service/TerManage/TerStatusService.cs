@@ -74,6 +74,54 @@ namespace YiSha.Service.TerManage
             }
             return expression;
         }
+
+
+        /// <summary>
+        /// 创建查询sql
+        /// </summary>
+        /// <param name="param">查询条件数据</param>
+        /// <returns></returns>
+        private StringBuilder CreateListSql(TerStatusListParam param)
+        {
+            StringBuilder sql = new StringBuilder();
+
+            sql.AppendFormat(" select a.*,b.TerNumber,b.TerName from  ");
+            sql.AppendFormat(" (");
+            sql.AppendFormat("  select * from ter_status ");
+            sql.AppendFormat("  where 1=1 ");
+            if (param != null)
+            {
+                if (!string.IsNullOrEmpty(param.CloseStatus))
+                {
+                    sql.AppendFormat(" and CloseStatus={0}", param.CloseStatus);
+                }
+                if (!string.IsNullOrEmpty(param.RunStatus))
+                {
+                    sql.AppendFormat(" and RunStatus={0}", param.RunStatus);
+                }
+            }
+            sql.AppendFormat(" ) a ");
+            sql.AppendFormat(" join ");
+            sql.AppendFormat(" ( ");
+            sql.AppendFormat("   select Id,TerNumber,TerName from ter_infor ");
+            sql.AppendFormat("   where 1=1 ");
+            if (param != null)
+            {
+                if (!string.IsNullOrEmpty(param.TerNumber))
+                {
+                    sql.AppendFormat(" and TerNumber like '%{0}%'", param.TerNumber);
+                }
+                if (!string.IsNullOrEmpty(param.TerName))
+                {
+                    sql.AppendFormat(" and TerName like '%{0}%'", param.TerName);
+                }
+            }
+            sql.AppendFormat(" ) b");
+            sql.AppendFormat(" on a.TerId=b.Id ");
+
+            return sql;
+        }
+
         #endregion
     }
 }

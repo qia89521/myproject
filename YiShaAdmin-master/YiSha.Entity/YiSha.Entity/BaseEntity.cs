@@ -47,6 +47,11 @@ namespace YiSha.Entity
         /// 创建人ID
         /// </summary>
         public long? BaseCreatorId { get; set; }
+        /// <summary>
+        /// 创建人姓名
+        /// </summary>
+        [NotMapped]
+        public string? BaseCreatorTxt { get; set; }
 
         public new async Task Create()
         {
@@ -93,6 +98,11 @@ namespace YiSha.Entity
         /// 修改人ID
         /// </summary>
         public long? BaseModifierId { get; set; }
+        /// <summary>
+        /// 修改人用户姓名
+        /// </summary>
+        [NotMapped]
+        public string? BaseModifierTxt { get; set; }
 
         public async Task Modify()
         {

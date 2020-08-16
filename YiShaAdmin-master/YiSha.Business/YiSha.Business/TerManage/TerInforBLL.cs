@@ -52,6 +52,35 @@ namespace YiSha.Business.TerManage
         #endregion
 
         #region 提交数据
+
+        /// <summary>
+        /// 修改设备编号
+        /// </summary>
+        /// <param name="id">设备id</param>
+        /// <param name="terNumber">设备编号</param>
+        /// <returns></returns>
+        public async Task<TData<string>> ModifyTerNumber(long id,string terNumber)
+        {
+            TerInforEntity ter = await terInforService.GetEntity(id);
+            ter.TerNumber = terNumber;
+
+            return await SaveForm(ter);
+        }
+
+        /// <summary>
+        /// 修改设备名称
+        /// </summary>
+        /// <param name="id">设备id</param>
+        /// <param name="terName">设备名称</param>
+        /// <returns></returns>
+        public async Task<TData<string>> ModifyTerName(long id, string terName)
+        {
+            TerInforEntity ter = await terInforService.GetEntity(id);
+            ter.TerName = terName;
+
+            return await SaveForm(ter);
+        }
+
         public async Task<TData<string>> SaveForm(TerInforEntity entity)
         {
             TData<string> obj = new TData<string>();

@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations.Schema;
 using YiSha.Util;
+using YiSha.Util.Model;
 
 namespace YiSha.Entity.TerManage
 {
@@ -69,6 +70,13 @@ namespace YiSha.Entity.TerManage
         /// <returns></returns>
         public string ManageId { get; set; }
         /// <summary>
+        /// 业主
+        /// </summary>
+        /// <returns></returns>
+        [NotMapped]
+        public string ManageTxt { get; set; }
+        
+        /// <summary>
         /// 位置
         /// </summary>
         /// <returns></returns>
@@ -83,5 +91,10 @@ namespace YiSha.Entity.TerManage
         /// </summary>
         /// <returns></returns>
         public string Latitude { get; set; }
+
+        public static implicit operator TerInforEntity(TData<TerInforEntity> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
