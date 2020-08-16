@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Cache\\YiSha.Cache.Interface\\YiSha.Cache.Interface.csproj": {}
+    "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Cache\\YiSha.Cache.Interface\\YiSha.Cache.Interface.csproj": {}
   },
   "projects": {
-    "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Cache\\YiSha.Cache.Interface\\YiSha.Cache.Interface.csproj": {
+    "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Cache\\YiSha.Cache.Interface\\YiSha.Cache.Interface.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Cache\\YiSha.Cache.Interface\\YiSha.Cache.Interface.csproj",
+        "projectUniqueName": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Cache\\YiSha.Cache.Interface\\YiSha.Cache.Interface.csproj",
         "projectName": "YiSha.Cache.Interface",
-        "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Cache\\YiSha.Cache.Interface\\YiSha.Cache.Interface.csproj",
+        "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Cache\\YiSha.Cache.Interface\\YiSha.Cache.Interface.csproj",
         "packagesPath": "C:\\Users\\ThinkPad\\.nuget\\packages\\",
-        "outputPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Cache\\YiSha.Cache.Interface\\obj\\",
+        "outputPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Cache\\YiSha.Cache.Interface\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Microsoft\\Xamarin\\NuGet\\"

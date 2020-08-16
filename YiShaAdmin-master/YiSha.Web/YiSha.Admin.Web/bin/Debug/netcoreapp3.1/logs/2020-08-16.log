@@ -1,0 +1,728 @@
+2020-08-16 09:31:36.0965||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-08-16 09:32:17.0595||ERROR||'GBK' is not a supported encoding name. For information on defining a custom encoding, see the documentation for the Encoding.RegisterProvider method. (Parameter 'name')
+   at System.Text.EncodingTable.InternalGetCodePageFromName(String name)
+   at System.Text.EncodingTable.GetCodePageFromName(String name)
+   at System.Text.Encoding.GetEncoding(String name)
+   at YiSha.Util.HttpHelper.GetHttpRequestData(HttpItem objhttpitem) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\HttpHelper.cs:line 223
+   at YiSha.Util.HttpHelper.GetHtml(HttpItem httpItem) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\HttpHelper.cs:line 463
+   at YiSha.Util.IpLocationHelper.GetIpLocationFromPCOnline(String ipAddress) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\IpLocationHelper.cs:line 54
+   at YiSha.Util.IpLocationHelper.GetIpLocation(String ipAddress) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\IpLocationHelper.cs:line 22
+ |url: http://localhost/ToolManage/Server/GetServerIpJson|action: GetServerIpJson
+2020-08-16 09:32:19.4750||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:32:22.4711||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:32:25.4735||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:32:28.4730||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:32:31.4738||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:32:34.4697||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:32:37.4745||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:32:40.4741||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:32:43.4671||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:32:46.4693||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:32:49.4740||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:32:52.4629||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:32:55.4664||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:32:58.4760||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:01.4667||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:04.4653||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:07.4637||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:10.4648||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:13.5948||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:16.4637||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:19.4693||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:22.4906||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:25.4664||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:29.1634||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:32.1655||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:35.1586||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:38.1648||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:41.1569||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:44.1575||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:47.1654||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:50.1665||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:53.1666||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:56.1658||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:33:59.1600||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:02.1664||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:05.1591||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:08.1594||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:11.1650||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:14.1636||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:17.1597||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:19.4802||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:22.4688||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:25.4623||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:28.4668||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:31.4715||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:34.4785||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:37.4703||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:40.4618||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:43.4619||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:46.4621||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:49.4698||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:52.4622||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:55.4637||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:34:58.4958||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:01.4632||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:04.4616||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:07.4632||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:10.4666||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:13.4615||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:16.4616||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:19.4636||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:22.4712||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:25.4670||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:28.4684||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:31.4617||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:34.4707||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:37.4701||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:40.4659||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:43.4719||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:46.4675||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:49.4730||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:52.4719||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:55.4625||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:35:58.4679||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:36:01.4747||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:36:04.4652||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:36:07.4712||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:36:10.4639||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:36:13.4632||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:36:16.4707||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:36:19.4733||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:36:22.4683||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:36:25.4625||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:36:28.4682||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:36:31.4665||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson
+2020-08-16 09:36:34.4664||ERROR||系统找不到指定的文件。
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at YiSha.Util.ShellHelper.Cmd(String fileName, String args) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ShellHelper.cs:line 40
+   at YiSha.Util.MemoryMetricsClient.GetWindowsMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 104
+   at YiSha.Util.MemoryMetricsClient.GetMetrics() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 99
+   at YiSha.Util.ComputerHelper.GetComputerInfo() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Util\YiSha.Util\ComputerHelper.cs:line 20
+ |url: http://localhost/ToolManage/Server/GetServerJson|action: GetServerJson

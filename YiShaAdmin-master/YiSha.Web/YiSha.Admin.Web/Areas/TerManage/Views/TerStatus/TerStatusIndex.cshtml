@@ -7,7 +7,7 @@
             <div class="select-list">
                 <ul>
                     <li>
-                        CloseStatus：<input id="closeStatus" col="CloseStatus" type="text" />
+                        关机状态：<input id="closeStatus" col="CloseStatus" type="text" />
                     </li>
                     <li>
                         <a id="btnSearch" class="btn btn-primary btn-sm" onclick="searchGrid()"><i class="fa fa-search"></i>&nbsp;搜索</a>
@@ -38,12 +38,12 @@
             columns: [
                 { checkbox: true, visible: true },
                 { field: 'Id', title: 'Id', visible: false },
-                { field: 'CloseStatus', title: 'CloseStatus' },
-                { field: 'RunStatus', title: 'RunStatus' },
-                { field: 'SilverRate', title: 'SilverRate' },
-                { field: 'ErrorCode', title: 'ErrorCode' },
-                { field: 'ErrorMsg', title: 'ErrorMsg' },
-                { field: 'TerId', title: 'TerId' },
+                { field: 'CloseStatus', title: '关机状态' },
+                { field: 'RunStatus', title: '运行状态' },
+                { field: 'SilverRate', title: '银离子含量' },
+                { field: 'ErrorCode', title: '故障代码' },
+                { field: 'ErrorMsg', title: '故障消息' },
+                { field: 'TerId', title: '设备编号' },
             ],
             queryParams: function (params) {
                 var pagination = $('#gridTable').ysTable('getPagination', params);

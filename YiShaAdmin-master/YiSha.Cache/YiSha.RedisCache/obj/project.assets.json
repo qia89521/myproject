@@ -1411,11 +1411,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Cache\\YiSha.RedisCache\\YiSha.RedisCache.csproj",
+      "projectUniqueName": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Cache\\YiSha.RedisCache\\YiSha.RedisCache.csproj",
       "projectName": "YiSha.RedisCache",
-      "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Cache\\YiSha.RedisCache\\YiSha.RedisCache.csproj",
+      "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Cache\\YiSha.RedisCache\\YiSha.RedisCache.csproj",
       "packagesPath": "C:\\Users\\ThinkPad\\.nuget\\packages\\",
-      "outputPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Cache\\YiSha.RedisCache\\obj\\",
+      "outputPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Cache\\YiSha.RedisCache\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Microsoft\\Xamarin\\NuGet\\"
@@ -1435,11 +1435,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Cache\\YiSha.Cache.Interface\\YiSha.Cache.Interface.csproj": {
-              "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Cache\\YiSha.Cache.Interface\\YiSha.Cache.Interface.csproj"
+            "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Cache\\YiSha.Cache.Interface\\YiSha.Cache.Interface.csproj": {
+              "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Cache\\YiSha.Cache.Interface\\YiSha.Cache.Interface.csproj"
             },
-            "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj": {
-              "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj"
+            "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj": {
+              "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj"
             }
           }
         }

@@ -1854,7 +1854,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Business.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Business.AutoJob/1.0.0": {
         "type": "project",
@@ -1871,7 +1874,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Business.AutoJob.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Business.Cache/1.0.0": {
         "type": "project",
@@ -1886,7 +1892,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Business.Cache.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Cache.Factory/1.0.0": {
         "type": "project",
@@ -1902,7 +1911,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Cache.Factory.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Cache.Interface/1.0.0": {
         "type": "project",
@@ -1929,7 +1941,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.CodeGenerator.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Data/1.0.0": {
         "type": "project",
@@ -1945,7 +1960,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Data.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Data.EF/1.0.0": {
         "type": "project",
@@ -1962,7 +1980,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Data.EF.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Data.Repository/1.0.0": {
         "type": "project",
@@ -1977,7 +1998,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Data.Repository.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Entity/1.0.0": {
         "type": "project",
@@ -1992,7 +2016,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Entity.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Enum/1.0.0": {
         "type": "project",
@@ -2015,7 +2042,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.IdGenerator.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.MemoryCache/1.0.0": {
         "type": "project",
@@ -2030,7 +2060,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.MemoryCache.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Model/1.0.0": {
         "type": "project",
@@ -2044,7 +2077,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Model.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.RedisCache/1.0.0": {
         "type": "project",
@@ -2059,7 +2095,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.RedisCache.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Service/1.0.0": {
         "type": "project",
@@ -2077,7 +2116,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Service.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Util/1.0.0": {
         "type": "project",
@@ -2112,7 +2154,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Web.Code.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -6910,11 +6955,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Web\\YiSha.Admin.Web\\YiSha.Admin.Web.csproj",
+      "projectUniqueName": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Web\\YiSha.Admin.Web\\YiSha.Admin.Web.csproj",
       "projectName": "YiSha.Admin.Web",
-      "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Web\\YiSha.Admin.Web\\YiSha.Admin.Web.csproj",
+      "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Web\\YiSha.Admin.Web\\YiSha.Admin.Web.csproj",
       "packagesPath": "C:\\Users\\ThinkPad\\.nuget\\packages\\",
-      "outputPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Web\\YiSha.Admin.Web\\obj\\",
+      "outputPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Web\\YiSha.Admin.Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Microsoft\\Xamarin\\NuGet\\"
@@ -6934,29 +6979,29 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Business\\YiSha.Business.AutoJob\\YiSha.Business.AutoJob.csproj": {
-              "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Business\\YiSha.Business.AutoJob\\YiSha.Business.AutoJob.csproj"
+            "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Business\\YiSha.Business.AutoJob\\YiSha.Business.AutoJob.csproj": {
+              "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Business\\YiSha.Business.AutoJob\\YiSha.Business.AutoJob.csproj"
             },
-            "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Business\\YiSha.Business\\YiSha.Business.csproj": {
-              "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Business\\YiSha.Business\\YiSha.Business.csproj"
+            "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Business\\YiSha.Business\\YiSha.Business.csproj": {
+              "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Business\\YiSha.Business\\YiSha.Business.csproj"
             },
-            "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.EF\\YiSha.Data.EF.csproj": {
-              "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.EF\\YiSha.Data.EF.csproj"
+            "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.EF\\YiSha.Data.EF.csproj": {
+              "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.EF\\YiSha.Data.EF.csproj"
             },
-            "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Entity\\YiSha.Entity.csproj": {
-              "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Entity\\YiSha.Entity.csproj"
+            "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Entity\\YiSha.Entity.csproj": {
+              "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Entity\\YiSha.Entity.csproj"
             },
-            "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Model\\YiSha.Model.csproj": {
-              "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Model\\YiSha.Model.csproj"
+            "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Model\\YiSha.Model.csproj": {
+              "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Model\\YiSha.Model.csproj"
             },
-            "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Util\\YiSha.CodeGenerator\\YiSha.CodeGenerator.csproj": {
-              "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Util\\YiSha.CodeGenerator\\YiSha.CodeGenerator.csproj"
+            "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Util\\YiSha.CodeGenerator\\YiSha.CodeGenerator.csproj": {
+              "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Util\\YiSha.CodeGenerator\\YiSha.CodeGenerator.csproj"
             },
-            "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj": {
-              "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj"
+            "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj": {
+              "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj"
             },
-            "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Web\\YiSha.Web.Code\\YiSha.Web.Code.csproj": {
-              "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Web\\YiSha.Web.Code\\YiSha.Web.Code.csproj"
+            "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Web\\YiSha.Web.Code\\YiSha.Web.Code.csproj": {
+              "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Web\\YiSha.Web.Code\\YiSha.Web.Code.csproj"
             }
           }
         }

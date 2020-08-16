@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+gw57TcQZlcN+x+xv8oqhz5qT9lK4cuhipj/lK3DRyTAm7hUSePotHmHQzSGhHH2W0Wrbhy4R9WXedQyKhzNyQ==",
+  "dgSpecHash": "oA7H1Gi8BobArZlO3StqqVMl0fyRi2jPR57mYNg8gaSBVb2D8qzLwK+nkr3xCqe3Klur5lkLYuKCh8/FY20vRQ==",
   "success": true,
-  "projectFilePath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Cache\\YiSha.RedisCache\\YiSha.RedisCache.csproj",
+  "projectFilePath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Cache\\YiSha.RedisCache\\YiSha.RedisCache.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.0\\microsoft.aspnetcore.jsonpatch.3.1.0.nupkg.sha512",
     "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.0\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.0.nupkg.sha512",

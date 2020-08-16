@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PmDjqzu6ZGJjtCt8/S4Ds6HbWfvdfhxjGEeKtA1CBJ9gc0Mu5n7IhDduF+rtfSRxEM/zXfneQVgk5gnLrOHT/g==",
+  "dgSpecHash": "BOukJcRP9akx/FSP1pfeL9RWaUwOvj5mzkdfsHFBQcw0GyEQJpnrcZdzaz8Yz5Kjmh83LHv+otgJiFZt17HrUg==",
   "success": true,
-  "projectFilePath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.EF\\YiSha.Data.EF.csproj",
+  "projectFilePath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.EF\\YiSha.Data.EF.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.0\\microsoft.aspnetcore.jsonpatch.3.1.0.nupkg.sha512",
     "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.0\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.0.nupkg.sha512",

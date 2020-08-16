@@ -7,7 +7,10 @@
             <div class="select-list">
                 <ul>
                     <li>
-                        TerName：<input id="terName" col="TerName" type="text" />
+                        设备名称：<input id="terName" col="TerName" type="text" />
+                    </li>
+                    <li>
+                        设备编号：<input id="terName" col="TerNumber" type="text" />
                     </li>
                     <li>
                         <a id="btnSearch" class="btn btn-primary btn-sm" onclick="searchGrid()"><i class="fa fa-search"></i>&nbsp;搜索</a>
@@ -38,8 +41,11 @@
             columns: [
                 { checkbox: true, visible: true },
                 { field: 'Id', title: 'Id', visible: false },
-                { field: 'TerName', title: 'TerName' },
-                { field: 'TerNumber', title: 'TerNumber' },
+                { field: 'TerName', title: '设备名称' },
+                { field: 'TerNumber', title: '设备编号' },
+                { field: 'BusyName', title: '运营商' },
+                { field: 'BusyLink', title: '联系方式' },
+                { field: 'Position', title: '位置' },
             ],
             queryParams: function (params) {
                 var pagination = $('#gridTable').ysTable('getPagination', params);

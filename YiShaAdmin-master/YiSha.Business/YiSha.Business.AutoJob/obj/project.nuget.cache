@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mItDnp+q0pZNJMXOhLstLYCrZYjPomM9H3l+8hLkL1zUfcQz/lfu73yV2d6Wt7YWzGPX5DZNGBcqE4p65N3J5w==",
+  "dgSpecHash": "6z/Egfi14dtW3fJboXPhtqas19xWOQpiSUPMMPa2jS5+tWOvWd97qSuk3olJBGkdGx/eO/hDMovGDm5Q5XyeUw==",
   "success": true,
-  "projectFilePath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Business\\YiSha.Business.AutoJob\\YiSha.Business.AutoJob.csproj",
+  "projectFilePath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Business\\YiSha.Business.AutoJob\\YiSha.Business.AutoJob.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.0\\microsoft.aspnetcore.jsonpatch.3.1.0.nupkg.sha512",
     "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.0\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.0.nupkg.sha512",

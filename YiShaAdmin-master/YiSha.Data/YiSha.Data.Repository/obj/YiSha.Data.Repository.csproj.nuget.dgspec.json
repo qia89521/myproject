@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.Repository\\YiSha.Data.Repository.csproj": {}
+    "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.Repository\\YiSha.Data.Repository.csproj": {}
   },
   "projects": {
-    "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.EF\\YiSha.Data.EF.csproj": {
+    "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.EF\\YiSha.Data.EF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.EF\\YiSha.Data.EF.csproj",
+        "projectUniqueName": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.EF\\YiSha.Data.EF.csproj",
         "projectName": "YiSha.Data.EF",
-        "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.EF\\YiSha.Data.EF.csproj",
+        "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.EF\\YiSha.Data.EF.csproj",
         "packagesPath": "C:\\Users\\ThinkPad\\.nuget\\packages\\",
-        "outputPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.EF\\obj\\",
+        "outputPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.EF\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Microsoft\\Xamarin\\NuGet\\"
@@ -31,11 +31,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data\\YiSha.Data.csproj": {
-                "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data\\YiSha.Data.csproj"
+              "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data\\YiSha.Data.csproj": {
+                "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data\\YiSha.Data.csproj"
               },
-              "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj": {
-                "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj"
+              "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj": {
+                "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj"
               }
             }
           }
@@ -84,14 +84,14 @@
         }
       }
     },
-    "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.Repository\\YiSha.Data.Repository.csproj": {
+    "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.Repository\\YiSha.Data.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.Repository\\YiSha.Data.Repository.csproj",
+        "projectUniqueName": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.Repository\\YiSha.Data.Repository.csproj",
         "projectName": "YiSha.Data.Repository",
-        "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.Repository\\YiSha.Data.Repository.csproj",
+        "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.Repository\\YiSha.Data.Repository.csproj",
         "packagesPath": "C:\\Users\\ThinkPad\\.nuget\\packages\\",
-        "outputPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.Repository\\obj\\",
+        "outputPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Microsoft\\Xamarin\\NuGet\\"
@@ -111,14 +111,14 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.EF\\YiSha.Data.EF.csproj": {
-                "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.EF\\YiSha.Data.EF.csproj"
+              "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.EF\\YiSha.Data.EF.csproj": {
+                "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data.EF\\YiSha.Data.EF.csproj"
               },
-              "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data\\YiSha.Data.csproj": {
-                "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data\\YiSha.Data.csproj"
+              "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data\\YiSha.Data.csproj": {
+                "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data\\YiSha.Data.csproj"
               },
-              "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj": {
-                "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj"
+              "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj": {
+                "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj"
               }
             }
           }
@@ -153,14 +153,14 @@
         }
       }
     },
-    "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data\\YiSha.Data.csproj": {
+    "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data\\YiSha.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data\\YiSha.Data.csproj",
+        "projectUniqueName": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data\\YiSha.Data.csproj",
         "projectName": "YiSha.Data",
-        "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data\\YiSha.Data.csproj",
+        "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data\\YiSha.Data.csproj",
         "packagesPath": "C:\\Users\\ThinkPad\\.nuget\\packages\\",
-        "outputPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data\\obj\\",
+        "outputPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Data\\YiSha.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Microsoft\\Xamarin\\NuGet\\"
@@ -180,8 +180,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj": {
-                "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj"
+              "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj": {
+                "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj"
               }
             }
           }
@@ -230,14 +230,14 @@
         }
       }
     },
-    "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Enum\\YiSha.Enum.csproj": {
+    "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Enum\\YiSha.Enum.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Enum\\YiSha.Enum.csproj",
+        "projectUniqueName": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Enum\\YiSha.Enum.csproj",
         "projectName": "YiSha.Enum",
-        "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Enum\\YiSha.Enum.csproj",
+        "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Enum\\YiSha.Enum.csproj",
         "packagesPath": "C:\\Users\\ThinkPad\\.nuget\\packages\\",
-        "outputPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Enum\\obj\\",
+        "outputPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Enum\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Microsoft\\Xamarin\\NuGet\\"
@@ -286,14 +286,14 @@
         }
       }
     },
-    "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj": {
+    "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj",
+        "projectUniqueName": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj",
         "projectName": "YiSha.Util",
-        "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj",
+        "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\YiSha.Util.csproj",
         "packagesPath": "C:\\Users\\ThinkPad\\.nuget\\packages\\",
-        "outputPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\obj\\",
+        "outputPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Util\\YiSha.Util\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Microsoft\\Xamarin\\NuGet\\"
@@ -313,8 +313,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Enum\\YiSha.Enum.csproj": {
-                "projectPath": "E:\\资料\\私人项目\\2020_08\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Enum\\YiSha.Enum.csproj"
+              "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Enum\\YiSha.Enum.csproj": {
+                "projectPath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Entity\\YiSha.Enum\\YiSha.Enum.csproj"
               }
             }
           }
