@@ -91,6 +91,12 @@ namespace YiSha.Entity.TerManage
         /// </summary>
         /// <returns></returns>
         public string Latitude { get; set; }
+        /// <summary>
+        /// 设备部件
+        /// </summary>
+        /// <returns></returns>
+        public string TerParts { get; set; }
+        
 
         public static implicit operator TerInforEntity(TData<TerInforEntity> v)
         {

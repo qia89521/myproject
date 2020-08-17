@@ -29,6 +29,12 @@ namespace YiSha.Admin.Web.Areas.OrganizationManage.Controllers
             return View();
         }
 
+        [AuthorizeFilter("organization:user:choose")]
+        public IActionResult UserIndexSelect()
+        {
+            return View();
+        }
+
         public IActionResult UserForm()
         {
             return View();

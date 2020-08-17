@@ -13,7 +13,7 @@
                         <a data-toggle="tab" href="#tab-8">基本信息</a>
                     </li>
                     <li class="">
-                        <a data-toggle="tab" href="#tab-9"> 状态信息</a>
+                        <a data-toggle="tab" href="#tab-9">状态信息</a>
                     </li>
                 </ul>
                 <div class="tab-content ">
@@ -32,6 +32,12 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="col-sm-3 control-label ">设备部件</label>
+                                <div class="col-sm-4">
+                                    <div id="terParts" col="TerParts"></div>
+                                </div>
+                            </div>
+                            <div class="form-group" style="display:none">
                                 <label class="col-sm-3 control-label ">运营商</label>
                                 <div class="col-sm-8">
                                     <input id="busyName" col="BusyName" type="text" class="form-control" />
@@ -40,22 +46,22 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label ">联系方式</label>
                                 <div class="col-sm-8">
-                                    <input id="busyLink" col="BusyLink" type="text" class="form-control" />
+                                    <input id="busyLink" col="BusyLink" type="text"  onkeyup="this.value=CheckIsFormatNumber(this.value, 0)" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label ">关机密码</label>
                                 <div class="col-sm-8">
-                                    <input id="closePwd" col="ClosePwd" type="text" class="form-control" />
+                                    <input id="closePwd" col="ClosePwd" onkeyup="this.value=CheckIsFormatNumber(this.value, 0)" type="text" class="form-control" />
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="display:none">
                                 <label class="col-sm-3 control-label ">商户号</label>
                                 <div class="col-sm-8">
                                     <input id="mchId" col="MchId" type="text" class="form-control" />
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="display:none">
                                 <label class="col-sm-3 control-label ">商户名称</label>
                                 <div class="col-sm-8">
                                     <input id="mchName" col="MchName" type="text" class="form-control" />
@@ -69,22 +75,22 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label ">累计使用水量</label>
                                 <div class="col-sm-8">
-                                    <input id="waterNum" col="WaterNum" type="text" class="form-control" />
+                                    <input id="waterNum" col="WaterNum" type="text"  onkeyup="this.value=CheckIsFormatNumber(this.value, 0)" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label ">累计使用时长</label>
                                 <div class="col-sm-8">
-                                    <input id="timeLen" col="TimeLen" type="text" class="form-control" />
+                                    <input id="timeLen" col="TimeLen" type="text"  onkeyup="this.value=CheckIsFormatNumber(this.value, 0)" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label ">当前网络信号</label>
                                 <div class="col-sm-8">
-                                    <input id="netSignal" col="NetSignal" type="text" class="form-control" />
+                                    <input id="netSignal" col="NetSignal" type="text"  onkeyup="this.value=CheckIsFormatNumber(this.value, 0)" class="form-control" />
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="display:none">
                                 <label class="col-sm-3 control-label ">业主</label>
                                 <div class="col-sm-8">
                                     <input id="manageId" col="ManageId" type="text" class="form-control" />
@@ -99,13 +105,13 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label ">地球经度</label>
                                 <div class="col-sm-8">
-                                    <input id="longitude" col="Longitude" type="text" class="form-control" />
+                                    <input id="longitude" col="Longitude" type="text"  onkeyup="this.value=CheckIsFormatNumber(this.value, 2)" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label ">地球纬度</label>
                                 <div class="col-sm-8">
-                                    <input id="latitude" col="Latitude" type="text" class="form-control" />
+                                    <input id="latitude" col="Latitude" type="text"  onkeyup="this.value=CheckIsFormatNumber(this.value, 2)" class="form-control" />
                                 </div>
                             </div>
                         </div>
@@ -124,12 +130,22 @@
     var id = ys.request("id");
     $(function () {
         getForm();
+         $("#terParts").ysComboBox({
+            url: '@Url.Content("~/TerManage/Parts/GetListJson")',
+            //dataName: "Result",
+            key: "PartCode",
+            value: "PartName",
+            class: "form-control",
+             multiple: true,
+         });
+        //$("#terParts_select").attr("disabled", "disabled");
 
         $('#form').validate({
             rules: {
                 terName: { required: true }
             }
         });
+
     });
 
     function getForm() {

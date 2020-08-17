@@ -61,6 +61,7 @@
                             if (value.length == 0) {
                                 return '设备名称为空';
                             }
+
                         }
                     }
                 },
@@ -76,12 +77,34 @@
                             if (value.length == 0) {
                                 return '设备编号不能为空';
                             }
+                            else {
+                                if (!CheckIsNumber(value)) {
+                                    return '设备编号必须为数字';
+                                }
+                            }
                         }
                     }
                 },
-                { field: 'BusyName', title: '运营商' },
-                { field: 'BusyLink', title: '联系方式' },
-                { field: 'Position', title: '位置' },
+                {
+                    field: 'BusyName', title: '运营商',
+                    formatter: function (value, row, index) {
+                        return "<span>" + value + " <button type=\"button\" class=\"btn btn-primary btn-xs\" onclick=\"setManage()\">设 置</button></span>";
+                    }},
+                {
+                    field: 'BusyLink', title: '联系方式',
+                    editable: {
+                        type: 'text',
+                        emptytext: "【联系方式】为空",
+                        validate: function (value) {
+                            if (value.length != 11) {
+                                return '手机号必须为11位';
+                            }
+
+                        }
+                    } },
+                {
+                    field: 'Position', title: '位置'
+                },
                 {
                     field: 'BaseCreateTime', title: '创建时间', align: "left",
                     formatter: function (value, row, index) {
@@ -117,6 +140,9 @@
         if (field == "TerName") {
             url = '@Url.Content("~/TerManage/TerInfor/ModifyTerName")';
         }
+        else if (field == "BusyLink") {
+            url = '@Url.Content("~/TerManage/TerInfor/ModifyBusyLink")';
+        }
         else {
             url = '@Url.Content("~/TerManage/TerInfor/ModifyTerNumber")';
         }
@@ -133,6 +159,20 @@
                 else {
                     ys.msgError(obj.Message);
                 }
+            }
+        });
+    }
+
+    /*设置运营商 */
+    function setManage() {
+         ys.openDialog({
+            title:  "设置运营商",
+            content: '@Url.Content("~/OrganizationManage/User/UserIndexSelect")',
+            width: "968px",
+            height: "600px",
+            callback: function (index, layero) {
+                var iframeWin = window[layero.find('iframe')[0]['name']];
+                iframeWin.saveForm(index);
             }
         });
     }

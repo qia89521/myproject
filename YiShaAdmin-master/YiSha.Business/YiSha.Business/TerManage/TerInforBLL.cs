@@ -81,6 +81,21 @@ namespace YiSha.Business.TerManage
             return await SaveForm(ter);
         }
 
+
+        /// <summary>
+        /// 修改设备名称
+        /// </summary>
+        /// <param name="id">设备id</param>
+        /// <param name="busyLink">联系方式</param>
+        /// <returns></returns>
+        public async Task<TData<string>> ModifyBusyLink(long id, string busyLink)
+        {
+            TerInforEntity ter = await terInforService.GetEntity(id);
+            ter.BusyLink = busyLink;
+
+            return await SaveForm(ter);
+        }
+
         public async Task<TData<string>> SaveForm(TerInforEntity entity)
         {
             TData<string> obj = new TData<string>();
