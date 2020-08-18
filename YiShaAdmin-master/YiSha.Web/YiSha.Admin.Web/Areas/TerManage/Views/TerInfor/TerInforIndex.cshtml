@@ -86,10 +86,14 @@
                     }
                 },
                 {
-                    field: 'BusyName', title: '运营商',
+                    field: 'ManageTxt', title: '业主',
                     formatter: function (value, row, index) {
-                        return "<span>" + value + " <button type=\"button\" class=\"btn btn-primary btn-xs\" onclick=\"setManage()\">设 置</button></span>";
-                    }},
+                        return "<span>" + value + " <button type=\"button\" class=\"btn btn-primary btn-xs\" onclick=\"setManage('" + row["Id"]+"')\">设 置</button></span>";
+                    }
+                },
+                {
+                    field: 'BusyName', title: '运营商'
+                },
                 {
                     field: 'BusyLink', title: '联系方式',
                     editable: {
@@ -146,9 +150,19 @@
         else {
             url = '@Url.Content("~/TerManage/TerInfor/ModifyTerNumber")';
         }
-        //long id, string terName
+        MoidfyFieldValue(row["Id"], row[field], url);
+    }
+
+    /**
+     * 修改字段信息
+     * id id
+     * value_str 值
+     * url 当前url
+     */
+    function MoidfyFieldValue(id,value_str,urls) {
+        var data = { id: id, value: value_str};
         ys.ajax({
-            url: url,
+            url: urls,
             type: 'post',
             data: data,
             success: function (obj) {
@@ -164,18 +178,29 @@
     }
 
     /*设置运营商 */
-    function setManage() {
+    function setManage(id) {
          ys.openDialog({
             title:  "设置运营商",
             content: '@Url.Content("~/OrganizationManage/User/UserIndexSelect")',
             width: "968px",
             height: "600px",
-            callback: function (index, layero) {
+             callback: function (index, layero) {
                 var iframeWin = window[layero.find('iframe')[0]['name']];
-                iframeWin.saveForm(index);
+                var ids = iframeWin.chooseUserOK();
+                if (IsNullEmpty(ids)) {
+                    ys.alertError('请先选择用户,再操作');
+                }
+                else {
+                    //设置 操作人
+                    var urls = '@Url.Content("~/TerManage/TerInfor/ModifyManageId")';
+                    layer.close(index);
+                    MoidfyFieldValue(id, ids, urls);
+                }
             }
         });
     }
+
+
 
     function showSaveForm(bAdd) {
         var id = 0;

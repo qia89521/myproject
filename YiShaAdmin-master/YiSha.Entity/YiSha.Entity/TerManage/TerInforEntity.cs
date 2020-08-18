@@ -68,7 +68,7 @@ namespace YiSha.Entity.TerManage
         /// 业主
         /// </summary>
         /// <returns></returns>
-        public string ManageId { get; set; }
+        public long? ManageId { get; set; }
         /// <summary>
         /// 业主
         /// </summary>

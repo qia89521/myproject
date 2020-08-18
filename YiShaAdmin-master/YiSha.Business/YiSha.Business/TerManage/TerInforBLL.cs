@@ -66,7 +66,18 @@ namespace YiSha.Business.TerManage
 
             return await SaveForm(ter);
         }
-
+        /// <summary>
+        /// 设置业主
+        /// </summary>
+        /// <param name="id">设备id</param>
+        /// <param name="manageId">业主id</param>
+        /// <returns></returns>
+        public async Task<TData<string>> ModifyManageId(long id, long manageId)
+        {
+            TerInforEntity ter = await terInforService.GetEntity(id);
+            ter.ManageId = manageId;
+            return await SaveForm(ter);
+        }
         /// <summary>
         /// 修改设备名称
         /// </summary>

@@ -127,6 +127,8 @@
         });
     }
 
+
+
     function searchGrid() {
         $('#gridTable').ysTable('search');
         resetToolbarStatus();
@@ -137,6 +139,10 @@
         createMenuItem(url, "部门管理");
     }
 
-
+    function chooseUserOK() {
+        var selectedRow = $("#gridTable").bootstrapTable("getSelections");
+        var ids = ys.getIds(selectedRow);
+        return ids;
+    }
 
 </script>

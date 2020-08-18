@@ -92,6 +92,18 @@ function FilterObjArray(obj_array, filed, value) {
     return array;
 }
 
+
+/**
+ * 检测字符串是否为空
+ * @param {any} str
+ */
+function IsNullEmpty(str) {
+    if (str != "" && str != undefined && str != null) {
+        return false;
+    }
+    return true;
+}
+
 /*筛选对象数组 如:[{file:1},{file:2}]
 根据值从数组进行筛选
 @obj_array:对象数组

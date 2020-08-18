@@ -121,7 +121,19 @@ namespace YiSha.Admin.Web.Areas.TerManage.Controllers
             TData obj = await terInforBLL.ModifyBusyLink(long.Parse(id), value);
             return Json(obj);
         }
-        
+        /// <summary>
+        /// 设置业主
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <param name="value">业主id</param>
+        /// <returns></returns>
+        [HttpPost]
+        [AuthorizeFilter("ter:terinfor:ModifyManageId")]
+        public async Task<ActionResult> ModifyManageId(string id, string value)
+        {
+            TData obj = await terInforBLL.ModifyManageId(long.Parse(id), long.Parse(value));
+            return Json(obj);
+        }
         #endregion
     }
 }
