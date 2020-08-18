@@ -108,6 +108,20 @@ namespace YiSha.Admin.Web.Areas.TerManage.Controllers
             TData obj = await terInforBLL.ModifyTerName(long.Parse(id), value);
             return Json(obj);
         }
+
+        /// <summary>
+        /// 修改运营商
+        /// </summary>
+        /// <param name="id">设备id</param>
+        /// <param name="busyName">运营商名称</param>
+        /// <returns></returns>
+        [HttpPost]
+        [AuthorizeFilter("ter:terinfor:ModifyBusyName")]
+        public async Task<ActionResult> ModifyBusyName(string id, string value)
+        {
+            TData obj = await terInforBLL.ModifyBusyName(long.Parse(id), value);
+            return Json(obj);
+        }
         /// <summary>
         /// 修改设备联系方式
         /// </summary>
@@ -132,6 +146,32 @@ namespace YiSha.Admin.Web.Areas.TerManage.Controllers
         public async Task<ActionResult> ModifyManageId(string id, string value)
         {
             TData obj = await terInforBLL.ModifyManageId(long.Parse(id), long.Parse(value));
+            return Json(obj);
+        }
+        /// <summary>
+        /// 设置是否锁定
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <param name="value">业主id</param>
+        /// <returns></returns>
+        [HttpPost]
+        [AuthorizeFilter("ter:terinfor:ModifyIsLock")]
+        public async Task<ActionResult> ModifyIsLock(string id, string value)
+        {
+            TData obj = await terInforBLL.ModifyIsLock(long.Parse(id), int.Parse(value));
+            return Json(obj);
+        }
+        /// <summary>
+        /// 设置是否出货
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <param name="value">是否出货</param>
+        /// <returns></returns>
+        [HttpPost]
+        [AuthorizeFilter("ter:terinfor:ModifyIsBuy")]
+        public async Task<ActionResult> ModifyIsBuy(string id, string value)
+        {
+            TData obj = await terInforBLL.ModifyIsBuy(long.Parse(id), int.Parse(value));
             return Json(obj);
         }
         #endregion

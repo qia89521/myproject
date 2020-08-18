@@ -66,6 +66,46 @@ namespace YiSha.Business.TerManage
 
             return await SaveForm(ter);
         }
+
+        /// <summary>
+        /// 修改运营商
+        /// </summary>
+        /// <param name="id">设备id</param>
+        /// <param name="busyName">运营商名称</param>
+        /// <returns></returns>
+        public async Task<TData<string>> ModifyBusyName(long id, string busyName)
+        {
+            TerInforEntity ter = await terInforService.GetEntity(id);
+            ter.BusyName = busyName;
+            return await SaveForm(ter);
+        }
+        //IsLock
+
+        /// <summary>
+        /// 设置是否锁定
+        /// </summary>
+        /// <param name="id">设备id</param>
+        /// <param name="lsLock">是否锁定0:否 1:是</param>
+        /// <returns></returns>
+        public async Task<TData<string>> ModifyIsLock(long id, int lsLock)
+        {
+            TerInforEntity ter = await terInforService.GetEntity(id);
+            ter.IsLock = lsLock;
+            return await SaveForm(ter);
+        }
+        /// <summary>
+        /// 设置是否出货
+        /// </summary>
+        /// <param name="id">设备id</param>
+        /// <param name="isBuy">是否已经出货0:否 1:是</param>
+        /// <returns></returns>
+        public async Task<TData<string>> ModifyIsBuy(long id, int isBuy)
+        {
+            TerInforEntity ter = await terInforService.GetEntity(id);
+            ter.IsBuy = isBuy;
+            return await SaveForm(ter);
+        }
+
         /// <summary>
         /// 设置业主
         /// </summary>

@@ -30,6 +30,7 @@
             <a id="btnEdit" class="btn btn-primary disabled" onclick="showSaveForm(false)"><i class="fa fa-edit"></i> 修改</a>
             <a id="btnDelete" class="btn btn-danger disabled" onclick="deleteForm()"><i class="fa fa-remove"></i> 删除</a>
         </div>
+
         <div class="col-sm-12 select-table table-striped">
             <table id="gridTable" data-mobile-responsive="true"></table>
         </div>
@@ -46,83 +47,127 @@
         $('#gridTable').ysTable({
             url: queryUrl,
             onEditableSave: onEditableSave,
-            columns: [
-                { checkbox: true, visible: true },
-                { field: 'Id', title: 'Id', visible: false },
-                {
-                    field: 'TerName', title: '设备名称',
-                    editable: {
-                        type: 'text',
-                        emptytext: "【设备名称】为空",
-                        validate: function (value) {
-                            if (value.length > 20) {
-                                return '设备名称不能超过20个字符';
-                            }
-                            if (value.length == 0) {
-                                return '设备名称为空';
-                            }
+            columns:[
+                    [
+                        { title: '基本信息', align: 'center', colspan: 6 },
+                        { title: '状态信息', align: 'center', colspan: 6 },
+                        { title: '操作人', align: 'center', colspan: 4 }
+                    ],
+                    [
+                    { checkbox: true, visible: true },
+                    { field: 'Id', title: 'Id', visible: false },
+                    {
+                        field: 'TerName', title: '设备名称',
+                        editable: {
+                            type: 'text',
+                            emptytext: "【设备名称】为空",
+                            validate: function (value) {
+                                if (value.length > 20) {
+                                    return '设备名称不能超过20个字符';
+                                }
+                                if (value.length == 0) {
+                                    return '设备名称为空';
+                                }
 
+                            }
                         }
-                    }
-                },
-                {
-                    field: 'TerNumber', title: '设备编号',
-                    editable: {
-                        type: 'text',
-                        emptytext: "【设备编号】为空",
-                        validate: function (value) {
-                            if (value.length > 20) {
-                                return '设备编号不能超过20个字符';
-                            }
-                            if (value.length == 0) {
-                                return '设备编号不能为空';
-                            }
-                            else {
-                                if (!CheckIsNumber(value)) {
-                                    return '设备编号必须为数字';
+                    },
+                    {
+                        field: 'TerNumber', title: '设备编号',
+                        editable: {
+                            type: 'text',
+                            emptytext: "【设备编号】为空",
+                            validate: function (value) {
+                                if (value.length > 20) {
+                                    return '设备编号不能超过20个字符';
+                                }
+                                if (value.length == 0) {
+                                    return '设备编号不能为空';
+                                }
+                                else {
+                                    if (!CheckIsNumber(value)) {
+                                        return '设备编号必须为数字';
+                                    }
                                 }
                             }
                         }
-                    }
-                },
-                {
-                    field: 'ManageTxt', title: '业主',
-                    formatter: function (value, row, index) {
-                        return "<span>" + value + " <button type=\"button\" class=\"btn btn-primary btn-xs\" onclick=\"setManage('" + row["Id"]+"')\">设 置</button></span>";
-                    }
-                },
-                {
-                    field: 'BusyName', title: '运营商'
-                },
-                {
-                    field: 'BusyLink', title: '联系方式',
-                    editable: {
-                        type: 'text',
-                        emptytext: "【联系方式】为空",
-                        validate: function (value) {
-                            if (value.length != 11) {
-                                return '手机号必须为11位';
-                            }
-
+                    },
+                    {
+                        field: 'ManageTxt', title: '业主',
+                        formatter: function (value, row, index) {
+                            return "<span title=\"查看转让数据\" onclick=\"showZhuanRangData('" + row.Id+"')\">" + value + " <button type=\"button\" class=\"btn btn-primary btn-xs\" onclick=\"setManage('" + row["Id"] + "')\">设 置</button></span>";
                         }
-                    } },
-                {
-                    field: 'Position', title: '位置'
-                },
-                {
-                    field: 'BaseCreateTime', title: '创建时间', align: "left",
-                    formatter: function (value, row, index) {
-                        return ys.formatDate(value, "yyyy-MM-dd HH:mm:ss");
-                    }
-                },
-                { field: 'BaseCreatorTxt', title: '创建人' },
-                {
-                    field: 'BaseModifyTime', title: '修改时间', align: "left",
-                    formatter: function (value, row, index) {
-                        return ys.formatDate(value, "yyyy-MM-dd HH:mm:ss");
-                    }
-                },
-                { field: 'BaseModifierTxt', title: '修改人' },
+                    },
+                    {
+                        field: 'BusyName', title: '运营商',
+                        editable: {
+                            type: 'text',
+                            emptytext: "【运营商】为空",
+                            validate: function (value) {
+                                if (value.length == 0) {
+                                    return '运营商不能为空';
+                                }
+                            }
+                        }
+                    },
+                    {
+                        field: 'BusyLink', title: '联系方式',
+                        editable: {
+                            type: 'text',
+                            emptytext: "【联系方式】为空",
+                            validate: function (value) {
+                                if (value.length != 11) {
+                                    return '手机号必须为11位';
+                                }
+
+                            }
+                        }
+                    },
+                    {
+                        field: 'IsLock', title: '是否锁定',
+                        editable: {
+                            type: 'select',
+                            source: [{
+                                value: 0,
+                                text: "否"
+                            }, {
+                                value: 1,
+                                text: "是"
+                            }]
+                        }
+                    },
+                    {
+                        field: 'IsBuy', title: '是否出货',
+                        editable: {
+                            type: 'select',
+                            source: [{
+                                value: 0,
+                                text: "否"
+                            }, {
+                                value: 1,
+                                text: "是"
+                            }]
+                        }
+                    },
+                    { field: 'WaterNum', title: '累计水量/L' },
+                    { field: 'TimeLen', title: '累计时长/天' },
+                    { field: 'NetSignal', title: '信号强度' },
+                    { field: 'Position', title: '当前位置' },
+                    {
+                        field: 'BaseCreateTime', title: '创建时间', align: "left",
+                        formatter: function (value, row, index) {
+                            return ys.formatDate(value, "yyyy-MM-dd HH:mm:ss");
+                        }
+                    },
+                    { field: 'BaseCreatorTxt', title: '创建人' },
+                    {
+                        field: 'BaseModifyTime', title: '修改时间', align: "left",
+                        formatter: function (value, row, index) {
+                            return ys.formatDate(value, "yyyy-MM-dd HH:mm:ss");
+                        }
+                    },
+                    { field: 'BaseModifierTxt', title: '修改人' },
+                    ]
             ],
             queryParams: function (params) {
                 var pagination = $('#gridTable').ysTable('getPagination', params);
@@ -146,6 +191,15 @@
         }
         else if (field == "BusyLink") {
             url = '@Url.Content("~/TerManage/TerInfor/ModifyBusyLink")';
+        }
+        else if (field == "BusyName") {
+            url = '@Url.Content("~/TerManage/TerInfor/ModifyBusyName")';
+        }
+        else if (field == "IsBuy") {
+            url = '@Url.Content("~/TerManage/TerInfor/ModifyIsBuy")';
+        }
+        else if (field == "IsLock") {
+            url = '@Url.Content("~/TerManage/TerInfor/ModifyIsLock")';
         }
         else {
             url = '@Url.Content("~/TerManage/TerInfor/ModifyTerNumber")';
@@ -183,7 +237,7 @@
             title:  "设置运营商",
             content: '@Url.Content("~/OrganizationManage/User/UserIndexSelect")',
             width: "968px",
-            height: "600px",
+            height: "570px",
              callback: function (index, layero) {
                 var iframeWin = window[layero.find('iframe')[0]['name']];
                 var ids = iframeWin.chooseUserOK();
@@ -221,6 +275,21 @@
             callback: function (index, layero) {
                 var iframeWin = window[layero.find('iframe')[0]['name']];
                 iframeWin.saveForm(index);
+            }
+        });
+    }
+
+    /**
+     * 
+     * 查看转让信息
+     */
+    function showZhuanRangData(id) {
+         ys.openDialog({
+             title: '查看转让信息',
+            content: '@Url.Content("~/TerManage/TerTransferRecord/TerTransferRecordIndex")' + '?id=' + id,
+            width: '768px',
+            height: '550px',
+            callback: function (index, layero) {
             }
         });
     }
