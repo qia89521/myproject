@@ -1,0 +1,122 @@
+﻿@{
+    Layout = "~/Views/Shared/_FormWhite.cshtml";
+}
+
+
+
+<div class="wrapper animated fadeInRight">
+    <form id="form" class="form-horizontal m">
+        <div class="form-group">
+            <label class="col-sm-2 control-label ">省份</label>
+            <div class="col-sm-4">
+                <div id="provoice" col="Provoice"></div>
+            </div>
+            <label class="col-sm-2 control-label ">城市</label>
+            <div class="col-sm-4">
+                <div  id="city" col="City"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label ">县区</label>
+            <div class="col-sm-4">
+                <div id="xian" col="Xian"></div>
+            </div>
+            <label class="col-sm-2 control-label ">操作</label>
+            <div class="col-sm-4">
+                <button type="button" class="btn btn-w-m btn-info" onclick="SetValues()">确定追加</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label ">设置代理区域</label>
+            <div class="col-sm-10">
+                <textarea id="delegetZoneTxt" col="DelegetZoneTxt" class="form-control" style="height:90px"></textarea>
+                <input type="hidden" id="delegetZoneId"  col="DelegetZoneId"/>
+            </div>
+        </div>
+
+    </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+        //AreaCode,ParentAreaCode,AreaName,AreaLevel
+        $("#provoice").ysComboBox({
+            url: '@Url.Content("~/SystemManage/Area/GetAreaList")' +"?parentCode=0",
+            key: "areacode",
+            class: "form-control",
+            value: "areaname",
+            onChange: function (val) {
+                ChangeCity(this.value);
+            }
+        });
+
+    });
+
+    function ChangeCity(code) {
+        $("#city").ysComboBox({
+            url: '@Url.Content("~/SystemManage/Area/GetAreaList")' + "?parentCode=" + code,
+            key: "areacode",
+            class: "form-control",
+            value: "areaname",
+            onChange: function (val) {
+                ChangeXian(this.value);
+            }
+        });
+    }
+    function ChangeXian(code) {
+        $("#xian").ysComboBox({
+        url: '@Url.Content("~/SystemManage/Area/GetAreaList")' + "?parentCode=" + code,
+            key: "areacode",
+            class: "form-control",
+            value: "areaname",
+
+        });
+    }
+
+    function SetValues() {
+        //delegetZone  getValue getText
+        var zone_txt = [];
+        var zone_id =[];
+        //provoice_select
+        if ($("#provoice").ysComboBox('getValue') != "") {
+            zone_id.push($("#provoice").ysComboBox('getValue'));
+
+            zone_txt.push($("#provoice_select option:selected").text());
+        }
+        if ($("#city").ysComboBox('getValue') != "") {
+            zone_id.push($("#city").ysComboBox('getValue'));
+            zone_txt.push($("#city_select option:selected").text());
+        }
+        if ($("#xian").ysComboBox('getValue') != "") {
+            zone_id.push($("#xian").ysComboBox('getValue'));
+            zone_txt.push($("#xian_select option:selected").text());
+        }
+        var delegetZoneTxt = $("#delegetZoneTxt").val();
+        var delegetZoneId = $("#delegetZoneId").val();
+
+        if (delegetZoneId != "") {
+            //设置代理区域
+            if (delegetZoneId.indexOf(zone_id.join("-")) < 0) {
+                delegetZoneTxt = delegetZoneTxt + ",";
+                delegetZoneId = delegetZoneId + ",";
+
+                delegetZoneId += zone_id.join("-");
+                delegetZoneTxt += zone_txt.join("-");
+            }
+        }
+        else {
+            delegetZoneId += zone_id.join("-");
+            delegetZoneTxt += zone_txt.join("-");
+        }
+       
+        $("#delegetZoneTxt").val(delegetZoneTxt);
+        $("#delegetZoneId").val(delegetZoneId);
+    }
+
+    var select_data = {txts:"",ids:""};
+    function getSelectZone() {
+        select_data.txts = $("#delegetZoneTxt").val();
+        select_data.ids = $("#delegetZoneId").val();
+
+        return select_data;
+    }
+</script>

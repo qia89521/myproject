@@ -10,6 +10,8 @@ using YiSha.Model.Param.SystemManage;
 using YiSha.Service.SystemManage;
 using YiSha.Business.Cache;
 using YiSha.Model.Result;
+using System.Data;
+using Microsoft.AspNetCore.Http.Features;
 
 namespace YiSha.Business.SystemManage
 {
@@ -61,6 +63,25 @@ namespace YiSha.Business.SystemManage
             obj.Tag = 1;
             return obj;
         }
+        #region 处理 wdtree 数据
+        /// <summary>
+        /// 获取wdtree数据
+        /// </summary>
+        /// <returns></returns>
+        public async Task<TData<DataTable>> GetAreaList(string parentCode)
+        {
+            AreaListParam param = new AreaListParam();
+            param.ParentAreaCode = parentCode;
+
+            TData<DataTable> obj = new TData<DataTable>();
+
+            obj.Data = await areaService.GetData(param);
+           
+            obj.Tag = 1;
+            return obj;
+        }
+
+        #endregion
 
         public async Task<TData<AreaEntity>> GetEntity(long id)
         {
@@ -105,6 +126,7 @@ namespace YiSha.Business.SystemManage
         #endregion
 
         #region 公有方法
+
         public void SetAreaParam<T>(T t) where T : BaseAreaParam
         {
             if (t != null)

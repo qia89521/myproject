@@ -28,7 +28,7 @@
         <div class="btn-group-sm hidden-xs" id="toolbar">
             <a id="btnAdd" class="btn btn-success" onclick="showSaveForm(true)"><i class="fa fa-plus"></i> 新增</a>
             <a id="btnEdit" class="btn btn-primary disabled" onclick="showSaveForm(false)"><i class="fa fa-edit"></i> 修改</a>
-            <a id="btnDelete" class="btn btn-danger disabled" onclick="deleteForm()"><i class="fa fa-remove"></i> 删除</a>
+            <a id="btnDelete" class="btn btn-danger disabled" onclick="deleteForm()"><i class="fa fa-remove"></i> 查看转让信息</a>
         </div>
 
         <div class="col-sm-12 select-table table-striped">
@@ -95,7 +95,7 @@
                     {
                         field: 'ManageTxt', title: '业主',
                         formatter: function (value, row, index) {
-                            return "<span title=\"查看转让数据\" onclick=\"showZhuanRangData('" + row.Id+"')\">" + value + " <button type=\"button\" class=\"btn btn-primary btn-xs\" onclick=\"setManage('" + row["Id"] + "')\">设 置</button></span>";
+                            return "<span>" + value + " <button type=\"button\" class=\"btn btn-primary btn-xs\" onclick=\"setManage('" + row["Id"] + "')\">设 置</button></span>";
                         }
                     },
                     {
@@ -280,39 +280,27 @@
     }
 
     /**
-     * 
+     *
      * 查看转让信息
      */
     function showZhuanRangData(id) {
          ys.openDialog({
-             title: '查看转让信息',
+            title: '查看转让信息',
             content: '@Url.Content("~/TerManage/TerTransferRecord/TerTransferRecordIndex")' + '?id=' + id,
             width: '768px',
             height: '550px',
-            callback: function (index, layero) {
-            }
+            callback: function (index, layero){ }
         });
     }
 
     function deleteForm() {
         var selectedRow = $('#gridTable').bootstrapTable('getSelections');
-        if (ys.checkRowDelete(selectedRow)) {
-            ys.confirm('确认要删除选中的' + selectedRow.length + '条数据吗？', function () {
-                var ids = ys.getIds(selectedRow);
-                ys.ajax({
-                    url: '@Url.Content("~/TerManage/TerInfor/DeleteFormJson")' + '?ids=' + ids,
-                    type: 'post',
-                    success: function (obj) {
-                        if (obj.Tag == 1) {
-                            ys.msgSuccess(obj.Message);
-                            searchGrid();
-                        }
-                        else {
-                            ys.msgError(obj.Message);
-                        }
-                    }
-                });
-            });
+        if (!ys.checkRowEdit(selectedRow)) {
+            return;
         }
+        else {
+            id = selectedRow[0].Id;
+        }
+        showZhuanRangData(id);
     }
 </script>

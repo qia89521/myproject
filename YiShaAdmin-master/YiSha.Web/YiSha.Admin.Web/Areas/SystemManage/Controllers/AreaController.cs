@@ -13,6 +13,7 @@ using YiSha.Entity.SystemManage;
 using YiSha.Business.SystemManage;
 using YiSha.Model.Param.SystemManage;
 using YiSha.Model.Result;
+using System.Data;
 
 namespace YiSha.Admin.Web.Areas.SystemManage.Controllers
 {
@@ -32,6 +33,11 @@ namespace YiSha.Admin.Web.Areas.SystemManage.Controllers
         {
             return View();
         }
+        [AuthorizeFilter("system:area:view")]
+        public IActionResult AreaIndexSelect()
+        {
+            return View();
+        }
         #endregion
 
         #region 获取数据
@@ -40,6 +46,15 @@ namespace YiSha.Admin.Web.Areas.SystemManage.Controllers
         public async Task<IActionResult> GetListJson(AreaListParam param)
         {
             TData<List<AreaEntity>> obj = await areaBLL.GetList(param);
+            return Json(obj);
+        }
+
+        [HttpGet]
+        [AuthorizeFilter("system:area:search")]
+        public async Task<IActionResult> GetAreaList()
+        {
+            string parentCode = Request.Query["parentCode"];
+            TData<DataTable> obj = await areaBLL.GetAreaList(parentCode);
             return Json(obj);
         }
 

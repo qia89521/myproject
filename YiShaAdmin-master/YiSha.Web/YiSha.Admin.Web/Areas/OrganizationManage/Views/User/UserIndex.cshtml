@@ -179,6 +179,8 @@
             }
         }
         ys.openDialog({
+            width: "1000px",
+            height: "540px",
             title: id > 0 ? "编辑用户" : "添加用户",
             content: '@Url.Content("~/OrganizationManage/User/UserForm")' + '?id=' + id,
             callback: function (index, layero) {

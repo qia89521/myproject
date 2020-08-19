@@ -336,6 +336,17 @@
                 return val;
             }
         },
+        getText: function (target) {
+            var valArray = $("#" + $(target).attr("id") + "_select").select2("text");
+            if (valArray == null) {
+                return "";
+            }
+            else {
+                var val = valArray.toString();
+                // -1代表查询条件所有，就把这个查询条件置为空
+                return val;
+            }
+        },
         setValue: function (target, value) {
             if (ys.isNullOrEmpty(value)) {
                 return;

@@ -7,6 +7,8 @@ namespace YiSha.Model.Param.SystemManage
     public class AreaListParam
     {
         public string AreaName { get; set; }
+        public string ParentAreaCode { get; set; }
+        
     }
 
     public class BaseAreaParam : BaseApiToken

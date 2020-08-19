@@ -23,15 +23,16 @@
             <div class="col-sm-4" id="gender" col="Gender"></div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label ">生日</label>
-            <div class="col-sm-4">
-                <input id="birthday" col="Birthday" type="text" class="form-control" />
-            </div>
-            <label class="col-sm-2 control-label ">部门</label>
-            <div class="col-sm-4">
-                <div id="departmentId" col="DepartmentId"></div>
-            </div>
+        <label class="col-sm-2 control-label ">生日</label>
+        <div class="col-sm-4">
+            <input id="birthday" col="Birthday" type="text" class="form-control" />
         </div>
+
+        <label class="col-sm-2 control-label ">部门</label>
+        <div class="col-sm-4">
+            <div id="departmentId" col="DepartmentId"></div>
+        </div>
+         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label ">手机</label>
             <div class="col-sm-4">
@@ -53,6 +54,16 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">角色</label>
             <div class="col-sm-10" id="role" col="RoleIds"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label ">代理区域</label>
+            <div class="col-sm-8">
+                <textarea id="delegetZoneTxt" col="DelegetZoneTxt" class="form-control" style="height:60px"></textarea>
+                <input type="hidden" id="delegetZoneId" col="DelegetZoneId" />
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary btn-sm" onclick="setZone()">设 置</button>
+            </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label ">备注</label>
@@ -147,5 +158,23 @@
                 }
             });
         }
+    }
+
+    /**设置代理区域 */
+    function setZone() {
+        ys.openDialog({
+            title:  "设置代理区域",
+            content: '@Url.Content("~/SystemManage/Area/AreaIndexSelect")',
+            width: "868px",
+            height: "430px",
+             callback: function (index, layero) {
+                 var iframeWin = window[layero.find('iframe')[0]['name']];
+                 var select_data = iframeWin.getSelectZone();
+                 $("#delegetZoneTxt").val(select_data.txts);
+                 $("#delegetZoneId").val(select_data.ids);
+                 //getSelectZone
+                 layer.close(index);
+            }
+        });
     }
 </script>

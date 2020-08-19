@@ -9,6 +9,8 @@ using YiSha.Util.Model;
 using YiSha.Data.Repository;
 using YiSha.Entity.SystemManage;
 using YiSha.Model.Param.SystemManage;
+using System.Text;
+using System.Data;
 
 namespace YiSha.Service.SystemManage
 {
@@ -28,6 +30,19 @@ namespace YiSha.Service.SystemManage
             var list = await this.BaseRepository().FindList(expression, pagination);
             return list.ToList();
         }
+
+        public async Task<DataTable> GetData(AreaListParam param)
+        {
+            /*Task<DataTable> FindTable
+               var expression = ListFilter(param);
+                var list= await this.BaseRepository().FindList(expression, pagination);
+                return list.ToList();
+             */
+            StringBuilder sql = CreateSql(param);
+            var data = await this.BaseRepository().FindTable(sql.ToString());
+            return data;
+        }
+
 
         public async Task<AreaEntity> GetEntity(long id)
         {
@@ -75,6 +90,28 @@ namespace YiSha.Service.SystemManage
                 }
             }
             return expression;
+        }
+
+        /// <summary>
+        /// 创建查询sql
+        /// </summary>
+        /// <returns></returns>
+        private StringBuilder CreateSql(AreaListParam param)
+        {
+            StringBuilder sql = new StringBuilder();
+
+            sql.AppendFormat(" SELECT AreaCode,ParentAreaCode,AreaName,AreaLevel FROM sysarea");
+            sql.AppendFormat(" WHERE 1=1");
+            if (param != null)
+            {
+                if (!param.ParentAreaCode.IsEmpty())
+                {
+                    //expression = expression.And(t => t.AreaName.Contains(param.AreaName));
+                    sql.AppendFormat(" AND ParentAreaCode='{0}'", param.ParentAreaCode);
+                }
+            }
+           
+            return sql;
         }
         #endregion
     }
