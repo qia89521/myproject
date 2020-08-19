@@ -58,11 +58,12 @@
         <div class="form-group">
             <label class="col-sm-2 control-label ">代理区域</label>
             <div class="col-sm-8">
-                <textarea id="delegetZoneTxt" col="DelegetZoneTxt" class="form-control" style="height:60px"></textarea>
+                <textarea id="delegetZoneTxt" col="DelegetZoneTxt" onfocus="this.blur()" class="form-control" style="height:60px"></textarea>
                 <input type="hidden" id="delegetZoneId" col="DelegetZoneId" />
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn btn-primary btn-sm" onclick="setZone()">设 置</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="setZone()">设 置</button><br/> 
+                <button type="button" class="btn btn-default btn-sm" onclick="clearZone()">清 空</button>
             </div>
         </div>
         <div class="form-group">
@@ -170,11 +171,28 @@
              callback: function (index, layero) {
                  var iframeWin = window[layero.find('iframe')[0]['name']];
                  var select_data = iframeWin.getSelectZone();
-                 $("#delegetZoneTxt").val(select_data.txts);
-                 $("#delegetZoneId").val(select_data.ids);
+                 setZoneVaule(select_data);
                  //getSelectZone
                  layer.close(index);
             }
         });
+
+    }
+    /*清空区域 */
+    function clearZone() {
+        $("#delegetZoneTxt").val("");
+        $("#delegetZoneId").val("");
+    }
+    function setZoneVaule(select_data) {
+        var delegetZoneTxt = $("#delegetZoneTxt").val();
+        var delegetZoneId = $("#delegetZoneId").val();
+        if (delegetZoneId != "") {
+            $("#delegetZoneTxt").val(delegetZoneTxt+","+select_data.txts);
+            $("#delegetZoneId").val(delegetZoneId+","+select_data.ids);
+        }
+        else {
+            $("#delegetZoneTxt").val(select_data.txts);
+            $("#delegetZoneId").val(select_data.ids);
+        }
     }
 </script>

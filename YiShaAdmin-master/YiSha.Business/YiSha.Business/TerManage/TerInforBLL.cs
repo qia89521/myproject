@@ -19,6 +19,7 @@ namespace YiSha.Business.TerManage
     public class TerInforBLL
     {
         private TerInforService terInforService = new TerInforService();
+        private TerTransferRecordBLL terTransferRecordBLL = new TerTransferRecordBLL();
 
         #region 获取数据
         public async Task<TData<List<TerInforEntity>>> GetList(TerInforListParam param)
@@ -59,7 +60,7 @@ namespace YiSha.Business.TerManage
         /// <param name="id">设备id</param>
         /// <param name="terNumber">设备编号</param>
         /// <returns></returns>
-        public async Task<TData<string>> ModifyTerNumber(long id,string terNumber)
+        public async Task<TData<string>> ModifyTerNumber(long id, string terNumber)
         {
             TerInforEntity ter = await terInforService.GetEntity(id);
             ter.TerNumber = terNumber;
@@ -115,8 +116,31 @@ namespace YiSha.Business.TerManage
         public async Task<TData<string>> ModifyManageId(long id, long manageId)
         {
             TerInforEntity ter = await terInforService.GetEntity(id);
-            ter.ManageId = manageId;
-            return await SaveForm(ter);
+
+            TData<string> obj = new TData<string>();
+            if (ter.ManageId != id)
+            {
+                TerTransferRecordEntity entity = new TerTransferRecordEntity();
+                entity.SentId = ter.ManageId;
+                entity.SendTxt = ter.ManageTxt;
+                entity.TerId = ter.Id;
+                entity.TerNumber = ter.TerNumber;
+
+                ter.ManageId = manageId;
+                obj = await SaveForm(ter);
+
+                ter = await terInforService.GetEntity(id);
+                entity.ReceiverId = id;
+                entity.ReceiverTxt = ter.ManageTxt;
+
+                obj = await terTransferRecordBLL.SaveForm(entity);
+              }
+            else
+            {
+                obj.Message = "没有变化";
+                obj.Tag = 0;
+            }
+            return obj;
         }
         /// <summary>
         /// 修改设备名称

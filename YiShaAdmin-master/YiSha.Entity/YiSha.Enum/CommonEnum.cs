@@ -109,4 +109,20 @@ namespace YiSha.Enum
         [Description("开机")]
         Open = 1,
     }
+    /// <summary>
+    /// 购买方式
+    /// </summary>
+    public enum BuyTypeEnum
+    {
+        [Description("微信")]
+        WX = 0,
+
+        [Description("支付宝")]
+        ZFB = 1,
+
+        [Description("现金")]
+        Carsh = 2,
+    }
+
+
 }

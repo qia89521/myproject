@@ -45,6 +45,6 @@ namespace YiSha.Entity.TerManage
         /// 转让设备编号
         /// </summary>
         /// <returns></returns>
-        public string TerNumber { get; set; }
+        public string? TerNumber { get; set; }
     }
 }

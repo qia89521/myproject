@@ -159,9 +159,9 @@
                             return ys.formatDate(value, "yyyy-MM-dd HH:mm:ss");
                         }
                     },
-                    { field: 'BaseCreatorTxt', title: '创建人' },
+                   // { field: 'BaseCreatorTxt', title: '创建人' },
                     {
-                        field: 'BaseModifyTime', title: '修改时间', align: "left",
+                        field: 'FistOn', title: '激活时间', align: "left",
                         formatter: function (value, row, index) {
                             return ys.formatDate(value, "yyyy-MM-dd HH:mm:ss");
                         }
@@ -240,15 +240,15 @@
             height: "570px",
              callback: function (index, layero) {
                 var iframeWin = window[layero.find('iframe')[0]['name']];
-                var ids = iframeWin.chooseUserOK();
-                if (IsNullEmpty(ids)) {
+                 var select_data = iframeWin.chooseUserOK();
+                 if (IsNullEmpty(select_data.ids)) {
                     ys.alertError('请先选择用户,再操作');
                 }
                 else {
                     //设置 操作人
                     var urls = '@Url.Content("~/TerManage/TerInfor/ModifyManageId")';
                     layer.close(index);
-                    MoidfyFieldValue(id, ids, urls);
+                     MoidfyFieldValue(id, select_data.ids, urls);
                 }
             }
         });

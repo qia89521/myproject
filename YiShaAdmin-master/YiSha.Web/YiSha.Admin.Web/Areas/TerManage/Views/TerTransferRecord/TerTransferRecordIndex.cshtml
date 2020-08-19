@@ -39,17 +39,17 @@
             for (var i = 0; i < data_array.length; i++) {
                 var obj = data_array[i];
                 html.push(" ");
-                html.push(" <div class=\"vertical - timeline - block\"> ");
-                html.push("     <div class=\"vertical - timeline - icon navy - bg\"> ");
-                html.push("         <i class=\"fa fa - briefcase\"></i> ");
+                html.push(" <div class=\"vertical-timeline-block\"> ");
+                html.push("     <div class=\"vertical-timeline-icon navy-bg\"> ");
+                html.push("         <i class=\"fa fa-briefcase\"></i> ");
                 html.push("     </div> ");
 
-                html.push("     <div class=\"vertical - timeline - content\"> ");
-                html.push("         <h2>" + SendTxt + "转让信息</h2> ");
+                html.push("     <div class=\"vertical-timeline-content\"> ");
+                html.push("         <h2>" + obj.SendTxt+ "转让信息</h2> ");
                 html.push("        <p> ");
-                html.push("         " + SendTxt + "把设备【" + TerNumber+"】转让给 " + ReceiverTxt+" ");
+                html.push("         " + obj.SendTxt + "把设备【" + obj.TerNumber + "】转让给 " + obj.ReceiverTxt+" ");
                 html.push("        </p> ");
-                html.push("       <span class=\"vertical - date\"> ");
+                html.push("       <span class=\"vertical-date\"> ");
                 html.push("           日期 <br> ");
                 html.push("               <small>" + ys.formatDate(obj.BaseCreateTime, "yyyy-MM-dd HH:mm:ss")+"</small> ");
                 html.push("      </span> ");

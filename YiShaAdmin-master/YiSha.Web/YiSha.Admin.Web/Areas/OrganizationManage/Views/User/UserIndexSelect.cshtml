@@ -139,10 +139,14 @@
         createMenuItem(url, "部门管理");
     }
 
+    var select_data = {ids:"",txts:""};
     function chooseUserOK() {
         var selectedRow = $("#gridTable").bootstrapTable("getSelections");
         var ids = ys.getIds(selectedRow);
-        return ids;
+        select_data.ids = ids;
+        select_data.txts = selectedRow[0]["RealName"];
+
+        return select_data;
     }
 
 </script>
