@@ -213,9 +213,9 @@
             data: null, // 数据源          
             dataName: 'Data',  // 数据名称
             onChange: null,
-            default: undefined
+            default: undefined,
+            width:0,
         }, option);
-
         var dom = {
             loadData: function () {
                 if (_option.url) {
@@ -312,8 +312,12 @@
                     $("#" + id).select2();
 
                     // hack 搜索的select保持和其他元素的宽度一致
-                    $("#" + targetId).find(".select2-container").width(280);
-
+                    if (_option.width>0) {
+                        $("#" + targetId).find(".select2-container").width(_option.width);
+                    }
+                    else {
+                        $("#" + targetId).find(".select2-container").width(280);
+                    }
                     if (setting.default != undefined) {
                         target.ysComboBox("setValue", setting.default);
                     }

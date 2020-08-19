@@ -46,12 +46,22 @@
                     <li>
                         用户状态：<span id="userStatus" col="UserStatus"></span>
                     </li>
+                    <li>
+                        省份: <span id="provoice" col="Provoice"></span>
+                    </li>
+                    <li>
+                        城市: <span id="city" col="City"></span>
+                    </li>
+                    <li>
+                        县区: <span id="xian" col="Xian"></span>
+                    </li>
                     <li class="select-time">
                         <label>创建时间： </label>
                         <input id="startTime" col="StartTime" type="text" class="time-input" placeholder="开始时间" />
                         <span>-</span>
                         <input id="endTime" col="EndTime" type="text" class="time-input" placeholder="结束时间" />
                     </li>
+
                     <li>
                         <a id="btnSearch" class="btn btn-primary btn-sm" onclick="searchGrid()"><i class="fa fa-search"></i>&nbsp;搜索</a>
                     </li>
@@ -83,7 +93,20 @@
         laydate.render({ elem: '#startTime', format: 'yyyy-MM-dd' });
         laydate.render({ elem: '#endTime', format: 'yyyy-MM-dd' });
 
-       $("#userStatus").ysComboBox({ data: ys.getJson(@Html.Raw(typeof(StatusEnum).EnumToDictionaryString())) });
+        $("#provoice").ysComboBox({
+            url: '@Url.Content("~/SystemManage/Area/GetAreaList")' +"?parentCode=0",
+            key: "areacode",
+            value: "areaname",
+            width: 150,
+            onChange: function (val) {
+                ChangeCity(this.value);
+            }
+        });
+
+        $("#userStatus").ysComboBox({
+            data: ys.getJson(@Html.Raw(typeof(StatusEnum).EnumToDictionaryString())),
+            width: 150,
+        });
 
         $('#btnExpand').click(function () {
             var tree = $.fn.zTree.getZTreeObj("departmentTree");
@@ -116,6 +139,26 @@
                     searchGrid();
                 }
             }
+        });
+    }
+
+      function ChangeCity(code) {
+        $("#city").ysComboBox({
+            url: '@Url.Content("~/SystemManage/Area/GetAreaList")' + "?parentCode=" + code,
+            key: "areacode",
+            width: 150,
+            value: "areaname",
+            onChange: function (val) {
+                ChangeXian(this.value);
+            }
+        });
+    }
+    function ChangeXian(code) {
+        $("#xian").ysComboBox({
+        url: '@Url.Content("~/SystemManage/Area/GetAreaList")' + "?parentCode=" + code,
+            key: "areacode",
+            width: 150,
+            value: "areaname",
         });
     }
 

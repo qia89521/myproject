@@ -17,6 +17,18 @@ namespace YiSha.Model.Param.OrganizationManage
         public List<long> ChildrenDepartmentIdList { get; set; }
 
         public string UserIds { get; set; }
+        /// <summary>
+        ///省
+        /// </summary>
+        public string Provoice { get; set; }
+        /// <summary>
+        /// 市
+        /// </summary>
+        public string City { get; set; }
+        /// <summary>
+        /// 县区
+        /// </summary>
+        public string Xian { get; set; }
     }
 
     public class ChangePasswordParam

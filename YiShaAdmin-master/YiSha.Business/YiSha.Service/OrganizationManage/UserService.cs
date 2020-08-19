@@ -199,6 +199,24 @@ namespace YiSha.Service.OrganizationManage
                 {
                     expression = expression.And(t => param.ChildrenDepartmentIdList.Contains(t.DepartmentId.Value));
                 }
+                string delegetZoneId = "";
+                if (!string.IsNullOrEmpty(param.Provoice.ParseToString())&& param.Provoice.ParseToString()!="-1")
+                {
+                    delegetZoneId = param.Provoice;
+                }
+                if (!string.IsNullOrEmpty(param.City.ParseToString()) && param.City.ParseToString() != "-1")
+                {
+                    delegetZoneId = "-"+ param.City;
+                }
+                if (!string.IsNullOrEmpty(param.Xian.ParseToString()) && param.Xian.ParseToString() != "-1")
+                {
+                    delegetZoneId = "-" + param.Xian;
+                }
+                if (!string.IsNullOrEmpty(delegetZoneId))
+                {
+                    expression = expression.And(t => t.DelegetZoneId.Contains(delegetZoneId));
+                }
+
             }
             return expression;
         }

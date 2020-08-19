@@ -59,6 +59,8 @@ namespace YiSha.Business.OrganizationManage
             {
                 user.DepartmentName = departmentList.Where(p => p.Id == user.DepartmentId).Select(p => p.DepartmentName).FirstOrDefault();
             }
+
+
             obj.Total = pagination.TotalCount;
             obj.Tag = 1;
             return obj;
