@@ -993,3 +993,6 @@ E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\OrderManage\Views\OrderUserForm\OrderUserFormForm.cshtml.g.cs
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\OrderManage\Views\OrderUserForm\OrderUserFormIndex.cshtml.g.cs
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\OrderManage\_ViewImports.cshtml.g.cs
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\SystemManage\Views\SysBankCard\SysBankCardForm.cshtml.g.cs
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\SystemManage\Views\SysBankCard\SysBankCardIndex.cshtml.g.cs
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\SystemManage\Views\SysBankCard\SysBankCardIndexSelect.cshtml.g.cs

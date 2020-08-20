@@ -132,8 +132,8 @@ namespace YiSha.Service.OrderManage
             StringBuilder sql = new StringBuilder();
 
             sql.AppendFormat(" SELECT * FROM (");
-            sql.AppendFormat(" SELECT * FROM order_user_form ");
-            sql.AppendFormat(" where 1=1 ");
+            sql.AppendFormat(" SELECT a.*,b.RealName AS BuyTxt FROM order_user_form a");
+            //sql.AppendFormat(" where 1=1 ");
             sql.AppendFormat(" JOIN sysuser b ON a.BuyId  = b.Id and a.Id={0}", id);
             sql.AppendFormat(" ) T WHERE 1=1 ");
 

@@ -35,7 +35,10 @@
         <div class="form-group">
             <label class="col-sm-2 control-label ">收款账号<font class="red"> *</font></label>
             <div class="col-sm-8">
-                <input id="mchNo" col="MchNo" type="text" class="form-control" />
+                <input id="mchNo" col="MchNo" type="text" onfocus="this.blur()" class="form-control" />
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary btn-sm" onclick="setMchNo()">选 择</button>
             </div>
         </div>
         <div class="form-group">
@@ -117,7 +120,7 @@
 
 
     /*设置运营商 */
-    function setManage(id) {
+    function setManage() {
          ys.openDialog({
             title:  "设置运营商",
             content: '@Url.Content("~/OrganizationManage/User/UserIndexSelect")',
@@ -127,11 +130,31 @@
                 var iframeWin = window[layero.find('iframe')[0]['name']];
                var select_data = iframeWin.chooseUserOK();
                  if (IsNullEmpty(select_data.ids)) {
-                    ys.alertError('请先选择用户,再操作');
+                    ys.alertError('请先选择,再操作');
                 }
                 else {
                      $("#buyTxt").val(select_data.txts);
                      $("#buyId").val(select_data.ids);
+                    layer.close(index);
+                }
+            }
+        });
+    }
+
+    function setMchNo() {
+          ys.openDialog({
+            title:  "选择收款账号",
+            content: '@Url.Content("~/SystemManage/SysBankCard/SysBankCardIndexSelect")',
+            width: "988px",
+            height: "400px",
+             callback: function (index, layero) {
+                var iframeWin = window[layero.find('iframe')[0]['name']];
+               var select_data = iframeWin.chooseUserOK();
+                 if (IsNullEmpty(select_data.ids)) {
+                    ys.alertError('请先选择,再操作');
+                }
+                else {
+                     $("#mchNo").val(select_data.ids);
                     layer.close(index);
                 }
             }

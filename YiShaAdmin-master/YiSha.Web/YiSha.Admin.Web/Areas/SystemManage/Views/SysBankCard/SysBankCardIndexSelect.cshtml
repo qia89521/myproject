@@ -1,0 +1,63 @@
+﻿@{
+    Layout = "~/Views/Shared/_Index.cshtml";
+}
+<div class="container-div">
+    <div class="row">
+        <div id="searchDiv" class="col-sm-12 search-collapse">
+            <div class="select-list">
+                <ul>
+                    <li>
+                        户主：<input id="name" col="Name" type="text" />
+                    </li>
+                    <li>
+                        <a id="btnSearch" class="btn btn-primary btn-sm" onclick="searchGrid()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-12 select-table table-striped">
+            <table id="gridTable" data-mobile-responsive="true"></table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        initGrid();
+    });
+
+    function initGrid() {
+        var queryUrl = '@Url.Content("~/SystemManage/SysBankCard/GetPageListJson")';
+        $('#gridTable').ysTable({
+            url: queryUrl,
+            columns: [
+                { radio: true, visible: true },
+                { field: 'Id', title: 'Id', visible: false },
+                { field: 'Name', title: '户主' },
+                { field: 'MchNo', title: '卡号' },
+                { field: 'BankName', title: '开户行' },
+            ],
+            queryParams: function (params) {
+                var pagination = $('#gridTable').ysTable('getPagination', params);
+                var queryString = $('#searchDiv').getWebControls(pagination);
+                return queryString;
+            }
+        });
+    }
+
+    function searchGrid() {
+        $('#gridTable').ysTable('search');
+        resetToolbarStatus();
+    }
+
+
+    var select_data = { ids: "", txts: "" };
+    function chooseUserOK() {
+        var selectedRow = $("#gridTable").bootstrapTable("getSelections");
+        var ids = ys.getIds(selectedRow);
+        select_data.ids = ids;
+        select_data.txts = selectedRow[0]["MchNo"];
+
+        return select_data;
+    }
+</script>
