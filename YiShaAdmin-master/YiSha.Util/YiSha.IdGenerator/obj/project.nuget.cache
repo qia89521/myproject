@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "vdq085BIryfZVMN3QigwpCtmWf2DnXVHrNlrQWfYtqklC1m7XeKXV413R/akNIorpfQ1aaCYmA/5bdYxpZ+suQ==",
+  "dgSpecHash": "O+Of9v8wYKtxSVAsxjqEsTNKWfKw5WnCX7MySmTf0IIb/9jnpt7Olp3FPtqmqoRbaUvDkNLNB8VjmKtNVLcHBQ==",
   "success": true,
   "projectFilePath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Util\\YiSha.IdGenerator\\YiSha.IdGenerator.csproj",
   "expectedPackageFiles": [
@@ -18,6 +18,7 @@
     "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.extensions.primitives\\3.0.0\\microsoft.extensions.primitives.3.0.0.nupkg.sha512",
     "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
     "C:\\Users\\ThinkPad\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
     "C:\\Users\\ThinkPad\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\ThinkPad\\.nuget\\packages\\nlog\\4.6.8\\nlog.4.6.8.nupkg.sha512",
@@ -30,7 +31,8 @@
     "C:\\Users\\ThinkPad\\.nuget\\packages\\system.security.accesscontrol\\4.5.0\\system.security.accesscontrol.4.5.0.nupkg.sha512",
     "C:\\Users\\ThinkPad\\.nuget\\packages\\system.security.cryptography.protecteddata\\4.5.0\\system.security.cryptography.protecteddata.4.5.0.nupkg.sha512",
     "C:\\Users\\ThinkPad\\.nuget\\packages\\system.security.permissions\\4.5.0\\system.security.permissions.4.5.0.nupkg.sha512",
-    "C:\\Users\\ThinkPad\\.nuget\\packages\\system.security.principal.windows\\4.5.0\\system.security.principal.windows.4.5.0.nupkg.sha512"
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\system.security.principal.windows\\4.5.0\\system.security.principal.windows.4.5.0.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\zxing.net\\0.16.5\\zxing.net.0.16.5.nupkg.sha512"
   ],
   "logs": []
 }

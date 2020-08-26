@@ -29,6 +29,10 @@ namespace YiSha.Model.Param.OrganizationManage
         /// 县区
         /// </summary>
         public string Xian { get; set; }
+        /// <summary>
+        /// 当前用户ID
+        /// </summary>
+        public long? CurUserId { get; set; }
     }
 
     public class ChangePasswordParam

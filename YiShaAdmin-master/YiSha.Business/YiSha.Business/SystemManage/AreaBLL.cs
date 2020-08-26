@@ -12,6 +12,8 @@ using YiSha.Business.Cache;
 using YiSha.Model.Result;
 using System.Data;
 using Microsoft.AspNetCore.Http.Features;
+using YiSha.Business.OrganizationManage;
+using YiSha.Entity.OrganizationManage;
 
 namespace YiSha.Business.SystemManage
 {
@@ -19,6 +21,8 @@ namespace YiSha.Business.SystemManage
     {
         private AreaService areaService = new AreaService();
         private AreaCache areaCache = new AreaCache();
+
+        private UserBLL userBll = new UserBLL();
 
         #region 获取数据
         public async Task<TData<List<AreaEntity>>> GetList(AreaListParam param)
@@ -68,15 +72,28 @@ namespace YiSha.Business.SystemManage
         /// 获取wdtree数据
         /// </summary>
         /// <returns></returns>
-        public async Task<TData<DataTable>> GetAreaList(string parentCode)
+        public async Task<TData<DataTable>> GetAreaList(string parentCode, string curUserId)
         {
             AreaListParam param = new AreaListParam();
             param.ParentAreaCode = parentCode;
+            long longUserId = 0;
+            long.TryParse(curUserId, out longUserId);
+
+            if (longUserId > 0)
+            {
+                var userModel = userBll.GetEntity(longUserId);
+                if (!string.IsNullOrEmpty(userModel.Result.Data.DelegetZoneId))
+                {
+                   String[] ids = userModel.Result.Data.DelegetZoneId.Replace("-", ",").Split(',');
+                    param.AreaCodes = string.Format("'{0}'", string.Join("','", ids));
+                }
+                
+            }
 
             TData<DataTable> obj = new TData<DataTable>();
 
             obj.Data = await areaService.GetData(param);
-           
+
             obj.Tag = 1;
             return obj;
         }

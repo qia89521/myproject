@@ -54,7 +54,8 @@ namespace YiSha.Admin.Web.Areas.SystemManage.Controllers
         public async Task<IActionResult> GetAreaList()
         {
             string parentCode = Request.Query["parentCode"];
-            TData<DataTable> obj = await areaBLL.GetAreaList(parentCode);
+            string curUserId = Request.Query["curUserId"];
+            TData<DataTable> obj = await areaBLL.GetAreaList(parentCode, curUserId);
             return Json(obj);
         }
 

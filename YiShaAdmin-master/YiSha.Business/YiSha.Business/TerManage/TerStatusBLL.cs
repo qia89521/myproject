@@ -20,6 +20,8 @@ namespace YiSha.Business.TerManage
     {
         private TerStatusService terStatusService = new TerStatusService();
 
+        TerInforBLL terInforBLL = new TerInforBLL();
+
         #region 获取数据
         public async Task<TData<List<TerStatusEntity>>> GetList(TerStatusListParam param)
         {
@@ -49,15 +51,37 @@ namespace YiSha.Business.TerManage
             }
             return obj;
         }
+
+        public async Task<TData<TerStatusEntity>> GetEntityByTerId(long terId)
+        {
+            TData<TerStatusEntity> obj = new TData<TerStatusEntity>();
+            obj.Data = await terStatusService.GetEntityByTerId(terId);
+            if (obj.Data != null)
+            {
+                obj.Tag = 1;
+            }
+            return obj;
+        }
         #endregion
 
         #region 提交数据
         public async Task<TData<string>> SaveForm(TerStatusEntity entity)
         {
             TData<string> obj = new TData<string>();
-            await terStatusService.SaveForm(entity);
+
+            TerStatusEntity ter = await terStatusService.GetEntityByTerId(entity.TerId);
+            if (ter != null && ter.TerId > 0)
+            {
+                ClassValueCopierHelper.Copy(ter, entity,true);
+            }
+            await terStatusService.SaveForm(ter);
+            //修改设备状态
+            await terInforBLL.ModifyStatusBusy(entity);
+
             obj.Data = entity.Id.ParseToString();
             obj.Tag = 1;
+          ;
+            //ModifyStatusBusy
             return obj;
         }
 

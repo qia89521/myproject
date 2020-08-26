@@ -8,7 +8,11 @@ namespace YiSha.Model.Param.SystemManage
     {
         public string AreaName { get; set; }
         public string ParentAreaCode { get; set; }
-        
+        /// <summary>
+        /// AreaCode 字符串数组 串 逗号分隔
+        /// </summary>
+        public string AreaCodes { get; set; }
+
     }
 
     public class BaseAreaParam : BaseApiToken
@@ -20,5 +24,6 @@ namespace YiSha.Model.Param.SystemManage
         /// 逗号分隔的Id
         /// </summary>
         public string AreaId { get; set; }
+       
     }
 }

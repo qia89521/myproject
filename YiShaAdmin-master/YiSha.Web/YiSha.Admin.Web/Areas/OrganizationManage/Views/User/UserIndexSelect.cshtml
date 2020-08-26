@@ -39,6 +39,7 @@
                 <ul>
                     <li>
                         登录名称：<input id="userName" col="UserName" type="text" />
+                        <input type="hidden" id="curUserId" col="CurUserId" value="0"/>
                     </li>
                     <li>
                         <a id="btnSearch" class="btn btn-primary btn-sm" onclick="searchGrid()"><i class="fa fa-search"></i>&nbsp;搜索</a>
@@ -55,9 +56,15 @@
 
 <script type="text/javascript">
     $(function () {
+        var curUserId = QuerryString("curUserId");
+        if (curUserId != null && curUserId != "") {
+            $("#curUserId").val(curUserId);
+        }
+
         initGrid();
         initTree();
 
+       
         $('body').layout({ west__size: 185 });
 
         laydate.render({ elem: '#startTime', format: 'yyyy-MM-dd' });

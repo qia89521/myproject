@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "NHrEmemVfZvi6BhhBzQc8x5HtUOyWqcizE0v0tOk4rEjiwa7tuXT7GpkTYoDlRfTNkYaf0/4k0jamqNy4FYVKg==",
+  "dgSpecHash": "9glvLpsI3kr5pO1jqgeeD8zNEeRdt3B69YcuAYZL/uq6Aux9ahH9LJUzCT+Yaf3jQj3oYTtWt6TcJGQojlLetg==",
   "success": true,
   "projectFilePath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Util\\YiSha.CodeGenerator\\YiSha.CodeGenerator.csproj",
   "expectedPackageFiles": [
@@ -32,6 +32,7 @@
     "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\ThinkPad\\.nuget\\packages\\mysqlconnector\\0.61.0\\mysqlconnector.0.61.0.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
     "C:\\Users\\ThinkPad\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
     "C:\\Users\\ThinkPad\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\ThinkPad\\.nuget\\packages\\nlog\\4.6.8\\nlog.4.6.8.nupkg.sha512",
@@ -110,7 +111,8 @@
     "C:\\Users\\ThinkPad\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\ThinkPad\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\ThinkPad\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\ThinkPad\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\zxing.net\\0.16.5\\zxing.net.0.16.5.nupkg.sha512"
   ],
   "logs": []
 }

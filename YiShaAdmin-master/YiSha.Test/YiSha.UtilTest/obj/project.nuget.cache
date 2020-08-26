@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "44/JfX3guEkSLliRdYhz1AsDgsmu+D16AD/Xyht0c1+lJj2cM9vXsMhKxURKOS7FYfQj9WrZxJuXuNaDD8aoJg==",
+  "dgSpecHash": "Hzj82yrZPuQGG4qoXXMJMXvYl4KnxGTfMMQVz/KE7WFsWq66jmdRdz2ONng91P1iXVR2Jc2rBvXjNX1hXJYi/Q==",
   "success": true,
   "projectFilePath": "E:\\资料\\私人项目\\2020_08\\code\\YiShaAdmin-master\\YiSha.Test\\YiSha.UtilTest\\YiSha.UtilTest.csproj",
   "expectedPackageFiles": [
@@ -128,7 +128,8 @@
     "C:\\Users\\ThinkPad\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\ThinkPad\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
     "C:\\Users\\ThinkPad\\.nuget\\packages\\system.xml.xpath\\4.3.0\\system.xml.xpath.4.3.0.nupkg.sha512",
-    "C:\\Users\\ThinkPad\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\zxing.net\\0.16.5\\zxing.net.0.16.5.nupkg.sha512"
   ],
   "logs": []
 }

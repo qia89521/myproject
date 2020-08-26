@@ -1,0 +1,16 @@
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\bin\Release\netcoreapp3.1\YiSha.Data.EF.deps.json
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\bin\Release\netcoreapp3.1\YiSha.Data.EF.dll
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\bin\Release\netcoreapp3.1\YiSha.Data.EF.pdb
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\bin\Release\netcoreapp3.1\YiSha.Data.dll
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\bin\Release\netcoreapp3.1\YiSha.Enum.dll
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\bin\Release\netcoreapp3.1\YiSha.Util.dll
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\bin\Release\netcoreapp3.1\YiSha.Util.pdb
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\bin\Release\netcoreapp3.1\YiSha.Data.pdb
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\bin\Release\netcoreapp3.1\YiSha.Enum.pdb
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\obj\Release\netcoreapp3.1\YiSha.Data.EF.csprojAssemblyReference.cache
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\obj\Release\netcoreapp3.1\YiSha.Data.EF.AssemblyInfoInputs.cache
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\obj\Release\netcoreapp3.1\YiSha.Data.EF.AssemblyInfo.cs
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\obj\Release\netcoreapp3.1\YiSha.Data.EF.csproj.CoreCompileInputs.cache
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\obj\Release\netcoreapp3.1\YiSha.Data.EF.csproj.CopyComplete
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\obj\Release\netcoreapp3.1\YiSha.Data.EF.dll
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\obj\Release\netcoreapp3.1\YiSha.Data.EF.pdb

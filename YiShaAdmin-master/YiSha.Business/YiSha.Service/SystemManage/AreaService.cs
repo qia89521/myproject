@@ -104,6 +104,11 @@ namespace YiSha.Service.SystemManage
             sql.AppendFormat(" WHERE 1=1");
             if (param != null)
             {
+                if (!param.AreaCodes.IsEmpty())
+                {
+                    //expression = expression.And(t => t.AreaName.Contains(param.AreaName));
+                    sql.AppendFormat(" AND AreaCode in({0})", param.AreaCodes);
+                }
                 if (!param.ParentAreaCode.IsEmpty())
                 {
                     //expression = expression.And(t => t.AreaName.Contains(param.AreaName));

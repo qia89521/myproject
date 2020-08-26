@@ -65,5 +65,21 @@ namespace YiSha.Entity.OrganizationManage
         /// 代理区域名称
         /// </summary>
         public string DelegetZoneTxt { get; set; }
+        /// <summary>
+        /// 父级
+        /// </summary>
+        public long? ParentId { get; set; }
+        /// <summary>
+        /// 爷爷级
+        /// </summary>
+        public long? GrandParentId { get; set; }
+        /// <summary>
+        /// 父级
+        /// </summary>
+        public string? ParentTxt { get; set; }
+        /// <summary>
+        /// 爷爷级
+        /// </summary>
+        public string? GrandParentTxt { get; set; }
     }
 }

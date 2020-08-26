@@ -51,6 +51,16 @@ namespace YiSha.Service.TerManage
             return await this.BaseRepository().FindSignalModel<TerInforEntity>(sql.ToString());
 
         }
+
+        public async Task<TerInforEntity> GetEntityByNumber(string number)
+        {
+            /*
+            return await this.BaseRepository().FindEntity<TerInforEntity>(id);
+            */
+            StringBuilder sql = CreateSignalSqlByNumber(number);
+            return await this.BaseRepository().FindSignalModel<TerInforEntity>(sql.ToString());
+
+        }
         #endregion
 
         #region 提交数据
@@ -146,6 +156,21 @@ namespace YiSha.Service.TerManage
             sql.AppendFormat(" LEFT JOIN sysuser d ON a.ManageId = d.Id ");
             sql.AppendFormat(" ) T WHERE 1=1 ");
            
+            return sql;
+        }
+
+
+        /// <summary>
+        /// 创建查询sql
+        /// </summary>
+        /// <param name="number">设备编号</param>
+        /// <returns></returns>
+        private StringBuilder CreateSignalSqlByNumber(string number)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.AppendFormat(" SELECT * ");
+            sql.AppendFormat(" FROM  ter_infor ");
+            sql.AppendFormat(" WHERE TerNumber='{0}'", number);
             return sql;
         }
         #endregion

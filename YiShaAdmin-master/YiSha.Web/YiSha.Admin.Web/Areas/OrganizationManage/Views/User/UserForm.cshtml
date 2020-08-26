@@ -23,16 +23,16 @@
             <div class="col-sm-4" id="gender" col="Gender"></div>
         </div>
         <div class="form-group">
-        <label class="col-sm-2 control-label ">生日</label>
-        <div class="col-sm-4">
-            <input id="birthday" col="Birthday" type="text" class="form-control" />
-        </div>
+            <label class="col-sm-2 control-label ">生日</label>
+            <div class="col-sm-4">
+                <input id="birthday" col="Birthday" type="text" class="form-control" />
+            </div>
 
-        <label class="col-sm-2 control-label ">部门</label>
-        <div class="col-sm-4">
-            <div id="departmentId" col="DepartmentId"></div>
+            <label class="col-sm-2 control-label ">部门</label>
+            <div class="col-sm-4">
+                <div id="departmentId" col="DepartmentId"></div>
+            </div>
         </div>
-         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label ">手机</label>
             <div class="col-sm-4">
@@ -56,13 +56,23 @@
             <div class="col-sm-10" id="role" col="RoleIds"></div>
         </div>
         <div class="form-group">
+            <label class="col-sm-2 control-label ">上级</label>
+            <div class="col-sm-8">
+                <input id="parentTxt" col="ParentTxt"  onfocus="this.blur()" type="text" class="form-control" />
+                <input type="hidden" id="parentId" col="ParentId" />
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary btn-sm" onclick="setParent()">设 置</button><br />
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-sm-2 control-label ">代理区域</label>
             <div class="col-sm-8">
                 <textarea id="delegetZoneTxt" col="DelegetZoneTxt" onfocus="this.blur()" class="form-control" style="height:60px"></textarea>
                 <input type="hidden" id="delegetZoneId" col="DelegetZoneId" />
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn btn-primary btn-sm" onclick="setZone()">设 置</button><br/> 
+                <button type="button" class="btn btn-primary btn-sm" onclick="setZone()">设 置</button><br />
                 <button type="button" class="btn btn-default btn-sm" onclick="clearZone()">清 空</button>
             </div>
         </div>
@@ -174,6 +184,31 @@
                  setZoneVaule(select_data);
                  //getSelectZone
                  layer.close(index);
+            }
+        });
+
+    }
+
+    /**设置上级 */
+    function setParent() {
+        ys.openDialog({
+            title:  "设置上级",
+            content: '@Url.Content("~/OrganizationManage/User/UserIndexSelect")' + "?curUserId=" + id,
+            width: "868px",
+            height: "470px",
+             callback: function (index, layero) {
+                var iframeWin = window[layero.find('iframe')[0]['name']];
+                 var select_data = iframeWin.chooseUserOK();
+                 if (IsNullEmpty(select_data.ids)) {
+                    ys.alertError('请先选择用户,再操作');
+                }
+                else {
+                    //设置 操作人
+                     $("#parentId").val(select_data.ids);
+                     $("#parentTxt").val(select_data.txts);
+                     layer.close(index);
+                     
+                }
             }
         });
 

@@ -5,12 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\YiSha.Util\YiSha.Util\YiSha.Util.csproj" />
-    <ProjectReference Include="..\YiSha.Entity\YiSha.Entity.csproj" />
+    <Compile Remove="Param\ToolManage\**" />
+    <EmbeddedResource Remove="Param\ToolManage\**" />
+    <None Remove="Param\ToolManage\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Param\ToolManage\" />
+    <ProjectReference Include="..\..\YiSha.Util\YiSha.Util\YiSha.Util.csproj" />
+    <ProjectReference Include="..\YiSha.Entity\YiSha.Entity.csproj" />
   </ItemGroup>
 
 </Project>

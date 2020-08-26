@@ -29,6 +29,16 @@ namespace YiSha.Entity.TerManage
         /// <returns></returns>
         public string SilverRate { get; set; }
         /// <summary>
+        /// 臭氧浓度百分比
+        /// </summary>
+        /// <returns></returns>
+        public string O3Rate { get; set; }
+        /// <summary>
+        /// 水量 单位L
+        /// </summary>
+        /// <returns></returns>
+        public string WaterNum { get; set; }
+        /// <summary>
         /// 故障代码
         /// </summary>
         /// <returns></returns>
@@ -42,7 +52,7 @@ namespace YiSha.Entity.TerManage
         /// 终端设备id
         /// </summary>
         /// <returns></returns>
-        public string TerId { get; set; }
+        public long TerId { get; set; }
         /// <summary>
         /// 设备编号
         /// </summary>

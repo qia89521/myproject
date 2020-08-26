@@ -18,6 +18,7 @@ using YiSha.Enum;
 using YiSha.Entity;
 using YiSha.Data.EF;
 using YiSha.Service.SystemManage;
+using YiSha.Web.Code;
 
 namespace YiSha.Service.OrganizationManage
 {
@@ -169,6 +170,11 @@ namespace YiSha.Service.OrganizationManage
             var expression = LinqExtensions.True<UserEntity>();
             if (param != null)
             {
+                if (param.CurUserId >0)
+                {
+                    var user = Operator.Instance.Current();
+                    expression = expression.And(t => t.Id!=(long)param.CurUserId);
+                }
                 if (!string.IsNullOrEmpty(param.UserName))
                 {
                     expression = expression.And(t => t.UserName.Contains(param.UserName));

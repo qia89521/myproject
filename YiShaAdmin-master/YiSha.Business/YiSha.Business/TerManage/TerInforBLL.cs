@@ -134,7 +134,7 @@ namespace YiSha.Business.TerManage
                 entity.ReceiverTxt = ter.ManageTxt;
 
                 obj = await terTransferRecordBLL.SaveForm(entity);
-              }
+            }
             else
             {
                 obj.Message = "没有变化";
@@ -171,6 +171,56 @@ namespace YiSha.Business.TerManage
             return await SaveForm(ter);
         }
 
+        /// <summary>
+        /// 更新设备状态业务
+        /// </summary>
+        /// <param name="statusModel">设备状态业务</param>
+        /// <returns></returns>
+        public async Task<TData<string>> ModifyStatusBusy(TerStatusEntity statusModel)
+        {
+            TerInforEntity ter = await terInforService.GetEntity(statusModel.TerId);
+            //设备一旦锁定，激活时间（FistOn）,FistPosition,FistLongitude,FistLatitude 不再编号
+            if (ter.IsLock == 1)
+            {
+                if (!string.IsNullOrEmpty(statusModel.WaterNum))
+                {
+                    ter.WaterNum = statusModel.WaterNum;
+                    return await SaveForm(ter);
+                }
+                return null;
+            }
+            else
+            {
+                ter.IsLock = 1;
+                ter.FistOn = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                return await SaveForm(ter);
+            }
+        }
+
+        /***
+         * 更新设备位置经纬度
+         * @number:设备号
+         * @fistLongitude：经度
+         * @fistLatitude：纬度
+         */
+        public async Task<TData<string>> ModifyPosition(string number,string fistLongitude, string fistLatitude)
+        {
+            TerInforEntity ter = await terInforService.GetEntityByNumber(number);
+            //设备一旦锁定，激活时间（FistOn）,FistPosition,FistLongitude,FistLatitude 不再编号
+            if (ter.IsLock == 1)
+            {
+                ter.FistLatitude = fistLatitude;
+                ter.FistLongitude = fistLongitude;
+
+                return await SaveForm(ter);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
         public async Task<TData<string>> SaveForm(TerInforEntity entity)
         {
             TData<string> obj = new TData<string>();
@@ -180,6 +230,7 @@ namespace YiSha.Business.TerManage
             return obj;
         }
 
+
         public async Task<TData> DeleteForm(string ids)
         {
             TData obj = new TData();
@@ -187,6 +238,7 @@ namespace YiSha.Business.TerManage
             obj.Tag = 1;
             return obj;
         }
+
         #endregion
 
         #region 私有方法

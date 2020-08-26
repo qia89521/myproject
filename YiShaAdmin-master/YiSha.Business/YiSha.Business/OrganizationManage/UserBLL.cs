@@ -187,6 +187,18 @@ namespace YiSha.Business.OrganizationManage
             {
                 entity.Birthday = entity.Birthday.ParseToDateTime().ToString("yyyy-MM-dd");
             }
+            //设置grandparent
+            if (entity.ParentId > 0)
+            {
+                var grandEntity = await GetEntity((long)entity.ParentId);
+                if (grandEntity.Data != null && grandEntity.Data.Id > 0)
+                {
+                    entity.GrandParentId = grandEntity.Data.Id;
+                    entity.GrandParentTxt = grandEntity.Data.RealName;
+                }
+            }
+
+
             await userService.SaveForm(entity);
 
             await RemoveCacheById(entity.Id.Value);

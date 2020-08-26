@@ -996,3 +996,8 @@ E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\SystemManage\Views\SysBankCard\SysBankCardForm.cshtml.g.cs
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\SystemManage\Views\SysBankCard\SysBankCardIndex.cshtml.g.cs
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\SystemManage\Views\SysBankCard\SysBankCardIndexSelect.cshtml.g.cs
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\bin\Debug\netcoreapp3.1\zxing.dll
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\OrderManage\Views\OrderTerIssue\OrderTerIssueForm.cshtml.g.cs
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\OrderManage\Views\OrderTerIssue\OrderTerIssueIndex.cshtml.g.cs
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\OrderManage\Views\OrderUserProfit\OrderUserProfitForm.cshtml.g.cs
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\OrderManage\Views\OrderUserProfit\OrderUserProfitIndex.cshtml.g.cs
