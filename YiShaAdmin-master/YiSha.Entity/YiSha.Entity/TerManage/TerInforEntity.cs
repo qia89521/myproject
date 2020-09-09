@@ -130,7 +130,13 @@ namespace YiSha.Entity.TerManage
         /// <returns></returns>
         [Description("设备是否出货 0:否 1:是")]
         public int IsBuy { get; set; }
-        
+        /// <summary>
+        ///发货目的区(用于生产底下二维码提示文字)
+        /// </summary>
+        /// <returns></returns>
+        [Description("发货目的区(用于生产底下二维码提示文字)")]
+        public string Zone { get; set; }
+
         public static implicit operator TerInforEntity(TData<TerInforEntity> v)
         {
             throw new NotImplementedException();

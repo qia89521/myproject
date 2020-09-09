@@ -97,11 +97,11 @@ namespace YiSha.Service.OrderManage
             {
                 if (!string.IsNullOrEmpty(param.StartTime))
                 {
-                    sql.AppendFormat(" and BaseCreateTime >{0} 00:00:00", param.StartTime);
+                    sql.AppendFormat(" AND BaseCreateTime >'{0} 00:00:00'", param.StartTime);
                 }
                 if (!string.IsNullOrEmpty(param.EndTime))
                 {
-                    sql.AppendFormat(" and BaseCreateTime <{0} 23:59:59", param.EndTime);
+                    sql.AppendFormat(" AND BaseCreateTime <'{0} 23:59:59'", param.EndTime);
                 }
             }
             sql.AppendFormat(" ) a ");

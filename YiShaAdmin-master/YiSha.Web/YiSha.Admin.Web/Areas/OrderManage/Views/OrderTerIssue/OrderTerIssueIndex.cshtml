@@ -7,7 +7,13 @@
             <div class="select-list">
                 <ul>
                     <li>
-                        销售人：<input id="saleId" col="SaleId" type="text" />
+                        销售人：<input id="saleTxt" col="SaleTxt" type="text" />
+                    </li>
+                    <li class="select-time">
+                        <label>创建时间： </label>
+                        <input id="startTime" col="StartTime" type="text" class="time-input" placeholder="开始时间" />
+                        <span>-</span>
+                        <input id="endTime" col="EndTime" type="text" class="time-input" placeholder="结束时间" />
                     </li>
                     <li>
                         <a id="btnSearch" class="btn btn-primary btn-sm" onclick="searchGrid()"><i class="fa fa-search"></i>&nbsp;搜索</a>
@@ -28,6 +34,9 @@
 
 <script type="text/javascript">
     $(function () {
+        laydate.render({ elem: '#startTime', format: 'yyyy-MM-dd' });
+        laydate.render({ elem: '#endTime', format: 'yyyy-MM-dd' });
+
         initGrid();
     });
 
@@ -38,11 +47,17 @@
             columns: [
                 { checkbox: true, visible: true },
                 { field: 'Id', title: 'Id', visible: false },
-                { field: 'SaleId', title: '销售人' },
+                { field: 'SaleTxt', title: '销售人' },
                 { field: 'SaleNum', title: '数量' },
                 { field: 'SalePrice', title: '售价' },
                 { field: 'SrcPrice', title: '拿货价' },
                 { field: 'Zone', title: '售卖区域' },
+                {
+                    field: 'BaseCreateTime', title: '创建时间', align: "left",
+                    formatter: function (value, row, index) {
+                        return ys.formatDate(value, "yyyy-MM-dd HH:mm:ss");
+                    }
+                },
             ],
             queryParams: function (params) {
                 var pagination = $('#gridTable').ysTable('getPagination', params);

@@ -32,14 +32,21 @@ namespace YiSha.Service.OrderManage
 
         public async Task<List<OrderTerIssueEntity>> GetPageList(OrderTerIssueListParam param, Pagination pagination)
         {
+            /*
             var expression = ListFilter(param);
             var list= await this.BaseRepository().FindList(expression, pagination);
             return list.ToList();
+            */
+            StringBuilder sql = CreateListSql(param);
+            var data = await this.BaseRepository().FindList<OrderTerIssueEntity>(sql.ToString(), pagination);
+            return data.list.ToList<OrderTerIssueEntity>();
         }
 
         public async Task<OrderTerIssueEntity> GetEntity(long id)
         {
-            return await this.BaseRepository().FindEntity<OrderTerIssueEntity>(id);
+            // return await this.BaseRepository().FindEntity<OrderTerIssueEntity>(id);
+            StringBuilder sql = CreateSignalSql(id);
+            return await this.BaseRepository().FindSignalModel<OrderTerIssueEntity>(sql.ToString());
         }
         #endregion
 
@@ -74,6 +81,65 @@ namespace YiSha.Service.OrderManage
             }
             return expression;
         }
+
+
+        /// <summary>
+        /// 创建查询sql
+        /// </summary>
+        /// <param name="param">查询条件数据</param>
+        /// <returns></returns>
+        private StringBuilder CreateListSql(OrderTerIssueListParam param)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.AppendFormat(" SELECT a.*,b.RealName AS BaseCreatorTxt from  ");
+            sql.AppendFormat(" (");
+            sql.AppendFormat("  SELECT * FROM order_ter_issue ");
+            sql.AppendFormat("  where 1=1 ");
+            if (param != null)
+            {
+                if (!string.IsNullOrEmpty(param.SaleTxt))
+                {
+                    sql.AppendFormat(" AND SaleTxt LIKE '%{0}%'", param.SaleTxt);
+                }
+                if (!string.IsNullOrEmpty(param.StartTime))
+                {
+                    sql.AppendFormat(" AND BaseCreateTime >'{0} 00:00:00'", param.StartTime);
+                }
+                if (!string.IsNullOrEmpty(param.EndTime))
+                {
+                    sql.AppendFormat(" AND BaseCreateTime <'{0} 23:59:59'", param.EndTime);
+                }
+            }
+            sql.AppendFormat(" ) a ");
+            sql.AppendFormat(" JOIN ");
+            sql.AppendFormat(" ( ");
+            sql.AppendFormat("   SELECT Id,RealName from sysuser ");
+            sql.AppendFormat("   WHERE 1=1 ");
+            sql.AppendFormat(" ) b");
+            sql.AppendFormat(" on a.SaleId  = b.Id ");
+            
+            return sql;
+        }
+
+
+        /// <summary>
+        /// 创建查询sql
+        /// </summary>
+        /// <param name="id">主键Id</param>
+        /// <returns></returns>
+        private StringBuilder CreateSignalSql(long id)
+        {
+            StringBuilder sql = new StringBuilder();
+
+            sql.AppendFormat(" SELECT * FROM (");
+            sql.AppendFormat(" SELECT a.*,b.RealName AS BaseCreatorTxt ");
+            sql.AppendFormat(" FROM  order_ter_issue a ");
+            sql.AppendFormat(" JOIN sysuser b ON a.BaseCreatorId = b.Id AND a.Id={0}", id);
+            sql.AppendFormat(" ) T WHERE 1=1 ");
+
+            return sql;
+        }
+
         #endregion
     }
 }

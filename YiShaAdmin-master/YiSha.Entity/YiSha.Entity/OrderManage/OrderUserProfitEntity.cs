@@ -39,5 +39,17 @@ namespace YiSha.Entity.OrderManage
         /// </summary>
         /// <returns></returns>
         public string Remark { get; set; }
+        /// <summary>
+        /// 用户Id
+        /// </summary>
+        public long UserId { get; set; }
+        /// <summary>
+        /// 用户姓名
+        /// </summary>
+        public string UserName { get; set; }
+        /// <summary>
+        ///变化方式 -减少 +新增
+        /// </summary>
+        public string ChangeType { get; set; }
     }
 }

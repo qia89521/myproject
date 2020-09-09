@@ -7,6 +7,29 @@ using System.Threading.Tasks;
 
 namespace YiSha.Enum
 {
+
+    /// <summary>
+    /// 系统特殊角色
+    /// </summary>
+    public enum SysRoleEnum
+    {
+        [Description("系统-开发者")]
+        dev = 0,
+
+        [Description("系统-管理员")]
+        admin = 1,
+
+        [Description("系统-财务")]
+        finance = 2,
+
+        [Description("系统-客服")]
+        cust = 3,
+
+        [Description("系统-普通用户")]
+        normal = 4,
+    }
+
+
     public enum StatusEnum
     {
         [Description("启用")]
@@ -124,5 +147,17 @@ namespace YiSha.Enum
         Carsh = 2,
     }
 
+    /// <summary>
+    /// 来源方式
+    /// </summary>
+    public enum SrcFlagEnum
+    {
+        [Description("后台添加")]
+        Admin = 0,
 
+        [Description("分享")]
+        Share = 1,
+
+      
+    }
 }

@@ -177,7 +177,7 @@ namespace YiSha.Data.Repository
         {
             int total = pagination.TotalCount;
             var data = await db.FindList<T>(strSql, pagination.Sort, pagination.SortType.ToLower() == "asc" ? true : false, pagination.PageSize, pagination.PageIndex);
-            pagination.TotalCount = total;
+            pagination.TotalCount = data.total;
             return data;
         }
         public async Task<IEnumerable<T>> FindList<T>(string strSql, DbParameter[] dbParameter, Pagination pagination) where T : class

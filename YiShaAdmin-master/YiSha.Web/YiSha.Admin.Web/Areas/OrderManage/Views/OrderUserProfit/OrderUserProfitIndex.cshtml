@@ -7,7 +7,16 @@
             <div class="select-list">
                 <ul>
                     <li>
-                        BusyniessId：<input id="busyniessId" col="BusyniessId" type="text" />
+                        用户：<input id="userName" col="UserName" type="text" />
+                    </li>
+                    <li>
+                        变化方式：<span id="changeType" col="ChangeType"></span>
+                    </li>
+                    <li class="select-time">
+                        <label>创建时间： </label>
+                        <input id="startTime" col="StartTime" type="text" class="time-input" placeholder="开始时间" />
+                        <span>-</span>
+                        <input id="endTime" col="EndTime" type="text" class="time-input" placeholder="结束时间" />
                     </li>
                     <li>
                         <a id="btnSearch" class="btn btn-primary btn-sm" onclick="searchGrid()"><i class="fa fa-search"></i>&nbsp;搜索</a>
@@ -15,7 +24,7 @@
                 </ul>
             </div>
         </div>
-        <div class="btn-group-sm hidden-xs" id="toolbar">
+        <div class="btn-group-sm hidden-xs" id="toolbar" style="display:none">
             <a id="btnAdd" class="btn btn-success" onclick="showSaveForm(true)"><i class="fa fa-plus"></i> 新增</a>
             <a id="btnEdit" class="btn btn-primary disabled" onclick="showSaveForm(false)"><i class="fa fa-edit"></i> 修改</a>
             <a id="btnDelete" class="btn btn-danger disabled" onclick="deleteForm()"><i class="fa fa-remove"></i> 删除</a>
@@ -28,6 +37,10 @@
 
 <script type="text/javascript">
     $(function () {
+        $("#changeType").ysComboBox({ data: [{ "Key": "+", "Value": "增加" }, { "Key": "-", "Value": "减少" }] });
+        laydate.render({ elem: '#startTime', format: 'yyyy-MM-dd' });
+        laydate.render({ elem: '#endTime', format: 'yyyy-MM-dd' });
+
         initGrid();
     });
 
@@ -38,6 +51,8 @@
             columns: [
                 { checkbox: true, visible: true },
                 { field: 'Id', title: 'Id', visible: false },
+                { field: 'UserName', title: '用户' },
+                { field: 'ChangeType', title: '新增|减少' },
                 { field: 'ChangeMoney', title: '新增收益' },
                 { field: 'SrcMoney', title: '原来收益' },
                 { field: 'Remark', title: '备注' },

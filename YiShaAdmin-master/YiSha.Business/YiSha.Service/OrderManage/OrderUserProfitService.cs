@@ -32,14 +32,21 @@ namespace YiSha.Service.OrderManage
 
         public async Task<List<OrderUserProfitEntity>> GetPageList(OrderUserProfitListParam param, Pagination pagination)
         {
+            /*
             var expression = ListFilter(param);
             var list= await this.BaseRepository().FindList(expression, pagination);
             return list.ToList();
+            */
+            StringBuilder sql = CreateListSql(param);
+            var data = await this.BaseRepository().FindList<OrderUserProfitEntity>(sql.ToString(), pagination);
+            return data.list.ToList<OrderUserProfitEntity>();
         }
 
         public async Task<OrderUserProfitEntity> GetEntity(long id)
         {
-            return await this.BaseRepository().FindEntity<OrderUserProfitEntity>(id);
+            //return await this.BaseRepository().FindEntity<OrderUserProfitEntity>(id);
+            StringBuilder sql = CreateSignalSql(id);
+            return await this.BaseRepository().FindSignalModel<OrderUserProfitEntity>(sql.ToString());
         }
         #endregion
 
@@ -74,6 +81,69 @@ namespace YiSha.Service.OrderManage
             }
             return expression;
         }
+
+
+        /// <summary>
+        /// 创建查询sql
+        /// </summary>
+        /// <param name="param">查询条件数据</param>
+        /// <returns></returns>
+        private StringBuilder CreateListSql(OrderUserProfitListParam param)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.AppendFormat(" SELECT a.*,b.RealName AS BaseCreatorTxt from  ");
+            sql.AppendFormat(" (");
+            sql.AppendFormat("  SELECT * FROM order_user_profit ");
+            sql.AppendFormat("  where 1=1 ");
+            if (param != null)
+            {
+                if (!string.IsNullOrEmpty(param.UserName))
+                {
+                    sql.AppendFormat(" AND UserName LIKE '%{0}%'", param.UserName);
+                }
+                if (!string.IsNullOrEmpty(param.ChangeType))
+                {
+                    sql.AppendFormat(" AND ChangeType = '{0}'", param.ChangeType);
+                }
+                if (!string.IsNullOrEmpty(param.StartTime))
+                {
+                    sql.AppendFormat(" AND BaseCreateTime >'{0} 00:00:00'", param.StartTime);
+                }
+                if (!string.IsNullOrEmpty(param.EndTime))
+                {
+                    sql.AppendFormat(" AND BaseCreateTime <'{0} 23:59:59'", param.EndTime);
+                }
+            }
+            sql.AppendFormat(" ) a ");
+            sql.AppendFormat(" JOIN ");
+            sql.AppendFormat(" ( ");
+            sql.AppendFormat("   SELECT Id,RealName from sysuser ");
+            sql.AppendFormat("   WHERE 1=1 ");
+            sql.AppendFormat(" ) b");
+            sql.AppendFormat(" on a.BaseCreatorId = b.Id ");
+
+            return sql;
+        }
+
+
+        /// <summary>
+        /// 创建查询sql
+        /// </summary>
+        /// <param name="id">主键Id</param>
+        /// <returns></returns>
+        private StringBuilder CreateSignalSql(long id)
+        {
+            StringBuilder sql = new StringBuilder();
+
+            sql.AppendFormat(" SELECT * FROM (");
+            sql.AppendFormat(" SELECT a.*,b.RealName AS BaseCreatorTxt ");
+            sql.AppendFormat(" FROM  order_user_profit a ");
+            sql.AppendFormat(" JOIN sysuser b ON a.BaseCreatorId = b.Id AND a.Id={0}", id);
+            sql.AppendFormat(" ) T WHERE 1=1 ");
+
+            return sql;
+        }
+
         #endregion
     }
 }

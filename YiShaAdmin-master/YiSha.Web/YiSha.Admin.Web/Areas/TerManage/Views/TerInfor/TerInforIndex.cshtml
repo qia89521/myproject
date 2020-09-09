@@ -50,7 +50,7 @@
             columns:[
                     [
                         { title: '基本信息', align: 'center', colspan: 6 },
-                        { title: '状态信息', align: 'center', colspan: 6 },
+                        { title: '状态信息', align: 'center', colspan: 4 },
                         { title: '操作人', align: 'center', colspan: 4 }
                     ],
                     [
@@ -93,11 +93,12 @@
                         }
                     },
                     {
-                        field: 'ManageTxt', title: '业主',
+                        field: 'ManageTxt', title: '用户',
                         formatter: function (value, row, index) {
                             return "<span>" + value + " <button type=\"button\" class=\"btn btn-primary btn-xs\" onclick=\"setManage('" + row["Id"] + "')\">设 置</button></span>";
                         }
-                    },
+                     },
+                    /*
                     {
                         field: 'BusyName', title: '运营商',
                         editable: {
@@ -123,6 +124,7 @@
                             }
                         }
                     },
+                    */
                     {
                         field: 'IsLock', title: '是否锁定',
                         editable: {

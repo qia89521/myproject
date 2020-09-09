@@ -12,5 +12,15 @@ namespace YiSha.Model.Param.OrderManage
     /// </summary>
     public class OrderTerIssueListParam
     {
+        public string SaleTxt { get; set; }
+        /// <summary>
+        /// 开始日期
+        /// </summary>
+        public string StartTime { get; set; }
+
+        /// <summary>
+        /// 结束日期
+        /// </summary>
+        public string EndTime { get; set; }
     }
 }

@@ -17,7 +17,12 @@ namespace YiSha.Entity.OrderManage
         /// 销售人
         /// </summary>
         /// <returns></returns>
-        public string SaleId { get; set; }
+        public long SaleId { get; set; }
+        /// <summary>
+        /// 销售人名称
+        /// </summary>
+        /// <returns></returns>
+        public string SaleTxt { get; set; }
         /// <summary>
         /// 设备量
         /// </summary>
