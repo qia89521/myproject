@@ -5,15 +5,45 @@
 <div class="wrapper animated fadeInRight">
     <form id="form" class="form-horizontal m">
         <div class="form-group">
-            <label class="col-sm-3 control-label ">MaterielId<font class="red"> *</font></label>
+            <label class="col-sm-2 control-label ">物料<font class="red"> *</font></label>
             <div class="col-sm-8">
-                <input id="materielId" col="MaterielId" type="text" class="form-control" />
+                <input id="materielTxt" col="MaterielTxt" onfocus="this.blur()" type="text" class="form-control" />
+                <input type="hidden" id="materielId" col="MaterielId" />
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary btn-sm" onclick="setParent()">设 置</button><br />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label ">BuyId</label>
+            <label class="col-sm-2 control-label ">采购人</label>
             <div class="col-sm-8">
-                <input id="buyId" col="BuyId" type="text" class="form-control" />
+                <input id="buyTxt" col="BuyTxt" onfocus="this.blur()" type="text" class="form-control" />
+                <input type="hidden" id="buyId" col="BuyId" />
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary btn-sm" onclick="setParent()">设 置</button><br />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label ">供应商</label>
+            <div class="col-sm-8">
+                <input id="supplierTxt" col="SupplierTxt" onfocus="this.blur()" type="text" class="form-control" />
+                <input type="hidden" id="supplierId" col="SupplierId" />
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary btn-sm" onclick="setParent()">设 置</button><br />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label ">采购量</label>
+            <div class="col-sm-8">
+                <input id="buyNum" col="BuyNum" type="text" onkeyup="this.value=CheckIsFormatNumber(this.value, 0)" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label ">进货价</label>
+            <div class="col-sm-8">
+                <input id="buyPrice" col="BuyPrice" type="text" onkeyup="this.value=CheckIsFormatNumber(this.value, 2)" class="form-control" />
             </div>
         </div>
     </form>

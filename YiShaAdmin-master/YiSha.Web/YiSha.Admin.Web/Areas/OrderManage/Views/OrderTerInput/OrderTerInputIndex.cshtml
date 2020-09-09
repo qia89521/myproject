@@ -7,7 +7,16 @@
             <div class="select-list">
                 <ul>
                     <li>
-                        MaterielId：<input id="materielId" col="MaterielId" type="text" />
+                        物料：<input id="materielTxt" col="MaterielTxt" type="text" />
+                    </li>
+                    <li>
+                        采购人：<input id="buyTxt" col="MatBuyTxterielTxt" type="text" />
+                    </li>
+                    <li class="select-time">
+                        <label>创建时间： </label>
+                        <input id="startTime" col="StartTime" type="text" class="time-input" placeholder="开始时间" />
+                        <span>-</span>
+                        <input id="endTime" col="EndTime" type="text" class="time-input" placeholder="结束时间" />
                     </li>
                     <li>
                         <a id="btnSearch" class="btn btn-primary btn-sm" onclick="searchGrid()"><i class="fa fa-search"></i>&nbsp;搜索</a>
@@ -28,6 +37,9 @@
 
 <script type="text/javascript">
     $(function () {
+        laydate.render({ elem: '#startTime', format: 'yyyy-MM-dd' });
+        laydate.render({ elem: '#endTime', format: 'yyyy-MM-dd' });
+
         initGrid();
     });
 
@@ -38,8 +50,20 @@
             columns: [
                 { checkbox: true, visible: true },
                 { field: 'Id', title: 'Id', visible: false },
-                { field: 'MaterielId', title: 'MaterielId' },
-                { field: 'BuyId', title: 'BuyId' },
+                { field: 'MaterielTxt', title: '物料' },
+                { field: 'BuyTxt', title: '采购人' },
+                { field: 'BuyNum', title: '采购量' },
+                { field: 'BuyPrice', title: '单价' },
+                { field: 'TotalPrice', title: '总价' },
+                
+                { field: 'SupplierTxt', title: '供应商' },
+                { field: 'BaseCreatorTxt', title: '创建人' },
+                {
+                    field: 'BaseCreateTime', title: '创建时间', align: "left",
+                    formatter: function (value, row, index) {
+                        return ys.formatDate(value, "yyyy-MM-dd HH:mm:ss");
+                    }
+                },
             ],
             queryParams: function (params) {
                 var pagination = $('#gridTable').ysTable('getPagination', params);
@@ -68,8 +92,8 @@
         ys.openDialog({
             title: id > 0 ? '编辑' : '添加',
             content: '@Url.Content("~/OrderManage/OrderTerInput/OrderTerInputForm")' + '?id=' + id,
-            width: '768px',
-            height: '550px',
+            width: "1000px",
+            height: "570px",
             callback: function (index, layero) {
                 var iframeWin = window[layero.find('iframe')[0]['name']];
                 iframeWin.saveForm(index);

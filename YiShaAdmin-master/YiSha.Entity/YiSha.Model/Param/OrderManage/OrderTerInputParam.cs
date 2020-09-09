@@ -12,5 +12,23 @@ namespace YiSha.Model.Param.OrderManage
     /// </summary>
     public class OrderTerInputListParam
     {
+        
+        /// <summary>
+        /// 物料名称
+        /// </summary>
+        public string MaterielTxt { get; set; }
+        /// <summary>
+        /// 购买人
+        /// </summary>
+        public string BuyTxt { get; set; }
+        /// <summary>
+        /// 开始日期
+        /// </summary>
+        public string StartTime { get; set; }
+
+        /// <summary>
+        /// 结束日期
+        /// </summary>
+        public string EndTime { get; set; }
     }
 }

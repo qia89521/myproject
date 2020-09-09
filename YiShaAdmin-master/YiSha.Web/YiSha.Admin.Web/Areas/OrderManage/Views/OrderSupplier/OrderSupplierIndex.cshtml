@@ -7,7 +7,7 @@
             <div class="select-list">
                 <ul>
                     <li>
-                        SupplierName：<input id="supplierName" col="SupplierName" type="text" />
+                        名称：<input id="supplierName" col="SupplierName" type="text" />
                     </li>
                     <li>
                         <a id="btnSearch" class="btn btn-primary btn-sm" onclick="searchGrid()"><i class="fa fa-search"></i>&nbsp;搜索</a>
@@ -38,8 +38,19 @@
             columns: [
                 { checkbox: true, visible: true },
                 { field: 'Id', title: 'Id', visible: false },
-                { field: 'SupplierName', title: 'SupplierName' },
-                { field: 'SupplierLink', title: 'SupplierLink' },
+                { field: 'SupplierName', title: '名称' },
+                { field: 'SupplierLink', title: '联系电话' },
+                { field: 'SupplierMan', title: '联系人' },
+                { field: 'SupplierAddress', title: '联系地址' },
+                { field: 'Description', title: '介绍' },
+                
+                { field: 'BaseCreatorTxt', title: '创建人' },
+                {
+                    field: 'BaseCreateTime', title: '创建时间', align: "left",
+                    formatter: function (value, row, index) {
+                        return ys.formatDate(value, "yyyy-MM-dd HH:mm:ss");
+                    }
+                },
             ],
             queryParams: function (params) {
                 var pagination = $('#gridTable').ysTable('getPagination', params);

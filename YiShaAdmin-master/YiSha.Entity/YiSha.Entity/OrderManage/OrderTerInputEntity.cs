@@ -20,6 +20,12 @@ namespace YiSha.Entity.OrderManage
         [JsonConverter(typeof(StringJsonConverter))]
         public long? MaterielId { get; set; }
         /// <summary>
+        /// 物料名称
+        /// </summary>
+        /// <returns></returns>
+        [NotMapped]
+        public string MaterielTxt { get; set; }
+        /// <summary>
         /// 购买人
         /// </summary>
         /// <returns></returns>
@@ -40,6 +46,19 @@ namespace YiSha.Entity.OrderManage
         /// </summary>
         /// <returns></returns>
         public decimal? BuyPrice { get; set; }
+
+        /// <summary>
+        /// 总价
+        /// </summary>
+        /// <returns></returns>
+        public decimal? TotalPrice
+        {
+            get
+            {
+                return this.BuyNum * this.BuyPrice;
+            }
+        }
+
         /// <summary>
         /// 供应商
         /// </summary>

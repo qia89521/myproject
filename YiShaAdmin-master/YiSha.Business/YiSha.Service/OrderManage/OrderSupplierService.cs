@@ -32,14 +32,25 @@ namespace YiSha.Service.OrderManage
 
         public async Task<List<OrderSupplierEntity>> GetPageList(OrderSupplierListParam param, Pagination pagination)
         {
+            /*
             var expression = ListFilter(param);
             var list= await this.BaseRepository().FindList(expression, pagination);
             return list.ToList();
+            */
+
+            StringBuilder sql = CreateListSql(param);
+            var data = await this.BaseRepository().FindList<OrderSupplierEntity>(sql.ToString(), pagination);
+            return data.list.ToList<OrderSupplierEntity>();
         }
 
         public async Task<OrderSupplierEntity> GetEntity(long id)
         {
+            /*
             return await this.BaseRepository().FindEntity<OrderSupplierEntity>(id);
+            */
+
+            StringBuilder sql = CreateSignalSql(id);
+            return await this.BaseRepository().FindSignalModel<OrderSupplierEntity>(sql.ToString());
         }
         #endregion
 
@@ -73,6 +84,50 @@ namespace YiSha.Service.OrderManage
             {
             }
             return expression;
+        }
+
+
+        /// <summary>
+        /// 创建查询sql
+        /// </summary>
+        /// <param name="param">查询条件数据</param>
+        /// <returns></returns>
+        private StringBuilder CreateListSql(OrderSupplierListParam param)
+        {
+            StringBuilder sql = new StringBuilder();
+
+            sql.AppendFormat(" SELECT * FROM (");
+            sql.AppendFormat(" SELECT a.*,b.RealName AS BaseCreatorTxt ");
+            sql.AppendFormat(" FROM  order_supplier a ");
+            sql.AppendFormat(" JOIN sysuser b ON a.BaseCreatorId = b.Id ");
+            sql.AppendFormat(" ) T WHERE 1=1 ");
+            if (param != null)
+            {
+                if (!string.IsNullOrEmpty(param.SupplierName))
+                {
+                    sql.AppendFormat(" AND SupplierName LIKE '%{0}%'", param.SupplierName);
+                }
+            }
+            return sql;
+        }
+
+
+        /// <summary>
+        /// 创建查询sql
+        /// </summary>
+        /// <param name="id">主键Id</param>
+        /// <returns></returns>
+        private StringBuilder CreateSignalSql(long id)
+        {
+            StringBuilder sql = new StringBuilder();
+
+            sql.AppendFormat(" SELECT * FROM (");
+            sql.AppendFormat(" SELECT a.*,b.RealName AS BaseCreatorTxt ");
+            sql.AppendFormat(" FROM  order_supplier a ");
+            sql.AppendFormat(" JOIN sysuser b ON a.BaseCreatorId = b.Id AND a.Id={0}", id);
+            sql.AppendFormat(" ) T WHERE 1=1 ");
+
+            return sql;
         }
         #endregion
     }

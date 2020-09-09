@@ -12,5 +12,9 @@ namespace YiSha.Model.Param.OrderManage
     /// </summary>
     public class OrderSupplierListParam
     {
+        /// <summary>
+        /// 供应商名称
+        /// </summary>
+        public string SupplierName { get; set; }
     }
 }

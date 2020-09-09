@@ -33,5 +33,12 @@ namespace YiSha.Entity.OrderManage
         /// </summary>
         /// <returns></returns>
         public string SupplierMan { get; set; }
+        /// <summary>
+        /// 公司介绍
+        /// </summary>
+        /// <returns></returns>
+        public string Description { get; set; }
+
+        
     }
 }
