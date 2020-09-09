@@ -32,6 +32,7 @@ namespace YiSha.Entity.OrderManage
         /// 物料ID
         /// </summary>
         /// <returns></returns>
+        [JsonConverter(typeof(StringJsonConverter))]
         public long? MaterielId { get; set; }
         /// <summary>
         /// 物料名称

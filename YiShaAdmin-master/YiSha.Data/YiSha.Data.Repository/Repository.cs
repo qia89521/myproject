@@ -134,7 +134,14 @@ namespace YiSha.Data.Repository
         public async Task<T> FindSignalModel<T>(string strSql) where T : class
         {
             var data = await FindList<T>(strSql);
-            return data.ToList<T>()[0];
+            if (data.Count() > 0)
+            {
+                return data.ToList<T>()[0];
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public async Task<T> FindEntity<T>(Expression<Func<T, bool>> condition) where T : class, new()

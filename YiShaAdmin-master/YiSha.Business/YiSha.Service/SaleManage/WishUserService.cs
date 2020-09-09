@@ -119,6 +119,14 @@ namespace YiSha.Service.SaleManage
                 {
                     sql.AppendFormat(" AND RealName LIKE '{0}%'", param.RealName);
                 }
+                if (!string.IsNullOrEmpty(param.StartTime))
+                {
+                    sql.AppendFormat(" AND BaseCreateTime >'{0} 00:00:00'", param.StartTime);
+                }
+                if (!string.IsNullOrEmpty(param.EndTime))
+                {
+                    sql.AppendFormat(" AND BaseCreateTime <'{0} 23:59:59'", param.EndTime);
+                }
             }
             sql.AppendFormat(" ) a ");
 

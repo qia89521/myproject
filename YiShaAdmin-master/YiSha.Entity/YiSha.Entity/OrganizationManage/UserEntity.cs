@@ -68,6 +68,7 @@ namespace YiSha.Entity.OrganizationManage
         /// <summary>
         /// 父级
         /// </summary>
+        [JsonConverter(typeof(StringJsonConverter))]
         public long? ParentId { get; set; }
         /// <summary>
         /// 爷爷级

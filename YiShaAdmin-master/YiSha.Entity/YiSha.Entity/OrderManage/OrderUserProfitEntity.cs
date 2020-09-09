@@ -42,6 +42,7 @@ namespace YiSha.Entity.OrderManage
         /// <summary>
         /// 用户Id
         /// </summary>
+        [JsonConverter(typeof(StringJsonConverter))]
         public long UserId { get; set; }
         /// <summary>
         /// 用户姓名

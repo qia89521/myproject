@@ -33,6 +33,7 @@ namespace YiSha.Entity.SaleManage
         /// 推荐人姓名
         /// </summary>
         /// <returns></returns>
+        [NotMapped]
         public string TuiJianUserTxt { get; set; }
         /// <summary>
         /// 来源 用户来源方式

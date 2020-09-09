@@ -17,6 +17,7 @@ namespace YiSha.Entity.OrderManage
         /// 销售人
         /// </summary>
         /// <returns></returns>
+        [JsonConverter(typeof(StringJsonConverter))]
         public long SaleId { get; set; }
         /// <summary>
         /// 销售人名称
