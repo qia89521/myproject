@@ -91,8 +91,11 @@ namespace YiSha.Service.OrderManage
         private StringBuilder CreateListSql(OrderTerIssueListParam param)
         {
             StringBuilder sql = new StringBuilder();
-            sql.AppendFormat(" SELECT a.*,b.RealName AS BaseCreatorTxt from  ");
-            sql.AppendFormat(" (");
+            sql.AppendFormat(" SELECT a.*");
+            sql.AppendFormat(" ,b.RealName AS BaseCreatorTxt");
+            sql.AppendFormat(" ,c.RealName AS ShenHeManTxt");
+            sql.AppendFormat(" ,d.RealName AS SentManTxt");
+            sql.AppendFormat(" from (");
             sql.AppendFormat("  SELECT * FROM order_ter_issue ");
             sql.AppendFormat("  where 1=1 ");
             if (param != null)
@@ -111,13 +114,28 @@ namespace YiSha.Service.OrderManage
                 }
             }
             sql.AppendFormat(" ) a ");
+
             sql.AppendFormat(" JOIN ");
             sql.AppendFormat(" ( ");
             sql.AppendFormat("   SELECT Id,RealName from sysuser ");
             sql.AppendFormat("   WHERE 1=1 ");
             sql.AppendFormat(" ) b");
             sql.AppendFormat(" on a.SaleId  = b.Id ");
-            
+
+            sql.AppendFormat(" LEFT JOIN ");
+            sql.AppendFormat(" ( ");
+            sql.AppendFormat("   SELECT Id,RealName from sysuser ");
+            sql.AppendFormat("   WHERE 1=1 ");
+            sql.AppendFormat(" ) c");
+            sql.AppendFormat(" on a.ShenHeManId  = b.Id ");
+
+            sql.AppendFormat(" LEFT JOIN ");
+            sql.AppendFormat(" ( ");
+            sql.AppendFormat("   SELECT Id,RealName from sysuser ");
+            sql.AppendFormat("   WHERE 1=1 ");
+            sql.AppendFormat(" ) d");
+            sql.AppendFormat(" on a.SentManId  = d.Id ");
+
             return sql;
         }
 
@@ -131,11 +149,37 @@ namespace YiSha.Service.OrderManage
         {
             StringBuilder sql = new StringBuilder();
 
-            sql.AppendFormat(" SELECT * FROM (");
-            sql.AppendFormat(" SELECT a.*,b.RealName AS BaseCreatorTxt ");
-            sql.AppendFormat(" FROM  order_ter_issue a ");
-            sql.AppendFormat(" JOIN sysuser b ON a.BaseCreatorId = b.Id AND a.Id={0}", id);
-            sql.AppendFormat(" ) T WHERE 1=1 ");
+            sql.AppendFormat(" SELECT a.*");
+            sql.AppendFormat(" ,b.RealName AS BaseCreatorTxt");
+            sql.AppendFormat(" ,c.RealName AS ShenHeManTxt");
+            sql.AppendFormat(" ,d.RealName AS SentManTxt");
+            sql.AppendFormat(" from (");
+            sql.AppendFormat("  SELECT * FROM order_ter_issue ");
+            sql.AppendFormat("  WHERE 1=1 ");
+            sql.AppendFormat(" AND Id={0}",id);
+
+            sql.AppendFormat(" ) a ");
+
+            sql.AppendFormat(" JOIN ");
+            sql.AppendFormat(" ( ");
+            sql.AppendFormat("   SELECT Id,RealName from sysuser ");
+            sql.AppendFormat("   WHERE 1=1 ");
+            sql.AppendFormat(" ) b");
+            sql.AppendFormat(" on a.SaleId  = b.Id ");
+
+            sql.AppendFormat(" LEFT JOIN ");
+            sql.AppendFormat(" ( ");
+            sql.AppendFormat("   SELECT Id,RealName from sysuser ");
+            sql.AppendFormat("   WHERE 1=1 ");
+            sql.AppendFormat(" ) c");
+            sql.AppendFormat(" on a.ShenHeManId  = b.Id ");
+
+            sql.AppendFormat(" LEFT JOIN ");
+            sql.AppendFormat(" ( ");
+            sql.AppendFormat("   SELECT Id,RealName from sysuser ");
+            sql.AppendFormat("   WHERE 1=1 ");
+            sql.AppendFormat(" ) d");
+            sql.AppendFormat(" on a.SentManId  = d.Id ");
 
             return sql;
         }

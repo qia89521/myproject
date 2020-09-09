@@ -41,6 +41,17 @@ namespace YiSha.Entity.OrderManage
         public string MaterielName { get; set; }
 
         /// <summary>
+        ///业务id
+        /// </summary>
+        /// <returns></returns>
+        [JsonConverter(typeof(StringJsonConverter))]
+        public long? BusyniessId { get; set; }
+        /// <summary>
+        /// 业务表
+        /// </summary>
+        public string BusyniessTable { get; set; }
+
+        /// <summary>
         /// 当前库存
         /// </summary>
         [NotMapped]

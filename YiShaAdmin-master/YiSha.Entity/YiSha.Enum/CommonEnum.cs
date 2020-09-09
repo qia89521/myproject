@@ -22,11 +22,14 @@ namespace YiSha.Enum
         [Description("系统-财务")]
         finance = 2,
 
+        [Description("系统-售后维护")]
+        weihu = 3,
+
         [Description("系统-客服")]
-        cust = 3,
+        cust = 4,
 
         [Description("系统-普通用户")]
-        normal = 4,
+        normal = 5,
     }
 
 

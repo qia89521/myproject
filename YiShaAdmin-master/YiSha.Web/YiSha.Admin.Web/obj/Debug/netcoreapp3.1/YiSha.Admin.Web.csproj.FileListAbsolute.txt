@@ -1008,3 +1008,7 @@ E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\OrderManage\Views\OrderMateriel\OrderMaterielIndex.cshtml.g.cs
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\OrderManage\Views\OrderMaterielDetail\OrderMaterielDetailForm.cshtml.g.cs
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\OrderManage\Views\OrderMaterielDetail\OrderMaterielDetailIndex.cshtml.g.cs
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\OrderManage\Views\OrderTerInput\OrderTerInputForm.cshtml.g.cs
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\OrderManage\Views\OrderTerInput\OrderTerInputIndex.cshtml.g.cs
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\OrderManage\Views\OrderSupplier\OrderSupplierForm.cshtml.g.cs
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\OrderManage\Views\OrderSupplier\OrderSupplierIndex.cshtml.g.cs
