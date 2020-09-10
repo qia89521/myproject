@@ -38,6 +38,12 @@ namespace YiSha.Admin.Web.Areas.SystemManage.Controllers
         {
             return View();
         }
+
+        [AuthorizeFilter("system:area:view")]
+        public IActionResult AreaAddressSelect()
+        {
+            return View();
+        }
         #endregion
 
         #region 获取数据
