@@ -98,6 +98,7 @@ namespace YiSha.Service.OrderManage
             sql.AppendFormat(" ,b.RealName AS BaseCreatorTxt");
             sql.AppendFormat(" ,c.SupplierName as SupplierTxt");
             sql.AppendFormat(" ,d.MaterielName as MaterielTxt");
+            sql.AppendFormat(" ,e.RealName AS ShenHeManTxt");
             sql.AppendFormat(" from (");
             sql.AppendFormat("  SELECT * FROM order_ter_input ");
             sql.AppendFormat("  where 1=1 ");
@@ -139,6 +140,14 @@ namespace YiSha.Service.OrderManage
             sql.AppendFormat(" ) d");
             sql.AppendFormat(" on a.MaterielId  = d.Id ");
 
+
+            sql.AppendFormat(" JOIN ");
+            sql.AppendFormat(" ( ");
+            sql.AppendFormat("   SELECT Id,RealName from sysuser ");
+            sql.AppendFormat("   WHERE 1=1 ");
+            sql.AppendFormat(" ) e");
+            sql.AppendFormat(" on a.ShenHeManId  = e.Id ");
+
             return sql;
         }
 
@@ -156,6 +165,7 @@ namespace YiSha.Service.OrderManage
             sql.AppendFormat(" ,b.RealName AS BaseCreatorTxt");
             sql.AppendFormat(" ,c.SupplierName as SupplierTxt");
             sql.AppendFormat(" ,d.MaterielName as MaterielTxt");
+            sql.AppendFormat(" ,e.RealName AS ShenHeManTxt");
             sql.AppendFormat(" from (");
 
             sql.AppendFormat("  SELECT * FROM order_ter_input ");
@@ -185,6 +195,12 @@ namespace YiSha.Service.OrderManage
             sql.AppendFormat(" ) d");
             sql.AppendFormat(" on a.MaterielId  = d.Id ");
 
+            sql.AppendFormat(" JOIN ");
+            sql.AppendFormat(" ( ");
+            sql.AppendFormat("   SELECT Id,RealName from sysuser ");
+            sql.AppendFormat("   WHERE 1=1 ");
+            sql.AppendFormat(" ) e");
+            sql.AppendFormat(" on a.ShenHeManId  = e.Id ");
             return sql;
         }
         #endregion

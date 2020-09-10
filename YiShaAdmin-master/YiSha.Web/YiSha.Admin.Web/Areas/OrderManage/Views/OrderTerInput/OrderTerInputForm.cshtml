@@ -11,7 +11,7 @@
                 <input type="hidden" id="materielId" col="MaterielId" />
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn btn-primary btn-sm" onclick="setParent()">设 置</button><br />
+                <button type="button" class="btn btn-primary btn-sm" onclick="choosePage('MaterielTxt','materielId','materielTxt')">选 择</button><br />
             </div>
         </div>
         <div class="form-group">
@@ -21,7 +21,7 @@
                 <input type="hidden" id="buyId" col="BuyId" />
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn btn-primary btn-sm" onclick="setParent()">设 置</button><br />
+                <button type="button" class="btn btn-primary btn-sm" onclick="choosePage('BuyTxt','buyId','buyTxt')">选 择</button><br />
             </div>
         </div>
         <div class="form-group">
@@ -31,7 +31,7 @@
                 <input type="hidden" id="supplierId" col="SupplierId" />
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn btn-primary btn-sm" onclick="setParent()">设 置</button><br />
+                <button type="button" class="btn btn-primary btn-sm" onclick="choosePage('SupplierTxt','supplierId','supplierTxt')">选 择</button><br />
             </div>
         </div>
         <div class="form-group">
@@ -98,6 +98,43 @@
                 }
             });
         }
+    }
+
+    function choosePage(filed,hideId,txtId) {
+        var url = "";
+        var title = "";
+        if (filed == "MaterielTxt") {
+            url = '@Url.Content("~/OrderManage/OrderMateriel/OrderMaterielIndexSelect")';
+            title = "选择物料";
+        }
+        else if (filed == "BuyTxt") {
+            url = '@Url.Content("~/OrganizationManage/User/UserIndexSelect")';
+            title = "选择采购人";
+        }
+        else if (filed == "SupplierTxt") {
+            url = '@Url.Content("~/OrderManage/OrderSupplier/OrderSupplierIndexSelect")';
+            title = "选择供应商";
+        }
+        ys.openDialog({
+            title: title,
+            content: url,
+            width: "868px",
+            height: "470px",
+             callback: function (index, layero) {
+                var iframeWin = window[layero.find('iframe')[0]['name']];
+                 var select_data = iframeWin.chooseUserOK();
+                 if (IsNullEmpty(select_data.ids)) {
+                    ys.alertError('请先选择用户,再操作');
+                }
+                else {
+                    //设置 操作人
+                     $("#" + hideId).val(select_data.ids);
+                     $("#" + txtId).val(select_data.txts);
+                     layer.close(index);
+
+                }
+            }
+        });
     }
 </script>
 

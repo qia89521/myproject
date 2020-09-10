@@ -31,7 +31,11 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
         {
             return View();
         }
-
+        [AuthorizeFilter("order:ordermateriel:select")]
+        public ActionResult OrderMaterielIndexSelect()
+        {
+            return View();
+        }
         public ActionResult OrderMaterielForm()
         {
             return View();

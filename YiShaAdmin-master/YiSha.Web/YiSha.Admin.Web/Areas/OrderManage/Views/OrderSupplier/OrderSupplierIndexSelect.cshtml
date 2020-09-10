@@ -1,0 +1,73 @@
+﻿@{
+    Layout = "~/Views/Shared/_Index.cshtml";
+}
+<div class="container-div">
+    <div class="row">
+        <div id="searchDiv" class="col-sm-12 search-collapse">
+            <div class="select-list">
+                <ul>
+                    <li>
+                        名称：<input id="supplierName" col="SupplierName" type="text" />
+                    </li>
+                    <li>
+                        <a id="btnSearch" class="btn btn-primary btn-sm" onclick="searchGrid()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+      
+        <div class="col-sm-12 select-table table-striped">
+            <table id="gridTable" data-mobile-responsive="true"></table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        initGrid();
+    });
+
+    function initGrid() {
+        var queryUrl = '@Url.Content("~/OrderManage/OrderSupplier/GetPageListJson")';
+        $('#gridTable').ysTable({
+            url: queryUrl,
+            columns: [
+                { radio: true, visible: true },
+                { field: 'Id', title: 'Id', visible: false },
+                { field: 'SupplierName', title: '名称' },
+                { field: 'SupplierLink', title: '联系电话' },
+                { field: 'SupplierMan', title: '联系人' },
+                { field: 'SupplierAddress', title: '联系地址' },
+                { field: 'Description', title: '介绍' },
+
+                { field: 'BaseCreatorTxt', title: '创建人' },
+                {
+                    field: 'BaseCreateTime', title: '创建时间', align: "left",
+                    formatter: function (value, row, index) {
+                        return ys.formatDate(value, "yyyy-MM-dd HH:mm:ss");
+                    }
+                },
+            ],
+            queryParams: function (params) {
+                var pagination = $('#gridTable').ysTable('getPagination', params);
+                var queryString = $('#searchDiv').getWebControls(pagination);
+                return queryString;
+            }
+        });
+    }
+
+    function searchGrid() {
+        $('#gridTable').ysTable('search');
+        resetToolbarStatus();
+    }
+
+    var select_data = { ids: "", txts: "" };
+    function chooseUserOK() {
+        var selectedRow = $("#gridTable").bootstrapTable("getSelections");
+        var ids = ys.getIds(selectedRow);
+        select_data.ids = ids;
+        select_data.txts = selectedRow[0]["SupplierName"];
+
+        return select_data;
+    }
+</script>

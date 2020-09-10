@@ -72,5 +72,34 @@ namespace YiSha.Entity.OrderManage
         /// <returns></returns>
         [NotMapped]
         public string SupplierTxt { get; set; }
+
+        /// <summary>
+        /// 审核状态 0创建 1审核中 2审核通过 3拒绝
+        /// </summary>
+        /// <returns></returns>
+        public int ShenHeStatus { get; set; }
+        /// <summary>
+        /// 审核信息
+        /// </summary>
+        /// <returns></returns>
+        public string ShenHeMsg { get; set; }
+        /// <summary>
+        /// 收款凭证截图
+        /// </summary>
+        /// <returns></returns>
+        [NotMapped]
+        public string PayMoneyImg { get; set; }
+        /// <summary>
+        /// 审核人Id
+        /// </summary>
+        /// <returns></returns>
+        [JsonConverter(typeof(StringJsonConverter))]
+        public long? ShenHeManId { get; set; }
+        /// <summary>
+        /// 审核人姓名
+        /// </summary>
+        /// <returns></returns>
+        [NotMapped]
+        public string ShenHeManTxt { get; set; }
     }
 }
