@@ -1,7 +1,11 @@
 ﻿@{
     Layout = "~/Views/Shared/_FormWhite.cshtml";
 }
-
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnvironment
+@section header{
+    @BundlerHelper.Render(HostingEnvironment.ContentRootPath, Url.Content("~/lib/fileinput/5.0.3/css/fileinput.min.css"))
+    @BundlerHelper.Render(HostingEnvironment.ContentRootPath, Url.Content("~/lib/fileinput/5.0.3/js/fileinput.min.js"))
+}
 <div class="wrapper animated fadeInRight">
     <form id="form" class="form-horizontal m">
         <div class="tabs-container">
@@ -10,11 +14,11 @@
                     <li class="active">
                         <a data-toggle="tab" href="#tab-1">基本信息</a>
                     </li>
-                    <li >
+                    <li>
                         <a data-toggle="tab" href="#tab-2">收件人信息</a>
                     </li>
                     <li class="">
-                        <a data-toggle="tab" href="#tab-3">审核状态</a>
+                        <a data-toggle="tab" href="#tab-3">审核信息</a>
                     </li>
                     <li class="">
                         <a data-toggle="tab" href="#tab-4">物流状态</a>
@@ -102,14 +106,64 @@
                     </div>
                     <div id="tab-3" class="tab-pane">
                         <div class="panel-body">
-
-
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label ">审核人<font class="red"> *</font></label>
+                                <div class="col-sm-8">
+                                    <input id="shenHeManTxt" col="ShenHeManTxt" onfocus="this.blur()" type="text" class="form-control" />
+                                    <input type="hidden" id="shenHeManId" col="ShenHeManId" />
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="choosePage('MaterielTxt','materielId','materielTxt')">选 择</button><br />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label ">凭据上传</label>
+                                <div class="col-sm-8">
+                                    <input id="fileinput-demo-2" type="file">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label ">审核操作<font class="red"> *</font></label>
+                                <div class="col-sm-8" id="shenHeStatus" col="ShenHeStatus"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label ">审核消息</label>
+                                <div class="col-sm-8">
+                                    <textarea id="shenHeMsg" col="ShenHeMsg" class="form-control" style="height:60px"></textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div id="tab-4" class="tab-pane">
                         <div class="panel-body">
-
-
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label ">发货人<font class="red"> *</font></label>
+                                <div class="col-sm-8">
+                                    <input id="sentManTxy" col="SentManTxy" onfocus="this.blur()" type="text" class="form-control" />
+                                    <input type="hidden" id="sentManId" col="SentManId" />
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="choosePage('MaterielTxt','materielId','materielTxt')">选 择</button><br />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label ">物流公司<font class="red"> *</font></label>
+                                <div class="col-sm-8">
+                                    <input id="expressCompany" col="ExpressCompany" type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label ">快递单号<font class="red"> *</font></label>
+                                <div class="col-sm-8">
+                                    <input id="expressNumber" col="ExpressNumber" type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label ">发货备注</label>
+                                <div class="col-sm-8">
+                                    <textarea id="remark" col="Remark" class="form-control" style="height:60px"></textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -122,6 +176,16 @@
 <script type="text/javascript">
     var id = ys.request("id");
     $(function () {
+        $("#shenHeStatus").ysRadioBox({ data: ys.getJson(@Html.Raw(typeof(ShenHeStatusEnum).EnumToDictionaryString())) });
+
+         $("#fileinput-demo-2").fileinput({
+            language: 'zh',
+            'uploadUrl': '@GlobalContext.SystemConfig.ApiSite' + '/File/UploadFile?fileModule=@UploadFileType.Money.ParseToInt()',
+            overwriteInitial: false,
+            initialPreviewAsData: true,
+            initialPreview: ['@Url.Content("~/image/portrait.png")']
+         });
+
         getForm();
 
         $('#form').validate({

@@ -78,7 +78,10 @@ namespace YiSha.Enum
         News = 2,
 
         [Description("导入的文件")]
-        Import = 10
+        Import = 10,
+
+        [Description("财务图")]
+        Money = 10
     }
 
     public enum PlatformEnum
@@ -160,7 +163,24 @@ namespace YiSha.Enum
 
         [Description("分享")]
         Share = 1,
+    }
 
-      
+    /// <summary>
+    /// 审核状态  0创建1审核中2审核通过3拒绝
+    /// </summary>
+    public enum ShenHeStatusEnum
+    {
+        /*
+        [Description("创建")]
+        Create = 0,
+        */
+        [Description("审核中")]
+        Doing = 1,
+
+        [Description("通过")]
+        Past = 2,
+
+        [Description("拒绝")]
+        Refuse = 3,
     }
 }
