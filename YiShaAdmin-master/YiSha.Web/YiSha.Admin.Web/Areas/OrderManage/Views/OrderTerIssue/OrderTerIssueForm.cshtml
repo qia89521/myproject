@@ -119,7 +119,8 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">凭据上传</label>
                                 <div class="col-sm-8">
-                                    <input id="fileinput-demo-2" type="file">
+                                    <input id="fileinput_PayMoneyImg" type="file">
+                                    <input type="hidden" id="payMoneyImg" col="PayMoneyImg"/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -177,23 +178,20 @@
     var id = ys.request("id");
     $(function () {
         $("#shenHeStatus").ysRadioBox({ data: ys.getJson(@Html.Raw(typeof(ShenHeStatusEnum).EnumToDictionaryString())) });
-
-         $("#fileinput-demo-2").fileinput({
-            language: 'zh',
-            'uploadUrl': '@GlobalContext.SystemConfig.ApiSite' + '/File/UploadFile?fileModule=@UploadFileType.Money.ParseToInt()',
-            overwriteInitial: false,
-            initialPreviewAsData: true,
-            initialPreview: ['@Url.Content("~/image/portrait.png")']
-         });
-
         getForm();
-
         $('#form').validate({
             rules: {
                 saleId: { required: true }
             }
         });
+        $('#fileinput_PayMoneyImg').on('fileuploaded', function (event, data, previewId, index) {
+            if (data.filescount > 0) {
+                $("#payMoneyImg").val(data.response.Data);
+            }
+        });
     });
+
+
 
     /**设置上级 */
     function setParent() {
@@ -265,6 +263,8 @@
                 success: function (obj) {
                     if (obj.Tag == 1) {
                         $('#form').setWebControls(obj.Data);
+
+                        InitImg(obj.Data.PayMoneyImg);
                     }
                 }
             });
@@ -272,6 +272,7 @@
         else {
             var defaultData = {};
             $('#form').setWebControls(defaultData);
+            InitImg("");
         }
     }
 
@@ -324,6 +325,27 @@
                 }
             }
         });
+    }
+
+    /**
+     * 初始化数据
+     * param img
+     */
+    function InitImg(img) {
+        var img_es = [];
+        if (!IsNullEmpty(img)) {
+            img = '@GlobalContext.SystemConfig.ApiSite' + img;
+            img_es.push(img);
+        }
+        $("#fileinput_PayMoneyImg").fileinput({
+            language: 'zh',
+          //  allowedFileTypes: ['jpg', 'jpeg', 'png'],
+            'uploadUrl': '@GlobalContext.SystemConfig.ApiSite' + '/File/UploadFile?fileModule=@UploadFileType.Money.ParseToInt()',
+            overwriteInitial: false,
+            initialPreviewAsData: true,
+            initialPreview: img_es
+         });
+
     }
 </script>
 

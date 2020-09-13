@@ -77,11 +77,12 @@ namespace YiSha.Enum
         [Description("新闻图片")]
         News = 2,
 
-        [Description("导入的文件")]
-        Import = 10,
-
         [Description("财务图")]
-        Money = 10
+        Money = 3,
+
+        [Description("导入的文件")]
+        Import = 10
+
     }
 
     public enum PlatformEnum

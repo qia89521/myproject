@@ -94,6 +94,21 @@ namespace YiSha.Util
                     dirModule = UploadFileType.Import.ToString();
                     break;
 
+                case (int)UploadFileType.Money:
+                    if (file.Length > 500 * 1024) // 50kb
+                    {
+                        obj.Message = "文件最大限制为 500kb";
+                        return obj;
+                    }
+                    objCheck = CheckFileExtension(Path.GetExtension(file.FileName), ".jpg|.jpeg|.gif|.png");
+                    if (objCheck.Tag != 1)
+                    {
+                        obj.Message = objCheck.Message;
+                        return obj;
+                    }
+                    dirModule = UploadFileType.Money.ToString();
+                    break;
+
                 default:
                     obj.Message = "请指定上传到的模块";
                     return obj;

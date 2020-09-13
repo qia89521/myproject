@@ -106,3 +106,4 @@ E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.WebA
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.WebApi\obj\Debug\netcoreapp3.1\YiSha.Admin.WebApi.dll
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.WebApi\obj\Debug\netcoreapp3.1\YiSha.Admin.WebApi.pdb
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.WebApi\obj\Debug\netcoreapp3.1\YiSha.Admin.WebApi.genruntimeconfig.cache
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.WebApi\bin\Debug\netcoreapp3.1\zxing.dll
