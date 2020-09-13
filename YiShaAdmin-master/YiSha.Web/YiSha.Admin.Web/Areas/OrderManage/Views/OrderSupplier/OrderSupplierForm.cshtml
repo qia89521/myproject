@@ -11,24 +11,24 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label ">联系人</label>
+            <label class="col-sm-3 control-label ">联系人<font class="red"> *</font></label>
             <div class="col-sm-8">
                 <input id="supplierMan" col="SupplierMan" type="text" class="form-control" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label ">联系电话</label>
+            <label class="col-sm-3 control-label ">联系电话<font class="red"> *</font></label>
             <div class="col-sm-8">
                 <input id="supplierLink" col="SupplierLink" onkeyup="this.value=CheckIsFormatNumber(this.value, 0)"   type="text" class="form-control" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label ">联系地址</label>
+            <label class="col-sm-3 control-label ">联系地址<font class="red"> *</font></label>
             <div class="col-sm-8">
                 <input id="supplierAddress" col="SupplierAddress" type="text" class="form-control" />
             </div>
         </div>  <div class="form-group">
-            <label class="col-sm-3 control-label ">联系地址</label>
+            <label class="col-sm-3 control-label ">描述</label>
             <div class="col-sm-8">
                 <input id="description" col="Description" type="text" class="form-control" />
             </div>
@@ -44,7 +44,10 @@
 
         $('#form').validate({
             rules: {
-                supplierName: { required: true }
+                supplierName: { required: true },
+                supplierMan: { required: true },
+                supplierLink: { required: true },
+                supplierAddress: { required: true },
             }
         });
     });

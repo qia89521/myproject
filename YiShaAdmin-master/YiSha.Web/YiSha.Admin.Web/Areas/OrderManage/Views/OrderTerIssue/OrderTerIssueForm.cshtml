@@ -136,12 +136,9 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">发货人<font class="red"> *</font></label>
                                 <div class="col-sm-8">
-                                    <input id="sentManTxy" col="SentManTxy" onfocus="this.blur()" type="text" class="form-control" />
-                                    <input type="hidden" id="sentManId" col="SentManId" />
+                                    <div id="sentManId" col="SentManId"></div>
                                 </div>
-                                <div class="col-sm-2">
-                                    <button type="button" class="btn btn-primary btn-sm" onclick="choosePage('MaterielTxt','materielId','materielTxt')">选 择</button><br />
-                                </div>
+                               
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">物流公司<font class="red"> *</font></label>
@@ -176,12 +173,25 @@
         $("#shenHeStatus").ysRadioBox({ data: ys.getJson(@Html.Raw(typeof(ShenHeStatusEnum).EnumToDictionaryString())) });
 
         LoadShenHeMan();
+        LoadSentMan();
 
         getForm();
         //表单校验
         $('#form').validate({
             rules: {
-                saleId: { required: true }
+                materielTxt: { required: true },
+                saleTxt: { required: true },
+                saleNum: { required: true },
+                salePrice: { required: true },
+                srcPrice: { required: true },
+                zone: { required: true },
+
+                reciveName: { required: true },
+                recivePhone: { required: true },
+                reciveAddress: { required: true },
+
+                sentManId: { required: true },
+                sentManId: { required: true },
             }
         });
         //上传图片成功回掉函数
@@ -192,9 +202,19 @@
         });
     });
 
+    //加载审核人
     function LoadShenHeMan() {
         $("#shenHeManId").ysComboBox({
             url: '@Url.Content("~/OrganizationManage/User/GetListByRoleCode")' +"?roleCode=2",
+            key: "Id",
+            value: "RealName",
+            class: "form-control",
+         });
+    }
+    //加载发货人 sentManId
+    function LoadSentMan() {
+          $("#sentManId").ysComboBox({
+            url: '@Url.Content("~/OrganizationManage/User/GetListByRoleCode")' +"?roleCode=3",
             key: "Id",
             value: "RealName",
             class: "form-control",
