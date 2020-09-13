@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using YiSha.Business.Cache;
@@ -30,12 +31,26 @@ namespace YiSha.Business.OrganizationManage
         private DepartmentService departmentService = new DepartmentService();
 
         private DepartmentBLL departmentBLL = new DepartmentBLL();
+        private RoleBLL roleBLL = new RoleBLL();
 
         #region 获取数据
         public async Task<TData<List<UserEntity>>> GetList(UserListParam param)
         {
             TData<List<UserEntity>> obj = new TData<List<UserEntity>>();
             obj.Data = await userService.GetList(param);
+            obj.Tag = 1;
+            return obj;
+        }
+
+        /// <summary>
+        /// 获取角色代码获取用户列表
+        /// </summary>
+        /// <param name="roleCode">角色代码</param>
+        /// <returns></returns>
+        public async Task<TData<List<UserEntity>>> GetListByRoleCode(string roleCode)
+        {
+            TData<List<UserEntity>> obj = new TData<List<UserEntity>>();
+            obj.Data = await userService.GetListByRoleCode(roleCode);
             obj.Tag = 1;
             return obj;
         }
@@ -72,6 +87,7 @@ namespace YiSha.Business.OrganizationManage
             obj.Data = await userService.GetEntity(id);
 
             await GetUserBelong(obj.Data);
+           
 
             if (obj.Data.DepartmentId > 0)
             {
@@ -400,6 +416,23 @@ namespace YiSha.Business.OrganizationManage
             if (positionBelongList.Count > 0)
             {
                 user.PositionIds = string.Join(",", positionBelongList.Select(p => p.BelongId).ToList());
+            }
+
+            //获取角色代码
+            await GetRoleCodes(user);
+        }
+
+        /// <summary>
+        /// 获取用户角色对应的角色编码
+        /// </summary>
+        /// <param name="user"></param>
+        private async Task GetRoleCodes(UserEntity user)
+        {
+            var rolses= await roleBLL.GetList(user.RoleIds);
+
+            if (rolses.Total > 0)
+            {
+                user.RoleCodes = string.Join(",", rolses.Data.Select(p => p.RoleCode).ToList());
             }
         }
         #endregion

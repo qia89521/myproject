@@ -39,6 +39,18 @@ namespace YiSha.Service.OrganizationManage
             return list.ToList();
         }
 
+        /// <summary>
+        /// 获取角色代码获取用户列表
+        /// </summary>
+        /// <param name="roleCode">角色代码</param>
+        /// <returns></returns>
+        public async Task<List<UserEntity>> GetListByRoleCode(string roleCode)
+        {
+            StringBuilder sql = CreateListSqlByRoleCode(roleCode);
+            var data = await this.BaseRepository().FindList<UserEntity>(sql.ToString());
+            return data.ToList<UserEntity>();
+        }
+
         public async Task<UserEntity> GetEntity(long id)
         {
             return await this.BaseRepository().FindEntity<UserEntity>(id);
@@ -225,6 +237,34 @@ namespace YiSha.Service.OrganizationManage
 
             }
             return expression;
+        }
+
+
+        /// <summary>
+        /// 根据角色代码(功能不一样) 创建查询sql
+        /// </summary>
+        /// <param name="roleCode">角色代码</param>
+        /// <returns></returns>
+        private StringBuilder CreateListSqlByRoleCode(string roleCode)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.AppendFormat(" select a.*,b.RoleCode from");
+            sql.AppendFormat(" (");
+            sql.AppendFormat("   select * from sysuser");
+            sql.AppendFormat(" ) a");
+            sql.AppendFormat(" join ");
+            sql.AppendFormat(" (");
+            sql.AppendFormat("   SELECT a.*,b.UserId");
+            sql.AppendFormat("   FROM sysrole a");
+            sql.AppendFormat("   join sysuserbelong b");
+            sql.AppendFormat("   on b.BelongId=a.Id");
+            sql.AppendFormat("   and b.BelongType=2");
+
+            sql.AppendFormat("   And a.RoleCode='{0}'", roleCode);
+            sql.AppendFormat(" ) b");
+            sql.AppendFormat(" on a.Id=b.UserId");
+          
+            return sql;
         }
         #endregion
     }

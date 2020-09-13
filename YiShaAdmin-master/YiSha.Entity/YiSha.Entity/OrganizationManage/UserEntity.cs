@@ -58,6 +58,11 @@ namespace YiSha.Entity.OrganizationManage
         [NotMapped]
         public string RoleIds { get; set; }
         /// <summary>
+        /// 角色Codes
+        /// </summary>
+        [NotMapped]
+        public string RoleCodes { get; set; }
+        /// <summary>
         /// 代理区域id
         /// </summary>
         public string DelegetZoneId { get; set; }

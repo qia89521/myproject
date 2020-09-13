@@ -10,6 +10,7 @@ using YiSha.Model.Param.SystemManage;
 using YiSha.Util.Extension;
 using YiSha.Util.Model;
 using YiSha.Util;
+using System.Text;
 
 namespace YiSha.Service.SystemManage
 {
@@ -21,6 +22,17 @@ namespace YiSha.Service.SystemManage
             var expression = ListFilter(param);
             var list = await this.BaseRepository().FindList(expression);
             return list.ToList();
+        }
+        /// <summary>
+        /// 获取角色列表 根据id串 
+        /// </summary>
+        /// <param name="ids">id字符串 逗号分隔</param>
+        /// <returns></returns>
+        public async Task<List<RoleEntity>> GetList(string ids)
+        {
+            StringBuilder sql = CreateSqlByIds(ids);
+            var data = await this.BaseRepository().FindList<RoleEntity>(sql.ToString());
+            return data.ToList<RoleEntity>();
         }
 
         public async Task<List<RoleEntity>> GetPageList(RoleListParam param, Pagination pagination)
@@ -139,6 +151,21 @@ namespace YiSha.Service.SystemManage
                 }
             }
             return expression;
+        }
+
+        /// <summary>
+        /// 创建查询sql
+        /// </summary>
+        /// <param name="number">设备编号</param>
+        /// <returns></returns>
+        private StringBuilder CreateSqlByIds(string ids)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.AppendFormat(" SELECT * ");
+            sql.AppendFormat(" FROM  sysrole ");
+            sql.AppendFormat(" WHERE 1=1 ");
+            sql.AppendFormat(" AND Id IN({0})", ids);
+            return sql;
         }
         #endregion
     }

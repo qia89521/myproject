@@ -33,7 +33,20 @@ namespace YiSha.Business.SystemManage
             obj.Tag = 1;
             return obj;
         }
-
+        /// <summary>
+        /// 获取角色列表 根据id串 
+        /// </summary>
+        /// <param name="ids">id字符串 逗号分隔</param>
+        /// <returns></returns>
+        public async Task<TData<List<RoleEntity>>> GetList(string ids)
+        {
+            TData<List<RoleEntity>> obj = new TData<List<RoleEntity>>();
+            obj.Data = await roleService.GetList(ids);
+            obj.Total = obj.Data.Count;
+            obj.Tag = 1;
+            return obj;
+        }
+      
         public async Task<TData<List<RoleEntity>>> GetPageList(RoleListParam param, Pagination pagination)
         {
             TData<List<RoleEntity>> obj = new TData<List<RoleEntity>>();

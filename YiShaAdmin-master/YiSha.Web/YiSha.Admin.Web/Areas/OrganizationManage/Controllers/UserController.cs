@@ -92,6 +92,14 @@ namespace YiSha.Admin.Web.Areas.OrganizationManage.Controllers
         }
 
         [HttpGet]
+        [AuthorizeFilter("organization:user:search")]
+        public async Task<IActionResult> GetListByRoleCode(string roleCode)
+        {
+            TData<List<UserEntity>> obj = await userBLL.GetListByRoleCode(roleCode);
+            return Json(obj);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> GetFormJson(long id)
         {
             TData<UserEntity> obj = await userBLL.GetEntity(id);
