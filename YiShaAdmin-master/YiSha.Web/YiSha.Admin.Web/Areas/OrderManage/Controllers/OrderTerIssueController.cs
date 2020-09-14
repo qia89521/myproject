@@ -12,6 +12,7 @@ using YiSha.Admin.Web.Controllers;
 using YiSha.Entity.OrderManage;
 using YiSha.Business.OrderManage;
 using YiSha.Model.Param.OrderManage;
+using YiSha.Web.Code;
 
 namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
 {
@@ -32,8 +33,9 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
             return View();
         }
 
-        public ActionResult OrderTerIssueForm()
+        public async Task<IActionResult> OrderTerIssueForm()
         {
+            ViewBag.OperatorInfo = await Operator.Instance.Current();
             return View();
         }
         #endregion

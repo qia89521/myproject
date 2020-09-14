@@ -450,6 +450,80 @@ function GetRandom(len) {
 
 }
 
+
+/**
+ * 设置元素是否启用还是禁用
+ * @param  roleCode 角色代码 
+ *  @param  isAdd 是否新增
+ *   @param  isOpearte 是否是操作人
+ * @param isEnable 启用还是禁用
+ */
+function SetElmentIsEnable(roleCode, isAdd, isOpearte, isEnable) {
+    if (isEnable) {
+        $(".roleCode_" + roleCode + " select").removeAttr("disabled");
+        $(".roleCode_" + roleCode + " input").removeAttr("disabled");
+        $(".roleCode_" + roleCode + " textarea").removeAttr("disabled");
+        $(".roleCode_" + roleCode + " button").removeAttr("disabled");
+    }
+    else {
+        if (!isAdd) {
+            $(".roleCode_" + roleCode + " select").attr("disabled", "disabled");
+        }
+        if (!isOpearte) {
+            $(".roleCode_" + roleCode + " input").attr("disabled", "disabled");
+            $(".roleCode_" + roleCode + " textarea").attr("disabled", "disabled");
+            $(".roleCode_" + roleCode + " button").attr("disabled", "disabled");
+        }
+    }
+}
+
+/**
+ * 设置操作面板权限
+ * @loginId
+ * @loginRoleCode
+ * @operatId
+ * */
+function SetOperatePower(loginId, loginRoleCode, operatId) {
+    var isAdd = false;
+    var isOpearte = false;
+    if (IsNullEmpty(operatId)) {
+        isAdd = true;
+    }
+    if (loginId == operatId) {
+        isOpearte = true;
+    }
+    SetElmentIsEnable(loginRoleCode, isAdd, isOpearte, false);
+}
+
+
+/**
+ *设置创建人数据不能更改
+ * @param {any} login_id 登录用户id
+ * @param {any} create_id 创建数据人id
+ */
+function SetOpElmentIsEnable(login_id, create_id) {
+    if (login_id != create_id) {
+        
+        $(".roleCode_op button").attr("disabled", "disabled");
+        $(".roleCode_op select").attr("disabled", "disabled");
+        $(".roleCode_op input").attr("disabled", "disabled");
+        $(".roleCode_op textarea").attr("disabled", "disabled");
+    }
+}
+/**
+ * 是否包含改角色
+ * @param {any} codes 角色串
+ * @param {any} code 指定角色
+ */
+function IsContainsRoleCode(codes, code) {
+    if (codes.indexOf(code) > -1) {
+        return true;
+    }
+    return false;
+}
+
+
+
 /////////////////////////////////////////////////////
 //--------------js map对象---------------------//
 ///////////////////////////////////////////////////

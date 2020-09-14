@@ -35,6 +35,13 @@ namespace YiSha.Web.Code
         /// </summary>
         [NotMapped]
         public string RoleIds { get; set; }
+
+        /// <summary>
+        /// 角色Codes Id
+        /// </summary>
+        [NotMapped]
+        public string RoleCodes { get; set; }
+
     }
     public class RoleInfo
     {

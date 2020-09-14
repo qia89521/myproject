@@ -33,7 +33,7 @@
                                     <input id="materielTxt" col="MaterielTxt" onfocus="this.blur()" type="text" class="form-control" />
                                     <input type="hidden" id="materielId" col="MaterielId" />
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-2 roleCode_op">
                                     <button type="button" class="btn btn-primary btn-sm" onclick="choosePage('MaterielTxt','materielId','materielTxt')">选 择</button><br />
                                 </div>
                             </div>
@@ -43,25 +43,25 @@
                                     <input id="saleTxt" col="SaleTxt" type="text" class="form-control" />
                                     <input type="hidden" id="saleId" col="SaleId" />
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-2 roleCode_op">
                                     <button type="button" class="btn btn-primary btn-sm" onclick="setParent()">选 择</button><br />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">出货量<font class="red"> *</font></label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-8 roleCode_op">
                                     <input id="saleNum" col="SaleNum" type="text" onkeyup="this.value=CheckIsFormatNumber(this.value, 0)" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">销售价<font class="red"> *</font></label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-8 roleCode_op">
                                     <input id="salePrice" col="SalePrice" onkeyup="this.value=CheckIsFormatNumber(this.value, 2)" type="text" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">拿货价<font class="red"> *</font></label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-8 roleCode_op">
                                     <input id="srcPrice" col="SrcPrice" onkeyup="this.value=CheckIsFormatNumber(this.value, 2)" type="text" class="form-control" />
                                 </div>
                             </div>
@@ -70,9 +70,9 @@
                                 <div class="col-sm-8">
                                     <textarea id="zone" col="Zone" onfocus="this.blur()" class="form-control" style="height:60px"></textarea>
                                 </div>
-                                <div class="col-sm-2">
-                                    <button type="button" class="btn btn-primary btn-sm" onclick="setZone()">设 置</button><br />
-                                    <button type="button" class="btn btn-default btn-sm" onclick="clearZone()">清 空</button>
+                                <div class="col-sm-2 roleCode_op">
+                                    <button type="button" class="btn btn-primary btn-sm roleCode_op" onclick="setZone()">设 置</button><br />
+                                    <button type="button" class="btn btn-default btn-sm roleCode_op" onclick="clearZone()">清 空</button>
                                 </div>
                             </div>
 
@@ -83,22 +83,22 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">姓名<font class="red"> *</font></label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-8 roleCode_op">
                                     <input id="reciveName" col="ReciveName" type="text" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">手机号<font class="red"> *</font></label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-8 roleCode_op">
                                     <input id="recivePhone" col="RecivePhone" onkeyup="this.value=CheckIsFormatNumber(this.value, 0)" type="text" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">收件地址<font class="red"> *</font></label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-8 roleCode_op">
                                     <input id="reciveAddress" col="ReciveAddress" type="text" class="form-control" />
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-2 roleCode_op">
                                     <button type="button" class="btn btn-primary btn-sm" onclick="setAddress()">选 择</button><br />
                                 </div>
                             </div>
@@ -108,24 +108,24 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">审核人<font class="red"> *</font></label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-8 roleCode_2">
                                     <div id="shenHeManId" col="ShenHeManId"></div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">凭据上传</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-8 roleCode_2">
                                     <input id="fileinput_PayMoneyImg" type="file">
                                     <input type="hidden" id="payMoneyImg" col="PayMoneyImg"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">审核操作<font class="red"> *</font></label>
-                                <div class="col-sm-8" id="shenHeStatus" col="ShenHeStatus"></div>
+                                <div class="col-sm-8 roleCode_2" id="shenHeStatus" col="ShenHeStatus"></div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">审核消息</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-8 roleCode_2">
                                     <textarea id="shenHeMsg" col="ShenHeMsg" class="form-control" style="height:60px"></textarea>
                                 </div>
                             </div>
@@ -135,26 +135,26 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">发货人<font class="red"> *</font></label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-8 roleCode_3">
                                     <div id="sentManId" col="SentManId"></div>
                                 </div>
                                
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">物流公司<font class="red"> *</font></label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-8 roleCode_3">
                                     <input id="expressCompany" col="ExpressCompany" type="text" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">快递单号<font class="red"> *</font></label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-8 roleCode_3"">
                                     <input id="expressNumber" col="ExpressNumber" type="text" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">发货备注</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-8 roleCode_3"">
                                     <textarea id="remark" col="Remark" class="form-control" style="height:60px"></textarea>
                                 </div>
                             </div>
@@ -169,6 +169,8 @@
 
 <script type="text/javascript">
     var id = ys.request("id");
+    var loginId = "@ViewBag.OperatorInfo.UserId";
+    var roldeCodes = "@ViewBag.OperatorInfo.RoleCodes";
     $(function () {
         $("#shenHeStatus").ysRadioBox({ data: ys.getJson(@Html.Raw(typeof(ShenHeStatusEnum).EnumToDictionaryString())) });
 
@@ -200,6 +202,8 @@
                 $("#payMoneyImg").val(data.response.Data);
             }
         });
+
+
     });
 
     //加载审核人
@@ -291,8 +295,11 @@
                 success: function (obj) {
                     if (obj.Tag == 1) {
                         $('#form').setWebControls(obj.Data);
-
                         InitImg(obj.Data.PayMoneyImg);
+
+                        SetOperatePannel(roldeCodes, "2", $("#shenHeManId").ysComboBox('getValue'));
+                        SetOperatePannel(roldeCodes, "3", $("#sentManId").ysComboBox('getValue'));
+                        SetOpElmentIsEnable(loginId,obj.Data.BaseCreatorId);
                     }
                 }
             });
@@ -301,7 +308,26 @@
             var defaultData = {};
             $('#form').setWebControls(defaultData);
             InitImg("");
+            SetOperatePannel(roldeCodes, "2","");
+            SetOperatePannel(roldeCodes, "3","");
         }
+    }
+
+    /**
+     * 设置权限模板
+     * param roleCode：权限代码
+     * param operatId  选择的用户id
+     */
+    function SetOperatePannel(roleCodes,roleCode,operatId) {
+        //设置 (loginId, loginRoleCode, operatId)
+
+        //设置审核面板
+        var loginRoleCode_2 = "";
+        if (!IsContainsRoleCode(roleCodes,roleCode)) {
+            loginRoleCode_2 = roleCode;
+        }
+        //SetOperatePower(loginId, loginRoleCode, operatId) {
+        SetOperatePower(loginId, loginRoleCode_2, operatId);
     }
 
     function saveForm(index) {

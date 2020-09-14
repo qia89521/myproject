@@ -117,6 +117,7 @@ namespace YiSha.Business.OrganizationManage
                 {
                     if (user.Password == EncryptUserPassword(password, user.Salt))
                     {
+
                         user.LoginCount++;
                         user.IsOnline = 1;
 
