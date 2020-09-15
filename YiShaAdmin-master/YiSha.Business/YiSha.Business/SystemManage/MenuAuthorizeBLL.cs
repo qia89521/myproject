@@ -34,8 +34,8 @@ namespace YiSha.Business.SystemManage
 
             var menuAuthorizeCacheList = await menuAuthorizeCache.GetList();
             var menuList = await menuCache.GetList();
-            var enableMenuIdList = menuList.Where(p => p.MenuStatus == (int)StatusEnum.Yes).Select(p => p.Id).ToList();
-
+            //去除禁用的界面
+            var enableMenuIdList = menuList.Where(p => p.MenuStatus != (int)StatusEnum.No).Select(p => p.Id).ToList();
             menuAuthorizeCacheList = menuAuthorizeCacheList.Where(p => enableMenuIdList.Contains(p.MenuId)).ToList();
 
             // 用户

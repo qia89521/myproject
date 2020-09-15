@@ -40,7 +40,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">销售人<font class="red"> *</font></label>
                                 <div class="col-sm-8">
-                                    <input id="saleTxt" col="SaleTxt" type="text" class="form-control" />
+                                    <input id="saleTxt" col="SaleTxt" type="text" onfocus="this.blur()" class="form-control" />
                                     <input type="hidden" id="saleId" col="SaleId" />
                                 </div>
                                 <div class="col-sm-2 roleCode_op">
@@ -65,6 +65,13 @@
                                     <input id="srcPrice" col="SrcPrice" onkeyup="this.value=CheckIsFormatNumber(this.value, 2)" type="text" class="form-control" />
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">实收款<font class="red"> *</font></label>
+                                <div class="col-sm-8 roleCode_op">
+                                    <input id="factMoney" col="FactMoney" onkeyup="this.value=CheckIsFormatNumber(this.value, 2)" type="text" class="form-control" />
+                                </div>
+                            </div>
+                            
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">售卖区域<font class="red"> *</font></label>
                                 <div class="col-sm-8">
@@ -186,14 +193,16 @@
                 saleNum: { required: true },
                 salePrice: { required: true },
                 srcPrice: { required: true },
+                factMoney: { required: true },
+                
                 zone: { required: true },
 
                 reciveName: { required: true },
                 recivePhone: { required: true },
                 reciveAddress: { required: true },
 
-                sentManId: { required: true },
-                sentManId: { required: true },
+                shenHeManId_select: { required: true },
+                sentManId_select: { required: true },
             }
         });
         //上传图片成功回掉函数
@@ -313,22 +322,7 @@
         }
     }
 
-    /**
-     * 设置权限模板
-     * param roleCode：权限代码
-     * param operatId  选择的用户id
-     */
-    function SetOperatePannel(roleCodes,roleCode,operatId) {
-        //设置 (loginId, loginRoleCode, operatId)
-
-        //设置审核面板
-        var loginRoleCode_2 = "";
-        if (!IsContainsRoleCode(roleCodes,roleCode)) {
-            loginRoleCode_2 = roleCode;
-        }
-        //SetOperatePower(loginId, loginRoleCode, operatId) {
-        SetOperatePower(loginId, loginRoleCode_2, operatId);
-    }
+   
 
     function saveForm(index) {
         if ($('#form').validate().form()) {

@@ -37,7 +37,8 @@ namespace YiSha.Enum
     {
         [Description("启用")]
         Yes = 1,
-
+        [Description("隐藏")]
+        Hide = 2,
         [Description("禁用")]
         No = 0
     }
@@ -174,10 +175,10 @@ namespace YiSha.Enum
         /*
         [Description("创建")]
         Create = 0,
-        */
+        
         [Description("审核中")]
         Doing = 1,
-
+        */
         [Description("通过")]
         Past = 2,
 

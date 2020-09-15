@@ -40,6 +40,17 @@ namespace YiSha.Entity.OrderManage
         /// <returns></returns>
         public decimal? SrcPrice { get; set; }
         /// <summary>
+        /// 实收款
+        /// </summary>
+        /// <returns></returns>
+        public decimal? FactMoney { get; set; }
+        /// <summary>
+        /// 差价
+        /// </summary>
+        /// <returns></returns>
+        [NotMapped]
+        public decimal? DiffPrice { get; set; }
+        /// <summary>
         /// 出货区域
         /// </summary>
         /// <returns></returns>

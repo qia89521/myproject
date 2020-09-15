@@ -90,8 +90,12 @@
                     formatter: function (value, row, index) {
                         if (row.MenuStatus == "@StatusEnum.Yes.ParseToInt()") {
                             return '<span class="badge badge-primary">' + "@StatusEnum.Yes.GetDescription()" + '</span>';
-                        } else {
-                            return '<span class="badge badge-warning">' + "@StatusEnum.No.GetDescription()" + '</span>';
+                        }
+                        else if (row.MenuStatus == "@StatusEnum.Hide.ParseToInt()") {
+                            return '<span class="badge badge-warning">' + "@StatusEnum.Hide.GetDescription()" + '</span>';
+                        }
+                        else {
+                            return '<span class="badge badge-danger">' + "@StatusEnum.No.GetDescription()" + '</span>';
                         }
                     }
                 }

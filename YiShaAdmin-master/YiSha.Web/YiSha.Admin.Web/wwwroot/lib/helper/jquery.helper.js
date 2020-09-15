@@ -510,6 +510,22 @@ function SetOpElmentIsEnable(login_id, create_id) {
         $(".roleCode_op textarea").attr("disabled", "disabled");
     }
 }
+
+/**
+* 设置权限模板
+* param roleCode：权限代码
+* param operatId  选择的用户id
+*/
+function SetOperatePannel(roleCodes, roleCode, operatId) {
+    //设置审核面板
+    var loginRoleCode_2 = "";
+    if (!IsContainsRoleCode(roleCodes, roleCode)) {
+        loginRoleCode_2 = roleCode;
+    }
+    //SetOperatePower(loginId, loginRoleCode, operatId) {
+    SetOperatePower(loginId, loginRoleCode_2, operatId);
+}
+
 /**
  * 是否包含改角色
  * @param {any} codes 角色串

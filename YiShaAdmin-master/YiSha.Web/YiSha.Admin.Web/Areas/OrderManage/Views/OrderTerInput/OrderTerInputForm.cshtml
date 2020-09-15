@@ -26,7 +26,7 @@
                                     <input id="materielTxt" col="MaterielTxt" onfocus="this.blur()" type="text" class="form-control" />
                                     <input type="hidden" id="materielId" col="MaterielId" />
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-2 roleCode_op">
                                     <button type="button" class="btn btn-primary btn-sm" onclick="choosePage('MaterielTxt','materielId','materielTxt')">选 择</button><br />
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
                                     <input id="buyTxt" col="BuyTxt" onfocus="this.blur()" type="text" class="form-control" />
                                     <input type="hidden" id="buyId" col="BuyId" />
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-2 roleCode_op">
                                     <button type="button" class="btn btn-primary btn-sm" onclick="choosePage('BuyTxt','buyId','buyTxt')">选 择</button><br />
                                 </div>
                             </div>
@@ -46,19 +46,19 @@
                                     <input id="supplierTxt" col="SupplierTxt" onfocus="this.blur()" type="text" class="form-control" />
                                     <input type="hidden" id="supplierId" col="SupplierId" />
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-2 roleCode_op">
                                     <button type="button" class="btn btn-primary btn-sm" onclick="choosePage('SupplierTxt','supplierId','supplierTxt')">选 择</button><br />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">采购量<font class="red"> *</font></label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-8 roleCode_op">
                                     <input id="buyNum" col="BuyNum" type="text" onkeyup="this.value=CheckIsFormatNumber(this.value, 0)" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">进货价<font class="red"> *</font></label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-8 roleCode_op">
                                     <input id="buyPrice" col="BuyPrice" type="text" onkeyup="this.value=CheckIsFormatNumber(this.value, 2)" class="form-control" />
                                 </div>
                             </div>
@@ -71,27 +71,24 @@
                             <div class="panel-body">
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label ">审核人<font class="red"> *</font></label>
-                                    <div class="col-sm-8">
-                                        <input id="shenHeManTxt" col="ShenHeManTxt" onfocus="this.blur()" type="text" class="form-control" />
-                                        <input type="hidden" id="shenHeManId" col="ShenHeManId" />
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <button type="button" class="btn btn-primary btn-sm" onclick="choosePage('MaterielTxt','materielId','materielTxt')">选 择</button><br />
+                                    <div class="col-sm-8 roleCode_2">
+                                        <div id="shenHeManId" col="ShenHeManId"></div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label ">凭据上传</label>
-                                    <div class="col-sm-8">
-                                        <input id="fileinput-demo-2" type="file">
+                                    <div class="col-sm-8 roleCode_2">
+                                        <input id="fileinput_PayMoneyImg" type="file">
+                                        <input type="hidden" id="payMoneyImg" col="PayMoneyImg" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label ">审核操作<font class="red"> *</font></label>
-                                    <div class="col-sm-8" id="shenHeStatus" col="ShenHeStatus"></div>
+                                    <div class="col-sm-8 roleCode_2" id="shenHeStatus" col="ShenHeStatus"></div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label ">审核消息<font class="red"> *</font></label>
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-8 roleCode_2">
                                         <textarea id="shenHeMsg" col="ShenHeMsg" class="form-control" style="height:60px"></textarea>
                                     </div>
                                 </div>
@@ -109,16 +106,13 @@
 
 <script type="text/javascript">
     var id = ys.request("id");
+    var loginId = "@ViewBag.OperatorInfo.UserId";
+    var roldeCodes = "@ViewBag.OperatorInfo.RoleCodes";
+
     $(function () {
          $("#shenHeStatus").ysRadioBox({ data: ys.getJson(@Html.Raw(typeof(ShenHeStatusEnum).EnumToDictionaryString())) });
 
-         $("#fileinput-demo-2").fileinput({
-            language: 'zh',
-            'uploadUrl': '@GlobalContext.SystemConfig.ApiSite' + '/File/UploadFile?fileModule=@UploadFileType.Money.ParseToInt()',
-            overwriteInitial: false,
-            initialPreviewAsData: true,
-            initialPreview: ['@Url.Content("~/image/portrait.png")']
-         });
+         LoadShenHeMan();
 
         getForm();
 
@@ -133,7 +127,25 @@
                 shenHeStatus: { required: true },
             }
         });
+
+        //上传图片成功回掉函数
+        $('#fileinput_PayMoneyImg').on('fileuploaded', function (event, data, previewId, index) {
+            if (data.filescount > 0) {
+                $("#payMoneyImg").val(data.response.Data);
+            }
+        });
     });
+
+
+    //加载审核人
+    function LoadShenHeMan() {
+        $("#shenHeManId").ysComboBox({
+            url: '@Url.Content("~/OrganizationManage/User/GetListByRoleCode")' +"?roleCode=2",
+            key: "Id",
+            value: "RealName",
+            class: "form-control",
+         });
+    }
 
     function getForm() {
         if (id > 0) {
@@ -143,6 +155,10 @@
                 success: function (obj) {
                     if (obj.Tag == 1) {
                         $('#form').setWebControls(obj.Data);
+
+                        InitImg(obj.Data.PayMoneyImg);
+                        SetOperatePannel(roldeCodes, "2", $("#shenHeManId").ysComboBox('getValue'));
+                        SetOpElmentIsEnable(loginId, obj.Data.BaseCreatorId);
                     }
                 }
             });
@@ -150,6 +166,9 @@
         else {
             var defaultData = {};
             $('#form').setWebControls(defaultData);
+
+            InitImg("");
+            SetOperatePannel(roldeCodes, "2", "");
         }
     }
 
@@ -209,6 +228,28 @@
                 }
             }
         });
+    }
+
+
+    /**
+     * 初始化数据
+     * param img
+     */
+    function InitImg(img) {
+        var img_es = [];
+        if (!IsNullEmpty(img)) {
+            img = '@GlobalContext.SystemConfig.ApiSite' + img;
+            img_es.push(img);
+        }
+        $("#fileinput_PayMoneyImg").fileinput({
+            language: 'zh',
+          //  allowedFileTypes: ['jpg', 'jpeg', 'png'],
+            'uploadUrl': '@GlobalContext.SystemConfig.ApiSite' + '/File/UploadFile?fileModule=@UploadFileType.Money.ParseToInt()',
+            overwriteInitial: false,
+            initialPreviewAsData: true,
+            initialPreview: img_es
+         });
+
     }
 </script>
 
