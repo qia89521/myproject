@@ -8,6 +8,9 @@ using YiSha.Util.Model;
 using YiSha.Entity.OrderManage;
 using YiSha.Model.Param.OrderManage;
 using YiSha.Service.OrderManage;
+using YiSha.Web.Code;
+using YiSha.Model.Result;
+using YiSha.Enum;
 
 namespace YiSha.Business.OrderManage
 {
@@ -19,6 +22,7 @@ namespace YiSha.Business.OrderManage
     public class OrderTerIssueBLL
     {
         private OrderTerIssueService orderTerIssueService = new OrderTerIssueService();
+        private OrderMaterielBLL orderMaterielBLL = new OrderMaterielBLL();
 
         #region 获取数据
         public async Task<TData<List<OrderTerIssueEntity>>> GetList(OrderTerIssueListParam param)
@@ -55,10 +59,130 @@ namespace YiSha.Business.OrderManage
         public async Task<TData<string>> SaveForm(OrderTerIssueEntity entity)
         {
             TData<string> obj = new TData<string>();
-            await orderTerIssueService.SaveForm(entity);
-            obj.Data = entity.Id.ParseToString();
-            obj.Tag = 1;
+            var result = await CheckWorkFLow(entity);
+            if (result.IsSucess)
+            {
+                await orderTerIssueService.SaveForm(entity);
+                await FinishWorkFLow(entity);
+
+                obj.Data = entity.Id.ParseToString();
+                obj.Tag = 1;
+            }
+            else
+            {
+                obj.Message = result.Msg;
+                obj.Tag = 0;
+            }
             return obj;
+        }
+
+        /// <summary>
+        /// 流程结束logic
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        private async Task<ResultMsg> FinishWorkFLow(OrderTerIssueEntity entity)
+        {
+
+            ResultMsg result = new ResultMsg();
+            //通过审批且流程结束
+            if (entity.Step == OutPutStepEnum.Finish.ParseToInt() &&
+                entity.ShenHeStatus == ShenHeStatusEnum.Past.ParseToInt())
+            {
+                //修改物料库存和明细了
+                long? id = entity.MaterielId;
+
+                TData<string> td_result = await orderMaterielBLL.ModifyMaterielTotal(long.Parse(id + ""), entity.SaleNum,
+                    "物料销售出库",
+                    entity.Id, CoomHelper.GetClassTableName<OrderTerIssueEntity>());
+                if (td_result.Tag == 1)
+                {
+                    result.IsSucess = true;
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 检测流程
+        /// </summary>
+        /// <param name="entity">数据实体</param>
+        /// <returns></returns>
+        private async Task<ResultMsg> CheckWorkFLow(OrderTerIssueEntity entity)
+        {
+            ResultMsg result = new ResultMsg();
+            //新增
+            if (entity.Id.IsNullOrZero())
+            {
+                entity.ShenHeStatus = 0;
+                entity.Step = OutPutStepEnum.Validate.ParseToInt();
+                result.IsSucess = true;
+            }
+            else
+            {
+                OperatorInfo user = await Operator.Instance.Current();
+
+                if (entity.Step == OutPutStepEnum.Create.ParseToInt())
+                {
+                    if (entity.BaseCreatorId == user.UserId)
+                    {
+                        if (entity.ShenHeStatus == ShenHeStatusEnum.Create.ParseToInt())
+                        {
+                            entity.Step = OutPutStepEnum.Validate.ParseToInt();
+                            //表示创建者修改
+                            result.IsSucess = true;
+                        }
+                        else
+                        {
+
+                            result.Msg = "已经审批不可修改";
+                        }
+                    }
+                }
+                //01 到了财务审批步骤
+                else if (entity.Step == OutPutStepEnum.Validate.ParseToInt())
+                {
+                    if (user.UserId == entity.ShenHeManId)
+                    {
+                        if (entity.ShenHeStatus == ShenHeStatusEnum.Refuse.ParseToInt())
+                        {
+                            entity.Step = OutPutStepEnum.Finish.ParseToInt();
+                        }
+                        else if (entity.ShenHeStatus == ShenHeStatusEnum.Past.ParseToInt())
+                        {
+                            entity.Step = OutPutStepEnum.Sent.ParseToInt();
+
+                        }
+                        result.IsSucess = true;
+                    }
+                    else
+                    {
+                        result.Msg = "请先财务审核才能下一步操作";
+                    }
+                }
+                //发货阶段
+                else if (entity.Step == OutPutStepEnum.Sent.ParseToInt())
+                {
+                    if (user.UserId == entity.SentManId)
+                    {
+                        entity.Step = OutPutStepEnum.Finish.ParseToInt();
+                        entity.IsSent = SentStatusEnum.Yes.ParseToInt();
+                        result.IsSucess = true;
+                    }
+                    else
+                    {
+                        result.Msg = "请售后进行操作";
+                    }
+                }
+                //发货阶段
+                else if (entity.Step == OutPutStepEnum.Finish.ParseToInt())
+                {
+
+                    result.Msg = "流程已经结束,禁止操作";
+                }
+
+            }
+            return result;
         }
 
         public async Task<TData> DeleteForm(string ids)

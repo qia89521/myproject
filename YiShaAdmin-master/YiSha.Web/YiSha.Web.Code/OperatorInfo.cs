@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace YiSha.Web.Code
 {
     public class OperatorInfo
     {
+        [JsonConverter(typeof(Util.StringJsonConverter))]
         public long? UserId { get; set; }
         public int? UserStatus { get; set; }
         public int? IsOnline { get; set; }
@@ -18,7 +20,7 @@ namespace YiSha.Web.Code
         public string ApiToken { get; set; }
         public int? IsSystem { get; set; }
         public string Portrait { get; set; }
-
+        [JsonConverter(typeof(Util.StringJsonConverter))]
         public long? DepartmentId { get; set; }
 
         [NotMapped]

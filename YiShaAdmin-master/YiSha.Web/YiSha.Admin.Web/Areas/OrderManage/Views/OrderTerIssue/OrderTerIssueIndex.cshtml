@@ -87,6 +87,7 @@
             title: id > 0 ? '编辑' : '添加',
             content: '@Url.Content("~/OrderManage/OrderTerIssue/OrderTerIssueForm")' + '?id=' + id,
             width: '968px',
+            //btn_es: ['存为草稿','提交', '关闭'],
             height: '580px',
             callback: function (index, layero) {
                 var iframeWin = window[layero.find('iframe')[0]['name']];

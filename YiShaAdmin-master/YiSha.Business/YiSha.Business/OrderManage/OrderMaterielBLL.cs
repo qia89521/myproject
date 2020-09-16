@@ -14,7 +14,7 @@ namespace YiSha.Business.OrderManage
     /// <summary>
     /// 创 建：admin
     /// 日 期：2020-09-08 18:11
-    /// 描 述：OrderManage业务类
+    /// 描 述：物料 业务类
     /// </summary>
     public class OrderMaterielBLL
     {
@@ -60,7 +60,8 @@ namespace YiSha.Business.OrderManage
         /// <param name="id">物料id</param>
         /// <param name="terNumber">设备编号</param>
         /// <returns></returns>
-        public async Task<TData<string>> ModifyMaterielTotal(long id, int num, string remark)
+        public async Task<TData<string>> ModifyMaterielTotal(long id, int num, string remark,
+            long? buniss_id,string busin_table)
         {
             OrderMaterielEntity ter = await orderMaterielService.GetEntity(id);
             //变化数量
@@ -79,7 +80,8 @@ namespace YiSha.Business.OrderManage
                     detail.ChangeNum = chanageNum;
                     detail.Remark = remark;
                     detail.MaterielId = ter.Id;
-
+                    detail.BusyniessId = buniss_id;
+                    detail.BusyniessTable = busin_table;
                     result = await orderMaterielDetailBLL.SaveForm(detail);
                 }
                 return result;

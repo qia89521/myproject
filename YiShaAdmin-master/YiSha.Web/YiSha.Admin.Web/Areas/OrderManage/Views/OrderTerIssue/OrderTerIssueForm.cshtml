@@ -18,7 +18,7 @@
                         <a data-toggle="tab" href="#tab-2">收件人信息</a>
                     </li>
                     <li class="">
-                        <a data-toggle="tab" href="#tab-3">审核信息</a>
+                        <a data-toggle="tab" href="#tab-3">审核</a>
                     </li>
                     <li class="">
                         <a data-toggle="tab" href="#tab-4">物流状态</a>
@@ -27,6 +27,7 @@
                 <div class="tab-content ">
                     <div id="tab-1" class="tab-pane active">
                         <div class="panel-body">
+                           
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">物料<font class="red"> *</font></label>
                                 <div class="col-sm-8">
@@ -71,7 +72,7 @@
                                     <input id="factMoney" col="FactMoney" onkeyup="this.value=CheckIsFormatNumber(this.value, 2)" type="text" class="form-control" />
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">售卖区域<font class="red"> *</font></label>
                                 <div class="col-sm-8">
@@ -88,6 +89,12 @@
 
                     <div id="tab-2" class="tab-pane">
                         <div class="panel-body">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label ">提货方式<font class="red"> *</font></label>
+                                <div class="col-sm-8 roleCode_op">
+                                    <div id="takeType" col="TakeType"></div>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">姓名<font class="red"> *</font></label>
                                 <div class="col-sm-8 roleCode_op">
@@ -114,22 +121,23 @@
                     <div id="tab-3" class="tab-pane">
                         <div class="panel-body">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label ">审核人<font class="red"> *</font></label>
-                                <div class="col-sm-8 roleCode_2">
+                                <label class="col-sm-2 control-label ">财务审核<font class="red"> *</font></label>
+                                <div class="col-sm-8 roleCode_op">
                                     <div id="shenHeManId" col="ShenHeManId"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label ">凭据上传</label>
-                                <div class="col-sm-8 roleCode_2">
-                                    <input id="fileinput_PayMoneyImg" type="file">
-                                    <input type="hidden" id="payMoneyImg" col="PayMoneyImg"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">审核操作<font class="red"> *</font></label>
                                 <div class="col-sm-8 roleCode_2" id="shenHeStatus" col="ShenHeStatus"></div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label ">凭据上传</label>
+                                <div class="col-sm-8 roleCode_2">
+                                    <input id="fileinput_PayMoneyImg" type="file">
+                                    <input type="hidden" id="payMoneyImg" col="PayMoneyImg" />
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">审核消息</label>
                                 <div class="col-sm-8 roleCode_2">
@@ -141,11 +149,11 @@
                     <div id="tab-4" class="tab-pane">
                         <div class="panel-body">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label ">发货人<font class="red"> *</font></label>
-                                <div class="col-sm-8 roleCode_3">
+                                <label class="col-sm-2 control-label ">售后发货<font class="red"> *</font></label>
+                                <div class="col-sm-8 roleCode_op">
                                     <div id="sentManId" col="SentManId"></div>
                                 </div>
-                               
+
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">物流公司<font class="red"> *</font></label>
@@ -155,13 +163,13 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">快递单号<font class="red"> *</font></label>
-                                <div class="col-sm-8 roleCode_3"">
+                                <div class="col-sm-8 roleCode_3" ">
                                     <input id="expressNumber" col="ExpressNumber" type="text" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">发货备注</label>
-                                <div class="col-sm-8 roleCode_3"">
+                                <div class="col-sm-8 roleCode_3" ">
                                     <textarea id="remark" col="Remark" class="form-control" style="height:60px"></textarea>
                                 </div>
                             </div>
@@ -178,9 +186,13 @@
     var id = ys.request("id");
     var loginId = "@ViewBag.OperatorInfo.UserId";
     var roldeCodes = "@ViewBag.OperatorInfo.RoleCodes";
+
+    var cur_fomr_data = null;
+
     $(function () {
         $("#shenHeStatus").ysRadioBox({ data: ys.getJson(@Html.Raw(typeof(ShenHeStatusEnum).EnumToDictionaryString())) });
-
+        $("#takeType").ysComboBox({ data: ys.getJson(@Html.Raw(typeof(TakeTypeEnum).EnumToDictionaryString())) });
+        
         LoadShenHeMan();
         LoadSentMan();
 
@@ -194,13 +206,14 @@
                 salePrice: { required: true },
                 srcPrice: { required: true },
                 factMoney: { required: true },
-                
+
                 zone: { required: true },
 
                 reciveName: { required: true },
                 recivePhone: { required: true },
                 reciveAddress: { required: true },
-
+                
+                takeType_select: { required: true },
                 shenHeManId_select: { required: true },
                 sentManId_select: { required: true },
             }
@@ -304,11 +317,13 @@
                 success: function (obj) {
                     if (obj.Tag == 1) {
                         $('#form').setWebControls(obj.Data);
-                        InitImg(obj.Data.PayMoneyImg);
 
+                        cur_fomr_data = obj.Data;
+
+                        InitImg(obj.Data.PayMoneyImg);
                         SetOperatePannel(roldeCodes, "2", $("#shenHeManId").ysComboBox('getValue'));
                         SetOperatePannel(roldeCodes, "3", $("#sentManId").ysComboBox('getValue'));
-                        SetOpElmentIsEnable(loginId,obj.Data.BaseCreatorId);
+                        SetOpElmentIsEnable(loginId, obj.Data.BaseCreatorId, $("#shenHeStatus").ysRadioBox('getValue'));
                     }
                 }
             });
@@ -322,15 +337,16 @@
         }
     }
 
-   
+
 
     function saveForm(index) {
         if ($('#form').validate().form()) {
             var postData = $('#form').getWebControls({ Id: id });
+                $.extend(cur_fomr_data, postData);
             ys.ajax({
                 url: '@Url.Content("~/OrderManage/OrderTerIssue/SaveFormJson")',
                 type: 'post',
-                data: postData,
+                data: cur_fomr_data,
                 success: function (obj) {
                     if (obj.Tag == 1) {
                         ys.msgSuccess(obj.Message);

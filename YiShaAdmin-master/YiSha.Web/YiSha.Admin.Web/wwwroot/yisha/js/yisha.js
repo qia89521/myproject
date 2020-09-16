@@ -13,6 +13,10 @@
                     option.height = ($(window).height() - 50) + 'px';
                 }
             }
+            var btn_es = ['确认', '关闭'];
+            if (option.btn_es) {
+                btn_es = option.btn_es;
+            }
             var _option = $.extend({
                 type: 2,
                 title: '',
@@ -20,7 +24,7 @@
                 content: '',
                 maxmin: true,
                 shade: 0.4,
-                btn: ['确认', '关闭'],
+                btn: btn_es,
                 callback: null,
                 shadeClose: false,
                 fix: false,

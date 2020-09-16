@@ -46,6 +46,7 @@ namespace YiSha.Entity
         /// <summary>
         /// 创建人ID
         /// </summary>
+        [JsonConverter(typeof(StringJsonConverter))]
         public long? BaseCreatorId { get; set; }
         /// <summary>
         /// 创建人姓名
@@ -97,6 +98,7 @@ namespace YiSha.Entity
         /// <summary>
         /// 修改人ID
         /// </summary>
+        [JsonConverter(typeof(StringJsonConverter))]
         public long? BaseModifierId { get; set; }
         /// <summary>
         /// 修改人用户姓名

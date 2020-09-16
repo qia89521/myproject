@@ -99,7 +99,7 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
         {
             long int_id = long.Parse(id);
             int int_num = int.Parse(num);
-            TData<string> obj = await orderMaterielBLL.ModifyMaterielTotal(int_id,int_num,remark);
+            TData<string> obj = await orderMaterielBLL.ModifyMaterielTotal(int_id,int_num,remark, int_id,CoomHelper.GetClassTableName<OrderMaterielEntity>());
 
             return Json(obj);
         }

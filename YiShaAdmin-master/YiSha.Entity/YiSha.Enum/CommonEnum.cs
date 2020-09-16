@@ -168,21 +168,109 @@ namespace YiSha.Enum
     }
 
     /// <summary>
-    /// 审核状态  0创建1审核中2审核通过3拒绝
+    /// 审核状态 0未审核,1:审核通过,2 拒绝
     /// </summary>
     public enum ShenHeStatusEnum
     {
-        /*
-        [Description("创建")]
+        /// <summary>
+        /// 未审核
+        /// </summary>
+        [Description("未审核")]
         Create = 0,
-        
-        [Description("审核中")]
-        Doing = 1,
-        */
-        [Description("通过")]
-        Past = 2,
-
+        /// <summary>
+        ///审核通过
+        /// </summary>
+        [Description("审核通过")]
+        Past = 1,
+        /// <summary>
+        /// 拒绝
+        /// </summary>
         [Description("拒绝")]
-        Refuse = 3,
+        Refuse = 2,
     }
+    /// <summary>
+    /// 出货流程步骤 0:草稿,1:财务审核,2:售后发货,3:流程结束
+    /// </summary>
+    public enum OutPutStepEnum
+    {
+        /// <summary>
+        /// 草稿
+        /// </summary>
+        [Description("草稿")]
+        Create = 0,
+        /// <summary>
+        /// 财务审核
+        /// </summary>
+        [Description("财务审核")]
+        Validate = 1,
+        /// <summary>
+        /// 售后发货
+        /// </summary>
+        [Description("售后发货")]
+        Sent = 2,
+        /// <summary>
+        /// 流程结束
+        /// </summary>
+        [Description("流程结束")]
+        Finish = 3,
+    }
+    /// <summary>
+    /// 进货流程步骤 0:草稿,1:财务审核,2:售后发货,3:流程结束
+    /// </summary>
+    public enum InPutStepEnum
+    {
+        /// <summary>
+        /// 草稿
+        /// </summary>
+        [Description("草稿")]
+        Create = 0,
+        /// <summary>
+        ///财务审核
+        /// </summary>
+        [Description("财务审核")]
+        Validate = 1,
+        /// <summary>
+        /// 流程结束
+        /// </summary>
+        [Description("流程结束")]
+        Finish = 2,
+
+    }
+
+    /// <summary>
+    /// 0未发货 1已发货 2自提
+    /// </summary>
+    public enum SentStatusEnum
+    {
+        /// <summary>
+        /// 0未发货
+        /// </summary>
+        [Description("未发货")]
+        No = 0,
+        /// <summary>
+        ///1已发货
+        /// </summary>
+        [Description("已发货")]
+        Yes = 1,
+       
+
+    }
+    /// <summary>
+    ///提货方式
+    /// </summary>
+    public enum TakeTypeEnum
+    {
+        /// <summary>
+        /// 0快递
+        /// </summary>
+        [Description("快递")]
+        No = 0,
+        /// <summary>
+        ///1自提
+        /// </summary>
+        [Description("自提")]
+        Yes = 1,
+
+    }
+
 }

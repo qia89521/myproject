@@ -28,7 +28,7 @@ namespace YiSha.Entity.OrderManage
         /// 设备量
         /// </summary>
         /// <returns></returns>
-        public string SaleNum { get; set; }
+        public int SaleNum { get; set; }
         /// <summary>
         /// 销售价
         /// </summary>
@@ -83,7 +83,7 @@ namespace YiSha.Entity.OrderManage
         [NotMapped]
         public string ShenHeManTxt { get; set; }
         /// <summary>
-        /// 审核状态 0创建1审核中2审核通过3拒绝
+        /// 审核状态 0未审核,1:审核通过,2拒绝
         /// </summary>
         /// <returns></returns>
         public int ShenHeStatus { get; set; }
@@ -102,6 +102,18 @@ namespace YiSha.Entity.OrderManage
         /// </summary>
         /// <returns></returns>
         public int IsSent { get; set; }
+
+        /// <summary>
+        ///步骤  0:草稿,1:财务审核,2:售后发货,3:流程结束
+        /// </summary>
+        /// <returns></returns>
+        public int Step { get; set; }
+        /// <summary>
+        ///提货方式 0:快递1:自提
+        /// </summary>
+        /// <returns></returns>
+        public int TakeType { get; set; }
+        
         /// <summary>
         /// 发货人Id
         /// </summary>

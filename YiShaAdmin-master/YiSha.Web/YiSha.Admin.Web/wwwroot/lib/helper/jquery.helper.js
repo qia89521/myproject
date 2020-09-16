@@ -468,7 +468,7 @@ function SetElmentIsEnable(roleCode, isAdd, isOpearte, isEnable) {
     else {
         if (!isAdd) {
             $(".roleCode_" + roleCode + " select").attr("disabled", "disabled");
-        }
+        } 
         if (!isOpearte) {
             $(".roleCode_" + roleCode + " input").attr("disabled", "disabled");
             $(".roleCode_" + roleCode + " textarea").attr("disabled", "disabled");
@@ -500,9 +500,10 @@ function SetOperatePower(loginId, loginRoleCode, operatId) {
  *设置创建人数据不能更改
  * @param {any} login_id 登录用户id
  * @param {any} create_id 创建数据人id
+ * @param {any} create_id 创建数据人id
  */
-function SetOpElmentIsEnable(login_id, create_id) {
-    if (login_id != create_id) {
+function SetOpElmentIsEnable(login_id, create_id, shenheStatus) {
+    if (login_id != create_id || parseInt(shenheStatus) > 0) {
         
         $(".roleCode_op button").attr("disabled", "disabled");
         $(".roleCode_op select").attr("disabled", "disabled");
