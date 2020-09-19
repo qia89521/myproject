@@ -92,9 +92,9 @@ namespace YiSha.Business.OrderManage
                 //修改物料库存和明细了
                 long? id = entity.MaterielId;
 
-                TData<string> td_result = await orderMaterielBLL.ModifyMaterielTotal(long.Parse(id + ""), entity.SaleNum,
+                TData<string> td_result = await orderMaterielBLL.ModifyMaterielTotal(long.Parse(id + ""),true, 0-entity.SaleNum,
                     "物料销售出库",
-                    entity.Id, CoomHelper.GetClassTableName<OrderTerIssueEntity>());
+                    entity.Id, "order_ter_issue");
                 if (td_result.Tag == 1)
                 {
                     result.IsSucess = true;

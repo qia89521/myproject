@@ -90,7 +90,7 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
         /// 修改库存
         /// </summary>
         /// <param name="id">物料id</param>
-        /// <param name="num">修改数量</param>
+        /// <param name="num">修改之后的数量</param>
         /// <param name="remark">备注</param>
         /// <returns></returns>
         [HttpPost]
@@ -99,7 +99,7 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
         {
             long int_id = long.Parse(id);
             int int_num = int.Parse(num);
-            TData<string> obj = await orderMaterielBLL.ModifyMaterielTotal(int_id,int_num,remark, int_id,CoomHelper.GetClassTableName<OrderMaterielEntity>());
+            TData<string> obj = await orderMaterielBLL.ModifyMaterielTotal(int_id,false,int_num,remark, int_id, "order_materiel");
 
             return Json(obj);
         }

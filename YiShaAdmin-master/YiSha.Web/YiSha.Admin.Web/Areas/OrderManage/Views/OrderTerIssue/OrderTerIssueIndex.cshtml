@@ -51,7 +51,56 @@
                 { field: 'SaleNum', title: '数量' },
                 { field: 'SalePrice', title: '售价' },
                 { field: 'SrcPrice', title: '拿货价' },
-                { field: 'Zone', title: '售卖区域' },
+                { field: 'TotalPrice', title: '销售总额' },
+                { field: 'FactMoney', title: '实收额' },
+                { field: 'DiffPrice', title: '利润' },
+                { field: 'ShenHeManTxt', title: '审核人' },
+                {
+                    field: 'ShenHeStatus', title: '审核状态',
+                    formatter: function (value, row, index) {
+                        //审核状态 0未审核,1:审核通过,2拒绝
+                        var html = "拒绝";
+                        if (value == 0) {
+                            html = "未审核";
+                        }
+                        else if (value == 1) {
+                            html = "审核通过";
+                        }
+                        return html;
+                    }
+                },
+                { field: 'SentManTxt', title: '售后' },
+                {
+                    field: 'Step', title: '流程步骤',
+                    formatter: function (value, row, index) {
+                        //步骤  0:草稿,1:财务审核,2:售后发货,3:流程结束
+                        var html = "流程结束";
+                        if (value == 0) {
+                            html = "草稿";
+                        }
+                        else if (value == 1) {
+                            html = "财务审核";
+                        }
+                        else if (value == 2) {
+                            html = "售后发货";
+                        }
+                        return html;
+                    }
+                },
+                {
+                    field: 'TakeType', title: '提货方式'
+                    ,
+                    formatter: function (value, row, index) {
+                        //提货方式 0:快递1:自提
+                        var html = "自提";
+                        if (value == 0) {
+                            html = "快递";
+                        }
+                        return html;
+                    }
+                },
+                { field: 'ExpressCompany', title: '快递公司' },
+                { field: 'ExpressNumber', title: '快递单号' },
                 {
                     field: 'BaseCreateTime', title: '创建时间', align: "left",
                     formatter: function (value, row, index) {

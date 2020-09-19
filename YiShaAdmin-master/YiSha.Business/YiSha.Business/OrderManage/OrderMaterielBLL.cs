@@ -58,20 +58,30 @@ namespace YiSha.Business.OrderManage
         /// 修改库存数量
         /// </summary>
         /// <param name="id">物料id</param>
-        /// <param name="terNumber">设备编号</param>
+        /// <param name="isChangeNum">true 表示num是变化数量，false:表示变化后的数量</param>
+        /// <param name="num">变更后的数量</param>
+        /// <param name="remark">备注</param>
+        /// <param name="buniss_id">业务id</param>
+        /// <param name="busin_table">业务表</param>
         /// <returns></returns>
-        public async Task<TData<string>> ModifyMaterielTotal(long id, int num, string remark,
+        public async Task<TData<string>> ModifyMaterielTotal(long id,bool isChangeNum, int num, string remark,
             long? buniss_id,string busin_table)
         {
             OrderMaterielEntity ter = await orderMaterielService.GetEntity(id);
             //变化数量
             int? src_num = ter.MaterielTotal;
+            //变化量
             int? chanageNum = num - src_num;
 
+            if (isChangeNum)
+            {
+                chanageNum = num;
+            }
             if (chanageNum != 0)
             {
-                ter.MaterielTotal = num;
+                ter.MaterielTotal = src_num+ chanageNum;
                 ter.BaseModifyTime = DateTime.Now;
+
                 var result = await SaveForm(ter);
                 if (result.Tag == 1)
                 {

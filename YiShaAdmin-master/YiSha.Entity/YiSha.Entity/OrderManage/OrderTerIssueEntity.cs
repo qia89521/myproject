@@ -35,6 +35,18 @@ namespace YiSha.Entity.OrderManage
         /// <returns></returns>
         public decimal? SalePrice { get; set; }
         /// <summary>
+        /// 总价
+        /// </summary>
+        /// <returns></returns>
+        [NotMapped]
+        public decimal? TotalPrice
+        {
+            get
+            {
+                return this.SaleNum * this.SalePrice;
+            }
+        }
+        /// <summary>
         /// 拿货价
         /// </summary>
         /// <returns></returns>
@@ -49,7 +61,13 @@ namespace YiSha.Entity.OrderManage
         /// </summary>
         /// <returns></returns>
         [NotMapped]
-        public decimal? DiffPrice { get; set; }
+        public decimal? DiffPrice
+        {
+            get
+            {
+                return this.FactMoney -this.TotalPrice;
+            }
+        }
         /// <summary>
         /// 出货区域
         /// </summary>

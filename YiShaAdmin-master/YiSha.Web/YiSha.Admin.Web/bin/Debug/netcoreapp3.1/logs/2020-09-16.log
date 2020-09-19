@@ -11,3 +11,117 @@
 2020-09-16 01:54:44.5454||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
 2020-09-16 14:46:13.0847||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
 2020-09-16 15:02:33.6077||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-16 17:31:40.9898||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-16 17:48:45.4124||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-16 17:52:50.9388||ERROR||Incorrect Content-Type: 
+   at Microsoft.AspNetCore.Http.Features.FormFeature.ReadForm()
+   at Microsoft.AspNetCore.Http.DefaultHttpRequest.get_Form()
+   at YiSha.Admin.Web.Controllers.AuthorizeFilterAttribute.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Filter\AuthorizeFilterAttribute.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrderManage/OrderTerInput/SaveFormJson|action: SaveFormJson
+2020-09-16 17:53:26.2286||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-16 18:02:19.9871||ERROR||Incorrect Content-Type: 
+   at Microsoft.AspNetCore.Http.Features.FormFeature.ReadForm()
+   at Microsoft.AspNetCore.Http.DefaultHttpRequest.get_Form()
+   at YiSha.Admin.Web.Controllers.AuthorizeFilterAttribute.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Filter\AuthorizeFilterAttribute.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrderManage/OrderTerInput/SaveFormJson|action: SaveFormJson
+2020-09-16 18:02:48.3512||ERROR||Incorrect Content-Type: 
+   at Microsoft.AspNetCore.Http.Features.FormFeature.ReadForm()
+   at Microsoft.AspNetCore.Http.DefaultHttpRequest.get_Form()
+   at YiSha.Admin.Web.Controllers.AuthorizeFilterAttribute.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Filter\AuthorizeFilterAttribute.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrderManage/OrderTerInput/SaveFormJson|action: SaveFormJson
+2020-09-16 18:03:09.3451||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-16 18:04:12.4882||ERROR||Incorrect Content-Type: 
+   at Microsoft.AspNetCore.Http.Features.FormFeature.ReadForm()
+   at Microsoft.AspNetCore.Http.DefaultHttpRequest.get_Form()
+   at YiSha.Admin.Web.Controllers.AuthorizeFilterAttribute.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Filter\AuthorizeFilterAttribute.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrderManage/OrderTerInput/SaveFormJson|action: SaveFormJson
+2020-09-16 18:04:24.8258||ERROR||Incorrect Content-Type: 
+   at Microsoft.AspNetCore.Http.Features.FormFeature.ReadForm()
+   at Microsoft.AspNetCore.Http.DefaultHttpRequest.get_Form()
+   at YiSha.Admin.Web.Controllers.AuthorizeFilterAttribute.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Filter\AuthorizeFilterAttribute.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrderManage/OrderTerInput/SaveFormJson|action: SaveFormJson
+2020-09-16 18:06:17.6467||ERROR||Incorrect Content-Type: 
+   at Microsoft.AspNetCore.Http.Features.FormFeature.ReadForm()
+   at Microsoft.AspNetCore.Http.DefaultHttpRequest.get_Form()
+   at YiSha.Admin.Web.Controllers.AuthorizeFilterAttribute.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Filter\AuthorizeFilterAttribute.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrderManage/OrderTerInput/SaveFormJson|action: SaveFormJson
+2020-09-16 18:08:38.2748||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-16 18:12:34.8069||ERROR||The property 'TotalPrice' on entity type 'OrderTerInputEntity' could not be found. Ensure that the property exists and has been included in the model.
+   at Microsoft.EntityFrameworkCore.Metadata.Internal.EntityTypeExtensions.GetProperty(IEntityType entityType, String name)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.PropertyEntry..ctor(InternalEntityEntry internalEntry, String name)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry.Property(String propertyName)
+   at YiSha.Data.EF.MySqlDatabase.Update[T](T entity) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 246
+   at YiSha.Data.Repository.Repository.Update[T](T entity) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.Repository\Repository.cs:line 107
+   at YiSha.Service.OrderManage.OrderTerInputService.SaveForm(OrderTerInputEntity entity) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Service\OrderManage\OrderTerInputService.cs:line 66
+   at YiSha.Business.OrderManage.OrderTerInputBLL.SaveForm(OrderTerInputEntity entity) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrderManage\OrderTerInputBLL.cs:line 65
+   at YiSha.Admin.Web.Areas.OrderManage.Controllers.OrderTerInputController.SaveFormJson(OrderTerInputEntity entity) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\OrderManage\Controllers\OrderTerInputController.cs:line 73
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrderManage/OrderTerInput/SaveFormJson|action: SaveFormJson
+2020-09-16 18:15:20.6536||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-16 18:15:27.6607||ERROR||Incorrect Content-Type: 
+   at Microsoft.AspNetCore.Http.Features.FormFeature.ReadForm()
+   at Microsoft.AspNetCore.Http.DefaultHttpRequest.get_Form()
+   at YiSha.Admin.Web.Controllers.AuthorizeFilterAttribute.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Filter\AuthorizeFilterAttribute.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrderManage/OrderTerInput/SaveFormJson|action: SaveFormJson
+2020-09-16 20:43:57.6042||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-16 20:57:17.3250||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-16 21:50:19.9803||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-16 22:04:53.5207||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-16 22:07:54.3207||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-16 22:13:30.3047||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-16 22:19:32.0557||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-16 22:20:26.2880||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-16 22:26:33.9275||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-16 22:31:20.5408||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-16 22:37:56.9355||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 

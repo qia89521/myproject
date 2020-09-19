@@ -9,6 +9,9 @@ using YiSha.Util.Model;
 
 namespace YiSha.Admin.WebApi.Controllers
 {
+    /// <summary>
+    /// 终端信息控制器
+    /// </summary>
     [Route("[controller]/[action]")]
     [ApiController]
     [AuthorizeFilter]

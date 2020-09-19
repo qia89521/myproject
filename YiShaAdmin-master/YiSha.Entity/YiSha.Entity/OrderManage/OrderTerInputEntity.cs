@@ -51,6 +51,7 @@ namespace YiSha.Entity.OrderManage
         /// 总价
         /// </summary>
         /// <returns></returns>
+        [NotMapped]
         public decimal? TotalPrice
         {
             get
@@ -74,7 +75,7 @@ namespace YiSha.Entity.OrderManage
         public string SupplierTxt { get; set; }
 
         /// <summary>
-        /// 审核状态 0创建 1审核中 2审核通过 3拒绝
+        /// 0未审核,1:审核通过,2拒绝
         /// </summary>
         /// <returns></returns>
         public int ShenHeStatus { get; set; }
@@ -101,5 +102,11 @@ namespace YiSha.Entity.OrderManage
         /// <returns></returns>
         [NotMapped]
         public string ShenHeManTxt { get; set; }
+
+        /// <summary>
+        ///步骤  0:草稿,1:财务审核,2:售后进货,3:流程结束
+        /// </summary>
+        /// <returns></returns>
+        public int Step { get; set; }
     }
 }

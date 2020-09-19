@@ -62,7 +62,6 @@ namespace YiSha.Service.OrderManage
             }
             else
             {
-                entity.MaterielTotal = 0;
                 await entity.Modify();
                 await this.BaseRepository().Update(entity);
             }

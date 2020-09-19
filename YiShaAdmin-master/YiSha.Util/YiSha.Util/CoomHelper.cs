@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection;
 using System.Text;
 
 namespace YiSha.Util
@@ -10,25 +11,6 @@ namespace YiSha.Util
     /// </summary>
     public static class CoomHelper
     {
-        /// <summary>
-        /// 获取类中属性表名称
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public static string GetClassTableName<T>()
-        {
-            try
-            {
-                Type targetType = typeof(T);
-                HashSet<string> columName = new HashSet<string>();
-                Type type = targetType.GetType();
-                TableAttribute temp = (TableAttribute)type.GetCustomAttributes(typeof(TableAttribute), false)[0];
-                return temp.Name;
-            }
-            catch
-            {
-                return "";
-            }
-        }
+       
     }
 }

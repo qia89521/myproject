@@ -55,7 +55,35 @@
                 { field: 'BuyNum', title: '采购量' },
                 { field: 'BuyPrice', title: '单价' },
                 { field: 'TotalPrice', title: '总价' },
-                
+                { field: 'ShenHeManTxt', title: '审核人' },
+                {
+                    field: 'Step', title: '流程步骤',
+                    formatter: function (value, row, index) {
+                        //步骤  0:草稿,1:财务审核,2:售后发货,3:流程结束
+                        var html = "流程结束";
+                        if (value == 0) {
+                            html = "草稿";
+                        }
+                        else if (value == 1) {
+                            html = "财务审核";
+                        }
+                        return html;
+                    }
+                },
+                {
+                    field: 'ShenHeStatus', title: '审核状态',
+                    formatter: function (value, row, index) {
+                        //审核状态 0未审核,1:审核通过,2拒绝
+                        var html = "拒绝";
+                        if (value == 0) {
+                            html = "未审核";
+                        }
+                        else if (value == 1) {
+                            html = "审核通过";
+                        }
+                        return html;
+                    }
+                },
                 { field: 'SupplierTxt', title: '供应商' },
                 { field: 'BaseCreatorTxt', title: '创建人' },
                 {

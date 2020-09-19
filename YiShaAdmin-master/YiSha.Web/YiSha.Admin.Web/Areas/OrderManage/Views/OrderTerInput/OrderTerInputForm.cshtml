@@ -108,6 +108,7 @@
     var id = ys.request("id");
     var loginId = "@ViewBag.OperatorInfo.UserId";
     var roldeCodes = "@ViewBag.OperatorInfo.RoleCodes";
+    var cur_fomr_data = null;
 
     $(function () {
          $("#shenHeStatus").ysRadioBox({ data: ys.getJson(@Html.Raw(typeof(ShenHeStatusEnum).EnumToDictionaryString())) });
@@ -155,6 +156,7 @@
                 success: function (obj) {
                     if (obj.Tag == 1) {
                         $('#form').setWebControls(obj.Data);
+                        cur_fomr_data = obj.Data;
 
                         InitImg(obj.Data.PayMoneyImg);
                         SetOperatePannel(roldeCodes, "2", $("#shenHeManId").ysComboBox('getValue'));
@@ -175,10 +177,16 @@
     function saveForm(index) {
         if ($('#form').validate().form()) {
             var postData = $('#form').getWebControls({ Id: id });
+            if (cur_fomr_data != null) {
+                $.extend(cur_fomr_data, postData);
+            }
+            else {
+                cur_fomr_data = postData;
+            }
             ys.ajax({
                 url: '@Url.Content("~/OrderManage/OrderTerInput/SaveFormJson")',
                 type: 'post',
-                data: postData,
+                data: cur_fomr_data,
                 success: function (obj) {
                     if (obj.Tag == 1) {
                         ys.msgSuccess(obj.Message);

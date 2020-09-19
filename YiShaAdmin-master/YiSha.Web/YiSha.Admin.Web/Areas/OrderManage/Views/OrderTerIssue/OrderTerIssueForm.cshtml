@@ -342,7 +342,13 @@
     function saveForm(index) {
         if ($('#form').validate().form()) {
             var postData = $('#form').getWebControls({ Id: id });
+            if (cur_fomr_data != null) {
                 $.extend(cur_fomr_data, postData);
+            }
+            else {
+                cur_fomr_data = postData;
+            }
+
             ys.ajax({
                 url: '@Url.Content("~/OrderManage/OrderTerIssue/SaveFormJson")',
                 type: 'post',
