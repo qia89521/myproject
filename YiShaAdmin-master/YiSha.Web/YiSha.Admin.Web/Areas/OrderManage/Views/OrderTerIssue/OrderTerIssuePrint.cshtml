@@ -1,0 +1,142 @@
+﻿@{
+    Layout = "~/Views/Shared/_FormWhite.cshtml";
+}
+<style>
+    .tb_print {
+        text-align: center;
+        border-collapse:collapse;
+        border:1px solid #808080;
+        width:970px;
+    }
+      
+        .tb_print td {
+            border: 1px solid #808080;
+            line-height: 35px;
+        }
+        .tb_print .remark {
+            text-align: left;
+            vertical-align:top;
+        }
+</style>
+<div class="wrapper animated fadeInRight">
+    <table id="tb_print" class="tb_print">
+        <tr>
+            <td colspan="8">
+                <h3>普沃森（广州）科技销售单</h3>
+            </td>
+        </tr>
+        <tr>
+            <td>日期：</td>
+            <td colspan="3">
+            </td>
+            <td>单号：</td>
+            <td colspan="3">
+            </td>
+        </tr>
+        <tr>
+            <td>客户名称：</td>
+            <td colspan="3">
+            </td>
+            <td>电话：</td>
+            <td colspan="3">
+            </td>
+        </tr>
+        <tr>
+            <td>区域：</td>
+            <td colspan="3">
+            </td>
+            <td>传真：</td>
+            <td colspan="3">
+            </td>
+        </tr>
+        <tr>
+            <td>联系人：</td>
+            <td colspan="3">
+            </td>
+            <td>邮箱：</td>
+            <td colspan="3">
+            </td>
+        </tr>
+        <tr>
+            <td>收货地址：</td>
+            <td colspan="7">
+            </td>
+        </tr>
+        <tr>
+            <td>序号</td>
+            <td>产品名称</td>
+            <td>产品型号</td>
+            <td>规格描述</td>
+            <td>单价(RMB)</td>
+            <td>数量</td>
+            <td>单位</td>
+            <td>合计(RMB)</td>
+        </tr>
+        <!---循环打印产品-->
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td rowspan="2" colspan="6" class="remark">
+                <span>备注:</span>
+                <span></span>
+            </td>
+            <td>合计(RMB)</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>已付(RMB)</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td rowspan="2" colspan="6" class="remark">
+                <div>开户行: </div>
+                <div>开户名称：;开户账号:</div>
+            </td>
+            <td>余款(RMB)</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>打款方式</td>
+            <td>对私账户</td>
+        </tr>
+
+        <tr>
+            <td colspan="2">销售员</td>
+            <td>审批</td>
+            <td>财务审批</td>
+            <td>生产人</td>
+            <td colspan="2">发货人</td>
+            <td>发货日期</td>
+        </tr>
+        <tr>
+            <td colspan="2"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td colspan="2"></td>
+            <td></td>
+        </tr>
+        
+    </table>
+</div>
+
+<script type="text/javascript">
+    var id = ys.request("id");
+  
+
+    function saveForm(index) {
+        $("#tb_print").jqprint();
+         parent.layer.close(index);
+    }
+</script>
+

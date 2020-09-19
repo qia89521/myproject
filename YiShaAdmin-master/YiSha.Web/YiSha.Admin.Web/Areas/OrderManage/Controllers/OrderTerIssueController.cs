@@ -38,6 +38,12 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
             ViewBag.OperatorInfo = await Operator.Instance.Current();
             return View();
         }
+
+        public async Task<IActionResult> OrderTerIssuePrint()
+        {
+            ViewBag.OperatorInfo = await Operator.Instance.Current();
+            return View();
+        }
         #endregion
 
         #region 获取数据
