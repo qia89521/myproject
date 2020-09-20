@@ -29,6 +29,20 @@ namespace YiSha.Business.SystemManage
             obj.Tag = 1;
             return obj;
         }
+        /// <summary>
+        /// 获取第一个配置
+        /// </summary>
+        /// <returns></returns>
+        public async Task<TData<SysIssueConfigEntity>> GetFristModel()
+        {
+            TData<SysIssueConfigEntity> obj = new TData<SysIssueConfigEntity>();
+            obj.Data = await sysIssueConfigService.GetFristModel();
+            if (obj.Data != null)
+            {
+                obj.Tag = 1;
+            }
+            return obj;
+        }
 
         public async Task<TData<List<SysIssueConfigEntity>>> GetPageList(SysIssueConfigListParam param, Pagination pagination)
         {

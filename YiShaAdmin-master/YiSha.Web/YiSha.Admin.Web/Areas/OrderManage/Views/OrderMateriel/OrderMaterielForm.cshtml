@@ -11,9 +11,27 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-3 control-label ">型号<font class="red"> *</font></label>
+            <div class="col-sm-8">
+                <input id="materielType" col="MaterielType" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">描述<font class="red"> *</font></label>
+            <div class="col-sm-8">
+                <input id="materielDesc" col="MaterielDesc" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">单位<font class="red"> *</font></label>
+            <div class="col-sm-8">
+                <input id="materielUnite" col="MaterielUnite" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-sm-3 control-label ">当前库存<font class="red"> *</font></label>
             <div class="col-sm-8">
-                <input id="materielTotal" col="MaterielTotal" onkeyup="this.value=CheckIsFormatNumber(this.value, 0)"  type="text" value="0" class="form-control" />
+                <input id="materielTotal" col="MaterielTotal" onkeyup="this.value=CheckIsFormatNumber(this.value, 0)" type="text" value="0" class="form-control" />
             </div>
         </div>
     </form>
@@ -27,7 +45,9 @@
         $('#form').validate({
             rules: {
                 materielName: { required: true },
-                materielTotal: { required: true },
+                materielType: { required: true },
+                materielDesc: { required: true },
+                materielUnite: { required: true },
             }
         });
     });

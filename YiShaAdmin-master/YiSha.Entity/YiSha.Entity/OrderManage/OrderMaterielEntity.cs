@@ -23,5 +23,20 @@ namespace YiSha.Entity.OrderManage
         /// </summary>
         /// <returns></returns>
         public int? MaterielTotal { get; set; }
+        /// <summary>
+        /// 型号
+        /// </summary>
+        /// <returns></returns>
+        public string MaterielType { get; set; }
+        /// <summary>
+        /// 描述
+        /// </summary>
+        /// <returns></returns>
+        public string MaterielDesc { get; set; }
+        /// <summary>
+        /// 单位
+        /// </summary>
+        /// <returns></returns>
+        public string MaterielUnite { get; set; }
     }
 }

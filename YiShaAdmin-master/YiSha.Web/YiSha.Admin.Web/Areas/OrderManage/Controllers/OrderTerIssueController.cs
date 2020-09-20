@@ -13,6 +13,7 @@ using YiSha.Entity.OrderManage;
 using YiSha.Business.OrderManage;
 using YiSha.Model.Param.OrderManage;
 using YiSha.Web.Code;
+using YiSha.Model.Result.OrderManage;
 
 namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
 {
@@ -25,6 +26,7 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
     public class OrderTerIssueController :  BaseController
     {
         private OrderTerIssueBLL orderTerIssueBLL = new OrderTerIssueBLL();
+        private OrderPrintIssueBLL orderPrintIssueBLL = new OrderPrintIssueBLL();
 
         #region 视图功能
         [AuthorizeFilter("order:orderterissue:view")]
@@ -39,10 +41,18 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 打印界面
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OrderTerIssuePrint()
         {
-            ViewBag.OperatorInfo = await Operator.Instance.Current();
-            return View();
+            string ids = Request.Query["ids"];
+
+            Response_OrderPrintIssue data = await orderPrintIssueBLL.GetPrintData(ids);
+            //ViewBag.Response_OrderPrintIssue = data;
+
+            return View(data);
         }
         #endregion
 

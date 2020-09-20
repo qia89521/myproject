@@ -8,6 +8,9 @@ using YiSha.Util.Model;
 using YiSha.Entity.OrderManage;
 using YiSha.Model.Param.OrderManage;
 using YiSha.Service.OrderManage;
+using YiSha.Business.SystemManage;
+using YiSha.Entity.SystemManage;
+using YiSha.Model.Result.OrderManage;
 
 namespace YiSha.Business.OrderManage
 {
@@ -19,6 +22,9 @@ namespace YiSha.Business.OrderManage
     public class OrderPrintIssueBLL
     {
         private OrderPrintIssueService orderPrintIssueService = new OrderPrintIssueService();
+        private OrderTerIssueBLL orderTerIssueBLL = new OrderTerIssueBLL();
+        private SysIssueConfigBLL sysIssueConfigBLL = new SysIssueConfigBLL();
+
 
         #region 获取数据
         public async Task<TData<List<OrderPrintIssueEntity>>> GetList(OrderPrintIssueListParam param)
@@ -59,6 +65,62 @@ namespace YiSha.Business.OrderManage
             int count = await orderPrintIssueService.GetPrintDayCount(printDay);
 
             return count;
+        }
+
+        /// <summary>
+        /// 获取打印配置数据
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        public async Task<Response_OrderPrintIssue> GetPrintData(string ids)
+        {
+            Response_OrderPrintIssue printModel = new Response_OrderPrintIssue();
+            //读取单号配置
+            TData<SysIssueConfigEntity> config =await sysIssueConfigBLL.GetFristModel();
+            if (config != null)
+            {
+                List<string> ids_list = ids.Split(',').ToList<string>();
+                if (ids_list.Count > 0)
+                {
+                    TData<List<OrderTerIssueEntity>> list_product = await orderTerIssueBLL.GetListByIds(ids_list);
+                    if (list_product != null && list_product.Data.Count() > 0)
+                    {
+                        string cur_day = DateTime.Now.ToString("yyyy-MM-dd");
+
+                        List<OrderTerIssueEntity> list = list_product.Data;
+
+                        #region 封装数据
+                        printModel.Title = CoomHelper.GetValue(config.Data.Title, "普沃森（广州）科技销售单");
+                        printModel.PrintDay = CoomHelper.GetValue(list[0].SentDay, cur_day);
+                        //WJR20201009-
+                        string numberPre = CoomHelper.GetValue(config.Data.NumberPre, "WJR"+ cur_day+"-");
+                        if (!numberPre.EndsWith("-"))
+                        {
+                            numberPre += "-";
+                        }
+                        int count =await GetPrintDayCount(printModel.PrintDay)+1;
+                        string count_str = count.ToString();
+                        if (count < 10)
+                        {
+                            count_str = "0" + count;
+                        }
+                        printModel.PrintOrderNumber = string.Format("{0}{1}", numberPre, count_str);
+                        printModel.CustName= CoomHelper.GetValue(list[0].ReciveName, "");
+                        printModel.LinkName = CoomHelper.GetValue(list[0].ReciveName, "");
+                        printModel.LinkPhone = CoomHelper.GetValue(list[0].RecivePhone, "");
+                        printModel.ReciveAddress = CoomHelper.GetValue(list[0].ReciveAddress, "");
+                        printModel.Remark = CoomHelper.GetValue(list[0].Remark, "");
+
+                        printModel.ListProduct = list_product.Data;
+                        printModel.SysIssueConfig = config.Data;
+
+                        #endregion
+                    }
+                    
+                }
+            }
+            return printModel;
+
         }
 
         #endregion

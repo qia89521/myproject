@@ -147,9 +147,12 @@
     }
 
     function printForm() {
-           ys.openDialog({
+        var selectedRow = $('#gridTable').bootstrapTable('getSelections');
+        if (ys.checkRowDelete(selectedRow)) {
+            var ids = ys.getIds(selectedRow);
+            ys.openDialog({
             title: '打印出货单',
-            content: '@Url.Content("~/OrderManage/OrderTerIssue/OrderTerIssuePrint")',
+            content: '@Url.Content("~/OrderManage/OrderTerIssue/OrderTerIssuePrint")' + '?ids=' + ids,
             width: '900px',
             btn_es: ['打印', '关闭'],
             height: '480px',
@@ -157,7 +160,8 @@
                 var iframeWin = window[layero.find('iframe')[0]['name']];
                 iframeWin.saveForm(index);
             }
-        });
+         });
+        }
     }
 
     function deleteForm() {

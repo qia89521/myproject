@@ -30,6 +30,12 @@ namespace YiSha.Service.SystemManage
             return list.ToList();
         }
 
+        public async Task<SysIssueConfigEntity> GetFristModel()
+        {
+            StringBuilder sql = CreateSignalSql();
+            return await this.BaseRepository().FindSignalModel<SysIssueConfigEntity>(sql.ToString());
+        }
+
         public async Task<List<SysIssueConfigEntity>> GetPageList(SysIssueConfigListParam param, Pagination pagination)
         {
             /*
@@ -133,6 +139,28 @@ namespace YiSha.Service.SystemManage
             sql.AppendFormat(" JOIN sys_bank_card c ON a.SysBankCardId  = c.Id ");
             sql.AppendFormat(" AND a.Id={0}",id);
             sql.AppendFormat(" ) T WHERE 1=1 ");
+
+            return sql;
+        }
+
+        /// <summary>
+        /// 创建查询sql
+        /// </summary>
+        /// <param name="id">主键Id</param>
+        /// <returns></returns>
+        private StringBuilder CreateSignalSql()
+        {
+            StringBuilder sql = new StringBuilder();
+
+            sql.AppendFormat(" SELECT * FROM (");
+            sql.AppendFormat(" SELECT a.*,b.RealName AS BaseCreatorTxt ");
+            sql.AppendFormat(" ,c.Name as SysBankMan");
+            sql.AppendFormat(" ,c.MchNo as SysBankCardNo");
+            sql.AppendFormat(" ,c.BankName as SysBankName");
+            sql.AppendFormat(" FROM  sys_issue_config a ");
+            sql.AppendFormat(" JOIN sysuser b ON a.BaseCreatorId = b.Id ");
+            sql.AppendFormat(" JOIN sys_bank_card c ON a.SysBankCardId  = c.Id ");
+            sql.AppendFormat(" ) T WHERE 1=1 limit 1");
 
             return sql;
         }

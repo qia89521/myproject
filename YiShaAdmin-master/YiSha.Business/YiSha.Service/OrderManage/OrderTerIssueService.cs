@@ -30,6 +30,7 @@ namespace YiSha.Service.OrderManage
             return list.ToList();
         }
 
+
         public async Task<List<OrderTerIssueEntity>> GetPageList(OrderTerIssueListParam param, Pagination pagination)
         {
             /*
@@ -57,6 +58,14 @@ namespace YiSha.Service.OrderManage
         }
 
 
+        public async Task<List<OrderTerIssueEntity>> GetListByIds(List<string> ids)
+        {
+            StringBuilder sql = CreateListSqlByIds(ids);
+            var list_data= await this.BaseRepository().FindList<OrderTerIssueEntity>(sql.ToString());
+
+            return list_data.ToList<OrderTerIssueEntity>();
+
+        }
         #endregion
 
         #region 提交数据
@@ -223,6 +232,21 @@ namespace YiSha.Service.OrderManage
 
             return sql;
 
+        }
+
+        /// <summary>
+        /// 根据id数组创建查询sql
+        /// </summary>
+        /// <param name="ids">查询的ids数组</param>
+        /// <returns></returns>
+        private StringBuilder CreateListSqlByIds(List<string> ids)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.AppendFormat(" SELECT * FROM order_ter_issue ");
+            sql.AppendFormat(" WHERE 1=1");
+            sql.AppendFormat(" and Id in ({0})", string.Join(",", ids));
+
+            return sql;
         }
         #endregion
     }

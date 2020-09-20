@@ -34,6 +34,20 @@ namespace YiSha.Business.OrderManage
             return obj;
         }
 
+        /// <summary>
+        /// 根据ids数组获取数据列表
+        /// </summary>
+        /// <param name="ids">ids数组</param>
+        /// <returns></returns>
+        public async Task<TData<List<OrderTerIssueEntity>>> GetListByIds(List<string> ids)
+        {
+            TData<List<OrderTerIssueEntity>> obj = new TData<List<OrderTerIssueEntity>>();
+            obj.Data = await orderTerIssueService.GetListByIds(ids);
+            obj.Total = obj.Data.Count;
+            obj.Tag = 1;
+            return obj;
+        }
+
         public async Task<TData<List<OrderTerIssueEntity>>> GetPageList(OrderTerIssueListParam param, Pagination pagination)
         {
             TData<List<OrderTerIssueEntity>> obj = new TData<List<OrderTerIssueEntity>>();

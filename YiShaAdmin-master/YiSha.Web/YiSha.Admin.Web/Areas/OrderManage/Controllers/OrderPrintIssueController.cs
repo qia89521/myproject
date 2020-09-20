@@ -12,6 +12,7 @@ using YiSha.Admin.Web.Controllers;
 using YiSha.Entity.OrderManage;
 using YiSha.Business.OrderManage;
 using YiSha.Model.Param.OrderManage;
+using YiSha.Model.Result.OrderManage;
 
 namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
 {
@@ -27,7 +28,7 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
 
         #region 视图功能
         [AuthorizeFilter("order:orderprintissue:view")]
-        public ActionResult OrderPrintIssueIndex()
+        public IActionResult OrderPrintIssueIndex()
         {
             return View();
         }
