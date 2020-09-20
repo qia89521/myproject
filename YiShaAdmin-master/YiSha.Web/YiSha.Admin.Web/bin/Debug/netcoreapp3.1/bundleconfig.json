@@ -456,9 +456,9 @@
     }
   },
   {
-    "outputFileName": "wwwroot/lib/helper/jquery.jqprint-0.3.js",
+    "outputFileName": "wwwroot/lib/helper/jquery.PrintArea.js",
     "inputFiles": [
-      "wwwroot/lib/helper/jquery.jqprint-0.3.js"
+      "wwwroot/lib/helper/jquery.PrintArea.js"
     ],
     "minify": {
       "enabled": true,

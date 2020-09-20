@@ -1016,3 +1016,7 @@ E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\OrderManage\Views\OrderSupplier\OrderSupplierIndexSelect.cshtml.g.cs
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\SystemManage\Views\Area\AreaAddressSelect.cshtml.g.cs
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\OrderManage\Views\OrderTerIssue\OrderTerIssuePrint.cshtml.g.cs
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\SystemManage\Views\SysIssueConfig\SysIssueConfigForm.cshtml.g.cs
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\SystemManage\Views\SysIssueConfig\SysIssueConfigIndex.cshtml.g.cs
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\OrderManage\Views\OrderPrintIssue\OrderPrintIssueForm.cshtml.g.cs
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\obj\Debug\netcoreapp3.1\Razor\Areas\OrderManage\Views\OrderPrintIssue\OrderPrintIssueIndex.cshtml.g.cs

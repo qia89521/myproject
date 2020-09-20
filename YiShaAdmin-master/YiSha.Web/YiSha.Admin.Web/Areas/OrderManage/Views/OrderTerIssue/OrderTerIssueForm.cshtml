@@ -27,7 +27,7 @@
                 <div class="tab-content ">
                     <div id="tab-1" class="tab-pane active">
                         <div class="panel-body">
-                           
+
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">物料<font class="red"> *</font></label>
                                 <div class="col-sm-8">
@@ -66,6 +66,13 @@
                                     <input id="srcPrice" col="SrcPrice" onkeyup="this.value=CheckIsFormatNumber(this.value, 2)" type="text" class="form-control" />
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">客户付款日期<font class="red"> *</font></label>
+                                <div class="col-sm-8 roleCode_op">
+                                    <input id="buyDay" col="BuyDay"  type="text" class="form-control" />
+                                </div>
+                            </div>
+                            
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">实收款<font class="red"> *</font></label>
                                 <div class="col-sm-8 roleCode_op">
@@ -153,7 +160,12 @@
                                 <div class="col-sm-8 roleCode_op">
                                     <div id="sentManId" col="SentManId"></div>
                                 </div>
-
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">发货日期<font class="red"> *</font></label>
+                                <div class="col-sm-8 roleCode_op">
+                                    <input id="sentDay" col="SentDay" type="text" class="form-control" />
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label ">物流公司<font class="red"> *</font></label>
@@ -190,6 +202,9 @@
     var cur_fomr_data = null;
 
     $(function () {
+        
+        laydate.render({ elem: '#sentDay', format: 'yyyy-MM-dd' });
+        laydate.render({ elem: '#buyDay', format: 'yyyy-MM-dd' });
         $("#shenHeStatus").ysRadioBox({ data: ys.getJson(@Html.Raw(typeof(ShenHeStatusEnum).EnumToDictionaryString())) });
         $("#takeType").ysComboBox({ data: ys.getJson(@Html.Raw(typeof(TakeTypeEnum).EnumToDictionaryString())) });
         

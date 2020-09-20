@@ -150,9 +150,9 @@
            ys.openDialog({
             title: '打印出货单',
             content: '@Url.Content("~/OrderManage/OrderTerIssue/OrderTerIssuePrint")',
-            width: '1268px',
+            width: '900px',
             btn_es: ['打印', '关闭'],
-            height: '580px',
+            height: '480px',
             callback: function (index, layero) {
                 var iframeWin = window[layero.find('iframe')[0]['name']];
                 iframeWin.saveForm(index);

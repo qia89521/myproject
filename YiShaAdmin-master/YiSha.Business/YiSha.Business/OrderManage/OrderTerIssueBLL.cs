@@ -184,7 +184,27 @@ namespace YiSha.Business.OrderManage
             }
             return result;
         }
-
+        /// <summary>
+        /// 更新出货物料的 出单单号
+        /// </summary>
+        /// <param name="ids">出货单id串 逗号分隔</param>
+        /// <param name="printOrderNumber">打印订单</param>
+        /// <returns></returns>
+        public async Task<TData> UpdatePrintOrderNumbe(string ids, string printOrderNumber)
+        {
+            TData obj = new TData();
+            List<string> list_ids = ids.Split(',').ToList<string>();
+            if (list_ids.Count > 0)
+            {
+                await orderTerIssueService.UpdatePrintOrderNumbe(list_ids, printOrderNumber);
+                obj.Tag = 1;
+            }
+            else
+            {
+                obj.Message = "请先选择出货数据,再更新";
+            }
+            return obj;
+        }
         public async Task<TData> DeleteForm(string ids)
         {
             TData obj = new TData();

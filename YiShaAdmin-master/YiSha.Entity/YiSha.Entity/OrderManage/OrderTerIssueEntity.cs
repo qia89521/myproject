@@ -170,5 +170,19 @@ namespace YiSha.Entity.OrderManage
         [NotMapped]
         public string MaterielTxt { get; set; }
 
+        /// <summary>
+        /// 用户付款下单日期 格式 yyyy-mm-dd
+        /// </summary>
+        public string BuyDay { get; set; }
+
+        /// <summary>
+        /// 打印单号
+        /// </summary>
+        public string PrintOrderNumber { get; set; }
+        /// <summary>
+        /// 发货日期 格式 yyyy-mm-dd
+        /// </summary>
+        public string SentDay { get; set; }
+        
     }
 }

@@ -20,7 +20,7 @@ namespace YiSha.Service.OrderManage
     /// 日 期：2020-08-25 17:33
     /// 描 述：设备出货单服务类
     /// </summary>
-    public class OrderTerIssueService :  RepositoryFactory
+    public class OrderTerIssueService : RepositoryFactory
     {
         #region 获取数据
         public async Task<List<OrderTerIssueEntity>> GetList(OrderTerIssueListParam param)
@@ -48,6 +48,15 @@ namespace YiSha.Service.OrderManage
             StringBuilder sql = CreateSignalSql(id);
             return await this.BaseRepository().FindSignalModel<OrderTerIssueEntity>(sql.ToString());
         }
+
+        public async Task<int> UpdatePrintOrderNumbe(List<string> ids, string printOrderNumber)
+        {
+            StringBuilder sql = CreateUpdatePrintOrderNumber(ids, printOrderNumber);
+            int reslt = await this.BaseRepository().ExecuteBySql(sql.ToString());
+            return reslt;
+        }
+
+
         #endregion
 
         #region 提交数据
@@ -164,7 +173,7 @@ namespace YiSha.Service.OrderManage
             sql.AppendFormat(" from (");
             sql.AppendFormat("  SELECT * FROM order_ter_issue ");
             sql.AppendFormat("  WHERE 1=1 ");
-            sql.AppendFormat(" AND Id={0}",id);
+            sql.AppendFormat(" AND Id={0}", id);
 
             sql.AppendFormat(" ) a ");
 
@@ -198,6 +207,23 @@ namespace YiSha.Service.OrderManage
             return sql;
         }
 
+        /// <summary>
+        /// 创建 批量更新打印单号sql
+        /// </summary>
+        /// <param name="ids">要更新的物料单列表</param>
+        /// <param name="printOrderNumber">打印单号</param>
+        /// <returns></returns>
+        private StringBuilder CreateUpdatePrintOrderNumber(List<string> ids, string printOrderNumber)
+        {
+            StringBuilder sql = new StringBuilder();
+
+            sql.AppendFormat(" update order_ter_issue set PrintOrderNumber='{0}'", printOrderNumber);
+            sql.AppendFormat(" where 1=1");
+            sql.AppendFormat(" and Id in ({0})", string.Join(",", ids));
+
+            return sql;
+
+        }
         #endregion
     }
 }
