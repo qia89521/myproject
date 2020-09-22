@@ -53,7 +53,15 @@ namespace YiSha.Service.OrderManage
             StringBuilder sql = CreateSignalSql(id);
             return await this.BaseRepository().FindSignalModel<OrderPrintIssueEntity>(sql.ToString());
         }
+        public async Task<OrderPrintIssueEntity> GetEntityByPrintOrderNumber(string printOrderNumber)
+        {
+            /*
+            return await this.BaseRepository().FindEntity<OrderPrintIssueEntity>(id);
+            */
 
+            StringBuilder sql = CreateSignalSqlByPrintOrderNumber(printOrderNumber);
+            return await this.BaseRepository().FindSignalModel<OrderPrintIssueEntity>(sql.ToString());
+        }
         /// <summary>
         /// 获取当日打印订单数量
         /// </summary>
@@ -195,6 +203,20 @@ namespace YiSha.Service.OrderManage
             sql.AppendFormat("  and PrintDay='{0}' ", printDay);
             return sql;
         }
+        /// <summary>
+        /// 创建查询sql根据打印单号
+        /// </summary>
+        /// <param name="printOrderNumber">打印单号</param>
+        /// <returns></returns>
+        private StringBuilder CreateSignalSqlByPrintOrderNumber(string printOrderNumber)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.AppendFormat("  SELECT * FROM order_print_issue ");
+            sql.AppendFormat("  where 1=1 ");
+            sql.AppendFormat("  and PrintOrderNumber='{0}' ", printOrderNumber);
+            return sql;
+        }
+
         #endregion
     }
 }

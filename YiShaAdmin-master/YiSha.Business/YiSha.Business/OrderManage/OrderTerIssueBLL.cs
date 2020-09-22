@@ -23,7 +23,7 @@ namespace YiSha.Business.OrderManage
     {
         private OrderTerIssueService orderTerIssueService = new OrderTerIssueService();
         private OrderMaterielBLL orderMaterielBLL = new OrderMaterielBLL();
-
+       // private OrderPrintIssueBLL orderPrintIssueBLL = new OrderPrintIssueBLL();
         #region 获取数据
         public async Task<TData<List<OrderTerIssueEntity>>> GetList(OrderTerIssueListParam param)
         {
@@ -204,7 +204,9 @@ namespace YiSha.Business.OrderManage
         /// <param name="ids">出货单id串 逗号分隔</param>
         /// <param name="printOrderNumber">打印订单</param>
         /// <returns></returns>
-        public async Task<TData> UpdatePrintOrderNumbe(string ids, string printOrderNumber)
+        public async Task<TData> UpdatePrintOrderNumbe(string ids, string printOrderNumber, 
+            string custName, string linkName, 
+            string printDay)
         {
             TData obj = new TData();
             List<string> list_ids = ids.Split(',').ToList<string>();
@@ -216,6 +218,16 @@ namespace YiSha.Business.OrderManage
             else
             {
                 obj.Message = "请先选择出货数据,再更新";
+            }
+            if (obj.Tag == 1)
+            {
+                OrderPrintIssueEntity entity = new OrderPrintIssueEntity();
+                entity.PrintOrderNumber = printOrderNumber;
+                entity.CustName = custName;
+                entity.LinkName = linkName;
+                entity.PrintDay = printDay;
+                entity.OrderTerIssueIds = ids;
+                //obj=await orderPrintIssueBLL.SaveForm(entity);
             }
             return obj;
         }

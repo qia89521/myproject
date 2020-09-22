@@ -1,0 +1,164 @@
+2020-09-21 09:57:04.8308||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 10:01:03.8459||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 10:03:30.4772||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 10:11:55.1877||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 10:12:28.0901||ERROR||Unknown column 'e.MaterielType' in 'field list'
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalarAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlCommand.cs:line 244
+   at YiSha.Data.DbHelper.ExecuteScalarAsync(CommandType cmdType, String strSql, DbParameter[] dbParameter) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data\DbHelper.cs:line 174
+   at YiSha.Data.EF.MySqlDatabase.FindList[T](String strSql, DbParameter[] dbParameter, String sort, Boolean isAsc, Int32 pageSize, Int32 pageIndex) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 338
+   at YiSha.Data.EF.MySqlDatabase.FindList[T](String strSql, String sort, Boolean isAsc, Int32 pageSize, Int32 pageIndex) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 329
+   at YiSha.Data.Repository.Repository.FindList[T](String strSql, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.Repository\Repository.cs:line 186
+   at YiSha.Service.OrderManage.OrderTerIssueService.GetPageList(OrderTerIssueListParam param, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Service\OrderManage\OrderTerIssueService.cs:line 42
+   at YiSha.Business.OrderManage.OrderTerIssueBLL.GetPageList(OrderTerIssueListParam param, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrderManage\OrderTerIssueBLL.cs:line 54
+   at YiSha.Admin.Web.Areas.OrderManage.Controllers.OrderTerIssueController.GetPageListJson(OrderTerIssueListParam param, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\OrderManage\Controllers\OrderTerIssueController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrderManage/OrderTerIssue/GetPageListJson|action: GetPageListJson
+2020-09-21 10:13:54.5864||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 10:14:01.6104||ERROR||Unknown column 'e.MaterielType' in 'field list'
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalarAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlCommand.cs:line 244
+   at YiSha.Data.DbHelper.ExecuteScalarAsync(CommandType cmdType, String strSql, DbParameter[] dbParameter) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data\DbHelper.cs:line 174
+   at YiSha.Data.EF.MySqlDatabase.FindList[T](String strSql, DbParameter[] dbParameter, String sort, Boolean isAsc, Int32 pageSize, Int32 pageIndex) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 338
+   at YiSha.Data.EF.MySqlDatabase.FindList[T](String strSql, String sort, Boolean isAsc, Int32 pageSize, Int32 pageIndex) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 329
+   at YiSha.Data.Repository.Repository.FindList[T](String strSql, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.Repository\Repository.cs:line 186
+   at YiSha.Service.OrderManage.OrderTerIssueService.GetPageList(OrderTerIssueListParam param, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Service\OrderManage\OrderTerIssueService.cs:line 42
+   at YiSha.Business.OrderManage.OrderTerIssueBLL.GetPageList(OrderTerIssueListParam param, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrderManage\OrderTerIssueBLL.cs:line 54
+   at YiSha.Admin.Web.Areas.OrderManage.Controllers.OrderTerIssueController.GetPageListJson(OrderTerIssueListParam param, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\OrderManage\Controllers\OrderTerIssueController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrderManage/OrderTerIssue/GetPageListJson|action: GetPageListJson
+2020-09-21 10:16:17.4123||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 10:16:30.8802||ERROR||Unknown column 'e.MaterielType' in 'field list'
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalarAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlCommand.cs:line 244
+   at YiSha.Data.DbHelper.ExecuteScalarAsync(CommandType cmdType, String strSql, DbParameter[] dbParameter) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data\DbHelper.cs:line 174
+   at YiSha.Data.EF.MySqlDatabase.FindList[T](String strSql, DbParameter[] dbParameter, String sort, Boolean isAsc, Int32 pageSize, Int32 pageIndex) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 338
+   at YiSha.Data.EF.MySqlDatabase.FindList[T](String strSql, String sort, Boolean isAsc, Int32 pageSize, Int32 pageIndex) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 329
+   at YiSha.Data.Repository.Repository.FindList[T](String strSql, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.Repository\Repository.cs:line 186
+   at YiSha.Service.OrderManage.OrderTerIssueService.GetPageList(OrderTerIssueListParam param, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Service\OrderManage\OrderTerIssueService.cs:line 42
+   at YiSha.Business.OrderManage.OrderTerIssueBLL.GetPageList(OrderTerIssueListParam param, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrderManage\OrderTerIssueBLL.cs:line 54
+   at YiSha.Admin.Web.Areas.OrderManage.Controllers.OrderTerIssueController.GetPageListJson(OrderTerIssueListParam param, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\OrderManage\Controllers\OrderTerIssueController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrderManage/OrderTerIssue/GetPageListJson|action: GetPageListJson
+2020-09-21 10:17:41.2987||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 10:17:59.7630||ERROR||Unknown column 'e.MaterielType' in 'field list'
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalarAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlCommand.cs:line 244
+   at YiSha.Data.DbHelper.ExecuteScalarAsync(CommandType cmdType, String strSql, DbParameter[] dbParameter) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data\DbHelper.cs:line 174
+   at YiSha.Data.EF.MySqlDatabase.FindList[T](String strSql, DbParameter[] dbParameter, String sort, Boolean isAsc, Int32 pageSize, Int32 pageIndex) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 338
+   at YiSha.Data.EF.MySqlDatabase.FindList[T](String strSql, String sort, Boolean isAsc, Int32 pageSize, Int32 pageIndex) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 329
+   at YiSha.Data.Repository.Repository.FindList[T](String strSql, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.Repository\Repository.cs:line 186
+   at YiSha.Service.OrderManage.OrderTerIssueService.GetPageList(OrderTerIssueListParam param, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Service\OrderManage\OrderTerIssueService.cs:line 42
+   at YiSha.Business.OrderManage.OrderTerIssueBLL.GetPageList(OrderTerIssueListParam param, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrderManage\OrderTerIssueBLL.cs:line 54
+   at YiSha.Admin.Web.Areas.OrderManage.Controllers.OrderTerIssueController.GetPageListJson(OrderTerIssueListParam param, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\OrderManage\Controllers\OrderTerIssueController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrderManage/OrderTerIssue/GetPageListJson|action: GetPageListJson
+2020-09-21 10:19:52.6826||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 10:21:25.9110||ERROR||Unknown column 'e.MaterielType' in 'field list'
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalarAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlCommand.cs:line 244
+   at YiSha.Data.DbHelper.ExecuteScalarAsync(CommandType cmdType, String strSql, DbParameter[] dbParameter) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data\DbHelper.cs:line 174
+   at YiSha.Data.EF.MySqlDatabase.FindList[T](String strSql, DbParameter[] dbParameter, String sort, Boolean isAsc, Int32 pageSize, Int32 pageIndex) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 338
+   at YiSha.Data.EF.MySqlDatabase.FindList[T](String strSql, String sort, Boolean isAsc, Int32 pageSize, Int32 pageIndex) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 329
+   at YiSha.Data.Repository.Repository.FindList[T](String strSql, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.Repository\Repository.cs:line 186
+   at YiSha.Service.OrderManage.OrderTerIssueService.GetPageList(OrderTerIssueListParam param, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Service\OrderManage\OrderTerIssueService.cs:line 42
+   at YiSha.Business.OrderManage.OrderTerIssueBLL.GetPageList(OrderTerIssueListParam param, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrderManage\OrderTerIssueBLL.cs:line 54
+   at YiSha.Admin.Web.Areas.OrderManage.Controllers.OrderTerIssueController.GetPageListJson(OrderTerIssueListParam param, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\OrderManage\Controllers\OrderTerIssueController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrderManage/OrderTerIssue/GetPageListJson|action: GetPageListJson
+2020-09-21 10:22:29.8585||ERROR||Unknown column 'e.MaterielType' in 'field list'
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalarAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlCommand.cs:line 244
+   at YiSha.Data.DbHelper.ExecuteScalarAsync(CommandType cmdType, String strSql, DbParameter[] dbParameter) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data\DbHelper.cs:line 174
+   at YiSha.Data.EF.MySqlDatabase.FindList[T](String strSql, DbParameter[] dbParameter, String sort, Boolean isAsc, Int32 pageSize, Int32 pageIndex) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 338
+   at YiSha.Data.EF.MySqlDatabase.FindList[T](String strSql, String sort, Boolean isAsc, Int32 pageSize, Int32 pageIndex) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 329
+   at YiSha.Data.Repository.Repository.FindList[T](String strSql, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.Repository\Repository.cs:line 186
+   at YiSha.Service.OrderManage.OrderTerIssueService.GetPageList(OrderTerIssueListParam param, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Service\OrderManage\OrderTerIssueService.cs:line 42
+   at YiSha.Business.OrderManage.OrderTerIssueBLL.GetPageList(OrderTerIssueListParam param, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrderManage\OrderTerIssueBLL.cs:line 54
+   at YiSha.Admin.Web.Areas.OrderManage.Controllers.OrderTerIssueController.GetPageListJson(OrderTerIssueListParam param, Pagination pagination) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\OrderManage\Controllers\OrderTerIssueController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrderManage/OrderTerIssue/GetPageListJson|action: GetPageListJson
+2020-09-21 10:23:28.1567||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 22:52:03.4499||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 22:54:22.4269||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 23:14:05.1741||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 23:20:03.1275||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 23:23:25.8664||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 23:24:59.0389||ERROR||Object reference not set to an instance of an object.
+   at YiSha.Business.OrderManage.OrderPrintIssueBLL.GetPrintData(String ids) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrderManage\OrderPrintIssueBLL.cs:line 82
+   at YiSha.Admin.Web.Areas.OrderManage.Controllers.OrderTerIssueController.OrderTerIssuePrint() in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\OrderManage\Controllers\OrderTerIssueController.cs:line 53
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrderManage/OrderTerIssue/OrderTerIssuePrint|action: OrderTerIssuePrint
+2020-09-21 23:27:10.9250||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 23:27:42.4785||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 23:49:31.7878||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 23:50:56.6103||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 23:55:15.6241||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 23:56:58.7777||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-09-21 23:59:20.1176||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 

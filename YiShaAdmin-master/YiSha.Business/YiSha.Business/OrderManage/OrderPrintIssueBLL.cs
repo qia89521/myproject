@@ -45,6 +45,16 @@ namespace YiSha.Business.OrderManage
             return obj;
         }
 
+        public async Task<TData<OrderPrintIssueEntity>> GetEntityByPrintOrderNumber(string printOrderNumber)
+        {
+            TData<OrderPrintIssueEntity> obj = new TData<OrderPrintIssueEntity>();
+            obj.Data = await orderPrintIssueService.GetEntityByPrintOrderNumber(printOrderNumber);
+            if (obj.Data != null)
+            {
+                obj.Tag = 1;
+            }
+            return obj;
+        }
         public async Task<TData<OrderPrintIssueEntity>> GetEntity(long id)
         {
             TData<OrderPrintIssueEntity> obj = new TData<OrderPrintIssueEntity>();
@@ -129,9 +139,19 @@ namespace YiSha.Business.OrderManage
         public async Task<TData<string>> SaveForm(OrderPrintIssueEntity entity)
         {
             TData<string> obj = new TData<string>();
-            await orderPrintIssueService.SaveForm(entity);
-            obj.Data = entity.Id.ParseToString();
-            obj.Tag = 1;
+
+            TData<OrderPrintIssueEntity> old_entity =await GetEntityByPrintOrderNumber(entity.PrintOrderNumber);
+            if (old_entity.Tag == 1 && old_entity.Data != null)
+            {
+                obj.Data = old_entity.Data.Id.ParseToString();
+                obj.Tag = 1;
+            }
+            else
+            {
+                await orderPrintIssueService.SaveForm(entity);
+                obj.Data = entity.Id.ParseToString();
+                obj.Tag = 1;
+            }
             return obj;
         }
 

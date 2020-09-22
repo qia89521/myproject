@@ -97,6 +97,20 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
             TData obj = await orderTerIssueBLL.DeleteForm(ids);
             return Json(obj);
         }
+
+        /// <summary>
+        /// 更新出货物料的 出单单号
+        /// </summary>
+        /// <param name="ids">出货单id串 逗号分隔</param>
+        /// <param name="printOrderNumber">打印订单</param>
+        [HttpPost]
+        [AuthorizeFilter("order:orderterissue:updatePrintOrderNumbe")]
+        public async Task<ActionResult> UpdatePrintOrderNumbe(string ids, string printOrderNumber,
+            string custName,string linkName,string printDay)
+        {
+            TData obj = await orderTerIssueBLL.UpdatePrintOrderNumbe(ids,printOrderNumber,custName,linkName,printDay);
+            return Json(obj);
+        }
         #endregion
     }
 }

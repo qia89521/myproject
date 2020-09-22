@@ -169,6 +169,24 @@ namespace YiSha.Entity.OrderManage
         /// </summary>
         [NotMapped]
         public string MaterielTxt { get; set; }
+        /// <summary>
+        /// 型号
+        /// </summary>
+        /// <returns></returns>
+        [NotMapped]
+        public string MaterielType { get; set; }
+        /// <summary>
+        /// 描述
+        /// </summary>
+        /// <returns></returns>
+        [NotMapped]
+        public string MaterielDesc { get; set; }
+        /// <summary>
+        /// 单位
+        /// </summary>
+        /// <returns></returns>
+        [NotMapped]
+        public string MaterielUnite { get; set; }
 
         /// <summary>
         /// 用户付款下单日期 格式 yyyy-mm-dd
@@ -183,6 +201,9 @@ namespace YiSha.Entity.OrderManage
         /// 发货日期 格式 yyyy-mm-dd
         /// </summary>
         public string SentDay { get; set; }
-        
+
+       
+
+
     }
 }

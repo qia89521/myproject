@@ -22,7 +22,12 @@
                 .tb_print .remark {
                     text-align: left;
                     vertical-align: top;
+                    text-indent: 10px;
                 }
+            .tb_left {
+                text-align:left;
+                text-indent:10px;
+            }
         </style>
         <table class="tb_print">
             <tr>
@@ -34,44 +39,44 @@
             </tr>
             <tr>
                 <td>日期：</td>
-                <td colspan="3">
+                <td colspan="3" class="tb_left">
                     @(Model.PrintDay)
                 </td>
                 <td>单号：</td>
-                <td colspan="3">
+                <td colspan="3" class="tb_left">
                     @(Model.PrintOrderNumber)
                 </td>
             </tr>
             <tr>
                 <td>客户名称：</td>
-                <td colspan="3">
+                <td colspan="3" class="tb_left">
                     @(Model.CustName)
                 </td>
                 <td>电话：</td>
-                <td colspan="3">
+                <td colspan="3" class="tb_left">
                     @(Model.LinkPhone)
                 </td>
             </tr>
             <tr>
                 <td>区域：</td>
-                <td colspan="3">
+                <td colspan="3" class="tb_left">
                 </td>
                 <td>传真：</td>
-                <td colspan="3">
+                <td colspan="3" class="tb_left">
                 </td>
             </tr>
             <tr>
                 <td>联系人：</td>
-                <td colspan="3">
+                <td colspan="3" class="tb_left">
                     @(Model.LinkName)
                 </td>
                 <td>邮箱：</td>
-                <td colspan="3">
+                <td colspan="3" class="tb_left">
                 </td>
             </tr>
             <tr>
                 <td>收货地址：</td>
-                <td colspan="7">
+                <td colspan="7" class="tb_left">
                     @(Model.ReciveAddress)
                 </td>
             </tr>
@@ -93,38 +98,40 @@
                 <tr>
                     <td>@(i)</td>
                     <td>@(obj.MaterielTxt)</td>
-                    <td></td>
-                    <td></td>
-                    <td>@(obj.SalePrice).ToString("0.00")</td>
+                    <td>@(obj.MaterielType)</td>
+                    <td>@(obj.MaterielDesc)</td>
+                    <td>@string.Format("{0:0.00}", obj.SalePrice)</td>
                     <td>@(obj.SaleNum)</td>
-                    <td></td>
-                    <td>@(obj.TotalPrice).ToString("0.00")</td>
+                    <td>@(obj.MaterielUnite)</td>
+                    <td>@string.Format("{0:0.00}", obj.TotalPrice)</td>
                 </tr>
             }
 
             <tr>
                 <td rowspan="2" colspan="6" class="remark">
                     <span>备注:</span>
-                    <span>@(Model.Remark).ToString("0.00")</span>
+                    <span>@(Model.Remark)</span>
                 </td>
                 <td>合计(RMB)</td>
                 <td>
-                    @(Model.TotalMoney).ToString("0.00")
+                    @string.Format("{0:0.00}", Model.TotalMoney)
                 </td>
             </tr>
             <tr>
                 <td>已付(RMB)</td>
                 <td>
-                    @(Model.FactMoney).ToString("0.00")
+                    @string.Format("{0:0.00}", Model.FactMoney)
                 </td>
             </tr>
             <tr>
                 <td rowspan="2" colspan="6" class="remark">
-                    <div>开户行:  @(Model.SysIssueConfig.SysBankName)</div>
-                    <div>开户名称：@(Model.SysIssueConfig.SysBankMan) 开户账号: @(Model.SysIssueConfig.SysBankCardNo)</div>
+                    <div>开户银行:  @(Model.SysIssueConfig.SysBankName)</div>
+                    <div>开户名称： @(Model.SysIssueConfig.SysBankMan) 开户账号: @(Model.SysIssueConfig.SysBankCardNo)</div>
                 </td>
                 <td>余款(RMB)</td>
-                <td>@(Model.YuMoney)</td>
+                <td>
+                    @string.Format("{0:0.00}", Model.YuMoney)
+                </td>
             </tr>
             <tr>
                 <td>打款方式</td>
@@ -140,12 +147,12 @@
                 <td>发货日期</td>
             </tr>
             <tr>
-                <td colspan="2">&nbsp;</td>
+                <td colspan="2"></td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td colspan="2">&nbsp;</td>
-                <td>&nbsp;</td>
+                <td> @(Model.PrintDay)</td>
             </tr>
 
         </table>
@@ -157,10 +164,36 @@
     function saveForm(index) {
         $("#tb_print").printArea();
         window.setTimeout(function () {
-            parent.layer.close(index);
+
+            var printOrderNumber = '@Model.PrintOrderNumber';
+            var ids = ys.request("ids");
+            updatePrintOrderNumbe(index, ids, printOrderNumber);
 
         }, 1000 * 6);
 
+    }
+    function updatePrintOrderNumbe(index,ids, printOrderNumber) {
+         //string ids, string printOrderNumber
+        ys.ajax({
+            url: '@Url.Content("~/OrderManage/OrderTerIssue/UpdatePrintOrderNumbe")',
+            type: 'post',
+            data: {
+                ids: ids,
+                printOrderNumber: printOrderNumber,
+                custName: '@Model.CustName',
+                linkName: '@Model.LinkName',
+                printDay:'@Model.PrintDay'
+            },
+            success: function (obj) {
+                if (obj.Tag == 1) {
+                    ys.msgSuccess(obj.Message);
+                    parent.layer.close(index);
+                }
+                else {
+                    ys.msgError(obj.Message);
+                }
+            }
+        });
     }
 </script>
 

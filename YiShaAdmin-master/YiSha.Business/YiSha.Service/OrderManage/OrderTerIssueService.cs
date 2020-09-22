@@ -114,6 +114,10 @@ namespace YiSha.Service.OrderManage
             sql.AppendFormat(" ,c.RealName AS ShenHeManTxt");
             sql.AppendFormat(" ,d.RealName AS SentManTxt");
             sql.AppendFormat(" ,e.MaterielName as MaterielTxt");
+
+            sql.AppendFormat(" ,e.MaterielType as MaterielType");
+            sql.AppendFormat(" ,e.MaterielDesc as MaterielDesc");
+            sql.AppendFormat(" ,e.MaterielUnite as MaterielUnite");
             sql.AppendFormat(" from (");
             sql.AppendFormat("  SELECT * FROM order_ter_issue ");
             sql.AppendFormat("  where 1=1 ");
@@ -157,7 +161,7 @@ namespace YiSha.Service.OrderManage
 
             sql.AppendFormat(" JOIN ");
             sql.AppendFormat(" ( ");
-            sql.AppendFormat("   SELECT Id,MaterielName from order_materiel ");
+            sql.AppendFormat("   SELECT Id,MaterielName,MaterielType,MaterielDesc,MaterielUnite from order_materiel ");
             sql.AppendFormat("   WHERE 1=1 ");
             sql.AppendFormat(" ) e");
             sql.AppendFormat(" on a.MaterielId  = e.Id ");
@@ -178,7 +182,11 @@ namespace YiSha.Service.OrderManage
             sql.AppendFormat(" ,b.RealName AS BaseCreatorTxt");
             sql.AppendFormat(" ,c.RealName AS ShenHeManTxt");
             sql.AppendFormat(" ,d.RealName AS SentManTxt");
+
             sql.AppendFormat(" ,e.MaterielName as MaterielTxt");
+            sql.AppendFormat(" ,e.MaterielType as MaterielType");
+            sql.AppendFormat(" ,e.MaterielDesc as MaterielDesc");
+            sql.AppendFormat(" ,e.MaterielUnite as MaterielUnite");
             sql.AppendFormat(" from (");
             sql.AppendFormat("  SELECT * FROM order_ter_issue ");
             sql.AppendFormat("  WHERE 1=1 ");
@@ -209,7 +217,7 @@ namespace YiSha.Service.OrderManage
 
             sql.AppendFormat(" JOIN ");
             sql.AppendFormat(" ( ");
-            sql.AppendFormat("   SELECT Id,MaterielName from order_materiel ");
+            sql.AppendFormat("   SELECT Id,MaterielName,MaterielType,MaterielDesc,MaterielUnite from order_materiel ");
             sql.AppendFormat("   WHERE 1=1 ");
             sql.AppendFormat(" ) e");
             sql.AppendFormat(" on a.MaterielId  = e.Id ");
@@ -241,11 +249,59 @@ namespace YiSha.Service.OrderManage
         /// <returns></returns>
         private StringBuilder CreateListSqlByIds(List<string> ids)
         {
+            /*
             StringBuilder sql = new StringBuilder();
             sql.AppendFormat(" SELECT * FROM order_ter_issue ");
             sql.AppendFormat(" WHERE 1=1");
             sql.AppendFormat(" and Id in ({0})", string.Join(",", ids));
 
+            return sql;
+            */
+
+            StringBuilder sql = new StringBuilder();
+            sql.AppendFormat(" SELECT a.*");
+            sql.AppendFormat(" ,b.RealName AS BaseCreatorTxt");
+            sql.AppendFormat(" ,c.RealName AS ShenHeManTxt");
+            sql.AppendFormat(" ,d.RealName AS SentManTxt");
+            sql.AppendFormat(" ,e.MaterielName as MaterielTxt");
+
+            sql.AppendFormat(" ,e.MaterielType as MaterielType");
+            sql.AppendFormat(" ,e.MaterielDesc as MaterielDesc");
+            sql.AppendFormat(" ,e.MaterielUnite as MaterielUnite");
+            sql.AppendFormat(" from (");
+            sql.AppendFormat("  SELECT * FROM order_ter_issue ");
+            sql.AppendFormat("  where 1=1 ");
+            sql.AppendFormat(" and Id in ({0})", string.Join(",", ids));
+
+            sql.AppendFormat(" ) a ");
+
+            sql.AppendFormat(" JOIN ");
+            sql.AppendFormat(" ( ");
+            sql.AppendFormat("   SELECT Id,RealName from sysuser ");
+            sql.AppendFormat("   WHERE 1=1 ");
+            sql.AppendFormat(" ) b");
+            sql.AppendFormat(" on a.SaleId  = b.Id ");
+
+            sql.AppendFormat(" LEFT JOIN ");
+            sql.AppendFormat(" ( ");
+            sql.AppendFormat("   SELECT Id,RealName from sysuser ");
+            sql.AppendFormat("   WHERE 1=1 ");
+            sql.AppendFormat(" ) c");
+            sql.AppendFormat(" on a.ShenHeManId  = c.Id ");
+
+            sql.AppendFormat(" LEFT JOIN ");
+            sql.AppendFormat(" ( ");
+            sql.AppendFormat("   SELECT Id,RealName from sysuser ");
+            sql.AppendFormat("   WHERE 1=1 ");
+            sql.AppendFormat(" ) d");
+            sql.AppendFormat(" on a.SentManId  = d.Id ");
+
+            sql.AppendFormat(" JOIN ");
+            sql.AppendFormat(" ( ");
+            sql.AppendFormat("   SELECT Id,MaterielName,MaterielType,MaterielDesc,MaterielUnite from order_materiel ");
+            sql.AppendFormat("   WHERE 1=1 ");
+            sql.AppendFormat(" ) e");
+            sql.AppendFormat(" on a.MaterielId  = e.Id ");
             return sql;
         }
         #endregion

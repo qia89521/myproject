@@ -14,4 +14,3 @@ E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Entity\YiSha.Enum\ob
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Entity\YiSha.Enum\obj\Debug\netcoreapp3.1\YiSha.Enum.csproj.CoreCompileInputs.cache
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Entity\YiSha.Enum\obj\Debug\netcoreapp3.1\YiSha.Enum.dll
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Entity\YiSha.Enum\obj\Debug\netcoreapp3.1\YiSha.Enum.pdb
-E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Entity\YiSha.Enum\obj\Debug\netcoreapp3.1\YiSha.Enum.csprojAssemblyReference.cache
