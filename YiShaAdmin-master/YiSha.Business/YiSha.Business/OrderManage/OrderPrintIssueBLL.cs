@@ -102,8 +102,11 @@ namespace YiSha.Business.OrderManage
                         #region 封装数据
                         printModel.Title = CoomHelper.GetValue(config.Data.Title, "普沃森（广州）科技销售单");
                         printModel.PrintDay = CoomHelper.GetValue(list[0].SentDay, cur_day);
+
+                        cur_day = printModel.PrintDay.Replace("-","");
                         //WJR20201009-
-                        string numberPre = CoomHelper.GetValue(config.Data.NumberPre, "WJR"+ cur_day+"-");
+                        string numberPre = CoomHelper.GetValue(config.Data.NumberPre, "WJR");
+                        numberPre += cur_day;
                         if (!numberPre.EndsWith("-"))
                         {
                             numberPre += "-";
