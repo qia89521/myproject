@@ -149,6 +149,10 @@
 
     function printForm() {
         var selectedRow = $('#gridTable').bootstrapTable('getSelections');
+        if (!checkIsPrint(selectedRow)) {
+            ys.msgError("包含已经打印的,不能二次打印,如果要打印请到【系统出货打印单】去重新打印");
+            return;
+        }
         if (ys.checkRowDelete(selectedRow)) {
             var ids = ys.getIds(selectedRow);
             ys.openDialog({
@@ -165,11 +169,25 @@
         }
     }
 
+    function checkIsPrint(selectedRow) {
+        var isprint = true;
+
+        for (var i = 0; i < selectedRow.length; i++) {
+            var row = selectedRow[i];
+            if (!IsNullEmpty(row.PrintOrderNumber)) {
+                isprint = false;
+                break;
+            }
+        }
+        return isprint;
+    }
+
     function deleteForm() {
         var selectedRow = $('#gridTable').bootstrapTable('getSelections');
         if (ys.checkRowDelete(selectedRow)) {
+            var ids = ys.getIds(selectedRow);
             ys.confirm('确认要删除选中的' + selectedRow.length + '条数据吗？', function () {
-                var ids = ys.getIds(selectedRow);
+              
                 ys.ajax({
                     url: '@Url.Content("~/OrderManage/OrderTerIssue/DeleteFormJson")' + '?ids=' + ids,
                     type: 'post',

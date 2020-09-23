@@ -219,16 +219,7 @@ namespace YiSha.Business.OrderManage
             {
                 obj.Message = "请先选择出货数据,再更新";
             }
-            if (obj.Tag == 1)
-            {
-                OrderPrintIssueEntity entity = new OrderPrintIssueEntity();
-                entity.PrintOrderNumber = printOrderNumber;
-                entity.CustName = custName;
-                entity.LinkName = linkName;
-                entity.PrintDay = printDay;
-                entity.OrderTerIssueIds = ids;
-                //obj=await orderPrintIssueBLL.SaveForm(entity);
-            }
+           
             return obj;
         }
         public async Task<TData> DeleteForm(string ids)

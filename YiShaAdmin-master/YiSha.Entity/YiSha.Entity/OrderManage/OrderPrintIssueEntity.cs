@@ -29,6 +29,12 @@ namespace YiSha.Entity.OrderManage
         /// <returns></returns>
         public string LinkName { get; set; }
         /// <summary>
+        /// 联系电话
+        /// </summary>
+        /// <returns></returns>
+        public string LinkPhone { get; set; }
+        
+        /// <summary>
         /// 打单日期 打单日期yyyy-mm-dd
         /// </summary>
         /// <returns></returns>

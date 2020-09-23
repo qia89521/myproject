@@ -106,9 +106,21 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
         [HttpPost]
         [AuthorizeFilter("order:orderterissue:updatePrintOrderNumbe")]
         public async Task<ActionResult> UpdatePrintOrderNumbe(string ids, string printOrderNumber,
-            string custName,string linkName,string printDay)
+            string custName,string linkName,string linkPhone, string printDay)
         {
             TData obj = await orderTerIssueBLL.UpdatePrintOrderNumbe(ids,printOrderNumber,custName,linkName,printDay);
+
+            if (obj.Tag == 1)
+            {
+                OrderPrintIssueEntity entity = new OrderPrintIssueEntity();
+                entity.PrintOrderNumber = printOrderNumber;
+                entity.CustName = custName;
+                entity.LinkName = linkName;
+                entity.LinkPhone = linkPhone;
+                entity.PrintDay = printDay;
+                entity.OrderTerIssueIds = ids;
+               obj=await orderPrintIssueBLL.SaveForm(entity);
+            }
             return Json(obj);
         }
         #endregion
