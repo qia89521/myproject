@@ -173,13 +173,19 @@
 
 <script type="text/javascript">
 
+    var isRePrint = ys.request("isRePrint");
     function saveForm(index) {
         $("#tb_print").printArea();
         window.setTimeout(function () {
 
             var printOrderNumber = '@Model.PrintOrderNumber';
             var ids = ys.request("ids");
-            updatePrintOrderNumbe(index, ids, printOrderNumber);
+            if (isRePrint == "1") {
+                parent.layer.close(index);
+            }
+            else {
+                updatePrintOrderNumbe(index, ids, printOrderNumber);
+            }
 
         }, 1000 * 6);
 

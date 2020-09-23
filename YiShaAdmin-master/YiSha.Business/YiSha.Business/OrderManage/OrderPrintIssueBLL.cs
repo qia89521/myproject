@@ -90,43 +90,22 @@ namespace YiSha.Business.OrderManage
             if (config != null)
             {
                 List<string> ids_list = ids.Split(',').ToList<string>();
+               
                 if (ids_list.Count > 0)
                 {
                     TData<List<OrderTerIssueEntity>> list_product = await orderTerIssueBLL.GetListByIds(ids_list);
                     if (list_product != null && list_product.Data.Count() > 0)
                     {
-                        string cur_day = DateTime.Now.ToString("yyyy-MM-dd");
-
+                       
                         List<OrderTerIssueEntity> list = list_product.Data;
 
                         #region 封装数据
-                        printModel.Title = CoomHelper.GetValue(config.Data.Title, "普沃森（广州）科技销售单");
-                        printModel.PrintDay = CoomHelper.GetValue(list[0].SentDay, cur_day);
+                        printModel.PrintDay = CoomHelper.GetValue(list[0].SentDay, DateTime.Now.ToString("yyyy-MM-dd"));
+                        //创建打印单号
+                        printModel.PrintOrderNumber = await CreatePrintOrderNumber(printModel.PrintDay, config);
 
-                        cur_day = printModel.PrintDay.Replace("-","");
-                        //WJR20201009-
-                        string numberPre = CoomHelper.GetValue(config.Data.NumberPre, "WJR");
-                        numberPre += cur_day;
-                        if (!numberPre.EndsWith("-"))
-                        {
-                            numberPre += "-";
-                        }
-                        int count =await GetPrintDayCount(printModel.PrintDay)+1;
-                        string count_str = count.ToString();
-                        if (count < 10)
-                        {
-                            count_str = "0" + count;
-                        }
-                        printModel.PrintOrderNumber = string.Format("{0}{1}", numberPre, count_str);
-                        printModel.CustName= CoomHelper.GetValue(list[0].ReciveName, "");
-                        printModel.LinkName = CoomHelper.GetValue(list[0].ReciveName, "");
-                        printModel.LinkPhone = CoomHelper.GetValue(list[0].RecivePhone, "");
-                        printModel.ReciveAddress = CoomHelper.GetValue(list[0].ReciveAddress, "");
-                        printModel.Remark = CoomHelper.GetValue(list[0].Remark, "");
-
-                        printModel.ListProduct = list_product.Data;
-                        printModel.SysIssueConfig = config.Data;
-
+                        //封装数据
+                        PackageData(printModel, config, list);
                         #endregion
                     }
                     
@@ -134,6 +113,92 @@ namespace YiSha.Business.OrderManage
             }
             return printModel;
 
+        }
+
+        /// <summary>
+        /// 获取重新打印配置数据
+        /// </summary>
+        /// <param name="printOrderNumber">打印单号</param>
+        /// <returns></returns>
+        public async Task<Response_OrderPrintIssue> GetRePrintData(string printOrderNumber)
+        {
+            Response_OrderPrintIssue printModel = new Response_OrderPrintIssue();
+            //读取单号配置
+            TData<SysIssueConfigEntity> config = await sysIssueConfigBLL.GetFristModel();
+            if (config != null)
+            {
+                TData<OrderPrintIssueEntity> orderPrintIssue =await GetEntityByPrintOrderNumber(printOrderNumber);
+
+                List<string> ids_list = orderPrintIssue.Data.OrderTerIssueIds.Split(',').ToList<string>();
+
+                if (ids_list.Count > 0)
+                {
+                    TData<List<OrderTerIssueEntity>> list_product = await orderTerIssueBLL.GetListByIds(ids_list);
+                    if (list_product != null && list_product.Data.Count() > 0)
+                    {
+
+                        List<OrderTerIssueEntity> list = list_product.Data;
+
+                        #region 封装数据
+                        printModel.PrintDay = CoomHelper.GetValue(list[0].SentDay, DateTime.Now.ToString("yyyy-MM-dd"));
+                        //创建打印单号
+                        printModel.PrintOrderNumber = printOrderNumber;
+                        //封装数据
+                        PackageData(printModel, config, list);
+                        #endregion
+                    }
+
+                }
+            }
+            return printModel;
+
+        }
+
+
+        /// <summary>
+        /// 填充数据
+        /// </summary>
+        /// <param name="printModel">打印实体</param>
+        /// <param name="config">打印配置</param>
+        /// <param name="list">出货数据列表</param>
+        private void PackageData(Response_OrderPrintIssue printModel,TData<SysIssueConfigEntity> config, List<OrderTerIssueEntity> list)
+        {
+            printModel.Title = CoomHelper.GetValue(config.Data.Title, "普沃森（广州）科技销售单");
+            printModel.CustName = CoomHelper.GetValue(list[0].ReciveName, "");
+            printModel.LinkName = CoomHelper.GetValue(list[0].ReciveName, "");
+            printModel.LinkPhone = CoomHelper.GetValue(list[0].RecivePhone, "");
+            printModel.ReciveAddress = CoomHelper.GetValue(list[0].ReciveAddress, "");
+            printModel.Remark = CoomHelper.GetValue(list[0].Remark, "");
+
+            printModel.ListProduct = list;
+            printModel.SysIssueConfig = config.Data;
+        }
+
+        /// <summary>
+        /// 创建打印订单号
+        /// </summary>
+        /// <param name="printDay">打印日期</param>
+        /// <returns></returns>
+        private async Task<string> CreatePrintOrderNumber(string printDay, TData<SysIssueConfigEntity> config)
+        {
+            //WJR20201009-
+            string cur_day = DateTime.Now.ToString("yyyy-MM-dd");
+            string numberPre = CoomHelper.GetValue(config.Data.NumberPre, "WJR");
+            cur_day = printDay.Replace("-", "");
+            numberPre += cur_day;
+            if (!numberPre.EndsWith("-"))
+            {
+                numberPre += "-";
+            }
+            int count = await GetPrintDayCount(printDay) + 1;
+            string count_str = count.ToString();
+            if (count < 10)
+            {
+                count_str = "0" + count;
+            }
+            string printOrderNumber = string.Format("{0}{1}", numberPre, count_str);
+
+            return printOrderNumber;
         }
 
         #endregion

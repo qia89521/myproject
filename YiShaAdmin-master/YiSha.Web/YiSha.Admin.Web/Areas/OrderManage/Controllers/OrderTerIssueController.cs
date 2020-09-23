@@ -48,10 +48,18 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
         public async Task<IActionResult> OrderTerIssuePrint()
         {
             string ids = Request.Query["ids"];
+            //是否重新打印
+            string isRePrint= Request.Query["isRePrint"];
 
-            Response_OrderPrintIssue data = await orderPrintIssueBLL.GetPrintData(ids);
-            //ViewBag.Response_OrderPrintIssue = data;
-
+            Response_OrderPrintIssue data = null;
+            if (isRePrint == "1")
+            {
+                data = await orderPrintIssueBLL.GetRePrintData(ids);
+            }
+            else
+            {
+                data = await orderPrintIssueBLL.GetPrintData(ids);
+            }
             return View(data);
         }
         #endregion

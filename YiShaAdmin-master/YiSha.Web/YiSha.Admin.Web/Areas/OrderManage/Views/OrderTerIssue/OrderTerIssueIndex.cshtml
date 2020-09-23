@@ -157,7 +157,7 @@
             var ids = ys.getIds(selectedRow);
             ys.openDialog({
             title: '打印出货单',
-            content: '@Url.Content("~/OrderManage/OrderTerIssue/OrderTerIssuePrint")' + '?ids=' + ids,
+            content: '@Url.Content("~/OrderManage/OrderTerIssue/OrderTerIssuePrint")' + '?ids=' + ids +"&isRePrint=0",
             width: '900px',
             btn_es: ['打印', '关闭'],
             height: '480px',

@@ -70,7 +70,7 @@
                 {
                     field: '', title: '操作', align: "left",
                     formatter: function (value, row, index) {
-                        var html = "<a class=\"btn btn-success\" onclick=\"printForm()\"><i class=\"fa fa-success\"></i>重新打印</a>";
+                        var html = "<a class=\"btn btn-success\" onclick=\"printForm('" + row.PrintOrderNumber+"')\"><i class=\"fa fa-success\"></i>重新打印</a>";
                         return html;
                     }
                 },
@@ -86,6 +86,20 @@
     function searchGrid() {
         $('#gridTable').ysTable('search');
         resetToolbarStatus();
+    }
+
+    function printForm(ids) {
+        ys.openDialog({
+        title: '打印出货单',
+        content: '@Url.Content("~/OrderManage/OrderTerIssue/OrderTerIssuePrint")' + '?ids=' + ids +"&isRePrint=1",
+        width: '900px',
+        btn_es: ['打印', '关闭'],
+        height: '480px',
+        callback: function (index, layero) {
+            var iframeWin = window[layero.find('iframe')[0]['name']];
+                iframeWin.saveForm(index);
+        }
+        });
     }
 
     function showSaveForm(bAdd) {

@@ -81,3 +81,4 @@ Unknown column 'LinkPhone' in 'field list'
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
  |url: http://localhost/OrderManage/OrderTerIssue/UpdatePrintOrderNumbe|action: UpdatePrintOrderNumbe
+2020-09-23 19:18:05.3768||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
