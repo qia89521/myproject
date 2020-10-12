@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("79754f8e-8bfe-49f2-8cfd-7a28da1bbdbe")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("YiSha.Admin.WebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("YiShaAdmin")]

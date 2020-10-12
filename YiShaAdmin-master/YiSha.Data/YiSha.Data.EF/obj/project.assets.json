@@ -1497,10 +1497,7 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Data.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
+        }
       },
       "YiSha.Enum/1.0.0": {
         "type": "project",
@@ -5873,9 +5870,6 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
-          "Microsoft.AspNetCore.App": {
-            "privateAssets": "none"
-          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }

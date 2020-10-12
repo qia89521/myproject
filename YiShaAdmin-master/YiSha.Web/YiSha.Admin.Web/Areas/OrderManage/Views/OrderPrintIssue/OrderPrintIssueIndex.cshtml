@@ -70,7 +70,7 @@
                 {
                     field: '', title: '操作', align: "left",
                     formatter: function (value, row, index) {
-                        var html = "<a class=\"btn btn-success\" onclick=\"printForm('" + row.PrintOrderNumber+"')\"><i class=\"fa fa-success\"></i>重新打印</a>";
+                        var html = "<button type=\"button\" onclick=\"printForm('" + row.PrintOrderNumber +"')\" class=\"btn btn-w-m btn-info\">重新打印</button>";
                         return html;
                     }
                 },

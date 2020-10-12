@@ -203,7 +203,7 @@ namespace YiSha.Business.TerManage
          * @fistLongitude：经度
          * @fistLatitude：纬度
          */
-        public async Task<TData<string>> ModifyPosition(string number,string fistLongitude, string fistLatitude)
+        public async Task<TData<string>> ModifyPosition(string number,string fistLongitude, string fistLatitude,string position)
         {
             TerInforEntity ter = await terInforService.GetEntityByNumber(number);
             //设备一旦锁定，激活时间（FistOn）,FistPosition,FistLongitude,FistLatitude 不再编号
@@ -211,6 +211,7 @@ namespace YiSha.Business.TerManage
             {
                 ter.FistLatitude = fistLatitude;
                 ter.FistLongitude = fistLongitude;
+                ter.FistPosition = position;
 
                 return await SaveForm(ter);
             }

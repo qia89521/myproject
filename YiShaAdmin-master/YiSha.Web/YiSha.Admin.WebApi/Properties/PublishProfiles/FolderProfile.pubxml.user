@@ -4,6 +4,6 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_PublishTargetUrl>D:\发布\netcore_webapi</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\发布\puosen\api</_PublishTargetUrl>
   </PropertyGroup>
 </Project>

@@ -54,18 +54,30 @@
                 { field: 'SrcPrice', title: '拿货价' },
                 { field: 'TotalPrice', title: '销售总额' },
                 { field: 'FactMoney', title: '实收额' },
-                { field: 'DiffPrice', title: '利润' },
+                {
+                    field: 'DiffPrice', title: '返佣',
+                    formatter: function (value, row, index) {
+                        //审核状态 0未审核,1:审核通过,2拒绝
+                        if (value > 0) {
+                            html = "<span class=\"red\">" + value+"</span>";
+                        }
+                        else  {
+                            html = value;
+                        }
+                        return html;
+                    }
+                },
                 { field: 'ShenHeManTxt', title: '审核人' },
                 {
                     field: 'ShenHeStatus', title: '审核状态',
                     formatter: function (value, row, index) {
                         //审核状态 0未审核,1:审核通过,2拒绝
-                        var html = "拒绝";
+                        var html = "<span class=\"red\">拒绝</span>";
                         if (value == 0) {
-                            html = "未审核";
+                            html = "<span class=\"yellow\">未审核</span>";
                         }
                         else if (value == 1) {
-                            html = "审核通过";
+                            html = "<span class=\"green\">审核通过</span>";
                         }
                         return html;
                     }

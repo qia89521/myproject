@@ -16,6 +16,10 @@ namespace YiSha.Model.Param.TerManage
         /// 设备号
         /// </summary>
         public string number { get; set; }
+        /// <summary>
+        /// 位置
+        /// </summary>
+        public string address { get; set; }
        /// <summary>
        /// 经度
        /// </summary>

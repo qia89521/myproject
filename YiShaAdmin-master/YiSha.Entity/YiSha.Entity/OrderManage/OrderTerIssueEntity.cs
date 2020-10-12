@@ -65,7 +65,7 @@ namespace YiSha.Entity.OrderManage
         {
             get
             {
-                return this.FactMoney -this.TotalPrice;
+                return this.FactMoney -this.SrcPrice* this.SaleNum;
             }
         }
         /// <summary>

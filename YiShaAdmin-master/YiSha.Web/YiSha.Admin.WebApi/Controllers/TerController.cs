@@ -28,7 +28,7 @@ namespace YiSha.Admin.WebApi.Controllers
         [HttpPost]
         public async Task<TData<string>> SaveForm([FromBody] TerPositionParam entity)
         {
-            TData<string> obj = await terInforBLL.ModifyPosition(entity.number,entity.fistLongitude,entity.fistLatitude);
+            TData<string> obj = await terInforBLL.ModifyPosition(entity.number,entity.fistLongitude,entity.fistLatitude,entity.address);
             return obj;
         }
     }

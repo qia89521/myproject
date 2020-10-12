@@ -41,6 +41,16 @@
             <param name="entity"></param>
             <returns></returns>
         </member>
+        <member name="T:YiSha.Admin.WebApi.Controllers.OrderTerIssueController">
+            <summary>
+            设备出货控制器
+            </summary>
+        </member>
+        <member name="T:YiSha.Admin.WebApi.Controllers.TerController">
+            <summary>
+            终端信息控制器
+            </summary>
+        </member>
         <member name="M:YiSha.Admin.WebApi.Controllers.TerController.SaveForm(YiSha.Model.Param.TerManage.TerPositionParam)">
             <summary>
             保存终端位置状态信息

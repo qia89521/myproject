@@ -1,0 +1,61 @@
+﻿<html>
+<head>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="html2canvas.js"></script>
+</head>
+<body>
+    <div id="html-content-holder" style="background-color: #F0F0F1; color: #00cc65; width: 500px;
+        padding-left: 25px; padding-top: 10px;padding-right: 25px;padding-bottom: 15px;margin-bottom:15px;">
+        <strong>卡卡网 WebKaka.com</strong><hr />
+        <h3 style="color: #3e4b51;">
+            Html转换为图片
+        </h3>
+        <p style="color: #3e4b51;">
+            <b>卡卡网 WebKaka.com</b> 旨在为广大网站建设人员提供专业的网站测速和优化服务，以及为广大网民提供网络速度测试服务。
+        </p>
+        <p style="color: #3e4b51;">
+            <b>html2canvas</b>
+            脚本可以直接在用户浏览器上用来对网页或其一部分内容进行截图，截图是基于DOM的，因此可能不完全准确。
+
+        </p>
+    </div>
+    <input id="btn-Preview-Image" type="button" value="预 览" />
+    <a id="btn-Convert-Html2Image" href="#">下载</a>
+    <br />
+    <h3>预 览 :</h3>
+    <div id="previewImage">
+    </div>
+
+
+    <script>
+$(document).ready(function(){
+
+
+var element = $("#html-content-holder"); // global variable
+var getCanvas; // global variable
+
+    $("#btn-Preview-Image").on('click', function () {
+         html2canvas(element, {
+         onrendered: function (canvas) {
+                $("#previewImage").append(canvas);
+                getCanvas = canvas;
+             }
+         });
+    });
+
+	$("#btn-Convert-Html2Image").on('click', function () {
+    var imgageData = getCanvas.toDataURL("image/png");
+    // Now browser starts downloading it instead of just showing it
+    var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+    $("#btn-Convert-Html2Image").attr("download", "your_pic_name.png").attr("href", newData);
+	});
+
+});
+
+    </script>
+</body>
+</html>
+<!--
+文章来源：【JQuery插件】把网页或某div或table表格内容转为图片并下载
+http://www.webkaka.com/tutorial/html/2019/030747/
+//-->
