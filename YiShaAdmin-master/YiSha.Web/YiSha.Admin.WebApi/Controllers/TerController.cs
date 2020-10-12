@@ -31,5 +31,17 @@ namespace YiSha.Admin.WebApi.Controllers
             TData<string> obj = await terInforBLL.ModifyPosition(entity.number,entity.fistLongitude,entity.fistLatitude,entity.address);
             return obj;
         }
+
+        /// <summary>
+        /// 保存终端位置状态信息
+        /// </summary>
+        /// <param name="number">设备编号</param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<TData<string>> CheckNumber(String number)
+        {
+            TData<string> obj = await terInforBLL.CheckNumber(number);
+            return obj;
+        }
     }
 }

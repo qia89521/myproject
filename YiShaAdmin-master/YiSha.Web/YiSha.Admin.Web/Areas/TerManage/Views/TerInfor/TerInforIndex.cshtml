@@ -49,7 +49,7 @@
             onEditableSave: onEditableSave,
             columns:[
                     [
-                        { title: '基本信息', align: 'center', colspan: 6 },
+                        { title: '基本信息', align: 'center', colspan: 8 },
                         { title: '状态信息', align: 'center', colspan: 4 },
                         { title: '操作人', align: 'center', colspan: 4 }
                     ],
@@ -91,40 +91,21 @@
                                 }
                             }
                         }
-                    },
-                    {
+                        },
+                     {
+                         field: 'SaleManTxt', title: '业务员',
+                        formatter: function (value, row, index) {
+                            return "<span>" + value + " <button type=\"button\" class=\"btn btn-primary btn-xs\" onclick=\"setSaleMan('" + row["Id"] + "')\">设 置</button></span>";
+                        }
+                        },
+                        { field: 'Zone', title: '代理区域' },
+                     {
                         field: 'ManageTxt', title: '用户',
                         formatter: function (value, row, index) {
                             return "<span>" + value + " <button type=\"button\" class=\"btn btn-primary btn-xs\" onclick=\"setManage('" + row["Id"] + "')\">设 置</button></span>";
                         }
                      },
-                    /*
-                    {
-                        field: 'BusyName', title: '运营商',
-                        editable: {
-                            type: 'text',
-                            emptytext: "【运营商】为空",
-                            validate: function (value) {
-                                if (value.length == 0) {
-                                    return '运营商不能为空';
-                                }
-                            }
-                        }
-                    },
-                    {
-                        field: 'BusyLink', title: '联系方式',
-                        editable: {
-                            type: 'text',
-                            emptytext: "【联系方式】为空",
-                            validate: function (value) {
-                                if (value.length != 11) {
-                                    return '手机号必须为11位';
-                                }
-
-                            }
-                        }
-                    },
-                    */
+                   
                     {
                         field: 'IsLock', title: '是否锁定',
                         editable: {
@@ -255,8 +236,29 @@
             }
         });
     }
-
-
+     /*设置运营商 */
+    function setSaleMan(id) {
+         ys.openDialog({
+            title:  "设置销售人",
+            content: '@Url.Content("~/OrganizationManage/User/UserIndexSelect")',
+            width: "968px",
+            height: "570px",
+             callback: function (index, layero) {
+                var iframeWin = window[layero.find('iframe')[0]['name']];
+                 var select_data = iframeWin.chooseUserOK();
+                 if (IsNullEmpty(select_data.ids)) {
+                    ys.alertError('请先选择用户,再操作');
+                }
+                else {
+                    //设置 操作人
+                    var urls = '@Url.Content("~/TerManage/TerInfor/ModifySaleId")';
+                    layer.close(index);
+                     MoidfyFieldValue(id, select_data.ids, urls);
+                }
+            }
+        });
+    }
+    
 
     function showSaveForm(bAdd) {
         var id = 0;

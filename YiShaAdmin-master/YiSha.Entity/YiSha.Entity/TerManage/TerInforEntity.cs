@@ -69,6 +69,7 @@ namespace YiSha.Entity.TerManage
         /// 业主
         /// </summary>
         /// <returns></returns>
+        [JsonConverter(typeof(StringJsonConverter))]
         public long? ManageId { get; set; }
         /// <summary>
         /// 业主
@@ -135,8 +136,21 @@ namespace YiSha.Entity.TerManage
         /// </summary>
         /// <returns></returns>
         [Description("发货目的区(用于生产底下二维码提示文字)")]
+        [NotMapped]
         public string Zone { get; set; }
 
+        /// <summary>
+        /// 销售人id
+        /// </summary>
+        /// <returns></returns>
+        [JsonConverter(typeof(StringJsonConverter))]
+        public long? SaleManId { get; set; }
+        /// <summary>
+        /// 销售人
+        /// </summary>
+        /// <returns></returns>
+        [NotMapped]
+        public string SaleManTxt { get; set; }
         public static implicit operator TerInforEntity(TData<TerInforEntity> v)
         {
             throw new NotImplementedException();

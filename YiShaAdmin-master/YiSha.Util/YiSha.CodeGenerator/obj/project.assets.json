@@ -1573,7 +1573,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Business.Cache.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Cache.Factory/1.0.0": {
         "type": "project",
@@ -1589,7 +1592,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Cache.Factory.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Cache.Interface/1.0.0": {
         "type": "project",
@@ -1615,7 +1621,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Data.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Data.EF/1.0.0": {
         "type": "project",
@@ -1632,7 +1641,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Data.EF.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Data.Repository/1.0.0": {
         "type": "project",
@@ -1647,7 +1659,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Data.Repository.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Entity/1.0.0": {
         "type": "project",
@@ -1662,7 +1677,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Entity.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Enum/1.0.0": {
         "type": "project",
@@ -1685,7 +1703,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.IdGenerator.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.MemoryCache/1.0.0": {
         "type": "project",
@@ -1700,7 +1721,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.MemoryCache.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Model/1.0.0": {
         "type": "project",
@@ -1714,7 +1738,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Model.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.RedisCache/1.0.0": {
         "type": "project",
@@ -1729,7 +1756,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.RedisCache.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Service/1.0.0": {
         "type": "project",
@@ -1747,7 +1777,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Service.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Util/1.0.0": {
         "type": "project",
@@ -1783,7 +1816,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.Web.Code.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -6323,6 +6359,9 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }

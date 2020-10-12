@@ -464,5 +464,15 @@
       "enabled": true,
       "renameLocals": true
     }
+  },
+  {
+    "outputFileName": "wwwroot/lib/html2canvas/html2canvas.js",
+    "inputFiles": [
+      "wwwroot/lib/html2canvas/html2canvas.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
   }
 ]

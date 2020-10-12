@@ -149,6 +149,20 @@ namespace YiSha.Admin.Web.Areas.TerManage.Controllers
             return Json(obj);
         }
         /// <summary>
+        /// 设置销售人id
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <param name="value">销售人id</param>
+        /// <returns></returns>
+        [HttpPost]
+        [AuthorizeFilter("ter:terinfor:ModifySaleId")]
+        public async Task<ActionResult> ModifySaleId(string id, string value)
+        {
+            TData obj = await terInforBLL.ModifySaleId(long.Parse(id), long.Parse(value));
+            return Json(obj);
+        }
+        
+        /// <summary>
         /// 设置是否锁定
         /// </summary>
         /// <param name="id">id</param>

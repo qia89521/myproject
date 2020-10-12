@@ -113,15 +113,16 @@ namespace YiSha.Service.TerManage
         {
             StringBuilder sql = new StringBuilder();
 
-            sql.AppendFormat(" SELECT * FROM (");
             sql.AppendFormat(" SELECT a.*,b.RealName AS BaseCreatorTxt, ");
-            sql.AppendFormat(" c.RealName AS BaseModifierTxt, ");
-            sql.AppendFormat(" d.RealName AS ManageTxt ");
-            sql.AppendFormat(" FROM  ter_infor a ");
-            sql.AppendFormat(" JOIN sysuser b ON a.BaseCreatorId = b.Id ");
-            sql.AppendFormat(" LEFT JOIN sysuser c ON a.BaseModifierId = c.Id ");
-            sql.AppendFormat(" LEFT JOIN sysuser d ON a.ManageId = d.Id ");
-            sql.AppendFormat(" ) T WHERE 1=1 ");
+            sql.AppendFormat(" c.RealName AS SaleManTxt, ");
+            sql.AppendFormat(" c.DelegetZoneTxt AS Zone, ");
+
+            sql.AppendFormat(" d.RealName AS BaseModifierTxt, ");
+            sql.AppendFormat(" e.RealName AS ManageTxt ");
+
+            sql.AppendFormat(" FROM ( ");
+            sql.AppendFormat(" SELECT * FROM ter_infor WHERE 1=1");
+
             if (param != null)
             {
                 if (!string.IsNullOrEmpty(param.TerName))
@@ -133,6 +134,18 @@ namespace YiSha.Service.TerManage
                     sql.AppendFormat(" AND TerNumber LIKE '%{0}%'", param.TerNumber);
                 }
             }
+            sql.AppendFormat(" ) a ");
+
+            sql.AppendFormat(" JOIN sysuser b ON a.BaseCreatorId = b.Id ");
+
+            sql.AppendFormat(" LEFT JOIN sysuser C ON a.SaleManId = C.Id ");
+
+            sql.AppendFormat(" LEFT JOIN sysuser d ON a.BaseModifierId = d.Id ");
+            sql.AppendFormat(" LEFT JOIN sysuser e ON a.ManageId = e.Id ");
+
+           
+            
+
             return sql;
         }
 
@@ -144,18 +157,30 @@ namespace YiSha.Service.TerManage
         /// <returns></returns>
         private StringBuilder CreateSignalSql(long id)
         {
+
             StringBuilder sql = new StringBuilder();
 
-            sql.AppendFormat(" SELECT * FROM (");
             sql.AppendFormat(" SELECT a.*,b.RealName AS BaseCreatorTxt, ");
-            sql.AppendFormat(" c.RealName AS BaseModifierTxt, ");
-            sql.AppendFormat(" d.RealName AS ManageTxt ");
-            sql.AppendFormat(" FROM  ter_infor a ");
-            sql.AppendFormat(" JOIN sysuser b ON a.BaseCreatorId = b.Id and a.Id={0}", id);
-            sql.AppendFormat(" LEFT JOIN sysuser c ON a.BaseModifierId = c.Id ");
-            sql.AppendFormat(" LEFT JOIN sysuser d ON a.ManageId = d.Id ");
-            sql.AppendFormat(" ) T WHERE 1=1 ");
-           
+            sql.AppendFormat(" c.RealName AS SaleManTxt, ");
+            sql.AppendFormat(" c.DelegetZoneTxt AS Zone, ");
+
+            sql.AppendFormat(" d.RealName AS BaseModifierTxt, ");
+            sql.AppendFormat(" e.RealName AS ManageTxt ");
+
+            sql.AppendFormat(" FROM ( ");
+            sql.AppendFormat(" SELECT * FROM ter_infor WHERE 1=1");
+
+            sql.AppendFormat(" AND Id={0}", id);
+
+            sql.AppendFormat(" ) a ");
+
+            sql.AppendFormat(" JOIN sysuser b ON a.BaseCreatorId = b.Id ");
+
+            sql.AppendFormat(" LEFT JOIN sysuser C ON a.SaleManId = C.Id ");
+
+            sql.AppendFormat(" LEFT JOIN sysuser d ON a.BaseModifierId = d.Id ");
+            sql.AppendFormat(" LEFT JOIN sysuser e ON a.ManageId = e.Id ");
+
             return sql;
         }
 

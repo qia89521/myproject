@@ -23,21 +23,27 @@ namespace YiSha.Entity.TerManage
         /// </summary>
         /// <returns></returns>
         public string RunStatus { get; set; }
-        /// <summary>
-        /// 银离子可用百分比
-        /// </summary>
-        /// <returns></returns>
-        public string SilverRate { get; set; }
+     
         /// <summary>
         /// 臭氧浓度百分比
         /// </summary>
         /// <returns></returns>
         public string O3Rate { get; set; }
         /// <summary>
+        /// 银离子水量
+        /// </summary>
+        /// <returns></returns>
+        public string SW { get; set; }
+        /// <summary>
+        /// 磁化器水量 单位L
+        /// </summary>
+        /// <returns></returns>
+        public string CW { get; set; }
+        /// <summary>
         /// 水量 单位L
         /// </summary>
         /// <returns></returns>
-        public string WaterNum { get; set; }
+        public string W { get; set; }
         /// <summary>
         /// 故障代码
         /// </summary>
@@ -65,5 +71,12 @@ namespace YiSha.Entity.TerManage
         /// <returns></returns>
         [NotMapped]
         public string TerName { get; set; }
+
+        /// <summary>
+        /// 分类
+        /// </summary>
+        /// <returns></returns>
+        [NotMapped]
+        public string ClassName { get; set; }
     }
 }

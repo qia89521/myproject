@@ -558,7 +558,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.MemoryCache.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.RedisCache/1.0.0": {
         "type": "project",
@@ -573,7 +576,10 @@
         },
         "runtime": {
           "bin/placeholder/YiSha.RedisCache.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "YiSha.Util/1.0.0": {
         "type": "project",
@@ -1835,6 +1841,9 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }

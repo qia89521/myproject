@@ -58,6 +58,18 @@
             <param name="entity">实体数据</param>
             <returns></returns>
         </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.TerController.CheckNumber(System.String)">
+            <summary>
+            保存终端位置状态信息
+            </summary>
+            <param name="number">设备编号</param>
+            <returns></returns>
+        </member>
+        <member name="T:YiSha.Admin.WebApi.Controllers.TerStatusController">
+            <summary>
+            设备状态控制器
+            </summary>
+        </member>
         <member name="M:YiSha.Admin.WebApi.Controllers.TerStatusController.SaveForm(YiSha.Entity.TerManage.TerStatusEntity)">
             <summary>
             保存状态信息

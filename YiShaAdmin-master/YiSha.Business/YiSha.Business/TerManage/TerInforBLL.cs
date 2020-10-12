@@ -142,6 +142,30 @@ namespace YiSha.Business.TerManage
             }
             return obj;
         }
+
+        /// <summary>
+        /// 设置销售人员
+        /// </summary>
+        /// <param name="id">设备id</param>
+        /// <param name="manageId">销售id</param>
+        /// <returns></returns>
+        public async Task<TData<string>> ModifySaleId(long id, long manageId)
+        {
+            TerInforEntity ter = await terInforService.GetEntity(id);
+
+            TData<string> obj = new TData<string>();
+            if (ter.ManageId != id)
+            {
+                ter.SaleManId = manageId;
+                obj = await SaveForm(ter);
+            }
+            else
+            {
+                obj.Message = "没有变化";
+                obj.Tag = 0;
+            }
+            return obj;
+        }
         /// <summary>
         /// 修改设备名称
         /// </summary>
@@ -172,6 +196,31 @@ namespace YiSha.Business.TerManage
         }
 
         /// <summary>
+        /// 修改设备名称
+        /// </summary>
+        /// <param name="id">设备id</param>
+        /// <param name="busyLink">联系方式</param>
+        /// <returns></returns>
+        public async Task<TData<string>> CheckNumber(string number)
+        {
+            TData<string> obj = new TData<string>();
+            obj.Description = number;
+            TerInforEntity ter = await terInforService.GetEntityByNumber(number);
+            if (ter != null)
+            {
+                obj.Tag = 1;
+                obj.Message = "设备编号存在";
+            }
+            else
+            {
+                obj.Tag = 0;
+                obj.Message = "设备编号不存在";
+            }
+            return await SaveForm(ter);
+        }
+
+
+        /// <summary>
         /// 更新设备状态业务
         /// </summary>
         /// <param name="statusModel">设备状态业务</param>
@@ -182,12 +231,18 @@ namespace YiSha.Business.TerManage
             //设备一旦锁定，激活时间（FistOn）,FistPosition,FistLongitude,FistLatitude 不再编号
             if (ter.IsLock == 1)
             {
-                if (!string.IsNullOrEmpty(statusModel.WaterNum))
+                if (!string.IsNullOrEmpty(statusModel.W))
                 {
-                    ter.WaterNum = statusModel.WaterNum;
+                    ter.WaterNum = statusModel.W;
                     return await SaveForm(ter);
                 }
-                return null;
+                else
+                {
+                    TData<string> obj = new TData<string>();
+                    obj.Tag = 0;
+                    obj.Message = "没有水量不更新";
+                    return obj;
+                }
             }
             else
             {
@@ -207,17 +262,25 @@ namespace YiSha.Business.TerManage
         {
             TerInforEntity ter = await terInforService.GetEntityByNumber(number);
             //设备一旦锁定，激活时间（FistOn）,FistPosition,FistLongitude,FistLatitude 不再编号
-            if (ter.IsLock == 1)
+            if (ter.IsLock != 1)
             {
                 ter.FistLatitude = fistLatitude;
                 ter.FistLongitude = fistLongitude;
                 ter.FistPosition = position;
 
+                ter.Latitude = fistLatitude;
+                ter.Longitude = fistLongitude;
+                ter.Position = position;
                 return await SaveForm(ter);
             }
             else
             {
-                return null;
+                //更新当前位置
+                ter.Latitude = fistLatitude;
+                ter.Longitude = fistLongitude;
+                ter.Position = position;
+
+                return await SaveForm(ter);
             }
         }
 
