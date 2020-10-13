@@ -68,12 +68,15 @@
                     }
                 },
                 {
-                    field: '', title: '操作', align: "left",
+                    title: '操作',
+                    align: 'center',
                     formatter: function (value, row, index) {
-                        var html = "<button type=\"button\" onclick=\"printForm('" + row.PrintOrderNumber +"')\" class=\"btn btn-w-m btn-info\">重新打印</button>";
-                        return html;
+                        var actions = [];
+                        actions.push("<a class=\"btn btn-success btn-xs\" href=\"#\" onclick=\"printForm('" + row.PrintOrderNumber +"')\" ><i class=\"fa fa-remove\"></i>打印出货单</a>");
+                        return actions.join('');
                     }
-                },
+                }
+                
             ],
             queryParams: function (params) {
                 var pagination = $('#gridTable').ysTable('getPagination', params);

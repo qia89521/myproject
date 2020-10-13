@@ -474,5 +474,15 @@
       "enabled": true,
       "renameLocals": true
     }
+  },
+  {
+    "outputFileName": "wwwroot/lib/helper/jquery.qrcode.min.js",
+    "inputFiles": [
+      "wwwroot/lib/helper/jquery.qrcode.min.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
   }
 ]

@@ -31,6 +31,20 @@ namespace YiSha.Admin.Web.Areas.TerManage.Controllers
         {
             return View();
         }
+        [AuthorizeFilter("ter:terinfor:print")]
+        public async Task<IActionResult> TerInforPrint()
+        {
+            string ids = Request.Query["ids"];
+            //是否重新打印
+            TData<TerInforEntity> tdata=await terInforBLL.GetEntity(long.Parse(ids));
+
+            TerInforEntity data = new TerInforEntity();
+            if (tdata.Tag == 1)
+            {
+                data = tdata.Data;
+            }
+            return View(data);
+        }
 
         public ActionResult TerInforForm()
         {

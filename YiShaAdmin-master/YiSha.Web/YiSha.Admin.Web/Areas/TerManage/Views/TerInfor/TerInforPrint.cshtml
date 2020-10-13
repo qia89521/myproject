@@ -1,0 +1,116 @@
+﻿@{
+    Layout = "~/Views/Shared/_FormWhite.cshtml";
+}
+
+@model YiSha.Entity.TerManage.TerInforEntity;
+
+<div>
+    <style>
+        .tb_print {
+            background-color: #fff;
+            border: 1px solid #000;
+            border-collapse: collapse;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        #div_qcode {
+            margin: 20px;
+        }
+
+        .tb_left {
+            text-align: left;
+        }
+    </style>
+    <div id="div_qcode_img">
+        <table class="tb_print">
+
+            <tr>
+                <td style="width:40px;">&nbsp;</td>
+                <td class="tb_left">
+                    <span>编号：</span>
+                    @(Model.TerNumber)
+                </td>
+                <td rowspan="7">
+                    <div id="div_qcode">
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="tb_left">
+                    <span>设备名称：</span>
+                    @(Model.TerName)
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="tb_left">
+                    <span>区域：</span>
+                    @(Model.Zone)
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="tb_left">
+                    <span>官网：</span>
+                    www.puosen.cn
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="tb_left">
+                    <span>TEL：</span>
+                    普沃森清水净化
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="tb_left">
+                    <span>生产商：</span>
+                    普沃森（广州）科技有限公司
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="previewImage">
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    var element = $("#div_qcode_img"); // global variable
+    var getCanvas; // global variable
+
+    $(function () {
+        jQuery('#div_qcode').qrcode(
+            {
+                render: "canvas", //也可以替换为 table|canvas
+                width: 202,
+                height: 200,
+                foreground: "#000",
+                background: "#FFF",
+                text: ('123456')
+            }
+        );
+
+        html2canvas(element, {
+            onrendered: function (canvas) {
+                $("#previewImage").append(canvas);
+                getCanvas = canvas;
+                element.hide();
+            }
+        });
+    });
+
+    function Print() {
+
+        var imgageData = getCanvas.toDataURL("image/png");
+        // Now browser starts downloading it instead of just showing it
+        var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+        $(".btn-Convert-Html2Image").attr("download", "your_pic_name.png").attr("href", newData);
+    }
+</script>
+

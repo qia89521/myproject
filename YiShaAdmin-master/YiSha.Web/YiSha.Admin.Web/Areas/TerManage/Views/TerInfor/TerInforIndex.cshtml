@@ -28,7 +28,6 @@
         <div class="btn-group-sm hidden-xs" id="toolbar">
             <a id="btnAdd" class="btn btn-success" onclick="showSaveForm(true)"><i class="fa fa-plus"></i> 新增</a>
             <a id="btnEdit" class="btn btn-primary disabled" onclick="showSaveForm(false)"><i class="fa fa-edit"></i> 修改</a>
-            <a id="btnDelete" class="btn btn-danger disabled" onclick="deleteForm()"><i class="fa fa-remove"></i> 查看转让信息</a>
         </div>
 
         <div class="col-sm-12 select-table table-striped">
@@ -51,7 +50,7 @@
                     [
                         { title: '基本信息', align: 'center', colspan: 8 },
                         { title: '状态信息', align: 'center', colspan: 4 },
-                        { title: '操作人', align: 'center', colspan: 4 }
+                        { title: '操作信息', align: 'center', colspan: 5 },
                     ],
                     [
                     { checkbox: true, visible: true },
@@ -105,7 +104,7 @@
                             return "<span>" + value + " <button type=\"button\" class=\"btn btn-primary btn-xs\" onclick=\"setManage('" + row["Id"] + "')\">设 置</button></span>";
                         }
                      },
-                   
+
                     {
                         field: 'IsLock', title: '是否锁定',
                         editable: {
@@ -149,7 +148,17 @@
                             return ys.formatDate(value, "yyyy-MM-dd HH:mm:ss");
                         }
                     },
-                    { field: 'BaseModifierTxt', title: '修改人' },
+                        { field: 'BaseModifierTxt', title: '修改人' },
+                        {
+                            title: '操作',
+                            align: 'center',
+                            formatter: function (value, row, index) {
+                                var actions = [];
+                                actions.push("<a class=\"btn btn-success btn-xs\" href=\"#\" onclick=\"showZhuanRangData('" + row.Id +"')\"><i class=\"fa fa-edit\"></i>查看转让</a>");
+                                actions.push("<a class=\"btn btn-danger btn-xs\" href=\"#\" onclick=\"printQcode('" + row.Id +"')\"><i class=\"fa fa-edit\"></i>打印二维码</a>");
+                                return actions.join('');
+                            }
+                        }
                     ]
             ],
             queryParams: function (params) {
@@ -258,7 +267,7 @@
             }
         });
     }
-    
+
 
     function showSaveForm(bAdd) {
         var id = 0;
@@ -283,11 +292,24 @@
         });
     }
 
+
+    function printQcode(id) {
+        ys.openDialog({
+        title: '打印二维码【右键图片另存为】',
+            content: '@Url.Content("~/TerManage/TerInfor/TerInforPrint")' +"?ids="+id,
+        width: '493px',
+        btn_es: [],
+        height: '350px',
+       
+        });
+    }
+
     /**
      *
      * 查看转让信息
      */
     function showZhuanRangData(id) {
+
          ys.openDialog({
             title: '查看转让信息',
             content: '@Url.Content("~/TerManage/TerTransferRecord/TerTransferRecordIndex")' + '?id=' + id,
@@ -297,14 +319,4 @@
         });
     }
 
-    function deleteForm() {
-        var selectedRow = $('#gridTable').bootstrapTable('getSelections');
-        if (!ys.checkRowEdit(selectedRow)) {
-            return;
-        }
-        else {
-            id = selectedRow[0].Id;
-        }
-        showZhuanRangData(id);
-    }
 </script>
