@@ -30,6 +30,14 @@ namespace YiSha.Enum
 
         [Description("系统-普通用户")]
         normal = 5,
+
+        [Description("系统-合伙人")]
+        hehuo = 6,
+
+        [Description("系统-代理商")]
+        delegets = 7,
+
+
     }
 
 

@@ -54,6 +54,17 @@ namespace YiSha.Web.Code
                 object departmentName = await BaseRepository().FindObject(strSql.ToString());
                 operatorInfo.DepartmentName = departmentName.ParseToString();
                 #endregion
+
+                #region 角色codes
+                strSql.Clear();
+                strSql.AppendFormat(" SELECT RoleCode ");
+                strSql.AppendFormat(" FROM  sysrole ");
+                strSql.AppendFormat(" WHERE 1=1 ");
+                strSql.AppendFormat(" AND Id IN({0})", operatorInfo.RoleIds);
+
+                object roleCode = await BaseRepository().FindObject(strSql.ToString());
+                operatorInfo.RoleCodes = roleCode.ParseToString();
+                #endregion
             }
             return operatorInfo;
         }

@@ -20,6 +20,8 @@ namespace YiSha.Admin.WebApi.Controllers
 
         TerInforBLL terInforBLL = new TerInforBLL();
 
+        TerCollusionBLL terCollusionBLL = new TerCollusionBLL();
+
         /// <summary>
         /// 保存终端位置状态信息
         /// </summary>
@@ -28,7 +30,9 @@ namespace YiSha.Admin.WebApi.Controllers
         [HttpPost]
         public async Task<TData<string>> SaveForm([FromBody] TerPositionParam entity)
         {
-            TData<string> obj = await terInforBLL.ModifyPosition(entity.number,entity.fistLongitude,entity.fistLatitude,entity.address);
+            TData<string> obj = await terInforBLL.ModifyPosition(entity.number, entity.fistLongitude, entity.fistLatitude, entity.address);
+            //检测是否串货
+            await terCollusionBLL.SaveForm(entity);
             return obj;
         }
 

@@ -6,7 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using YiSha.Enum;
 using YiSha.Util;
+using YiSha.Util.Extension;
 
 namespace YiSha.Entity.OrganizationManage
 {
@@ -82,10 +84,52 @@ namespace YiSha.Entity.OrganizationManage
         /// <summary>
         /// 父级
         /// </summary>
-        public string? ParentTxt { get; set; }
+        public string ParentTxt { get; set; }
         /// <summary>
         /// 爷爷级
         /// </summary>
-        public string? GrandParentTxt { get; set; }
+        public string GrandParentTxt { get; set; }
+
+        /// <summary>
+        /// 是否为管理员或者开发人员
+        /// </summary>
+        [NotMapped]
+        public bool IsAdminOrDev
+        {
+            get
+            {
+                bool isTrue = false;
+                if (this.RoleCodes != null)
+                {
+                    if (this.RoleCodes.Contains(SysRoleEnum.dev.ParseToInt().ToString())
+                        || this.RoleCodes.Contains(SysRoleEnum.admin.ParseToInt().ToString()))
+                    {
+                        isTrue = true;
+                    }
+                }
+                return isTrue;
+            }
+        }
+
+        /// <summary>
+        /// 是否为代理商
+        /// </summary>
+        [NotMapped]
+        public bool IsDeleget
+        {
+            get
+            {
+                bool isTrue = false;
+                if (this.RoleCodes != null)
+                {
+                    if (this.RoleCodes.Contains(SysRoleEnum.delegets.ParseToInt().ToString())
+                        || !this.RoleCodes.Contains(SysRoleEnum.hehuo.ParseToInt().ToString()))
+                    {
+                        isTrue = true;
+                    }
+                }
+                return isTrue;
+            }
+        }
     }
 }

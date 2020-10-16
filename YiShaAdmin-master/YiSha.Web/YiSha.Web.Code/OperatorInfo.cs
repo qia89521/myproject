@@ -5,6 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using YiSha.Enum;
+using YiSha.Util;
+using YiSha.Util.Extension;
+using YiSha.Util.Model;
 
 namespace YiSha.Web.Code
 {
@@ -43,6 +47,26 @@ namespace YiSha.Web.Code
         /// </summary>
         [NotMapped]
         public string RoleCodes { get; set; }
+
+        /// <summary>
+        /// 是否为管理员或者开发人员
+        /// </summary>
+        [NotMapped]
+        public bool IsAdminOrDev {
+            get
+            {
+                bool isTrue = false;
+                if (this.RoleCodes != null)
+                {
+                    if (this.RoleCodes.Contains(SysRoleEnum.dev.ParseToInt().ToString())
+                        || this.RoleCodes.Contains(SysRoleEnum.admin.ParseToInt().ToString()))
+                    {
+                        isTrue = true;
+                    }
+                }
+                return isTrue;
+            }
+        }
 
     }
     public class RoleInfo

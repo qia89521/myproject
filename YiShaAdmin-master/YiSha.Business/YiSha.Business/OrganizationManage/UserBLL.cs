@@ -81,6 +81,13 @@ namespace YiSha.Business.OrganizationManage
             return obj;
         }
 
+        public async Task<UserEntity> GetUserEnity(long id)
+        {
+            UserEntity entity = await userService.GetEntity(id);
+            await GetUserBelong(entity);
+            return entity;
+        }
+
         public async Task<TData<UserEntity>> GetEntity(long id)
         {
             TData<UserEntity> obj = new TData<UserEntity>();
