@@ -10,7 +10,7 @@ using YiSha.Util.Model;
 namespace YiSha.Admin.WebApi.Controllers
 {
     /// <summary>
-    /// 设备状态控制器
+    /// 公众号微信控制器
     /// </summary>
     [Route("[controller]/[action]")]
     [ApiController]
