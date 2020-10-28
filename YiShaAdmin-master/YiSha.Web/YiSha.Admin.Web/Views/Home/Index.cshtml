@@ -11,7 +11,10 @@
     }
     else
     {
-        portrait = GlobalContext.SystemConfig.ApiSite + portrait;
+        if (!portrait.Contains("https"))
+        {
+            portrait = GlobalContext.SystemConfig.ApiSite + portrait;
+        }
     }
 }
 @BundlerHelper.Render(HostingEnvironment.ContentRootPath, Url.Content("~/yisha/js/yisha-data.min.js"))

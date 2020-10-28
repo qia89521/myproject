@@ -19,6 +19,11 @@ namespace YiSha.Web.Code
         public int? UserStatus { get; set; }
         public int? IsOnline { get; set; }
         public string UserName { get; set; }
+        /// <summary>
+        /// 微信昵称
+        /// </summary>
+        [NotMapped]
+        public string WxNickName { get; set; }
         public string RealName { get; set; }
         public string WebToken { get; set; }
         public string ApiToken { get; set; }
@@ -35,7 +40,8 @@ namespace YiSha.Web.Code
         /// </summary>
         [NotMapped]
         public string PositionIds { get; set; }
-
+       
+     
         /// <summary>
         /// 角色Id
         /// </summary>

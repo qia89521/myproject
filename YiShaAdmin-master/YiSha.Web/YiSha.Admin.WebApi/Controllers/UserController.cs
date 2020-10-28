@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using YiSha.Business.OrganizationManage;
 using YiSha.Entity.OrganizationManage;
 using YiSha.Enum;
+using YiSha.Model.Param.OrganizationManage;
 using YiSha.Model.Result.SystemManage;
 using YiSha.Util;
 using YiSha.Util.Model;
@@ -28,14 +29,19 @@ namespace YiSha.Admin.WebApi.Controllers
         /// <summary>
         /// 用户登录
         /// </summary>
-        /// <param name="userName"></param>
-        /// <param name="password"></param>
+        /// <param name="entity">登录信息实体</param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<TData<OperatorInfo>> Login([FromQuery] string userName, [FromQuery] string password)
+        public async Task<TData<OperatorInfo>> Login([FromBody] UserCheckLoginParam entity)
         {
+            //string userName, string password,
+           // string openid, string wx_nikename, string head_img, int sex,
             TData<OperatorInfo> obj = new TData<OperatorInfo>();
-            TData<UserEntity> userObj = await userBLL.CheckLogin(userName, password, (int)PlatformEnum.WebApi);
+            TData<UserEntity> userObj = 
+                await userBLL.CheckLogin(entity.UserName, entity.Password, entity.Openid,
+                entity.WxNikeName,
+                entity.Headimg,entity.Sex,
+                (int)PlatformEnum.WebApi);
             if (userObj.Tag == 1)
             {
                 await new UserBLL().UpdateUser(userObj.Data);
@@ -44,6 +50,32 @@ namespace YiSha.Admin.WebApi.Controllers
             }
             obj.Tag = userObj.Tag;
             obj.Message = userObj.Message;
+            return obj;
+        }
+
+        /// <summary>
+        /// 用户登录
+        /// </summary>
+        /// <param name="entity">登录信息实体</param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<TData<OperatorInfo>> CheckOpenId([FromBody] UserCheckLoginParam entity)
+        {
+            //string userName, string password,
+            // string openid, string wx_nikename, string head_img, int sex,
+            TData<OperatorInfo> obj = new TData<OperatorInfo>();
+            TData<UserEntity> userObj =
+                await userBLL.CheckLogin(entity.Openid,(int)PlatformEnum.WebApi);
+            if (userObj.Tag == 1)
+            {
+                await new UserBLL().UpdateUser(userObj.Data);
+                await Operator.Instance.AddCurrent(userObj.Data.ApiToken);
+                obj.Data = await Operator.Instance.Current(userObj.Data.ApiToken);
+            }
+            obj.ErrorCode = userObj.ErrorCode;
+            obj.Tag = userObj.Tag;
+            obj.Message = userObj.Message;
+
             return obj;
         }
 

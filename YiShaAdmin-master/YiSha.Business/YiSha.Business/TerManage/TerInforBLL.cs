@@ -50,6 +50,13 @@ namespace YiSha.Business.TerManage
             }
             return obj;
         }
+        public async Task<TerInforEntity> GetEntityByNumber(string ternumber)
+        {
+            TerInforEntity  obj= await terInforService.GetEntityByNumber(ternumber);
+           
+            return obj;
+        }
+        
         #endregion
 
         #region 提交数据
@@ -229,6 +236,7 @@ namespace YiSha.Business.TerManage
         {
             TerInforEntity ter = await terInforService.GetEntity(statusModel.TerId);
             //设备一旦锁定，激活时间（FistOn）,FistPosition,FistLongitude,FistLatitude 不再编号
+           // LogHelper.Info("TerInforEntity ter:" + JsonHelper.SerializeObject(ter));
             if (ter.IsLock == 1)
             {
                 if (!string.IsNullOrEmpty(statusModel.W))

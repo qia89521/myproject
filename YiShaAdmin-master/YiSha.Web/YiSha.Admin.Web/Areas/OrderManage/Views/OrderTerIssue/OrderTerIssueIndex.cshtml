@@ -45,6 +45,7 @@
         var queryUrl = '@Url.Content("~/OrderManage/OrderTerIssue/GetPageListJson")';
         $('#gridTable').ysTable({
             url: queryUrl,
+            sortName: 'SentDay',                     // 排序列名称
             columns: [
                 { checkbox: true, visible: true },
                 { field: 'Id', title: 'Id', visible: false },
@@ -115,8 +116,14 @@
                 { field: 'PrintOrderNumber', title: '打印单号' },
                 { field: 'ExpressCompany', title: '快递公司' },
                 { field: 'ExpressNumber', title: '快递单号' },
+                { field: 'Remark', title: '说明' },
+                
                 {
-                    field: 'BaseCreateTime', title: '创建时间', align: "left",
+                    field: 'SentDay', title: '发货日期', align: "left"
+                   
+                },
+                {
+                    field: 'BaseCreateTime', title: '补单时间', align: "left",
                     formatter: function (value, row, index) {
                         return ys.formatDate(value, "yyyy-MM-dd HH:mm:ss");
                     }

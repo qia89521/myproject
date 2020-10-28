@@ -42,12 +42,13 @@ namespace YiSha.Service.TerManage
             return data.list.ToList<TerInforEntity>();
         }
 
-        public async Task<TerInforEntity> GetEntity(long id)
+        public async Task<TerInforEntity> GetEntity(long? id)
         {
             /*
             return await this.BaseRepository().FindEntity<TerInforEntity>(id);
             */
             StringBuilder sql = CreateSignalSql(id);
+           
             return await this.BaseRepository().FindSignalModel<TerInforEntity>(sql.ToString());
 
         }
@@ -155,7 +156,7 @@ namespace YiSha.Service.TerManage
         /// </summary>
         /// <param name="id">主键Id</param>
         /// <returns></returns>
-        private StringBuilder CreateSignalSql(long id)
+        private StringBuilder CreateSignalSql(long? id)
         {
 
             StringBuilder sql = new StringBuilder();

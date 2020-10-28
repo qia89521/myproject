@@ -70,6 +70,19 @@ namespace YiSha.Service.OrganizationManage
             return await this.BaseRepository().FindEntity(expression);
         }
 
+        /// <summary>
+        /// 检测用户是否绑定了openid
+        /// </summary>
+        /// <param name="openId"></param>
+        /// <returns></returns>
+        public async Task<UserEntity> CheckBindOpenId(string openId)
+        {
+            var expression = LinqExtensions.True<UserEntity>();
+            expression = expression.And(t => t.OpenId == openId);
+            return await this.BaseRepository().FindEntity(expression);
+        }
+
+
         public bool ExistUserName(UserEntity entity)
         {
             var expression = LinqExtensions.True<UserEntity>();
@@ -266,6 +279,8 @@ namespace YiSha.Service.OrganizationManage
           
             return sql;
         }
+
+
         #endregion
     }
 }

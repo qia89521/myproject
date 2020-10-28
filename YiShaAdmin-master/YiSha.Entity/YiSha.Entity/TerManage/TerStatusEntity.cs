@@ -13,6 +13,51 @@ namespace YiSha.Entity.TerManage
     [Table("ter_status")]
     public class TerStatusEntity : BaseModifyEntity
     {
+        public void SetDefault()
+        {
+            if (this.CloseStatus == null)
+            {
+                this.CloseStatus = "";
+            }
+
+            if (this.RunStatus == null)
+            {
+                this.RunStatus = "";
+            }
+            if (this.SW == null)
+            {
+                this.SW = "";
+            }
+            if (this.CW == null)
+            {
+                this.CW = "";
+            }
+            if (this.O3Rate == null)
+            {
+                this.O3Rate = "";
+            }
+            if (this.W == null)
+            {
+                this.W = "";
+            }
+            if (this.ErrorCode == null)
+            {
+                this.ErrorCode = "";
+            }
+            if (this.ErrorMsg == null)
+            {
+                this.ErrorMsg = "";
+            }
+            if (this.TerNumber == null)
+            {
+                this.TerNumber = "";
+            }
+            if (this.ClassName == null)
+            {
+                this.ClassName = "";
+            }
+        }
+
         /// <summary>
         /// 锁定状态
         /// </summary>
@@ -58,7 +103,8 @@ namespace YiSha.Entity.TerManage
         /// 终端设备id
         /// </summary>
         /// <returns></returns>
-        public long TerId { get; set; }
+        [JsonConverter(typeof(StringJsonConverter))]
+        public long? TerId { get; set; }
         /// <summary>
         /// 设备编号
         /// </summary>

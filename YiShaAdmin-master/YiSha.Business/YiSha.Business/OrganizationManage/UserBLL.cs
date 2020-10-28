@@ -94,7 +94,7 @@ namespace YiSha.Business.OrganizationManage
             obj.Data = await userService.GetEntity(id);
 
             await GetUserBelong(obj.Data);
-           
+
 
             if (obj.Data.DepartmentId > 0)
             {
@@ -111,6 +111,14 @@ namespace YiSha.Business.OrganizationManage
 
         public async Task<TData<UserEntity>> CheckLogin(string userName, string password, int platform)
         {
+            return await CheckLogin(userName, password, "", "", "", 0, platform);
+        }
+
+
+        public async Task<TData<UserEntity>> CheckLogin(string userName, string password,
+            string openid, string wx_nikename, string head_img, int sex,
+            int platform)
+        {
             TData<UserEntity> obj = new TData<UserEntity>();
             if (userName.IsEmpty() || password.IsEmpty())
             {
@@ -124,49 +132,19 @@ namespace YiSha.Business.OrganizationManage
                 {
                     if (user.Password == EncryptUserPassword(password, user.Salt))
                     {
+                        //登录成功业务逻辑
+                        await LoginSucessFullLogic(user, platform);
+                        #region 更新用户头像和昵称信息
+                        if (string.IsNullOrEmpty(user.OpenId))
+                        {
+                            user.OpenId = openid;
+                            user.WxNickName = wx_nikename;
+                            user.Gender = sex;
+                            user.Portrait = head_img;
 
-                        user.LoginCount++;
-                        user.IsOnline = 1;
-
-                        #region 设置日期
-                        if (user.FirstVisit == GlobalConstant.DefaultTime)
-                        {
-                            user.FirstVisit = DateTime.Now;
+                           // await UpdateUser(user);
                         }
-                        if (user.PreviousVisit == GlobalConstant.DefaultTime)
-                        {
-                            user.PreviousVisit = DateTime.Now;
-                        }
-                        if (user.LastVisit != GlobalConstant.DefaultTime)
-                        {
-                            user.PreviousVisit = user.LastVisit;
-                        }
-                        user.LastVisit = DateTime.Now;
                         #endregion
-
-                        switch (platform)
-                        {
-                            case (int)PlatformEnum.Web:
-                                if (GlobalContext.SystemConfig.LoginMultiple)
-                                {
-                                    #region 多次登录用同一个token
-                                    if (string.IsNullOrEmpty(user.WebToken))
-                                    {
-                                        user.WebToken = SecurityHelper.GetGuid();
-                                    }
-                                    #endregion
-                                }
-                                else
-                                {
-                                    user.WebToken = SecurityHelper.GetGuid();
-                                }
-                                break;
-
-                            case (int)PlatformEnum.WebApi:
-                                user.ApiToken = SecurityHelper.GetGuid();
-                                break;
-                        }
-                        await GetUserBelong(user);
 
                         obj.Data = user;
                         obj.Message = "登录成功";
@@ -188,11 +166,49 @@ namespace YiSha.Business.OrganizationManage
             }
             return obj;
         }
+
+        /// <summary>
+        /// 用户登录
+        /// </summary>
+        /// <param name="openid">当前用户openid</param>
+        /// <param name="platform">登录方式</param>
+        /// <returns></returns>
+        public async Task<TData<UserEntity>> CheckLogin(string openid, int platform)
+        {
+            TData<UserEntity> obj = new TData<UserEntity>();
+
+            UserEntity user = await userService.CheckBindOpenId(openid);
+            if (user != null && user.Id > 0)
+            {
+                if (user.UserStatus == (int)StatusEnum.Yes)
+                {
+                    //登录成功业务逻辑
+                    await LoginSucessFullLogic(user, platform);
+                    obj.Data = user;
+                    obj.Message = "登录成功";
+                    obj.ErrorCode = "ok";
+                    obj.Tag = 1;
+                }
+                else
+                {
+                    obj.ErrorCode = "fail";
+                    obj.Message = "账号被禁用，请联系管理员";
+                }
+            }
+            else
+            {
+
+                obj.ErrorCode = "ok";
+                obj.Message = "用户没有绑定微信";
+            }
+            return obj;
+
+        }
         #endregion
 
         #region 提交数据
 
-       
+
 
         public async Task<TData<string>> SaveForm(UserEntity entity)
         {
@@ -363,6 +379,58 @@ namespace YiSha.Business.OrganizationManage
         #endregion
 
         #region 私有方法
+
+        /// <summary>
+        /// 登录成功业务逻辑
+        /// </summary>
+        /// <param name="user">登录用户实体</param>
+        /// <param name="platform">登录方式</param>
+        private async Task LoginSucessFullLogic(UserEntity user, int platform)
+        {
+            user.LoginCount++;
+            user.IsOnline = 1;
+
+            #region 设置日期
+            if (user.FirstVisit == GlobalConstant.DefaultTime)
+            {
+                user.FirstVisit = DateTime.Now;
+            }
+            if (user.PreviousVisit == GlobalConstant.DefaultTime)
+            {
+                user.PreviousVisit = DateTime.Now;
+            }
+            if (user.LastVisit != GlobalConstant.DefaultTime)
+            {
+                user.PreviousVisit = user.LastVisit;
+            }
+            user.LastVisit = DateTime.Now;
+            #endregion
+
+            switch (platform)
+            {
+                case (int)PlatformEnum.Web:
+                    if (GlobalContext.SystemConfig.LoginMultiple)
+                    {
+                        #region 多次登录用同一个token
+                        if (string.IsNullOrEmpty(user.WebToken))
+                        {
+                            user.WebToken = SecurityHelper.GetGuid();
+                        }
+                        #endregion
+                    }
+                    else
+                    {
+                        user.WebToken = SecurityHelper.GetGuid();
+                    }
+                    break;
+
+                case (int)PlatformEnum.WebApi:
+                    user.ApiToken = SecurityHelper.GetGuid();
+                    break;
+            }
+            await GetUserBelong(user);
+        }
+
         /// <summary>
         /// 密码MD5处理
         /// </summary>
@@ -436,7 +504,7 @@ namespace YiSha.Business.OrganizationManage
         /// <param name="user"></param>
         private async Task GetRoleCodes(UserEntity user)
         {
-            var rolses= await roleBLL.GetList(user.RoleIds);
+            var rolses = await roleBLL.GetList(user.RoleIds);
 
             if (rolses.Total > 0)
             {

@@ -91,6 +91,15 @@ namespace YiSha.Entity.OrganizationManage
         public string GrandParentTxt { get; set; }
 
         /// <summary>
+        /// 用户openid
+        /// </summary>
+        public string OpenId { get; set; }
+        /// <summary>
+        /// 用户微信昵称
+        /// </summary>
+        public string WxNickName { get; set; }
+
+        /// <summary>
         /// 是否为管理员或者开发人员
         /// </summary>
         [NotMapped]

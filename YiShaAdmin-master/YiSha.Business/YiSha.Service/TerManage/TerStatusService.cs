@@ -32,9 +32,14 @@ namespace YiSha.Service.TerManage
 
         public async Task<List<TerStatusEntity>> GetPageList(TerStatusListParam param, Pagination pagination)
         {
+            /*
             var expression = ListFilter(param);
             var list= await this.BaseRepository().FindList(expression, pagination);
             return list.ToList();
+            */
+            StringBuilder sql = CreateListSql(param);
+            var data = await this.BaseRepository().FindList<TerStatusEntity>(sql.ToString(), pagination);
+            return data.list.ToList<TerStatusEntity>();
         }
 
         public async Task<TerStatusEntity> GetEntity(long id)
@@ -47,7 +52,18 @@ namespace YiSha.Service.TerManage
             /*
             return await this.BaseRepository().FindEntity<TerInforEntity>(id);
             */
-            StringBuilder sql = CreateSignalSql(terId);
+            StringBuilder sql = CreateSignalSqlById(terId);
+            return await this.BaseRepository().FindSignalModel<TerStatusEntity>(sql.ToString());
+
+        }
+
+        public async Task<TerStatusEntity> GetEntityByTerNumber(string ternumber)
+        {
+            /*
+            return await this.BaseRepository().FindEntity<TerInforEntity>(id);
+            */
+            StringBuilder sql = CreateSignalSqlByNumber(ternumber);
+            LogHelper.Info("sql:"+sql.ToString());
             return await this.BaseRepository().FindSignalModel<TerStatusEntity>(sql.ToString());
 
         }
@@ -56,19 +72,7 @@ namespace YiSha.Service.TerManage
         #region 提交数据
         public async Task SaveForm(TerStatusEntity entity)
         {
-            /**
             if (entity.Id.IsNullOrZero())
-            {
-                await entity.Create();
-                await this.BaseRepository().Insert(entity);
-            }
-            else
-            {
-                await entity.Modify();
-                await this.BaseRepository().Update(entity);
-            }**/
-
-            if (entity.TerId.IsNullOrZero())
             {
                 await entity.Create();
                 await this.BaseRepository().Insert(entity);
@@ -114,11 +118,11 @@ namespace YiSha.Service.TerManage
             sql.AppendFormat("  where 1=1 ");
             if (param != null)
             {
-                if (!string.IsNullOrEmpty(param.CloseStatus))
+                if (!string.IsNullOrEmpty(param.CloseStatus)&& param.CloseStatus!="-1")
                 {
                     sql.AppendFormat(" and CloseStatus={0}", param.CloseStatus);
                 }
-                if (!string.IsNullOrEmpty(param.RunStatus))
+                if (!string.IsNullOrEmpty(param.RunStatus) && param.RunStatus != "-1")
                 {
                     sql.AppendFormat(" and RunStatus={0}", param.RunStatus);
                 }
@@ -150,7 +154,7 @@ namespace YiSha.Service.TerManage
         /// </summary>
         /// <param name="terId">终端设备id</param>
         /// <returns></returns>
-        private StringBuilder CreateSignalSql(long terId)
+        private StringBuilder CreateSignalSqlById(long terId)
         {
             StringBuilder sql = new StringBuilder();
 
@@ -162,9 +166,36 @@ namespace YiSha.Service.TerManage
             sql.AppendFormat(" ) a ");
             sql.AppendFormat(" join ");
             sql.AppendFormat(" ( ");
-            sql.AppendFormat("   select Id,TerNumber,TerName from ter_infor ");
-            sql.AppendFormat("   where 1=1 ");
-           
+            sql.AppendFormat(" select Id,TerNumber,TerName from ter_infor ");
+            sql.AppendFormat(" where 1=1 ");
+
+            sql.AppendFormat(" ) b");
+            sql.AppendFormat(" on a.TerId=b.Id ");
+
+            return sql;
+        }
+
+        /// <summary>
+        /// 创建查询sql
+        /// </summary>
+        /// <param name="terId">终端设备id</param>
+        /// <returns></returns>
+        private StringBuilder CreateSignalSqlByNumber(string ternumber)
+        {
+            StringBuilder sql = new StringBuilder();
+
+            sql.AppendFormat(" select a.*,b.TerNumber,b.TerName from  ");
+            sql.AppendFormat(" (");
+            sql.AppendFormat("  select * from ter_status ");
+            sql.AppendFormat("  where 1=1 ");
+            //sql.AppendFormat("  and TerId={0}", terId);
+            sql.AppendFormat(" ) a ");
+            sql.AppendFormat(" join ");
+            sql.AppendFormat(" ( ");
+            sql.AppendFormat(" select Id,TerNumber,TerName from ter_infor ");
+            sql.AppendFormat(" where 1=1 ");
+            sql.AppendFormat(" and TerNumber='{0}'",ternumber);
+
             sql.AppendFormat(" ) b");
             sql.AppendFormat(" on a.TerId=b.Id ");
 

@@ -69,13 +69,45 @@ namespace YiSha.Business.TerManage
         {
             TData<string> obj = new TData<string>();
 
-            TerStatusEntity ter = await terStatusService.GetEntityByTerId(entity.TerId);
-            if (ter != null && ter.TerId > 0)
+            entity.BaseModifyTime = DateTime.Now;
+
+            TerStatusEntity ter = await terStatusService.GetEntityByTerNumber(entity.TerNumber);
+            if (ter == null)
             {
-                ClassValueCopierHelper.Copy(ter, entity,true);
+
+                ter = new TerStatusEntity();
+                ter.SetDefault();
+
+                entity.BaseCreateTime = DateTime.Now;
+                entity.BaseVersion = 0;
+
+                TerInforEntity terInfor = await terInforBLL.GetEntityByNumber(entity.TerNumber);
+               // LogHelper.Info(" terInfor:" + JsonHelper.SerializeObject(terInfor));
+                if (terInfor != null)
+                {
+                    entity.TerId = terInfor.Id;
+                    entity.TerName = terInfor.TerName;
+                }
+                else
+                {
+                    obj.Tag = 0;
+                    obj.Message = "机器号不存在";
+                    return obj;
+                }
             }
+            else
+            {
+                entity.TerId = ter.TerId;
+                entity.TerName = ter.TerName;
+                entity.BaseVersion++;
+            }
+            //LogHelper.Info(" entity:" + JsonHelper.SerializeObject(entity));
+            ClassValueCopierHelper.Copy(ter, entity, true);
+           // LogHelper.Info(" ter:"+JsonHelper.SerializeObject(ter));
+
             await terStatusService.SaveForm(ter);
             //修改设备状态
+
             await terInforBLL.ModifyStatusBusy(entity);
 
             obj.Data = entity.Id.ParseToString();

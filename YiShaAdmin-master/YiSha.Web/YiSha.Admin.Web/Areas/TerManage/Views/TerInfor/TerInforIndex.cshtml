@@ -17,7 +17,7 @@
                         设备名称：<input id="terName" col="TerName" type="text" />
                     </li>
                     <li>
-                        设备编号：<input id="terName" col="TerNumber" type="text" />
+                        设备编号：<input id="terNumber" col="TerNumber" type="text" />
                     </li>
                     <li>
                         <a id="btnSearch" class="btn btn-primary btn-sm" onclick="searchGrid()"><i class="fa fa-search"></i>&nbsp;搜索</a>
@@ -28,6 +28,7 @@
         <div class="btn-group-sm hidden-xs" id="toolbar">
             <a id="btnAdd" class="btn btn-success" onclick="showSaveForm(true)"><i class="fa fa-plus"></i> 新增</a>
             <a id="btnEdit" class="btn btn-primary disabled" onclick="showSaveForm(false)"><i class="fa fa-edit"></i> 修改</a>
+            <a id="btnAdd" class="btn btn-success" onclick="showSaveForm(true)"><i class="fa fa-plus"></i> 新增</a>
         </div>
 
         <div class="col-sm-12 select-table table-striped">
@@ -49,7 +50,7 @@
             columns:[
                     [
                         { title: '基本信息', align: 'center', colspan: 8 },
-                        { title: '状态信息', align: 'center', colspan: 4 },
+                        { title: '状态信息', align: 'center', colspan: 1 },
                         { title: '操作信息', align: 'center', colspan: 5 },
                     ],
                     [
@@ -131,9 +132,6 @@
                             }]
                         }
                     },
-                    { field: 'WaterNum', title: '累计水量/L' },
-                    { field: 'TimeLen', title: '累计时长/天' },
-                    { field: 'NetSignal', title: '信号强度' },
                     { field: 'Position', title: '当前位置' },
                     {
                         field: 'BaseCreateTime', title: '创建时间', align: "left",

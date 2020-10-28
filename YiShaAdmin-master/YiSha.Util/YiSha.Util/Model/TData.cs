@@ -22,6 +22,12 @@ namespace YiSha.Util.Model
         public string Message { get; set; }
 
         /// <summary>
+        /// 代码提示code
+        /// </summary>
+        public string ErrorCode { get; set; }
+
+
+        /// <summary>
         /// 扩展Message
         /// </summary>
         public string Description { get; set; }

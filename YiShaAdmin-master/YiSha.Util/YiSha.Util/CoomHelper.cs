@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Reflection;
-using System.Text;
+using System.IO;
 
 namespace YiSha.Util
 {
@@ -36,5 +36,16 @@ namespace YiSha.Util
                 }
             }
         }
+
+        /// <summary>
+        /// 获取配置文件对象
+        /// </summary>
+        /// <returns></returns>
+        public static string GetConfig(string key)
+        {
+            return ConfigurationHelper.GetConfigValueByKey(key);
+
+        }
+
     }
 }

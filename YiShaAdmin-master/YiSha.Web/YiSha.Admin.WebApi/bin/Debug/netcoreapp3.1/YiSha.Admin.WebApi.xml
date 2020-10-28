@@ -11,6 +11,32 @@
             <param name="param"></param>
             <returns></returns>
         </member>
+        <member name="T:YiSha.Admin.WebApi.Controllers.MsmqSentController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.MsmqSentController.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="iConfiguration"></param>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.MsmqSentController.Sent(YiSha.Model.Param.MsmqMsg)">
+            <summary>
+            发送消息   Msmq/SentMsmq
+            </summary>
+            <param name="entity">实体数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.MsmqSentController.PostData(System.String,System.String)">
+             <summary>
+            post提交数据
+             </summary>
+             <param name="posturl">post url</param>
+             <param name="postData">post 数据</param>
+             <returns></returns>
+        </member>
         <member name="M:YiSha.Admin.WebApi.Controllers.NewsController.GetPageList(YiSha.Model.Param.OrganizationManage.NewsListParam,YiSha.Util.Model.Pagination)">
             <summary>
             获取文章列表
@@ -77,12 +103,18 @@
             <param name="entity">实体数据</param>
             <returns></returns>
         </member>
-        <member name="M:YiSha.Admin.WebApi.Controllers.UserController.Login(System.String,System.String)">
+        <member name="M:YiSha.Admin.WebApi.Controllers.UserController.Login(YiSha.Model.Param.OrganizationManage.UserCheckLoginParam)">
             <summary>
             用户登录
             </summary>
-            <param name="userName"></param>
-            <param name="password"></param>
+            <param name="entity">登录信息实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.UserController.CheckOpenId(YiSha.Model.Param.OrganizationManage.UserCheckLoginParam)">
+            <summary>
+            用户登录
+            </summary>
+            <param name="entity">登录信息实体</param>
             <returns></returns>
         </member>
         <member name="M:YiSha.Admin.WebApi.Controllers.UserController.LoginOff(System.String)">
@@ -90,6 +122,18 @@
             用户退出登录
             </summary>
             <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="T:YiSha.Admin.WebApi.Controllers.WXController">
+            <summary>
+            设备状态控制器
+            </summary>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.WXController.GetSessionKey(YiSha.Model.Param.WXManage.WXSessionKeyParam)">
+            <summary>
+            获取seesion 信息
+            </summary>
+            <param name="entity">实体数据</param>
             <returns></returns>
         </member>
         <member name="T:YiSha.Admin.WebApi.Controllers.AuthorizeFilterAttribute">

@@ -22,6 +22,7 @@ namespace YiSha.Admin.WebApi
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            ConfigurationHelper.Configure(configuration);
             GlobalContext.LogWhenStart(env);
             GlobalContext.HostingEnvironment = env;
         }

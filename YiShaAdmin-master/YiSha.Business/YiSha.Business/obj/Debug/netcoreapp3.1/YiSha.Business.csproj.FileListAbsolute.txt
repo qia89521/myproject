@@ -40,6 +40,7 @@ E:\资料\私人项目\2020_08\YiShaAdmin-master\YiSha.Business\YiSha.Business\o
 E:\资料\私人项目\2020_08\YiShaAdmin-master\YiSha.Business\YiSha.Business\obj\Debug\netcoreapp3.1\YiSha.Business.csproj.CopyComplete
 E:\资料\私人项目\2020_08\YiShaAdmin-master\YiSha.Business\YiSha.Business\obj\Debug\netcoreapp3.1\YiSha.Business.dll
 E:\资料\私人项目\2020_08\YiShaAdmin-master\YiSha.Business\YiSha.Business\obj\Debug\netcoreapp3.1\YiSha.Business.pdb
+E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\bin\Debug\netcoreapp3.1\YiSha.Web.Code.dll
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\bin\Debug\netcoreapp3.1\YiSha.Business.deps.json
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\bin\Debug\netcoreapp3.1\YiSha.Business.dll
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\bin\Debug\netcoreapp3.1\YiSha.Business.pdb
@@ -58,7 +59,6 @@ E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Busin
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\bin\Debug\netcoreapp3.1\YiSha.RedisCache.dll
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\bin\Debug\netcoreapp3.1\YiSha.Service.dll
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\bin\Debug\netcoreapp3.1\YiSha.Util.dll
-E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\bin\Debug\netcoreapp3.1\YiSha.Web.Code.dll
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\bin\Debug\netcoreapp3.1\YiSha.Entity.pdb
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\bin\Debug\netcoreapp3.1\YiSha.Enum.pdb
 E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\bin\Debug\netcoreapp3.1\YiSha.CodeGenerator.pdb
