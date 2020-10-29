@@ -42,10 +42,16 @@ namespace YiSha.Business.OrderManage
         public async Task<TData<OrderMoneyReceiptEntity>> GetEntity(long id)
         {
             TData<OrderMoneyReceiptEntity> obj = new TData<OrderMoneyReceiptEntity>();
-            obj.Data = await orderMoneyReceiptService.GetEntity(id);
-            if (obj.Data != null)
+
+            OrderMoneyReceiptEntity entity = await orderMoneyReceiptService.GetEntity(id);
+            if (entity != null)
             {
+                decimal money = Convert.ToDecimal(entity.TotalMoney.ToString());
+                entity.TotalMoneyCnUpper = CoomHelper.Money2CnUper(money.ToString("#0.00"));
+
                 obj.Tag = 1;
+                obj.Data = entity;
+
             }
             return obj;
         }
@@ -99,7 +105,7 @@ namespace YiSha.Business.OrderManage
         private string CreatePrintNumber(string print_pre_number, int count)
         {
             //WJR20201009-
-            string cur_day = DateTime.Now.ToString("yyyy-MM-dd");
+            string cur_day = DateTime.Now.ToString("yyyyMMdd");
             string numberPre = CoomHelper.GetValue(print_pre_number, "WJR");
             numberPre += cur_day;
             if (!numberPre.EndsWith("-"))

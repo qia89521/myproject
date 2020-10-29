@@ -1,13 +1,13 @@
 ﻿@{
     Layout = "~/Views/Shared/_Index.cshtml";
- }
+}
 <div class="container-div">
     <div class="row">
         <div id="searchDiv" class="col-sm-12 search-collapse">
             <div class="select-list">
                 <ul>
 
-                    
+
                     <li>
                         标题：<input id="title" col="Title" type="text" />
                     </li>
@@ -48,7 +48,7 @@
                 { field: 'Id', title: 'Id', visible: false },
                 { field: 'Title', title: '标题' },
                 { field: 'PrintNumber', title: '单号' },
-                
+
                 { field: 'PayManItme', title: '交款项目' },
                 { field: 'TotalMoney', title: '总金额' },
                 { field: 'CompanyTxt', title: '收款单位' },
@@ -66,7 +66,7 @@
                     align: 'center',
                     formatter: function (value, row, index) {
                         var actions = [];
-                        actions.push("<a class=\"btn btn-success btn-xs\" href=\"#\" onclick=\"printForm('" + row.PrintOrderNumber + "')\" ><i class=\"fa fa-remove\"></i>打印</a>");
+                        actions.push("<a class=\"btn btn-success btn-xs\" href=\"#\" onclick=\"printForm('" + row.Id + "')\" ><i class=\"fa fa-remove\"></i>打印</a>");
                         return actions.join('');
                     }
                 }
@@ -127,5 +127,20 @@
                 });
             });
         }
+    }
+
+
+    function printForm(ids) {
+        ys.openDialog({
+        title: '打印收据',
+        content: '@Url.Content("~/OrderManage/OrderMoneyReceipt/OrderMoneyReceiptPrint")' + '?ids=' + ids,
+        width: '900px',
+        btn_es: ['打印', '关闭'],
+        height: '560px',
+        callback: function (index, layero) {
+            var iframeWin = window[layero.find('iframe')[0]['name']];
+            iframeWin.saveForm(index);
+        }
+        });
     }
 </script>

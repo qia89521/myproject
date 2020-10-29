@@ -36,6 +36,25 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// 打印收据
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IActionResult> OrderMoneyReceiptPrint()
+        {
+            string ids = Request.Query["ids"];
+
+            OrderMoneyReceiptEntity model = new OrderMoneyReceiptEntity();
+            TData<OrderMoneyReceiptEntity> data=await orderMoneyReceiptBLL.GetEntity(long.Parse(ids));
+            if (data.Data != null)
+            {
+                model = data.Data;
+            }
+
+            return View(model);
+        }
+
         #endregion
 
         #region 获取数据

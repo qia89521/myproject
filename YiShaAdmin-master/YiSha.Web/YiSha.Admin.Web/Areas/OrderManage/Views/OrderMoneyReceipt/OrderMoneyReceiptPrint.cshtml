@@ -1,0 +1,160 @@
+﻿@{
+    Layout = "~/Views/Shared/_FormWhite.cshtml";
+}
+@model YiSha.Entity.OrderManage.OrderMoneyReceiptEntity;
+
+<div class="wrapper animated fadeInRight">
+    <div id="tb_print">
+        <style>
+            .red {
+                color: red;
+            }
+            /*容器*/
+            .print_container {
+                padding: 30px;
+                border: 1px solid #000;
+            }
+            /*标题*/
+            .print_title {
+                width: 100%;
+                text-align: center;
+                font-size: 20px;
+                font-weight: bold;
+            }
+            /*副标题*/
+            .print_title_fu {
+                margin-top: 30px;
+                width: 100%;
+            }
+
+                .print_title_fu div {
+                    float: left;
+                    width: 33%;
+                }
+
+                .print_title_fu .print_day {
+                    text-align: center;
+                    letter-spacing: 2px;
+                }
+
+                .print_title_fu .print_number {
+                    text-align: right;
+                }
+
+            /*内容*/
+            .tb_content {
+                border-collapse: collapse;
+                width: 100%;
+                border: 1px solid #000;
+                text-align: left;
+                text-indent: 20px;
+            }
+
+                .tb_content tr {
+                    height: 45px;
+                }
+
+                .tb_content th {
+                    border: 1px solid #000;
+                    width: 30%;
+                }
+
+                .tb_content td {
+                    border: 1px solid #000;
+                }
+            /*底部*/
+            .print_bottom {
+                margin-top: 30px;
+                width: 100%;
+                text-align: left;
+            }
+
+                .print_bottom div {
+                    float: left;
+                }
+
+                .print_bottom .print_bottom_company {
+                    width: 46%;
+                }
+
+                .print_bottom .print_bottom_man {
+                    width: 27%;
+                }
+
+                .print_bottom .print_bottom_sale {
+                    width: 27%;
+                }
+            /*公章样式*/
+            .gongzhang {
+                margin-top: -140px;
+                margin-left: 100px;
+            }
+        </style>
+        <div class="print_container">
+            <div class="print_title">
+                @(Model.CompanyTxt) 收款收据
+            </div>
+            <div class="print_title_fu">
+                <div>&nbsp;</div>
+                <div class="print_day"> @(Model.CreateDateCn)</div>
+                <div class="print_number">
+                    <span>NO</span>.<span class="red">@(Model.PrintNumber)</span>
+                </div>
+            </div>
+            <table class="tb_content">
+                <tr>
+                    <th>交款单位(交款人)</th>
+                    <td>@(Model.PayManName)</td>
+                </tr>
+                <tr>
+                    <th>交款项目</th>
+                    <td>@(Model.PayManItme)</td>
+                </tr>
+                <tr>
+                    <th>金额(大写)</th>
+                    <td>@(Model.TotalMoneyCnUpper)</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: right;">
+                        <div style="margin-right: 30px;">合计： ￥@(Convert.ToDecimal(Model.TotalMoney.ToString()).ToString("#0.00")) 元</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>备注</th>
+                    <td>@(Model.Remark)</td>
+                </tr>
+            </table>
+
+            <div class="print_bottom">
+                <div class="print_bottom_company">
+                    收款单位公章：
+
+                </div>
+                <div class="print_bottom_man">
+                    交款人：@(Model.PayManName)
+
+                </div>
+                <div class="print_bottom_sale">
+                    收款人|业务员 ：@(Model.SaleManTxt)
+                </div>
+            </div>
+            <div style="height: 60px;">
+                <img class="gongzhang" src="@GlobalContext.SystemConfig.ApiSite@(Model.CompanyImg)" />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function saveForm(index) {
+        $("#tb_print").printArea();
+        window.setTimeout(function () {
+            parent.layer.close(index);
+
+        }, 1000 * 6);
+
+    }
+</script>
+
