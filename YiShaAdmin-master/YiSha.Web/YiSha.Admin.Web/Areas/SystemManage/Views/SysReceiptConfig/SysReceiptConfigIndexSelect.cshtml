@@ -37,6 +37,8 @@
                 { radio: true, visible: true },
                 { field: 'Id', title: 'Id', visible: false },
                 { field: 'Title', title: '收款单位' },
+                { field: 'NumberPre', title: '编号前缀' },
+
                 {
                     field: 'CompanyImg', title: '单位公章',
                     formatter: function (value, row, index) {
@@ -70,13 +72,13 @@
     }
 
 
-    var select_data = { ids: "", txts: "" };
+    var select_data = { ids: "", txts: "" ,extend_value:""};
     function chooseUserOK() {
         var selectedRow = $("#gridTable").bootstrapTable("getSelections");
         var ids = ys.getIds(selectedRow);
         select_data.ids = ids;
         select_data.txts = selectedRow[0]["Title"];
-
+        select_data.extend_value = selectedRow[0]["NumberPre"];
         return select_data;
     }
 

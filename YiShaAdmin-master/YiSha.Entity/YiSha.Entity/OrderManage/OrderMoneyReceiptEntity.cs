@@ -28,6 +28,13 @@ namespace YiSha.Entity.OrderManage
         /// </summary>
         /// <returns></returns>
         public string PayManItme { get; set; }
+
+        /// <summary>
+        /// 打印单号
+        /// </summary>
+        /// <returns></returns>
+        public string PrintNumber { get; set; }
+        
         /// <summary>
         /// 总金额
         /// </summary>
@@ -50,6 +57,13 @@ namespace YiSha.Entity.OrderManage
         /// <returns></returns>
         [NotMapped]
         public string CompanyTxt { get; set; }
+        /// <summary>
+        /// 订单前缀
+        /// </summary>
+        /// <returns></returns>
+        [NotMapped]
+        public string NumberPre { get; set; }
+        
         /// <summary>
         /// 收款单位
         /// </summary>

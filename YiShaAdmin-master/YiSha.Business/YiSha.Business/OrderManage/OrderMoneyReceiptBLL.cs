@@ -55,6 +55,14 @@ namespace YiSha.Business.OrderManage
         public async Task<TData<string>> SaveForm(OrderMoneyReceiptEntity entity)
         {
             TData<string> obj = new TData<string>();
+            if (string.IsNullOrEmpty(entity.PrintNumber))
+            {
+                string cur_day = DateTime.Now.ToString("yyyy-MM-dd");
+                int count = await GetCount(cur_day, cur_day);
+
+                entity.PrintNumber = CreatePrintNumber(entity.NumberPre,count);
+            }
+
             await orderMoneyReceiptService.SaveForm(entity);
             obj.Data = entity.Id.ParseToString();
             obj.Tag = 1;
@@ -68,9 +76,46 @@ namespace YiSha.Business.OrderManage
             obj.Tag = 1;
             return obj;
         }
+
+        public async Task<int> GetCount(string stime, string etime)
+        {
+            int count = 0;
+            object obj_count = await orderMoneyReceiptService.GetCount(stime, etime);
+            if (obj_count != null)
+            {
+                int.TryParse(obj_count.ToString(), out count);
+            }
+            return count;
+        }
+
         #endregion
 
         #region 私有方法
+        /// <summary>
+        /// 创建打印订单号
+        /// </summary>
+        /// <param name="count">目前总数量</param>
+        /// <returns></returns>
+        private string CreatePrintNumber(string print_pre_number, int count)
+        {
+            //WJR20201009-
+            string cur_day = DateTime.Now.ToString("yyyy-MM-dd");
+            string numberPre = CoomHelper.GetValue(print_pre_number, "WJR");
+            numberPre += cur_day;
+            if (!numberPre.EndsWith("-"))
+            {
+                numberPre += "-";
+            }
+            string count_str = (count + 1).ToString();
+            if (count < 10)
+            {
+                count_str = "0" + count;
+            }
+            string printOrderNumber = string.Format("{0}{1}", numberPre, count_str);
+
+            return printOrderNumber;
+        }
+
         #endregion
     }
 }

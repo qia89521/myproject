@@ -12,5 +12,25 @@ namespace YiSha.Model.Param.OrderManage
     /// </summary>
     public class OrderMoneyReceiptListParam
     {
+        /// <summary>
+        /// 标题
+        /// </summary>
+        public string Title { get; set; }
+        /// <summary>
+        /// 付款人
+        /// </summary>
+        public string PayManName { get; set;}
+        /// <summary>
+        /// 销售员
+        /// </summary>
+        public string SaleManTxt { get; set; }
+        /// <summary>
+        /// 开始日期
+        /// </summary>
+        public string StartTime { get; set; }
+        /// <summary>
+        /// 结束日期
+        /// </summary>
+        public string EndTime { get; set; }
     }
 }

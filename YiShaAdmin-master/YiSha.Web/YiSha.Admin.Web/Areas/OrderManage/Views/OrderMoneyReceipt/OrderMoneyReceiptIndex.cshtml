@@ -6,6 +6,11 @@
         <div id="searchDiv" class="col-sm-12 search-collapse">
             <div class="select-list">
                 <ul>
+
+                    
+                    <li>
+                        标题：<input id="title" col="Title" type="text" />
+                    </li>
                     <li>
                         交款人：<input id="payManName" col="PayManName" type="text" />
                     </li>
@@ -42,9 +47,11 @@
                 { checkbox: true, visible: true },
                 { field: 'Id', title: 'Id', visible: false },
                 { field: 'Title', title: '标题' },
+                { field: 'PrintNumber', title: '单号' },
+                
                 { field: 'PayManItme', title: '交款项目' },
                 { field: 'TotalMoney', title: '总金额' },
-                { field: 'CompanyName', title: '收款单位' },
+                { field: 'CompanyTxt', title: '收款单位' },
                 { field: 'PayManName', title: '交款人' },
                 { field: 'SaleManTxt', title: '业务员' },
                 { field: 'Remark', title: '备注' },
