@@ -42,12 +42,33 @@ namespace YiSha.Entity.OrderManage
         /// 收款单位公章
         /// </summary>
         /// <returns></returns>
+        [NotMapped]
         public string CompanyImg { get; set; }
+        /// <summary>
+        /// 收款单位
+        /// </summary>
+        /// <returns></returns>
+        [NotMapped]
+        public string CompanyTxt { get; set; }
+        /// <summary>
+        /// 收款单位
+        /// </summary>
+        /// <returns></returns>
+        [JsonConverter(typeof(StringJsonConverter))]
+        public long? CompanyId { get; set; }
         /// <summary>
         /// 对接业务员
         /// </summary>
         /// <returns></returns>
         [JsonConverter(typeof(StringJsonConverter))]
         public long? SaleManId { get; set; }
+
+        /// <summary>
+        /// 对接业务员
+        /// </summary>
+        /// <returns></returns>
+        [NotMapped]
+        public string SaleManTxt { get; set; }
+        
     }
 }

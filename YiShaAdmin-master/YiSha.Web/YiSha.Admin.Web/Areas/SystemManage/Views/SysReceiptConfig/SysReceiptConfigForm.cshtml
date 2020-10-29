@@ -2,18 +2,33 @@
     Layout = "~/Views/Shared/_FormWhite.cshtml";
 }
 
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnvironment
+@section header{
+    @BundlerHelper.Render(HostingEnvironment.ContentRootPath, Url.Content("~/lib/fileinput/5.0.3/css/fileinput.min.css"))
+    @BundlerHelper.Render(HostingEnvironment.ContentRootPath, Url.Content("~/lib/fileinput/5.0.3/js/fileinput.min.js"))
+}
 <div class="wrapper animated fadeInRight">
     <form id="form" class="form-horizontal m">
         <div class="form-group">
-            <label class="col-sm-3 control-label ">Title<font class="red"> *</font></label>
+            <label class="col-sm-2 control-label ">名称<font class="red"> *</font></label>
             <div class="col-sm-8">
                 <input id="title" col="Title" type="text" class="form-control" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label ">CompanyImg</label>
+            <label class="col-sm-2 control-label ">单号前缀<font class="red"> *</font></label>
             <div class="col-sm-8">
-                <input id="companyImg" col="CompanyImg" type="text" class="form-control" />
+                <input id="numberPre" col="NumberPre" type="text" class="form-control" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-sm-2 control-label ">公章</label>
+            <div class="col-sm-8">
+                <div class="col-sm-8 roleCode_2">
+                    <input id="fileinput_PayMoneyImg" type="file">
+                    <input type="hidden" id="companyImg" col="CompanyImg" />
+                </div>
             </div>
         </div>
     </form>
@@ -21,12 +36,23 @@
 
 <script type="text/javascript">
     var id = ys.request("id");
+
+    var cur_fomr_data = null;
     $(function () {
         getForm();
 
         $('#form').validate({
             rules: {
-                title: { required: true }
+                title: { required: true },
+                companyImg: { required: true },
+            }
+        });
+
+        //上传图片成功回掉函数
+        $('#fileinput_PayMoneyImg').on('fileuploaded', function (event, data, previewId, index) {
+            if (data.filescount > 0) {
+                $("#companyImg").val(data.response.Data);
+
             }
         });
     });
@@ -39,6 +65,9 @@
                 success: function (obj) {
                     if (obj.Tag == 1) {
                         $('#form').setWebControls(obj.Data);
+
+                        cur_fomr_data = obj.Data;
+                        InitImg(obj.Data.PayMoneyImg);
                     }
                 }
             });
@@ -46,6 +75,7 @@
         else {
             var defaultData = {};
             $('#form').setWebControls(defaultData);
+            InitImg("");
         }
     }
 
@@ -68,6 +98,27 @@
                 }
             });
         }
+    }
+
+     /**
+     * 初始化数据
+     * param img
+     */
+    function InitImg(img) {
+        var img_es = [];
+        if (!IsNullEmpty(img)) {
+            img = '@GlobalContext.SystemConfig.ApiSite' + img;
+            img_es.push(img);
+        }
+        $("#fileinput_PayMoneyImg").fileinput({
+            language: 'zh',
+          //  allowedFileTypes: ['jpg', 'jpeg', 'png'],
+            'uploadUrl': '@GlobalContext.SystemConfig.ApiSite' + '/File/UploadFile?fileModule=@UploadFileType.Money.ParseToInt()',
+            overwriteInitial: false,
+            initialPreviewAsData: true,
+            initialPreview: img_es
+         });
+
     }
 </script>
 

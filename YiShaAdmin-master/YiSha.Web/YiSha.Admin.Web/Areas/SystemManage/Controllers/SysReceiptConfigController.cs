@@ -32,6 +32,12 @@ namespace YiSha.Admin.Web.Areas.SystemManage.Controllers
             return View();
         }
 
+        [AuthorizeFilter("system:sysreceiptconfig:select")]
+        public ActionResult SysReceiptConfigIndexSelect()
+        {
+            return View();
+        }
+
         public ActionResult SysReceiptConfigForm()
         {
             return View();
