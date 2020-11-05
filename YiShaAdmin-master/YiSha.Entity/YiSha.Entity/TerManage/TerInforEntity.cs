@@ -94,11 +94,23 @@ namespace YiSha.Entity.TerManage
         /// <returns></returns>
         public string Latitude { get; set; }
         /// <summary>
-        /// 设备部件
+        /// 设备类型id
         /// </summary>
         /// <returns></returns>
-        public string TerParts { get; set; }
-
+        [JsonConverter(typeof(StringJsonConverter))]
+        public long TerPartId { get; set; }
+        /// <summary>
+        /// 设备类型名称
+        /// </summary>
+        /// <returns></returns>
+        [NotMapped]
+        public string TerPartTxt { get; set; }
+        /// <summary>
+        /// 设备类型Code
+        /// </summary>
+        /// <returns></returns>
+        [NotMapped]
+        public string TerPartCode { get; set; }
         /// <summary>
         /// 第一次开机时间 yyyy-MM-dd HH:mm:ss
         /// </summary>

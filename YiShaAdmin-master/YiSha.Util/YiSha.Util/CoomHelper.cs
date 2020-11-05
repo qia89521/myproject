@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
+using System.Text;
 
 namespace YiSha.Util
 {
@@ -11,6 +12,7 @@ namespace YiSha.Util
     /// </summary>
     public static class CoomHelper
     {
+        #region 0 获取值，为null取默认
         /// <summary>
         /// 获取值，为null取默认
         /// </summary>
@@ -36,7 +38,9 @@ namespace YiSha.Util
                 }
             }
         }
+        #endregion
 
+        #region 1 获取配置文件对象
         /// <summary>
         /// 获取配置文件对象
         /// </summary>
@@ -46,6 +50,9 @@ namespace YiSha.Util
             return ConfigurationHelper.GetConfigValueByKey(key);
 
         }
+        #endregion
+
+        #region 2 将金额转成中文大写
 
         /// <summary>
         /// 将金额转成中文大写
@@ -80,7 +87,117 @@ namespace YiSha.Util
             }
             return M;
         }
+        #endregion
 
+        #region 3 生成随机数和订单号
 
+        /// <summary>
+        /// 生成（字母和数字）随机数
+        /// </summary>
+        /// <param name="len">随机数长度</param>
+        /// <returns></returns>
+        public static string CreateWordNumRandom(int len)
+        {
+            string str = @"0123456789abcdefghigklmnopqrstuvwxyz";
+            Random random = new Random(GetRandomSeed());
+            StringBuilder strNumber = new StringBuilder();
+            for (int i = 1; i <= len; i++)
+            {
+                string word = str.Substring(0 + random.Next(36), 1);
+                strNumber.Append(word);
+            }
+            return strNumber.ToString();
+        }
+        /// <summary>
+        /// 创建唯一序列号
+        /// </summary>
+        /// <param name="pre">前缀</param>
+        /// <returns></returns>
+        public static string CreateGuid(string pre)
+        {
+            string number = string.Format("{0}{1}", pre, Guid.NewGuid().ToString().Replace("-", CreateRandom(1)).ToLower());
+            return number;
+        }
+
+        /// <summary>
+        /// 创建唯一序列号
+        /// </summary>
+        /// <returns></returns>
+        public static string CreateUniqueId()
+        {
+            return CreateUniqueId(string.Empty);
+        }
+
+        /// <summary>
+        /// 创建唯一序列号
+        /// </summary>
+        /// <param name="pre">前缀</param>
+        /// <returns></returns>
+        public static string CreateUniqueId(string pre)
+        {
+            string number = string.Format("{0}{1}{2}", pre, CreateTime(), CreateRandom(7));
+            return number;
+        }
+
+        /// <summary>
+        /// 创建时间戳id
+        /// </summary>
+        /// <returns></returns>
+        public static string CreateTime()
+        {
+            return DateTime.Now.ToString("yyyyMMddHHmmssfff");
+        }
+        /// <summary>
+        /// 创建30位长度的订单号,微信支付需要
+        /// </summary>
+        /// <returns></returns>
+        public static string CreateNewOrderNo()
+        {
+            StringBuilder oder = new StringBuilder();
+            //17位长度
+            oder.AppendFormat("{0}", DateTime.Now.ToString("yyyyMMddHHmmssfff"));
+            //4
+            oder.AppendFormat("{0}", CreateRandomInt(1000, 9999));
+            //9
+            oder.AppendFormat("{0}", CreateRandomInt(100000000, 999999999));
+            return oder.ToString();
+        }
+        static int GetRandomSeed()
+        {
+            byte[] bytes = new byte[4];
+            System.Security.Cryptography.RNGCryptoServiceProvider rng = new System.Security.Cryptography.RNGCryptoServiceProvider();
+            rng.GetBytes(bytes);
+            return BitConverter.ToInt32(bytes, 0);
+        }
+
+        /// <summary>
+        /// 生成随机数 最大九位数
+        /// </summary>
+        /// <param name="len">随机数长度</param>
+        /// <returns></returns>
+        public static string CreateRandomInt(int min, int max)
+        {
+            Random random = new Random(GetRandomSeed());
+            int random_int = random.Next(min, max);
+            return random_int.ToString();
+        }
+
+        /// <summary>
+        /// 生成随机数 1-9
+        /// </summary>
+        /// <param name="len">随机数长度</param>
+        /// <returns></returns>
+        public static string CreateRandom(int len)
+        {
+            Random random = new Random(GetRandomSeed());
+            StringBuilder strNumber = new StringBuilder();
+            for (int i = 1; i <= len; i++)
+            {
+
+                strNumber.Append(random.Next(1, 9));
+            }
+            return strNumber.ToString();
+        }
+        #endregion
     }
 }

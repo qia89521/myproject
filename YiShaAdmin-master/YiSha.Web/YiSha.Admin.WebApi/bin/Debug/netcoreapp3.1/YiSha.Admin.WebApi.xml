@@ -4,6 +4,18 @@
         <name>YiSha.Admin.WebApi</name>
     </assembly>
     <members>
+        <member name="T:YiSha.Admin.WebApi.Controllers.BaseControler">
+            <summary>
+            【自定义】控制器基类
+            </summary>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.BaseControler.GetCurLoginUser(System.String)">
+            <summary>
+            获取当前登陆用户信息
+            </summary>
+            <param name="json"></param>
+            <returns></returns>
+        </member>
         <member name="M:YiSha.Admin.WebApi.Controllers.DataDictController.GetList(YiSha.Model.Param.SystemManage.DataDictListParam)">
             <summary>
             获取数据字典列表
@@ -72,6 +84,17 @@
             设备出货控制器
             </summary>
         </member>
+        <member name="T:YiSha.Admin.WebApi.Controllers.SysAppConfigController">
+            <summary>
+            公众号微信控制器
+            </summary>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.SysAppConfigController.GetAppConfig">
+            <summary>
+            系统配置
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:YiSha.Admin.WebApi.Controllers.TerController">
             <summary>
             终端信息控制器
@@ -84,11 +107,32 @@
             <param name="entity">实体数据</param>
             <returns></returns>
         </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.TerController.BindTer(YiSha.Model.Param.TerManage.TerBindParam)">
+            <summary>
+            绑定设备用户
+            </summary>
+            <param name="entity">实体数据</param>
+            <returns></returns>
+        </member>
         <member name="M:YiSha.Admin.WebApi.Controllers.TerController.CheckNumber(System.String)">
             <summary>
             保存终端位置状态信息
             </summary>
             <param name="number">设备编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.TerController.GetEntityById(System.Int64)">
+            <summary>
+            获取设备实体信息
+            </summary>
+            <param name="id">设备id</param>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.TerController.GetPageListJson(YiSha.Model.Param.TerManage.WebApi_TerInforListParam)">
+            <summary>
+            获取数据列表
+            </summary>
+            <param name="param">查询参数</param>
             <returns></returns>
         </member>
         <member name="T:YiSha.Admin.WebApi.Controllers.TerStatusController">
@@ -124,9 +168,16 @@
             <param name="token"></param>
             <returns></returns>
         </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.UserController.RegUser(YiSha.Model.Param.OrganizationManage.RegUserParam)">
+            <summary>
+            用户登录
+            </summary>
+            <param name="entity">登录信息实体</param>
+            <returns></returns>
+        </member>
         <member name="T:YiSha.Admin.WebApi.Controllers.WXController">
             <summary>
-            设备状态控制器
+            公众号微信控制器
             </summary>
         </member>
         <member name="M:YiSha.Admin.WebApi.Controllers.WXController.GetSessionKey(YiSha.Model.Param.WXManage.WXSessionKeyParam)">

@@ -37,9 +37,21 @@ namespace YiSha.Enum
         [Description("系统-代理商")]
         delegets = 7,
 
+        [Description("系统-推广员")]
+        seller = 8,
+
 
     }
-
+    /// <summary>
+    /// 是否默认选项
+    /// </summary>
+    public enum IsDefaultEnum
+    {
+        [Description("是")]
+        Yes = 1,
+        [Description("否")]
+        No = 0
+    }
 
     public enum StatusEnum
     {

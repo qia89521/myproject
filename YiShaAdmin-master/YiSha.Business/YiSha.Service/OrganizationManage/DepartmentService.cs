@@ -38,6 +38,18 @@ namespace YiSha.Service.OrganizationManage
         }
 
         /// <summary>
+        /// 获取默认部门
+        /// </summary>
+        /// <returns></returns>
+        public async Task<DepartmentEntity> GetDefaultEndtity()
+        {
+            string sql = "SELECT * FROM SysDepartment WHERE IsDefault=1";
+            DepartmentEntity result = await this.BaseRepository().FindSignalModel<DepartmentEntity>(sql);
+
+            return result;
+        }
+
+        /// <summary>
         /// 部门名称是否存在
         /// </summary>
         /// <param name="entity"></param>

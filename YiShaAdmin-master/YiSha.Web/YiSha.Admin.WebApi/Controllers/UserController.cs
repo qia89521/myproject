@@ -35,12 +35,12 @@ namespace YiSha.Admin.WebApi.Controllers
         public async Task<TData<OperatorInfo>> Login([FromBody] UserCheckLoginParam entity)
         {
             //string userName, string password,
-           // string openid, string wx_nikename, string head_img, int sex,
+            // string openid, string wx_nikename, string head_img, int sex,
             TData<OperatorInfo> obj = new TData<OperatorInfo>();
-            TData<UserEntity> userObj = 
+            TData<UserEntity> userObj =
                 await userBLL.CheckLogin(entity.UserName, entity.Password, entity.Openid,
                 entity.WxNikeName,
-                entity.Headimg,entity.Sex,
+                entity.Headimg, entity.Sex,
                 (int)PlatformEnum.WebApi);
             if (userObj.Tag == 1)
             {
@@ -65,7 +65,7 @@ namespace YiSha.Admin.WebApi.Controllers
             // string openid, string wx_nikename, string head_img, int sex,
             TData<OperatorInfo> obj = new TData<OperatorInfo>();
             TData<UserEntity> userObj =
-                await userBLL.CheckLogin(entity.Openid,(int)PlatformEnum.WebApi);
+                await userBLL.CheckLogin(entity.Openid, (int)PlatformEnum.WebApi);
             if (userObj.Tag == 1)
             {
                 await new UserBLL().UpdateUser(userObj.Data);
@@ -92,6 +92,19 @@ namespace YiSha.Admin.WebApi.Controllers
             obj.Message = "登出成功";
             return obj;
         }
+
+        /// <summary>
+        /// 用户登录
+        /// </summary>
+        /// <param name="entity">登录信息实体</param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<TData<string>> RegUser([FromBody] RegUserParam entity)
+        {
+            TData<string> obj = await new UserBLL().RegUser(entity);
+            return obj;
+        }
+
         #endregion
     }
 }

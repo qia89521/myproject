@@ -41,8 +41,29 @@ namespace YiSha.Util.Model
         public int Total { get; set; }
 
         /// <summary>
+        /// 分页数
+        /// </summary>
+        public int PageTotal { get; set; }
+
+        /// <summary>
         /// 数据
         /// </summary>
         public T Data { get; set; }
+
+        public void SetDefault()
+        {
+            this.Tag = 0;
+            this.ErrorCode = "fail";
+            this.Message = "操作失败";
+        }
+
+        public void Refresh()
+        {
+            if (this.Tag > 0)
+            {
+                this.ErrorCode = "ok";
+                this.Message = "操作成功";
+            }
+        }
     }
 }

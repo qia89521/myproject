@@ -12,6 +12,7 @@ using YiSha.Admin.Web.Controllers;
 using YiSha.Entity.TerManage;
 using YiSha.Business.TerManage;
 using YiSha.Model.Param.TerManage;
+using YiSha.Web.Code;
 
 namespace YiSha.Admin.Web.Areas.TerManage.Controllers
 {
@@ -57,7 +58,8 @@ namespace YiSha.Admin.Web.Areas.TerManage.Controllers
         [AuthorizeFilter("ter:terinfor:search")]
         public async Task<ActionResult> GetListJson(TerInforListParam param)
         {
-            TData<List<TerInforEntity>> obj = await terInforBLL.GetList(param);
+            OperatorInfo user= await Operator.Instance.Current();
+            TData<List<TerInforEntity>> obj = await terInforBLL.GetList(param, user);
             return Json(obj);
         }
 
@@ -65,7 +67,8 @@ namespace YiSha.Admin.Web.Areas.TerManage.Controllers
         [AuthorizeFilter("ter:terinfor:search")]
         public async Task<ActionResult> GetPageListJson(TerInforListParam param, Pagination pagination)
         {
-            TData<List<TerInforEntity>> obj = await terInforBLL.GetPageList(param, pagination);
+            OperatorInfo user = await Operator.Instance.Current();
+            TData<List<TerInforEntity>> obj = await terInforBLL.GetPageList(param, pagination, user);
             return Json(obj);
         }
 

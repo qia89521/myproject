@@ -37,7 +37,10 @@
 </div>
 
 <script type="text/javascript">
+    var dic_map = new Map();
     $(function () {
+        setDicMap();
+
         initGrid();
 
         $("#roleStatus").ysComboBox({ data: ys.getJson(@Html.Raw(typeof(StatusEnum).EnumToDictionaryString())) });
@@ -46,7 +49,23 @@
         laydate.render({ elem: '#endTime', format: 'yyyy-MM-dd' });
     });
 
+    function setDicMap() {
+        /**
+       [
+       {"Key":0,"Value":"系统-开发者"},
+       {"Key":1,"Value":"系统-管理员"}]
+       }
+         * */
+        var arras = ys.getJson(@Html.Raw(typeof(SysRoleEnum).EnumToDictionaryString()));
+        for (var i = 0; i < arras.length; i++) {
+            var obj = arras[i];
+            dic_map.put(obj.Key+"", obj.Value);
+        }
+    }
+
     function initGrid() {
+
+
         var queryUrl = '@Url.Content("~/SystemManage/Role/GetPageListJson")';
         $('#gridTable').ysTable({
             url: queryUrl,
@@ -55,10 +74,17 @@
             columns: [
                 { checkbox: true, visible: true },
                 { field: 'Id', title: 'Id', visible: false },
-                { field: 'RoleName', title: '角色名称', width: "15%",sortable: true },
-                { field: 'RoleSort', title: '显示顺序', width: "15%",sortable: true },
+                { field: 'RoleName', title: '角色名称', width: "15%", sortable: true },
                 {
-                    field: 'RoleStatus', title: '状态', width: "15%",
+                    field: 'RoleCode', title: '角色代码', width: "10%", sortable: true,
+                     formatter: function (value, row, index) {
+                         return '<span class="badge badge-primary">' + dic_map.get(row.RoleCode) + '</span>';
+                    }
+                },
+
+                { field: 'RoleSort', title: '显示顺序', width: "5%", sortable: true },
+                {
+                    field: 'RoleStatus', title: '状态', width: "5%",
                     formatter: function (value, row, index) {
                         if (value == "@StatusEnum.Yes.ParseToInt()") {
                             return '<span class="badge badge-primary">' + "@StatusEnum.Yes.GetDescription()" + '</span>';
@@ -67,7 +93,7 @@
                         }
                     }
                 },
-                { field: 'Remark', title: '备注', width: "35%", sortable: true },
+                { field: 'Remark', title: '备注', width: "25%", sortable: true },
                 {
                     field: 'BaseModifyTime', title: '创建时间', formatter: function (value, row, index) {
                         return ys.formatDate(value, "yyyy-MM-dd HH:mm:ss");

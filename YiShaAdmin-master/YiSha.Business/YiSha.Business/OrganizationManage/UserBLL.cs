@@ -84,28 +84,40 @@ namespace YiSha.Business.OrganizationManage
         public async Task<UserEntity> GetUserEnity(long id)
         {
             UserEntity entity = await userService.GetEntity(id);
-            await GetUserBelong(entity);
+            if (entity != null)
+            {
+                await GetUserBelong(entity);
+            }
             return entity;
         }
 
         public async Task<TData<UserEntity>> GetEntity(long id)
         {
             TData<UserEntity> obj = new TData<UserEntity>();
-            obj.Data = await userService.GetEntity(id);
 
-            await GetUserBelong(obj.Data);
-
-
-            if (obj.Data.DepartmentId > 0)
+            UserEntity entity = await userService.GetEntity(id);
+            if (entity != null)
             {
-                DepartmentEntity departmentEntity = await departmentService.GetEntity(obj.Data.DepartmentId.Value);
-                if (departmentEntity != null)
-                {
-                    obj.Data.DepartmentName = departmentEntity.DepartmentName;
-                }
-            }
+                obj.Data = entity;
 
-            obj.Tag = 1;
+                await GetUserBelong(obj.Data);
+
+
+                if (obj.Data.DepartmentId > 0)
+                {
+                    DepartmentEntity departmentEntity = await departmentService.GetEntity(obj.Data.DepartmentId.Value);
+                    if (departmentEntity != null)
+                    {
+                        obj.Data.DepartmentName = departmentEntity.DepartmentName;
+                    }
+                }
+
+                obj.Tag = 1;
+            }
+            else
+            {
+                obj.Message = "用户不存在";
+            }
             return obj;
         }
 
@@ -142,7 +154,7 @@ namespace YiSha.Business.OrganizationManage
                             user.Gender = sex;
                             user.Portrait = head_img;
 
-                           // await UpdateUser(user);
+                            // await UpdateUser(user);
                         }
                         #endregion
 
@@ -207,7 +219,65 @@ namespace YiSha.Business.OrganizationManage
         #endregion
 
         #region 提交数据
+        /// <summary>
+        /// 用户注册
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public async Task<TData<string>> RegUser(RegUserParam entity)
+        {
+            TData<string> obj = new TData<string>();
+            try
+            {
+                obj.SetDefault();
 
+                UserEntity userParent = await GetUserEnity(long.Parse(entity.TJCode));
+                LogHelper.Info("【RegUser】 userParent:" + JsonHelper.SerializeObject(userParent));
+                if (userParent != null)
+                {
+
+                    TData<DepartmentEntity> department = await new DepartmentBLL().GetDefaultEndtity();
+                    LogHelper.Info("【RegUser】 department:" + JsonHelper.SerializeObject(department));
+                    if (department.Tag == 1)
+                    {
+                        TData<RoleEntity> roleEntity = await new RoleBLL().GetUserRole();
+                        LogHelper.Info("【RegUser】 roleEntity:" + JsonHelper.SerializeObject(roleEntity));
+                        if (roleEntity.Tag == 1)
+                        {
+                            UserEntity userEntity = new UserEntity();
+                            ClassValueCopierHelper.Copy(userEntity, entity);
+
+                            userEntity.DepartmentId = department.Data.Id;
+                            userEntity.RoleIds = roleEntity.Data.Id + "";
+
+                            userEntity.ParentId = userParent.Id;
+                            userEntity.ParentTxt = userParent.ParentTxt;
+                            userEntity.UserStatus = 1;
+
+                            LogHelper.Info("【RegUser】 userEntity:" + JsonHelper.SerializeObject(userEntity));
+                            obj = await SaveForm(userEntity);
+                        }
+                        else
+                        {
+                            obj.Message = roleEntity.Message;
+                        }
+                    }
+                    else
+                    {
+                        obj.Message = department.Message;
+                    }
+                }
+                else
+                {
+                    obj.Message = "推荐码不存在";
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Info("【RegUser】 ex:" + ex.ToString());
+            }
+            return obj;
+        }
 
 
         public async Task<TData<string>> SaveForm(UserEntity entity)
@@ -237,13 +307,17 @@ namespace YiSha.Business.OrganizationManage
                     entity.GrandParentTxt = grandEntity.Data.RealName;
                 }
             }
-
+            if (entity.IsNullOrZero())
+            {
+                entity.ResetToken();
+            }
 
             await userService.SaveForm(entity);
 
             await RemoveCacheById(entity.Id.Value);
 
             obj.Data = entity.Id.ParseToString();
+            obj.Message = "注册成功";
             obj.Tag = 1;
             return obj;
         }
@@ -343,6 +417,8 @@ namespace YiSha.Business.OrganizationManage
             obj.Tag = 1;
             return obj;
         }
+
+
 
         public async Task<TData> ImportUser(ImportParam param, List<UserEntity> list)
         {

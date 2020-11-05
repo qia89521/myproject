@@ -14,6 +14,7 @@ using YiSha.Util.Model;
 using YiSha.Model.Param.SystemManage;
 using YiSha.Enum.SystemManage;
 using YiSha.Business.Cache;
+using YiSha.Enum;
 
 namespace YiSha.Business.SystemManage
 {
@@ -70,6 +71,38 @@ namespace YiSha.Business.SystemManage
 
             obj.Data = roleEntity;
             obj.Tag = 1;
+            return obj;
+        }
+
+        /// <summary>
+        /// 根据角色代码获取用户
+        /// </summary>
+        /// <returns></returns>
+        public async Task<TData<RoleEntity>> GetEndtityByCode(string code)
+        {
+            TData<RoleEntity> obj = new TData<RoleEntity>();
+            obj.SetDefault();
+            RoleEntity roleEntity = await roleService.GetEndtityByCode(code);
+            if (roleEntity != null)
+            {
+                obj.Data = roleEntity;
+                obj.Tag = 1;
+            }
+            else
+            {
+                obj.Message = "没有该代码的角色";
+            }
+            return obj;
+
+        }
+
+        /// <summary>
+        /// y获取角色代码为用户的角色
+        /// </summary>
+        /// <returns></returns>
+        public async Task<TData<RoleEntity>> GetUserRole()
+        {
+            TData<RoleEntity> obj = await GetEndtityByCode(SysRoleEnum.normal.ParseToInt().ToString());
             return obj;
         }
 

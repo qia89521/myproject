@@ -22,7 +22,10 @@ namespace YiSha.Entity.OrganizationManage
         public long? PrincipalId { get; set; }
         public int? DepartmentSort { get; set; }
         public string Remark { get; set; }
-
+        /// <summary>
+        /// 默认部门 用户用户注册使用
+        /// </summary>
+        public int IsDefault { get; set; }
         /// <summary>
         /// 多个部门Id
         /// </summary>

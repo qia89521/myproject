@@ -12,6 +12,7 @@ using YiSha.Data;
 using YiSha.Data.Repository;
 using YiSha.Entity.TerManage;
 using YiSha.Model.Param.TerManage;
+using YiSha.Web.Code;
 
 namespace YiSha.Service.TerManage
 {
@@ -23,23 +24,24 @@ namespace YiSha.Service.TerManage
     public class TerInforService :  RepositoryFactory
     {
         #region 获取数据
-        public async Task<List<TerInforEntity>> GetList(TerInforListParam param)
+        public async Task<List<TerInforEntity>> GetList(TerInforListParam param, OperatorInfo user)
         {
             var expression = ListFilter(param);
             var list = await this.BaseRepository().FindList(expression);
             return list.ToList();
         }
 
-        public async Task<List<TerInforEntity>> GetPageList(TerInforListParam param, Pagination pagination)
+        public async Task<List<TerInforEntity>> GetPageList(TerInforListParam param, Pagination pagination, OperatorInfo user)
         {
             /*
                var expression = ListFilter(param);
                 var list= await this.BaseRepository().FindList(expression, pagination);
                 return list.ToList();
              */
-            StringBuilder sql = CreateListSql(param);
+            StringBuilder sql = CreateListSql(param, user);
             var data = await this.BaseRepository().FindList<TerInforEntity>(sql.ToString(), pagination);
-            return data.list.ToList<TerInforEntity>();
+            List<TerInforEntity> list = data.list.ToList<TerInforEntity>();
+            return list;
         }
 
         public async Task<TerInforEntity> GetEntity(long? id)
@@ -110,7 +112,7 @@ namespace YiSha.Service.TerManage
         /// </summary>
         /// <param name="param">查询条件数据</param>
         /// <returns></returns>
-        private StringBuilder CreateListSql(TerInforListParam param)
+        private StringBuilder CreateListSql(TerInforListParam param, OperatorInfo user)
         {
             StringBuilder sql = new StringBuilder();
 
@@ -119,7 +121,10 @@ namespace YiSha.Service.TerManage
             sql.AppendFormat(" c.DelegetZoneTxt AS Zone, ");
 
             sql.AppendFormat(" d.RealName AS BaseModifierTxt, ");
-            sql.AppendFormat(" e.RealName AS ManageTxt ");
+            sql.AppendFormat(" e.RealName AS ManageTxt, ");
+
+            sql.AppendFormat(" f.PartCode AS TerPartCode, ");
+            sql.AppendFormat(" f.PartName AS TerPartTxt ");
 
             sql.AppendFormat(" FROM ( ");
             sql.AppendFormat(" SELECT * FROM ter_infor WHERE 1=1");
@@ -134,6 +139,12 @@ namespace YiSha.Service.TerManage
                 {
                     sql.AppendFormat(" AND TerNumber LIKE '%{0}%'", param.TerNumber);
                 }
+                
+                if(!user.IsAdminOrDev)
+                {
+                    sql.AppendFormat(" AND ManageId = {0}", user.UserId);
+
+                }
             }
             sql.AppendFormat(" ) a ");
 
@@ -144,8 +155,10 @@ namespace YiSha.Service.TerManage
             sql.AppendFormat(" LEFT JOIN sysuser d ON a.BaseModifierId = d.Id ");
             sql.AppendFormat(" LEFT JOIN sysuser e ON a.ManageId = e.Id ");
 
-           
-            
+            sql.AppendFormat(" JOIN ter_parts f ON a.TerPartId = f.Id ");
+
+            // LogHelper.Info(" CreateListSql sql:"+sql.ToString());
+
 
             return sql;
         }
@@ -166,8 +179,10 @@ namespace YiSha.Service.TerManage
             sql.AppendFormat(" c.DelegetZoneTxt AS Zone, ");
 
             sql.AppendFormat(" d.RealName AS BaseModifierTxt, ");
-            sql.AppendFormat(" e.RealName AS ManageTxt ");
+            sql.AppendFormat(" e.RealName AS ManageTxt, ");
 
+            sql.AppendFormat(" f.PartCode AS TerPartCode, ");
+            sql.AppendFormat(" f.PartName AS TerPartTxt ");
             sql.AppendFormat(" FROM ( ");
             sql.AppendFormat(" SELECT * FROM ter_infor WHERE 1=1");
 
@@ -181,7 +196,7 @@ namespace YiSha.Service.TerManage
 
             sql.AppendFormat(" LEFT JOIN sysuser d ON a.BaseModifierId = d.Id ");
             sql.AppendFormat(" LEFT JOIN sysuser e ON a.ManageId = e.Id ");
-
+            sql.AppendFormat(" JOIN ter_parts f ON a.TerPartId = f.Id ");
             return sql;
         }
 

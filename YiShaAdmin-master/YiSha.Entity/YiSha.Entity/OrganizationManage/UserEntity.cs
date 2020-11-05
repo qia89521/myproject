@@ -140,5 +140,20 @@ namespace YiSha.Entity.OrganizationManage
                 return isTrue;
             }
         }
+
+        /// <summary>
+        /// 重置token
+        /// </summary>
+        public void ResetToken()
+        {
+            if (string.IsNullOrEmpty(this.WebToken))
+            {
+                this.WebToken = CoomHelper.CreateGuid("");
+            }
+            if (string.IsNullOrEmpty(this.ApiToken))
+            {
+                this.ApiToken = CoomHelper.CreateGuid("");
+            }
+        }
     }
 }

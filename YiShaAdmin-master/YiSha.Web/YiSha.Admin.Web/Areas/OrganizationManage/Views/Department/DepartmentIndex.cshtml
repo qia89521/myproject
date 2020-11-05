@@ -46,7 +46,7 @@
             code: "Id",
             parentCode: "ParentId",
             uniqueId: "Id",
-            expandAll: false,
+            expandAll: true,
             expandFirst: true,
             toolbar: '#toolbar',
             expandColumn: '1',
@@ -57,6 +57,16 @@
                 { field: 'DepartmentName', title: '部门名称', width: '20%' },
                 { field: 'DepartmentSort', title: '显示顺序', width: '10%', align: "left" },
                 { field: 'PrincipalName', title: '负责人', width: '10%', align: "left" },
+                { field: 'IsDefault', title: '是否默认部门', width: '15%', align: "left",
+                    formatter: function (value, row, index) {
+                        if (row.IsDefault == 1) {
+                            return "<input type=\"checkbox\" checked=\"checked\"/>"
+                        }
+                        else {
+                            return "<input type=\"checkbox\"/>"
+                        }
+                    }
+                },
                 {
                     field: 'BaseModifyTime', title: '创建时间', width: '60%', align: "left",
                     formatter: function (value, row, index) {

@@ -32,9 +32,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label ">设备部件</label>
+                                <label class="col-sm-3 control-label ">设备类型</label>
                                 <div class="col-sm-4">
-                                    <div id="terParts" col="TerParts"></div>
+                                    <div id="terPartId" col="TerPartId"></div>
                                 </div>
                             </div>
                             <div class="form-group" style="display:none">
@@ -130,19 +130,22 @@
     var id = ys.request("id");
     $(function () {
         getForm();
-         $("#terParts").ysComboBox({
+        $("#terPartId").ysComboBox({
             url: '@Url.Content("~/TerManage/Parts/GetListJson")',
             //dataName: "Result",
-            key: "PartCode",
+            key: "Id",
             value: "PartName",
             class: "form-control",
-             multiple: true,
+             multiple: false,
          });
         //$("#terParts_select").attr("disabled", "disabled");
 
         $('#form').validate({
             rules: {
-                terName: { required: true }
+                terName: { required: true },
+                terPartId_select: {
+                    required: true,
+                    min: 1 },
             }
         });
 

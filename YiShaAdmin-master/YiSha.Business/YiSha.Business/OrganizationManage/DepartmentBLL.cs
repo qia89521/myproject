@@ -115,6 +115,24 @@ namespace YiSha.Business.OrganizationManage
             return obj;
         }
 
+        public async Task<TData<DepartmentEntity>> GetDefaultEndtity()
+        {
+            TData<DepartmentEntity> obj = new TData<DepartmentEntity>();
+            obj.SetDefault();
+            DepartmentEntity entity = await departmentService.GetDefaultEndtity();
+            if (entity != null)
+            {
+                obj.Data = entity;
+                obj.Tag = 1;
+            }
+            else
+            {
+                obj.Message = "已经存在默认部门";
+            }
+
+            return obj;
+        }
+
         public async Task<TData<int>> GetMaxSort()
         {
             TData<int> obj = new TData<int>();
@@ -128,6 +146,14 @@ namespace YiSha.Business.OrganizationManage
         public async Task<TData<string>> SaveForm(DepartmentEntity entity)
         {
             TData<string> obj = new TData<string>();
+
+            TData<DepartmentEntity> srcObj =await GetDefaultEndtity();
+            if (srcObj.Tag == 0)
+            {
+                obj.Message = srcObj.Message;
+                return obj;
+            }
+
             if (departmentService.ExistDepartmentName(entity))
             {
                 obj.Message = "部门名称已经存在！";

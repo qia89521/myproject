@@ -35,6 +35,18 @@ namespace YiSha.Service.SystemManage
             return data.ToList<RoleEntity>();
         }
 
+        /// <summary>
+        /// 根据角色代码获取用户
+        /// </summary>
+        /// <returns></returns>
+        public async Task<RoleEntity> GetEndtityByCode(string code)
+        {
+            string sql = string.Format("SELECT * FROM SysRole WHERE RoleCode='{0}'", code);
+            RoleEntity result = await this.BaseRepository().FindSignalModel<RoleEntity>(sql);
+
+            return result;
+        }
+
         public async Task<List<RoleEntity>> GetPageList(RoleListParam param, Pagination pagination)
         {
             var expression = ListFilter(param);

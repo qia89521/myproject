@@ -8,6 +8,7 @@ using YiSha.Util.Model;
 using YiSha.Entity.TerManage;
 using YiSha.Model.Param.TerManage;
 using YiSha.Service.TerManage;
+using YiSha.Web.Code;
 
 namespace YiSha.Business.TerManage
 {
@@ -22,20 +23,22 @@ namespace YiSha.Business.TerManage
         private TerTransferRecordBLL terTransferRecordBLL = new TerTransferRecordBLL();
 
         #region 获取数据
-        public async Task<TData<List<TerInforEntity>>> GetList(TerInforListParam param)
+        public async Task<TData<List<TerInforEntity>>> GetList(TerInforListParam param, OperatorInfo user)
         {
             TData<List<TerInforEntity>> obj = new TData<List<TerInforEntity>>();
-            obj.Data = await terInforService.GetList(param);
+            obj.Data = await terInforService.GetList(param, user);
             obj.Total = obj.Data.Count;
             obj.Tag = 1;
             return obj;
         }
 
-        public async Task<TData<List<TerInforEntity>>> GetPageList(TerInforListParam param, Pagination pagination)
+        public async Task<TData<List<TerInforEntity>>> GetPageList(TerInforListParam param, Pagination pagination, OperatorInfo user)
         {
+            
             TData<List<TerInforEntity>> obj = new TData<List<TerInforEntity>>();
-            obj.Data = await terInforService.GetPageList(param, pagination);
+            obj.Data = await terInforService.GetPageList(param, pagination, user);
             obj.Total = pagination.TotalCount;
+            obj.PageTotal = pagination.TotalPage;
             obj.Tag = 1;
             return obj;
         }
@@ -292,6 +295,54 @@ namespace YiSha.Business.TerManage
             }
         }
 
+        /// <summary>
+        /// 用户绑定设置
+        /// </summary>
+        ///  <param name="userId">用户登录id</param>
+        /// <param name="number"></param>
+        /// <param name="fistLongitude"></param>
+        /// <param name="fistLatitude"></param>
+        /// <param name="position"></param>
+        /// <returns></returns>
+        public async Task<TData<string>> BindUser(string userId,string number, string fistLongitude, string fistLatitude, string position)
+        {
+            TData<string> obj = new TData<string>();
+
+            TerInforEntity ter = await terInforService.GetEntityByNumber(number);
+
+            obj.SetDefault();
+            //设备一旦锁定，激活时间（FistOn）,FistPosition,FistLongitude,FistLatitude 不再编号
+            if (ter != null)
+            {
+                if (ter.ManageId <= 0)
+                {
+                    ter.FistLatitude = fistLatitude;
+                    ter.FistLongitude = fistLongitude;
+                    ter.FistPosition = position;
+
+                    ter.Latitude = fistLatitude;
+                    ter.Longitude = fistLongitude;
+                    ter.Position = position;
+
+                    ter.ManageId = long.Parse(userId);
+                    ter.FistOn = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    obj = await SaveForm(ter);
+
+                    obj.Refresh();
+                }
+                else
+                {
+                    obj.Message = "已经绑定,您不能再绑定";
+                }
+            }
+            else
+            {
+                obj.Message = "设备不存在";
+            }
+            return obj;
+
+
+        }
 
         public async Task<TData<string>> SaveForm(TerInforEntity entity)
         {
