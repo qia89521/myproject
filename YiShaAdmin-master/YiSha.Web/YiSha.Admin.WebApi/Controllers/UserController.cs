@@ -8,6 +8,7 @@ using YiSha.Business.OrganizationManage;
 using YiSha.Entity.OrganizationManage;
 using YiSha.Enum;
 using YiSha.Model.Param.OrganizationManage;
+using YiSha.Model.Result.OrganizationManage;
 using YiSha.Model.Result.SystemManage;
 using YiSha.Util;
 using YiSha.Util.Model;
@@ -75,7 +76,7 @@ namespace YiSha.Admin.WebApi.Controllers
             obj.ErrorCode = userObj.ErrorCode;
             obj.Tag = userObj.Tag;
             obj.Message = userObj.Message;
-
+            LogHelper.Info("【CheckOpenId2】 Data："+JsonHelper.SerializeObject(obj.Data));
             return obj;
         }
 
@@ -94,7 +95,7 @@ namespace YiSha.Admin.WebApi.Controllers
         }
 
         /// <summary>
-        /// 用户登录
+        /// 用户注册
         /// </summary>
         /// <param name="entity">登录信息实体</param>
         /// <returns></returns>
@@ -105,6 +106,17 @@ namespace YiSha.Admin.WebApi.Controllers
             return obj;
         }
 
+        /// <summary>
+        /// 查看个人信息
+        /// </summary>
+        /// <param name="id">用户id</param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<TData<ViewUserInfor>> ViewUser([FromQuery] long id)
+        {
+            TData<ViewUserInfor> obj = await new UserBLL().ViewUserEntity(id);
+            return obj;
+        }
         #endregion
     }
 }

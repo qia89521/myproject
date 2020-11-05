@@ -85,6 +85,8 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
         public async Task<ActionResult> GetFormJson(long id)
         {
             TData<OrderTerIssueEntity> obj = await orderTerIssueBLL.GetEntity(id);
+
+          
             return Json(obj);
         }
         #endregion

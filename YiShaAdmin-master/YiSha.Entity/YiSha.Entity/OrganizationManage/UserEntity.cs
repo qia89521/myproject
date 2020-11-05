@@ -60,6 +60,11 @@ namespace YiSha.Entity.OrganizationManage
         [NotMapped]
         public string RoleIds { get; set; }
         /// <summary>
+        /// 角色名称
+        /// </summary>
+        [NotMapped]
+        public string RoleTxts { get; set; }
+        /// <summary>
         /// 角色Codes
         /// </summary>
         [NotMapped]

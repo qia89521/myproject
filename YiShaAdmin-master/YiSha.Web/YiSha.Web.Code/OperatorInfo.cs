@@ -14,7 +14,7 @@ namespace YiSha.Web.Code
 {
     public class OperatorInfo
     {
-        [JsonConverter(typeof(Util.StringJsonConverter))]
+       [JsonConverter(typeof(Util.StringJsonConverter))]
         public long? UserId { get; set; }
         public int? UserStatus { get; set; }
         public int? IsOnline { get; set; }

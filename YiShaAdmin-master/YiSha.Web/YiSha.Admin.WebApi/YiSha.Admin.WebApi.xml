@@ -170,9 +170,16 @@
         </member>
         <member name="M:YiSha.Admin.WebApi.Controllers.UserController.RegUser(YiSha.Model.Param.OrganizationManage.RegUserParam)">
             <summary>
-            用户登录
+            用户注册
             </summary>
             <param name="entity">登录信息实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.UserController.ViewUser(System.Int64)">
+            <summary>
+            查看个人信息
+            </summary>
+            <param name="id">用户id</param>
             <returns></returns>
         </member>
         <member name="T:YiSha.Admin.WebApi.Controllers.WXController">

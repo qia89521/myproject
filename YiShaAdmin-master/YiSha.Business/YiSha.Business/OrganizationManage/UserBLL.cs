@@ -16,6 +16,7 @@ using YiSha.Enum.OrganizationManage;
 using YiSha.Model;
 using YiSha.Model.Param;
 using YiSha.Model.Param.OrganizationManage;
+using YiSha.Model.Result.OrganizationManage;
 using YiSha.Service.OrganizationManage;
 using YiSha.Util;
 using YiSha.Util.Extension;
@@ -78,6 +79,38 @@ namespace YiSha.Business.OrganizationManage
 
             obj.Total = pagination.TotalCount;
             obj.Tag = 1;
+            return obj;
+        }
+        /// <summary>
+        /// 查看用户信息
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public async Task<TData<ViewUserInfor>> ViewUserEntity(long id)
+        {
+            TData<ViewUserInfor> obj = new TData<ViewUserInfor>();
+            obj.SetDefault();
+            try
+            {
+                TData<UserEntity> user = await GetEntity(id);
+                if (user.Tag == 1)
+                {
+                    ViewUserInfor viewObj = new ViewUserInfor();
+                    ClassValueCopierHelper.Copy(viewObj, user.Data);
+
+                    obj.Data = viewObj;
+                    obj.Tag = 1;
+                    LogHelper.Info("【ViewUserEntity】 viewObj:" + JsonHelper.SerializeObject(viewObj));
+                }
+                else
+                {
+                    obj.Message = "用户不存在";
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Info("【ViewUserEntity】 ex:"+ex.ToString());
+            }
             return obj;
         }
 
@@ -585,6 +618,7 @@ namespace YiSha.Business.OrganizationManage
             if (rolses.Total > 0)
             {
                 user.RoleCodes = string.Join(",", rolses.Data.Select(p => p.RoleCode).ToList());
+                user.RoleTxts = string.Join(",", rolses.Data.Select(p => p.RoleName).ToList());
             }
         }
         #endregion
