@@ -145,6 +145,14 @@ namespace YiSha.Service.TerManage
                     sql.AppendFormat(" AND ManageId = {0}", user.UserId);
 
                 }
+                if (!string.IsNullOrEmpty(param.StartTime))
+                {
+                    sql.AppendFormat(" AND BaseCreateTime >'{0} 00:00:00'", param.StartTime);
+                }
+                if (!string.IsNullOrEmpty(param.EndTime))
+                {
+                    sql.AppendFormat(" AND BaseCreateTime <'{0} 23:59:59'", param.EndTime);
+                }
             }
             sql.AppendFormat(" ) a ");
 

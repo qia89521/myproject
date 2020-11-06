@@ -16,6 +16,11 @@ namespace YiSha.Web.Code
     {
        [JsonConverter(typeof(Util.StringJsonConverter))]
         public long? UserId { get; set; }
+        public string UserIdStr {
+            get {
+                return this.UserId.ToString();
+            }
+        }
         public int? UserStatus { get; set; }
         public int? IsOnline { get; set; }
         public string UserName { get; set; }

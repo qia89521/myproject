@@ -25,16 +25,18 @@ namespace YiSha.Service.OrganizationManage
     public class UserService : RepositoryFactory
     {
         #region 获取数据
-        public async Task<List<UserEntity>> GetList(UserListParam param)
+      
+
+        public async Task<List<UserEntity>> GetList(UserListParam param, OperatorInfo user)
         {
-            var expression = ListFilter(param);
+            var expression = ListFilter(param, user);
             var list = await this.BaseRepository().FindList(expression);
             return list.ToList();
         }
 
-        public async Task<List<UserEntity>> GetPageList(UserListParam param, Pagination pagination)
+        public async Task<List<UserEntity>> GetPageList(UserListParam param, Pagination pagination, OperatorInfo user)
         {
-            var expression = ListFilter(param);
+            var expression = ListFilter(param, user);
             var list = await this.BaseRepository().FindList(expression, pagination);
             return list.ToList();
         }
@@ -190,14 +192,17 @@ namespace YiSha.Service.OrganizationManage
         #endregion
 
         #region 私有方法
-        private Expression<Func<UserEntity, bool>> ListFilter(UserListParam param)
+        private Expression<Func<UserEntity, bool>> ListFilter(UserListParam param, OperatorInfo user)
         {
             var expression = LinqExtensions.True<UserEntity>();
             if (param != null)
             {
+                if (!user.IsAdminOrDev)
+                {
+                    expression = expression.And(t => t.ParentId == user.UserId);
+                }
                 if (param.CurUserId >0)
                 {
-                    var user = Operator.Instance.Current();
                     expression = expression.And(t => t.Id!=(long)param.CurUserId);
                 }
                 if (!string.IsNullOrEmpty(param.UserName))

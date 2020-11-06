@@ -11,6 +11,7 @@ using YiSha.Model;
 using YiSha.Model.Param.OrganizationManage;
 using YiSha.Model.Result;
 using YiSha.Util.Model;
+using YiSha.Web.Code;
 
 namespace YiSha.Admin.Web.Areas.OrganizationManage.Controllers
 {
@@ -36,7 +37,8 @@ namespace YiSha.Admin.Web.Areas.OrganizationManage.Controllers
         [AuthorizeFilter("organization:department:search,organization:user:search")]
         public async Task<IActionResult> GetListJson(DepartmentListParam param)
         {
-            TData<List<DepartmentEntity>> obj = await departmentBLL.GetList(param);
+            YiSha.Web.Code.OperatorInfo opuser = await Operator.Instance.Current();
+            TData<List<DepartmentEntity>> obj = await departmentBLL.GetList(param,opuser);
             return Json(obj);
         }
 
@@ -51,7 +53,8 @@ namespace YiSha.Admin.Web.Areas.OrganizationManage.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUserTreeListJson(DepartmentListParam param)
         {
-            TData<List<ZtreeInfo>> obj = await departmentBLL.GetZtreeUserList(param);
+            OperatorInfo opuser = await Operator.Instance.Current();
+            TData<List<ZtreeInfo>> obj = await departmentBLL.GetZtreeUserList(param,opuser);
             return Json(obj);
         }
 

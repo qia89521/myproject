@@ -12,6 +12,7 @@ using YiSha.Data;
 using YiSha.Data.Repository;
 using YiSha.Entity.OrderManage;
 using YiSha.Model.Param.OrderManage;
+using YiSha.Web.Code;
 
 namespace YiSha.Service.OrderManage
 {
@@ -23,21 +24,21 @@ namespace YiSha.Service.OrderManage
     public class OrderMoneyReceiptService : RepositoryFactory
     {
         #region 获取数据
-        public async Task<List<OrderMoneyReceiptEntity>> GetList(OrderMoneyReceiptListParam param)
+        public async Task<List<OrderMoneyReceiptEntity>> GetList(OrderMoneyReceiptListParam param, OperatorInfo opuser)
         {
             var expression = ListFilter(param);
             var list = await this.BaseRepository().FindList(expression);
             return list.ToList();
         }
 
-        public async Task<List<OrderMoneyReceiptEntity>> GetPageList(OrderMoneyReceiptListParam param, Pagination pagination)
+        public async Task<List<OrderMoneyReceiptEntity>> GetPageList(OrderMoneyReceiptListParam param, Pagination pagination, OperatorInfo opuser)
         {
             /*
             var expression = ListFilter(param);
             var list= await this.BaseRepository().FindList(expression, pagination);
             return list.ToList();
             */
-            StringBuilder sql = CreateListSql(param);
+            StringBuilder sql = CreateListSql(param,opuser);
             var data = await this.BaseRepository().FindList<OrderMoneyReceiptEntity>(sql.ToString(), pagination);
             return data.list.ToList<OrderMoneyReceiptEntity>();
         }
@@ -112,7 +113,7 @@ namespace YiSha.Service.OrderManage
         /// </summary>
         /// <param name="param">查询条件数据</param>
         /// <returns></returns>
-        private StringBuilder CreateListSql(OrderMoneyReceiptListParam param)
+        private StringBuilder CreateListSql(OrderMoneyReceiptListParam param, OperatorInfo opuser)
         {
             StringBuilder sql = new StringBuilder();
             sql.AppendFormat(" SELECT a.*");
@@ -126,6 +127,10 @@ namespace YiSha.Service.OrderManage
             sql.AppendFormat("  where 1=1 ");
             if (param != null)
             {
+                if (!opuser.IsAdminOrDev)
+                {
+                    sql.AppendFormat(" AND SaleManId = {0}", opuser.UserIdStr);
+                }
                 if (!string.IsNullOrEmpty(param.Title))
                 {
                     sql.AppendFormat(" AND Title LIKE '%{0}%'", param.Title);

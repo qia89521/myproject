@@ -2,9 +2,30 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using YiSha.Util;
+using YiSha.Util.Model;
 
 namespace YiSha.Model.Param.OrderManage
 {
+    /// <summary>
+    /// web api 订单收据查询参数类
+    /// </summary>
+    public class WebApi_OrderMoneyReceiptListParam
+    {
+        /// <summary>
+        /// 工具栏参数
+        /// </summary>
+        public OrderMoneyReceiptListParam ListParam { get; set; }
+        /// <summary>
+        /// 分页参数
+        /// </summary>
+        public Pagination Pagination { get; set; }
+        /// <summary>
+        /// api token
+        /// </summary>
+        public string ApiToken { get; set; }
+    }
+
+
     /// <summary>
     /// 创 建：admin
     /// 日 期：2020-10-28 18:08
@@ -33,4 +54,6 @@ namespace YiSha.Model.Param.OrderManage
         /// </summary>
         public string EndTime { get; set; }
     }
+
+
 }

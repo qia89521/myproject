@@ -22,7 +22,7 @@ namespace YiSha.Business.OrganizationManage
         private UserService userService = new UserService();
 
         #region 获取数据
-        public async Task<TData<List<DepartmentEntity>>> GetList(DepartmentListParam param)
+        public async Task<TData<List<DepartmentEntity>>> GetList(DepartmentListParam param, OperatorInfo user)
         {
             TData<List<DepartmentEntity>> obj = new TData<List<DepartmentEntity>>();
             obj.Data = await departmentService.GetList(param);
@@ -32,7 +32,7 @@ namespace YiSha.Business.OrganizationManage
                 List<long> childrenDepartmentIdList = await GetChildrenDepartmentIdList(obj.Data, operatorInfo.DepartmentId.Value);
                 obj.Data = obj.Data.Where(p => childrenDepartmentIdList.Contains(p.Id.Value)).ToList();
             }
-            List<UserEntity> userList = await userService.GetList(new UserListParam { UserIds = string.Join(",", obj.Data.Select(p => p.PrincipalId).ToArray()) });
+            List<UserEntity> userList = await userService.GetList(new UserListParam { UserIds = string.Join(",", obj.Data.Select(p => p.PrincipalId).ToArray()) },user);
             foreach (DepartmentEntity entity in obj.Data)
             {
                 if (entity.PrincipalId > 0)
@@ -72,7 +72,7 @@ namespace YiSha.Business.OrganizationManage
             return obj;
         }
 
-        public async Task<TData<List<ZtreeInfo>>> GetZtreeUserList(DepartmentListParam param)
+        public async Task<TData<List<ZtreeInfo>>> GetZtreeUserList(DepartmentListParam param, OperatorInfo opuser)
         {
             var obj = new TData<List<ZtreeInfo>>();
             obj.Data = new List<ZtreeInfo>();
@@ -83,7 +83,7 @@ namespace YiSha.Business.OrganizationManage
                 List<long> childrenDepartmentIdList = await GetChildrenDepartmentIdList(departmentList, operatorInfo.DepartmentId.Value);
                 departmentList = departmentList.Where(p => childrenDepartmentIdList.Contains(p.Id.Value)).ToList();
             }
-            List<UserEntity> userList = await userService.GetList(null);
+            List<UserEntity> userList = await userService.GetList(null, opuser);
             foreach (DepartmentEntity department in departmentList)
             {
                 obj.Data.Add(new ZtreeInfo

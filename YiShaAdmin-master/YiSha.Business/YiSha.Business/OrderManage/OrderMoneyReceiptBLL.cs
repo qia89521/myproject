@@ -8,6 +8,7 @@ using YiSha.Util.Model;
 using YiSha.Entity.OrderManage;
 using YiSha.Model.Param.OrderManage;
 using YiSha.Service.OrderManage;
+using YiSha.Web.Code;
 
 namespace YiSha.Business.OrderManage
 {
@@ -21,20 +22,21 @@ namespace YiSha.Business.OrderManage
         private OrderMoneyReceiptService orderMoneyReceiptService = new OrderMoneyReceiptService();
 
         #region 获取数据
-        public async Task<TData<List<OrderMoneyReceiptEntity>>> GetList(OrderMoneyReceiptListParam param)
+        public async Task<TData<List<OrderMoneyReceiptEntity>>> GetList(OrderMoneyReceiptListParam param, OperatorInfo opuser)
         {
             TData<List<OrderMoneyReceiptEntity>> obj = new TData<List<OrderMoneyReceiptEntity>>();
-            obj.Data = await orderMoneyReceiptService.GetList(param);
+            obj.Data = await orderMoneyReceiptService.GetList(param, opuser);
             obj.Total = obj.Data.Count;
             obj.Tag = 1;
             return obj;
         }
 
-        public async Task<TData<List<OrderMoneyReceiptEntity>>> GetPageList(OrderMoneyReceiptListParam param, Pagination pagination)
+        public async Task<TData<List<OrderMoneyReceiptEntity>>> GetPageList(OrderMoneyReceiptListParam param, Pagination pagination, OperatorInfo opuser)
         {
             TData<List<OrderMoneyReceiptEntity>> obj = new TData<List<OrderMoneyReceiptEntity>>();
-            obj.Data = await orderMoneyReceiptService.GetPageList(param, pagination);
+            obj.Data = await orderMoneyReceiptService.GetPageList(param, pagination, opuser);
             obj.Total = pagination.TotalCount;
+            obj.PageTotal = pagination.TotalPage;
             obj.Tag = 1;
             return obj;
         }

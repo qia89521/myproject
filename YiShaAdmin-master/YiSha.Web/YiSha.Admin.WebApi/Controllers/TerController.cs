@@ -112,7 +112,7 @@ namespace YiSha.Admin.WebApi.Controllers
 
                 OperatorInfo user = await Web.Code.Operator.Instance.Current(param.ApiToken);
                 LogHelper.Info("GetPageListJson user:" + JsonHelper.SerializeObject(user));
-                obj = await terInforBLL.GetPageList(param.TerInforListParam, param.Pagination, user);
+                obj = await terInforBLL.GetPageList(param.ListParam, param.Pagination, user);
                 LogHelper.Info("GetPageListJson Data:" + JsonHelper.SerializeObject(obj));
 
             }

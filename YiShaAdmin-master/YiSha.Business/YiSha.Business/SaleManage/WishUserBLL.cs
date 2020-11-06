@@ -8,6 +8,7 @@ using YiSha.Util.Model;
 using YiSha.Entity.SaleManage;
 using YiSha.Model.Param.SaleManage;
 using YiSha.Service.SaleManage;
+using YiSha.Web.Code;
 
 namespace YiSha.Business.SaleManage
 {
@@ -21,20 +22,21 @@ namespace YiSha.Business.SaleManage
         private WishUserService wishUserService = new WishUserService();
 
         #region 获取数据
-        public async Task<TData<List<WishUserEntity>>> GetList(WishUserListParam param)
+        public async Task<TData<List<WishUserEntity>>> GetList(WishUserListParam param,OperatorInfo opuser)
         {
             TData<List<WishUserEntity>> obj = new TData<List<WishUserEntity>>();
-            obj.Data = await wishUserService.GetList(param);
+            obj.Data = await wishUserService.GetList(param, opuser);
             obj.Total = obj.Data.Count;
             obj.Tag = 1;
             return obj;
         }
 
-        public async Task<TData<List<WishUserEntity>>> GetPageList(WishUserListParam param, Pagination pagination)
+        public async Task<TData<List<WishUserEntity>>> GetPageList(WishUserListParam param, Pagination pagination,OperatorInfo opuser)
         {
             TData<List<WishUserEntity>> obj = new TData<List<WishUserEntity>>();
-            obj.Data = await wishUserService.GetPageList(param, pagination);
+            obj.Data = await wishUserService.GetPageList(param, pagination, opuser);
             obj.Total = pagination.TotalCount;
+            obj.PageTotal = pagination.TotalPage;
             obj.Tag = 1;
             return obj;
         }

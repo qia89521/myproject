@@ -1,0 +1,145 @@
+2020-11-05 18:01:24.8058||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-11-05 18:02:08.5966||ERROR||Unable to cast object of type 'System.DBNull' to type 'System.Int64'.
+   at MySqlConnector.Core.Row.GetInt64(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\Core\Row.cs:line 248
+   at MySql.Data.MySqlClient.MySqlDataReader.GetInt64(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 235
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , Int32[] , ResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at YiSha.Data.EF.MySqlDatabase.FindEntity[T](Object keyValue) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 284
+   at YiSha.Data.Repository.Repository.FindEntity[T](Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.Repository\Repository.cs:line 131
+   at YiSha.Service.OrganizationManage.UserService.GetEntity(Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Service\OrganizationManage\UserService.cs:line 56
+   at YiSha.Business.OrganizationManage.UserBLL.GetEntity(Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrganizationManage\UserBLL.cs:line 131
+   at YiSha.Business.OrganizationManage.UserBLL.SaveForm(UserEntity entity) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrganizationManage\UserBLL.cs:line 336
+   at YiSha.Admin.Web.Areas.OrganizationManage.Controllers.UserController.SaveFormJson(UserEntity entity) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\OrganizationManage\Controllers\UserController.cs:line 131
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrganizationManage/User/SaveFormJson|action: SaveFormJson
+2020-11-05 18:02:13.3922||ERROR||Unable to cast object of type 'System.DBNull' to type 'System.Int64'.
+   at MySqlConnector.Core.Row.GetInt64(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\Core\Row.cs:line 248
+   at MySql.Data.MySqlClient.MySqlDataReader.GetInt64(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 235
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , Int32[] , ResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at YiSha.Data.EF.MySqlDatabase.FindEntity[T](Object keyValue) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 284
+   at YiSha.Data.Repository.Repository.FindEntity[T](Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.Repository\Repository.cs:line 131
+   at YiSha.Service.OrganizationManage.UserService.GetEntity(Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Service\OrganizationManage\UserService.cs:line 56
+   at YiSha.Business.OrganizationManage.UserBLL.GetEntity(Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrganizationManage\UserBLL.cs:line 131
+   at YiSha.Business.OrganizationManage.UserBLL.SaveForm(UserEntity entity) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrganizationManage\UserBLL.cs:line 336
+   at YiSha.Admin.Web.Areas.OrganizationManage.Controllers.UserController.SaveFormJson(UserEntity entity) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\OrganizationManage\Controllers\UserController.cs:line 131
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrganizationManage/User/SaveFormJson|action: SaveFormJson
+2020-11-05 18:02:31.6834||ERROR||Unable to cast object of type 'System.DBNull' to type 'System.Int64'.
+   at MySqlConnector.Core.Row.GetInt64(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\Core\Row.cs:line 228
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , Int32[] , ResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at YiSha.Data.EF.MySqlDatabase.FindEntity[T](Object keyValue) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 284
+   at YiSha.Data.Repository.Repository.FindEntity[T](Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.Repository\Repository.cs:line 131
+   at YiSha.Service.OrganizationManage.UserService.GetEntity(Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Service\OrganizationManage\UserService.cs:line 56
+   at YiSha.Business.OrganizationManage.UserBLL.GetEntity(Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrganizationManage\UserBLL.cs:line 131
+   at YiSha.Business.OrganizationManage.UserBLL.SaveForm(UserEntity entity) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrganizationManage\UserBLL.cs:line 336
+   at YiSha.Admin.Web.Areas.OrganizationManage.Controllers.UserController.SaveFormJson(UserEntity entity) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\OrganizationManage\Controllers\UserController.cs:line 131
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrganizationManage/User/SaveFormJson|action: SaveFormJson
+2020-11-05 18:04:21.5815||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 
+2020-11-05 18:05:01.8438||ERROR||Unable to cast object of type 'System.DBNull' to type 'System.Int64'.
+   at MySqlConnector.Core.Row.GetInt64(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\Core\Row.cs:line 228
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , Int32[] , ResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at YiSha.Data.EF.MySqlDatabase.FindEntity[T](Object keyValue) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 284
+   at YiSha.Data.Repository.Repository.FindEntity[T](Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.Repository\Repository.cs:line 131
+   at YiSha.Service.OrganizationManage.UserService.GetEntity(Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Service\OrganizationManage\UserService.cs:line 56
+   at YiSha.Business.OrganizationManage.UserBLL.GetEntity(Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrganizationManage\UserBLL.cs:line 131
+   at YiSha.Business.OrganizationManage.UserBLL.SaveForm(UserEntity entity) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrganizationManage\UserBLL.cs:line 336
+   at YiSha.Admin.Web.Areas.OrganizationManage.Controllers.UserController.SaveFormJson(UserEntity entity) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\OrganizationManage\Controllers\UserController.cs:line 131
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrganizationManage/User/SaveFormJson|action: SaveFormJson
+2020-11-05 18:05:34.3462||ERROR||Unable to cast object of type 'System.DBNull' to type 'System.Int64'.
+   at MySqlConnector.Core.Row.GetInt64(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\Core\Row.cs:line 228
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , Int32[] , ResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at YiSha.Data.EF.MySqlDatabase.FindEntity[T](Object keyValue) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 284
+   at YiSha.Data.Repository.Repository.FindEntity[T](Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.Repository\Repository.cs:line 131
+   at YiSha.Service.OrganizationManage.UserService.GetEntity(Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Service\OrganizationManage\UserService.cs:line 56
+   at YiSha.Business.OrganizationManage.UserBLL.GetEntity(Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrganizationManage\UserBLL.cs:line 131
+   at YiSha.Business.OrganizationManage.UserBLL.SaveForm(UserEntity entity) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrganizationManage\UserBLL.cs:line 336
+   at YiSha.Admin.Web.Areas.OrganizationManage.Controllers.UserController.SaveFormJson(UserEntity entity) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\OrganizationManage\Controllers\UserController.cs:line 131
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrganizationManage/User/SaveFormJson|action: SaveFormJson
+2020-11-05 18:07:05.6151||ERROR||Unable to cast object of type 'System.DBNull' to type 'System.Int64'.
+   at MySqlConnector.Core.Row.GetInt64(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\Core\Row.cs:line 228
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , Int32[] , ResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at YiSha.Data.EF.MySqlDatabase.FindEntity[T](Object keyValue) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 284
+   at YiSha.Data.Repository.Repository.FindEntity[T](Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.Repository\Repository.cs:line 131
+   at YiSha.Service.OrganizationManage.UserService.GetEntity(Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Service\OrganizationManage\UserService.cs:line 56
+   at YiSha.Business.OrganizationManage.UserBLL.GetEntity(Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrganizationManage\UserBLL.cs:line 131
+   at YiSha.Business.OrganizationManage.UserBLL.SaveForm(UserEntity entity) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrganizationManage\UserBLL.cs:line 336
+   at YiSha.Admin.Web.Areas.OrganizationManage.Controllers.UserController.SaveFormJson(UserEntity entity) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\OrganizationManage\Controllers\UserController.cs:line 131
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrganizationManage/User/SaveFormJson|action: SaveFormJson
+2020-11-05 18:07:59.5663||ERROR||Unable to cast object of type 'System.DBNull' to type 'System.Int64'.
+   at MySqlConnector.Core.Row.GetInt64(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\Core\Row.cs:line 228
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , Int32[] , ResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at YiSha.Data.EF.MySqlDatabase.FindEntity[T](Object keyValue) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.EF\Database\MySqlDatabase.cs:line 284
+   at YiSha.Data.Repository.Repository.FindEntity[T](Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Data\YiSha.Data.Repository\Repository.cs:line 131
+   at YiSha.Service.OrganizationManage.UserService.GetEntity(Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Service\OrganizationManage\UserService.cs:line 56
+   at YiSha.Business.OrganizationManage.UserBLL.GetEntity(Int64 id) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrganizationManage\UserBLL.cs:line 131
+   at YiSha.Business.OrganizationManage.UserBLL.SaveForm(UserEntity entity) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Business\YiSha.Business\OrganizationManage\UserBLL.cs:line 336
+   at YiSha.Admin.Web.Areas.OrganizationManage.Controllers.UserController.SaveFormJson(UserEntity entity) in E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\Areas\OrganizationManage\Controllers\UserController.cs:line 131
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ |url: http://localhost/OrganizationManage/User/SaveFormJson|action: SaveFormJson
+2020-11-05 18:12:01.6689||DEBUG||程序启动 |ContentRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web |WebRootPath:E:\资料\私人项目\2020_08\code\YiShaAdmin-master\YiSha.Web\YiSha.Admin.Web\wwwroot |IsDevelopment:True |url: |action: 

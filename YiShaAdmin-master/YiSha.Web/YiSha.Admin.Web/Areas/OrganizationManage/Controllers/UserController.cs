@@ -79,7 +79,8 @@ namespace YiSha.Admin.Web.Areas.OrganizationManage.Controllers
         [AuthorizeFilter("organization:user:search")]
         public async Task<IActionResult> GetListJson(UserListParam param)
         {
-            TData<List<UserEntity>> obj = await userBLL.GetList(param);
+            OperatorInfo opuser = await Operator.Instance.Current();
+            TData<List<UserEntity>> obj = await userBLL.GetList(param,opuser);
             return Json(obj);
         }
 
@@ -87,7 +88,9 @@ namespace YiSha.Admin.Web.Areas.OrganizationManage.Controllers
         [AuthorizeFilter("organization:user:search")]
         public async Task<IActionResult> GetPageListJson(UserListParam param, Pagination pagination)
         {
-            TData<List<UserEntity>> obj = await userBLL.GetPageList(param, pagination);
+            OperatorInfo opuser = await Operator.Instance.Current();
+
+            TData<List<UserEntity>> obj = await userBLL.GetPageList(param, pagination, opuser);
             return Json(obj);
         }
 
@@ -173,8 +176,9 @@ namespace YiSha.Admin.Web.Areas.OrganizationManage.Controllers
         [HttpPost]
         public async Task<IActionResult> ExportUserJson(UserListParam param)
         {
+            OperatorInfo opuser = await Operator.Instance.Current();
             TData<string> obj = new TData<string>();
-            TData<List<UserEntity>> userObj = await userBLL.GetList(param);
+            TData<List<UserEntity>> userObj = await userBLL.GetList(param,opuser);
             if (userObj.Tag == 1)
             {
                 string file = new ExcelHelper<UserEntity>().ExportToExcel("用户列表.xls",

@@ -14,7 +14,7 @@ namespace YiSha.Model.Param.TerManage
         /// <summary>
         /// 工具栏参数
         /// </summary>
-        public TerInforListParam TerInforListParam { get;set;}
+        public TerInforListParam ListParam { get;set;}
         /// <summary>
         /// 分页参数
         /// </summary>

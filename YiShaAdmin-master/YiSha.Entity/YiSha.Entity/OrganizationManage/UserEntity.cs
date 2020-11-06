@@ -35,6 +35,7 @@ namespace YiSha.Entity.OrganizationManage
         public int? UserStatus { get; set; }
         public int? IsSystem { get; set; }
         public int? IsOnline { get; set; }
+
         public DateTime? FirstVisit { get; set; }
         public DateTime? PreviousVisit { get; set; }
         public DateTime? LastVisit { get; set; }

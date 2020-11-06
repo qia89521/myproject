@@ -35,10 +35,10 @@ namespace YiSha.Business.OrganizationManage
         private RoleBLL roleBLL = new RoleBLL();
 
         #region 获取数据
-        public async Task<TData<List<UserEntity>>> GetList(UserListParam param)
+        public async Task<TData<List<UserEntity>>> GetList(UserListParam param, OperatorInfo opuser)
         {
             TData<List<UserEntity>> obj = new TData<List<UserEntity>>();
-            obj.Data = await userService.GetList(param);
+            obj.Data = await userService.GetList(param, opuser);
             obj.Tag = 1;
             return obj;
         }
@@ -56,27 +56,45 @@ namespace YiSha.Business.OrganizationManage
             return obj;
         }
 
-        public async Task<TData<List<UserEntity>>> GetPageList(UserListParam param, Pagination pagination)
+        public async Task<TData<List<UserEntity>>> GetPageList(UserListParam param, Pagination pagination, OperatorInfo opuser, PlatformEnum platformEnum = PlatformEnum.Web)
         {
             TData<List<UserEntity>> obj = new TData<List<UserEntity>>();
-            if (param?.DepartmentId != null)
+            if (platformEnum == PlatformEnum.Web)
             {
-                param.ChildrenDepartmentIdList = await departmentBLL.GetChildrenDepartmentIdList(null, param.DepartmentId.Value);
+                if (param?.DepartmentId != null)
+                {
+                    param.ChildrenDepartmentIdList = await departmentBLL.GetChildrenDepartmentIdList(null, param.DepartmentId.Value);
+                }
+                else
+                {
+                    OperatorInfo user = await Operator.Instance.Current();
+                    param.ChildrenDepartmentIdList = await departmentBLL.GetChildrenDepartmentIdList(null, user.DepartmentId.Value);
+                }
+            }
+            obj.Data = await userService.GetPageList(param, pagination, opuser);
+            if (platformEnum == PlatformEnum.Web)
+            {
+                List<UserBelongEntity> userBelongList = await userBelongService.GetList(new UserBelongEntity { UserIds = obj.Data.Select(p => p.Id.Value).ParseToStrings<long>() });
+                List<DepartmentEntity> departmentList = await departmentService.GetList(new DepartmentListParam { Ids = userBelongList.Select(p => p.BelongId.Value).ParseToStrings<long>() });
+                foreach (UserEntity user in obj.Data)
+                {
+                    user.DepartmentName = departmentList.Where(p => p.Id == user.DepartmentId).Select(p => p.DepartmentName).FirstOrDefault();
+                }
             }
             else
             {
-                OperatorInfo user = await Operator.Instance.Current();
-                param.ChildrenDepartmentIdList = await departmentBLL.GetChildrenDepartmentIdList(null, user.DepartmentId.Value);
+                foreach (UserEntity user in obj.Data)
+                {
+                    List<UserBelongEntity> userBelongList = await userBelongService.GetList(new UserBelongEntity { UserId = user.Id });
+                    List<UserBelongEntity> roleBelongList = userBelongList.Where(p => p.BelongType == UserBelongTypeEnum.Role.ParseToInt()).ToList();
+                    if (roleBelongList.Count > 0)
+                    {
+                        user.RoleIds = string.Join(",", roleBelongList.Select(p => p.BelongId).ToList());
+                        await GetRoleCodes(user);
+                    }
+                }
             }
-            obj.Data = await userService.GetPageList(param, pagination);
-            List<UserBelongEntity> userBelongList = await userBelongService.GetList(new UserBelongEntity { UserIds = obj.Data.Select(p => p.Id.Value).ParseToStrings<long>() });
-            List<DepartmentEntity> departmentList = await departmentService.GetList(new DepartmentListParam { Ids = userBelongList.Select(p => p.BelongId.Value).ParseToStrings<long>() });
-            foreach (UserEntity user in obj.Data)
-            {
-                user.DepartmentName = departmentList.Where(p => p.Id == user.DepartmentId).Select(p => p.DepartmentName).FirstOrDefault();
-            }
-
-
+            obj.PageTotal = pagination.TotalPage;
             obj.Total = pagination.TotalCount;
             obj.Tag = 1;
             return obj;
@@ -109,7 +127,7 @@ namespace YiSha.Business.OrganizationManage
             }
             catch (Exception ex)
             {
-                LogHelper.Info("【ViewUserEntity】 ex:"+ex.ToString());
+                LogHelper.Info("【ViewUserEntity】 ex:" + ex.ToString());
             }
             return obj;
         }
@@ -252,6 +270,50 @@ namespace YiSha.Business.OrganizationManage
         #endregion
 
         #region 提交数据
+        /// <summary>
+        /// 用户注册
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public async Task<TData<string>> ModifyPwd(UserModifyPwdParam entity)
+        {
+            TData<string> obj = new TData<string>();
+            try
+            {
+                obj.SetDefault();
+                UserEntity userParent = await userService.GetEntity(long.Parse(entity.UserId));
+                // LogHelper.Info("【RegUser】 entity:" + JsonHelper.SerializeObject(entity));
+                if (userParent != null)
+                {
+
+                    LogHelper.Info("【RegUser】 Salt:" + userParent.Salt);
+                    if (userParent.Password == EncryptUserPassword(entity.OldPwd, userParent.Salt))
+                    {
+                        userParent.Salt = GetPasswordSalt();
+                        //LogHelper.Info("【RegUser】 Password ==");
+                        userParent.Password = EncryptUserPassword(entity.NewPwd, userParent.Salt);
+                        //LogHelper.Info("【RegUser】 EncryptUserPassword ==");
+                        await userService.ResetPassword(userParent);
+                        obj.Tag = 1;
+                        obj.Message = "修改成功";
+                    }
+                    else
+                    {
+                        obj.Message = "旧密码错误，不能修改";
+                    }
+                }
+                else
+                {
+                    obj.Message = "用户不存在";
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Info("【RegUser】 ex:" + ex.ToString());
+            }
+            return obj;
+        }
+
         /// <summary>
         /// 用户注册
         /// </summary>

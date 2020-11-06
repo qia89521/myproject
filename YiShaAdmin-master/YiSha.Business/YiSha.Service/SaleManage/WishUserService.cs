@@ -12,6 +12,7 @@ using YiSha.Data;
 using YiSha.Data.Repository;
 using YiSha.Entity.SaleManage;
 using YiSha.Model.Param.SaleManage;
+using YiSha.Web.Code;
 
 namespace YiSha.Service.SaleManage
 {
@@ -23,20 +24,20 @@ namespace YiSha.Service.SaleManage
     public class WishUserService :  RepositoryFactory
     {
         #region 获取数据
-        public async Task<List<WishUserEntity>> GetList(WishUserListParam param)
+        public async Task<List<WishUserEntity>> GetList(WishUserListParam param, OperatorInfo opuser)
         {
-            var expression = ListFilter(param);
+            var expression = ListFilter(param, opuser);
             var list = await this.BaseRepository().FindList(expression);
             return list.ToList();
         }
 
-        public async Task<List<WishUserEntity>> GetPageList(WishUserListParam param, Pagination pagination)
+        public async Task<List<WishUserEntity>> GetPageList(WishUserListParam param, Pagination pagination, OperatorInfo opuser)
         {
             /*
             var expression = ListFilter(param);
             var list= await this.BaseRepository().FindList(expression, pagination);
             return list.ToList();*/
-            StringBuilder sql = CreateListSql(param);
+            StringBuilder sql = CreateListSql(param, opuser);
             var data = await this.BaseRepository().FindList<WishUserEntity>(sql.ToString(), pagination);
             return data.list.ToList<WishUserEntity>();
         }
@@ -83,7 +84,7 @@ namespace YiSha.Service.SaleManage
         #endregion
 
         #region 私有方法
-        private Expression<Func<WishUserEntity, bool>> ListFilter(WishUserListParam param)
+        private Expression<Func<WishUserEntity, bool>> ListFilter(WishUserListParam param, OperatorInfo opuser)
         {
             var expression = LinqExtensions.True<WishUserEntity>();
             if (param != null)
@@ -100,7 +101,7 @@ namespace YiSha.Service.SaleManage
         /// </summary>
         /// <param name="param">查询条件数据</param>
         /// <returns></returns>
-        private StringBuilder CreateListSql(WishUserListParam param)
+        private StringBuilder CreateListSql(WishUserListParam param, OperatorInfo opuser)
         {
             StringBuilder sql = new StringBuilder();
 
@@ -111,6 +112,11 @@ namespace YiSha.Service.SaleManage
             sql.AppendFormat(" WHERE 1=1");
             if (param != null)
             {
+                if (!opuser.IsAdminOrDev)
+                {
+                    //TuiJianUserId
+                    sql.AppendFormat(" AND TuiJianUserId = '{0}'", opuser.UserIdStr);
+                }
                 if (!string.IsNullOrEmpty(param.MobilePhone))
                 {
                     sql.AppendFormat(" AND MobilePhone = '{0}'", param.MobilePhone);

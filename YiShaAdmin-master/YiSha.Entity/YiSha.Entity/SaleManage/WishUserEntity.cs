@@ -28,7 +28,7 @@ namespace YiSha.Entity.SaleManage
         /// </summary>
         /// <returns></returns>
         [JsonConverter(typeof(StringJsonConverter))]
-        public long? TuiJianUserId { get; set; }
+        public long TuiJianUserId { get; set; }
         /// <summary>
         /// 推荐人姓名
         /// </summary>

@@ -16,6 +16,9 @@ using YiSha.Web.Code;
 
 namespace YiSha.Admin.WebApi.Controllers
 {
+    /// <summary>
+    /// 系统用户控制器
+    /// </summary>
     [Route("[controller]/[action]")]
     [ApiController]
     [AuthorizeFilter]
@@ -23,7 +26,31 @@ namespace YiSha.Admin.WebApi.Controllers
     {
         private UserBLL userBLL = new UserBLL();
 
-        #region 获取数据       
+        #region 获取数据    
+        /// <summary>
+        /// 获取分页数据列表
+        /// </summary>
+        /// <param name="listParam">小程序列表参数</param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<TData<List<UserEntity>>> GetPageListJson([FromBody] WebApi_TerInforListParam listParam)
+        {
+            TData<List<UserEntity>> obj = new TData<List<UserEntity>>();
+            obj.SetDefault();
+            try
+            {
+                LogHelper.Info("【GetPageListJson】 listParam："+JsonHelper.SerializeObject(listParam));
+                OperatorInfo opuser = await Web.Code.Operator.Instance.Current(listParam.ApiToken);
+
+                obj = await userBLL.GetPageList(listParam.ListParam, listParam.Pagination, opuser, PlatformEnum.WebApi);
+            }
+            catch(Exception ex)
+            {
+                LogHelper.Info("【GetPageListJson】 ex：" + ex.ToString());
+            }
+            return obj;
+        }
+
         #endregion
 
         #region 提交数据
@@ -76,7 +103,7 @@ namespace YiSha.Admin.WebApi.Controllers
             obj.ErrorCode = userObj.ErrorCode;
             obj.Tag = userObj.Tag;
             obj.Message = userObj.Message;
-            LogHelper.Info("【CheckOpenId2】 Data："+JsonHelper.SerializeObject(obj.Data));
+            //LogHelper.Info("【CheckOpenId2】 Data："+JsonHelper.SerializeObject(obj.Data));
             return obj;
         }
 
@@ -115,6 +142,18 @@ namespace YiSha.Admin.WebApi.Controllers
         public async Task<TData<ViewUserInfor>> ViewUser([FromQuery] long id)
         {
             TData<ViewUserInfor> obj = await new UserBLL().ViewUserEntity(id);
+            return obj;
+        }
+
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="entity">登录信息实体</param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<TData<string>> ModifyPwd([FromBody] UserModifyPwdParam entity)
+        {
+            TData<string> obj = await new UserBLL().ModifyPwd(entity);
             return obj;
         }
         #endregion

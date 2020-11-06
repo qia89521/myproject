@@ -79,6 +79,18 @@
             <param name="entity"></param>
             <returns></returns>
         </member>
+        <member name="T:YiSha.Admin.WebApi.Controllers.OrderMoneyReceiptController">
+            <summary>
+            订单收据控制器
+            </summary>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.OrderMoneyReceiptController.GetPageListJson(YiSha.Model.Param.OrderManage.WebApi_OrderMoneyReceiptListParam)">
+            <summary>
+            获取分页数据列表
+            </summary>
+            <param name="listParam">小程序列表参数</param>
+            <returns></returns>
+        </member>
         <member name="T:YiSha.Admin.WebApi.Controllers.OrderTerIssueController">
             <summary>
             设备出货控制器
@@ -147,6 +159,18 @@
             <param name="entity">实体数据</param>
             <returns></returns>
         </member>
+        <member name="T:YiSha.Admin.WebApi.Controllers.UserController">
+            <summary>
+            系统用户控制器
+            </summary>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.UserController.GetPageListJson(YiSha.Model.Param.OrganizationManage.WebApi_TerInforListParam)">
+            <summary>
+            获取分页数据列表
+            </summary>
+            <param name="listParam">小程序列表参数</param>
+            <returns></returns>
+        </member>
         <member name="M:YiSha.Admin.WebApi.Controllers.UserController.Login(YiSha.Model.Param.OrganizationManage.UserCheckLoginParam)">
             <summary>
             用户登录
@@ -180,6 +204,25 @@
             查看个人信息
             </summary>
             <param name="id">用户id</param>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.UserController.ModifyPwd(YiSha.Model.Param.OrganizationManage.UserModifyPwdParam)">
+            <summary>
+            修改密码
+            </summary>
+            <param name="entity">登录信息实体</param>
+            <returns></returns>
+        </member>
+        <member name="T:YiSha.Admin.WebApi.Controllers.WishUserController">
+            <summary>
+            意向客户控制器
+            </summary>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.WishUserController.GetPageListJson(YiSha.Model.Param.SaleManage.WebApi_WishUserListParam)">
+            <summary>
+            获取分页数据列表
+            </summary>
+            <param name="listParam">小程序列表参数</param>
             <returns></returns>
         </member>
         <member name="T:YiSha.Admin.WebApi.Controllers.WXController">
