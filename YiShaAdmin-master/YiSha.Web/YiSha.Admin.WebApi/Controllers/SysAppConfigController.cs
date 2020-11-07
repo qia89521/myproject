@@ -6,12 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using YiSha.Business.SystemManage;
 using YiSha.Entity.SystemManage;
+using YiSha.Model.Param.SystemManage;
 using YiSha.Util.Model;
 
 namespace YiSha.Admin.WebApi.Controllers
 {
     /// <summary>
-    /// 公众号微信控制器
+    /// 系统配置控制器
     /// </summary>
     [Route("[controller]/[action]")]
     [ApiController]
@@ -29,6 +30,17 @@ namespace YiSha.Admin.WebApi.Controllers
             //appid, secret,code
             TData<SysAppConfigEntity> entity =await wXCoomBll.GetEntity();
             return entity;
+        }
+
+        /// <summary>
+        /// 获取系统收据配置
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<TData<List<SysReceiptConfigEntity>>> GetSysReceiptConfigList()
+        {
+            TData<List<SysReceiptConfigEntity>> obj = await new SysReceiptConfigBLL().GetList();
+            return obj;
         }
     }
 }

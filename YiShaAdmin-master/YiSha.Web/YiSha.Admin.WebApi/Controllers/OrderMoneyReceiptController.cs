@@ -37,6 +37,7 @@ namespace YiSha.Admin.WebApi.Controllers
                 OperatorInfo opuser = await Web.Code.Operator.Instance.Current(listParam.ApiToken);
 
                 obj = await new OrderMoneyReceiptBLL().GetPageList(listParam.ListParam, listParam.Pagination, opuser);
+                obj.Refresh();
             }
             catch (Exception ex)
             {
@@ -45,6 +46,49 @@ namespace YiSha.Admin.WebApi.Controllers
             return obj;
         }
 
+        #endregion
+
+        #region 提交数据
+        /// <summary>
+        /// 保存编辑收据信息
+        /// </summary>
+        /// <param name="entity">实体数据</param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<TData<string>> SaveForm([FromBody] OrderMoneyReceiptParam entity)
+        {
+            TData<string> obj = new TData<string>();
+            obj.SetDefault();
+            try
+            {
+                OperatorInfo opuser = await Web.Code.Operator.Instance.Current(entity.ApiToken);
+
+                obj = await new OrderMoneyReceiptBLL().SaveForm(entity, opuser);
+                //检测是否串货
+                obj.Refresh();
+
+            }
+            catch (Exception ex)
+            {
+                obj.Message = ex.ToString();
+            }
+
+            return obj;
+        }
+        #endregion
+
+        #region 读取数据信息
+        /// <summary>
+        /// 获取查看收据信息
+        /// </summary>
+        /// <param name="id">设备id</param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<TData<OrderMoneyReceiptEntity>> GetEntityById([FromQuery] long id)
+        {
+            TData<OrderMoneyReceiptEntity> obj = await new OrderMoneyReceiptBLL().GetEntity(id);
+            return obj;
+        }
         #endregion
     }
 }

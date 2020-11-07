@@ -60,6 +60,47 @@ namespace YiSha.Business.OrderManage
         #endregion
 
         #region 提交数据
+
+        public async Task<TData<string>> SaveForm(OrderMoneyReceiptParam modelParam, OperatorInfo opuser)
+        {
+            TData<string> obj = new TData<string>();
+            obj.SetDefault();
+            try
+            {
+                OrderMoneyReceiptEntity entity = new OrderMoneyReceiptEntity();
+                ClassValueCopierHelper.Copy(entity, modelParam);
+
+                #region 补充数据
+                long num = 0;
+                long.TryParse(modelParam.Id, out num);
+                entity.Id = num;
+
+                num = 0;
+                long.TryParse(modelParam.SaleManId, out num);
+                entity.SaleManId = num;
+
+                num = 0;
+                long.TryParse(modelParam.CompanyId, out num);
+                entity.CompanyId = num;
+
+                if (entity.Id.IsNullOrZero())
+                {
+                    entity.BaseCreatorId = long.Parse(opuser.UserIdStr);
+                    entity.BaseCreateTime = DateTime.Now;
+                }
+                entity.BaseModifyTime = DateTime.Now;
+                entity.BaseModifierId = long.Parse(opuser.UserIdStr);
+                #endregion
+
+                obj = await SaveForm(entity);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Info("【SaveForm】ex:" + ex.ToString());
+            }
+            return obj;
+        }
+
         public async Task<TData<string>> SaveForm(OrderMoneyReceiptEntity entity)
         {
             TData<string> obj = new TData<string>();
@@ -68,7 +109,7 @@ namespace YiSha.Business.OrderManage
                 string cur_day = DateTime.Now.ToString("yyyy-MM-dd");
                 int count = await GetCount(cur_day, cur_day);
 
-                entity.PrintNumber = CreatePrintNumber(entity.NumberPre,count);
+                entity.PrintNumber = CreatePrintNumber(entity.NumberPre, count);
             }
 
             await orderMoneyReceiptService.SaveForm(entity);

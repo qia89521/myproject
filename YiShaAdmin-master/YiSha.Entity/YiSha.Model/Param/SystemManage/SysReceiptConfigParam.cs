@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using YiSha.Util;
+using YiSha.Util.Model;
 
 namespace YiSha.Model.Param.SystemManage
 {

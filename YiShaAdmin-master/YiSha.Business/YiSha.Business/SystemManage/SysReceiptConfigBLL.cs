@@ -30,6 +30,15 @@ namespace YiSha.Business.SystemManage
             return obj;
         }
 
+        public async Task<TData<List<SysReceiptConfigEntity>>> GetList()
+        {
+            TData<List<SysReceiptConfigEntity>> obj = new TData<List<SysReceiptConfigEntity>>();
+            obj.Data = await sysReceiptConfigService.GetList();
+            obj.Total = obj.Data.Count;
+            obj.Tag = 1;
+            return obj;
+        }
+
         public async Task<TData<List<SysReceiptConfigEntity>>> GetPageList(SysReceiptConfigListParam param, Pagination pagination)
         {
             TData<List<SysReceiptConfigEntity>> obj = new TData<List<SysReceiptConfigEntity>>();

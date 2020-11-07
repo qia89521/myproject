@@ -29,6 +29,11 @@ namespace YiSha.Service.SystemManage
             var list = await this.BaseRepository().FindList(expression);
             return list.ToList();
         }
+        public async Task<List<SysReceiptConfigEntity>> GetList()
+        {
+            var list = await this.BaseRepository().FindList<SysReceiptConfigEntity>();
+            return list.ToList();
+        }
 
         public async Task<List<SysReceiptConfigEntity>> GetPageList(SysReceiptConfigListParam param, Pagination pagination)
         {

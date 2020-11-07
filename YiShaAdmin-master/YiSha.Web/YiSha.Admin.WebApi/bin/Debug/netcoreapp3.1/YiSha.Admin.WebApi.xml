@@ -91,6 +91,20 @@
             <param name="listParam">小程序列表参数</param>
             <returns></returns>
         </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.OrderMoneyReceiptController.SaveForm(YiSha.Model.Param.OrderManage.OrderMoneyReceiptParam)">
+            <summary>
+            保存编辑收据信息
+            </summary>
+            <param name="entity">实体数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.OrderMoneyReceiptController.GetEntityById(System.Int64)">
+            <summary>
+            获取查看收据信息
+            </summary>
+            <param name="id">设备id</param>
+            <returns></returns>
+        </member>
         <member name="T:YiSha.Admin.WebApi.Controllers.OrderTerIssueController">
             <summary>
             设备出货控制器
@@ -98,12 +112,18 @@
         </member>
         <member name="T:YiSha.Admin.WebApi.Controllers.SysAppConfigController">
             <summary>
-            公众号微信控制器
+            系统配置控制器
             </summary>
         </member>
         <member name="M:YiSha.Admin.WebApi.Controllers.SysAppConfigController.GetAppConfig">
             <summary>
             系统配置
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.SysAppConfigController.GetSysReceiptConfigList">
+            <summary>
+            获取系统收据配置
             </summary>
             <returns></returns>
         </member>

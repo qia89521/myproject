@@ -12,6 +12,7 @@ using YiSha.Admin.Web.Controllers;
 using YiSha.Entity.OrderManage;
 using YiSha.Business.OrderManage;
 using YiSha.Model.Param.OrderManage;
+using YiSha.Web.Code;
 
 namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
 {
@@ -62,7 +63,8 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
         [AuthorizeFilter("order:ordermoneyreceipt:search")]
         public async Task<ActionResult> GetListJson(OrderMoneyReceiptListParam param)
         {
-            TData<List<OrderMoneyReceiptEntity>> obj = await orderMoneyReceiptBLL.GetList(param);
+            OperatorInfo opuser =await Operator.Instance.Current();
+            TData<List<OrderMoneyReceiptEntity>> obj = await orderMoneyReceiptBLL.GetList(param,opuser);
             return Json(obj);
         }
 
@@ -70,7 +72,8 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
         [AuthorizeFilter("order:ordermoneyreceipt:search")]
         public async Task<ActionResult> GetPageListJson(OrderMoneyReceiptListParam param, Pagination pagination)
         {
-            TData<List<OrderMoneyReceiptEntity>> obj = await orderMoneyReceiptBLL.GetPageList(param, pagination);
+            OperatorInfo opuser = await Operator.Instance.Current();
+            TData<List<OrderMoneyReceiptEntity>> obj = await orderMoneyReceiptBLL.GetPageList(param, pagination, opuser);
             return Json(obj);
         }
 
