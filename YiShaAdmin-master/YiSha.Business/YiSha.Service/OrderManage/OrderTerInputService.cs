@@ -12,6 +12,8 @@ using YiSha.Data;
 using YiSha.Data.Repository;
 using YiSha.Entity.OrderManage;
 using YiSha.Model.Param.OrderManage;
+using YiSha.Web.Code;
+using YiSha.Model.Result.OrderManage;
 
 namespace YiSha.Service.OrderManage
 {
@@ -23,24 +25,39 @@ namespace YiSha.Service.OrderManage
     public class OrderTerInputService : RepositoryFactory
     {
         #region 获取数据
-        public async Task<List<OrderTerInputEntity>> GetList(OrderTerInputListParam param)
+        public async Task<List<OrderTerInputEntity>> GetList(OrderTerInputListParam param, OperatorInfo user)
         {
             var expression = ListFilter(param);
             var list = await this.BaseRepository().FindList(expression);
             return list.ToList();
         }
 
-        public async Task<List<OrderTerInputEntity>> GetPageList(OrderTerInputListParam param, Pagination pagination)
+        public async Task<List<OrderTerInputEntity>> GetPageList(OrderTerInputListParam param, Pagination pagination, OperatorInfo user)
         {
             /*
             var expression = ListFilter(param);
             var list = await this.BaseRepository().FindList(expression, pagination);
             return list.ToList();
             */
-            StringBuilder sql = CreateListSql(param);
+            StringBuilder sql = CreateListSql(param, user);
             var data = await this.BaseRepository().FindList<OrderTerInputEntity>(sql.ToString(), pagination);
             return data.list.ToList<OrderTerInputEntity>();
         }
+
+        public async Task<List<Response_OrderTerInput_ChartLine>> GetListGroup(OrderTerInputListParam param, OperatorInfo user)
+        {
+            /*
+            var expression = ListFilter(param);
+            var list= await this.BaseRepository().FindList(expression, pagination);
+            return list.ToList();
+            */
+            StringBuilder sql = CreateListGropuSql(param, user);
+            var data = await this.BaseRepository().FindList<Response_OrderTerInput_ChartLine>(sql.ToString());
+
+            return data.ToList<Response_OrderTerInput_ChartLine>();
+        }
+
+
 
         public async Task<OrderTerInputEntity> GetEntity(long id)
         {
@@ -91,7 +108,7 @@ namespace YiSha.Service.OrderManage
         /// </summary>
         /// <param name="param">查询条件数据</param>
         /// <returns></returns>
-        private StringBuilder CreateListSql(OrderTerInputListParam param)
+        private StringBuilder CreateListSql(OrderTerInputListParam param, OperatorInfo user)
         {
             StringBuilder sql = new StringBuilder();
             sql.AppendFormat(" SELECT a.*");
@@ -201,6 +218,54 @@ namespace YiSha.Service.OrderManage
             sql.AppendFormat("   WHERE 1=1 ");
             sql.AppendFormat(" ) e");
             sql.AppendFormat(" on a.ShenHeManId  = e.Id ");
+            return sql;
+        }
+
+
+        /// <summary>
+        /// 创建查询sql
+        /// </summary>
+        /// <param name="param">查询条件数据</param>
+        /// <returns></returns>
+        private StringBuilder CreateListGropuSql(OrderTerInputListParam param, OperatorInfo user)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.AppendFormat(" SELECT a.*");
+
+            sql.AppendFormat(" ,e.MaterielName as MaterielTxt");
+
+            sql.AppendFormat(" ,e.MaterielType as MaterielType");
+            sql.AppendFormat(" ,e.MaterielDesc as MaterielDesc");
+            sql.AppendFormat(" ,e.MaterielUnite as MaterielUnite");
+            sql.AppendFormat(" from (");
+            sql.AppendFormat("  SELECT  SUM(BuyNum) BuyNum,MaterielId,DATE_FORMAT(BaseCreateTime,'%Y-%m-%d') BuyDay  FROM order_ter_input ");
+            sql.AppendFormat("  where 1=1 ");
+            if (param != null)
+            {
+                if (!user.IsAdminOrDev)
+                {
+                    sql.AppendFormat(" AND BuyId ={0}", user.UserIdStr);
+                }
+                if (!string.IsNullOrEmpty(param.StartTime))
+                {
+                    sql.AppendFormat(" AND BaseCreateTime >'{0} 00:00:00'", param.StartTime);
+                }
+                if (!string.IsNullOrEmpty(param.EndTime))
+                {
+                    sql.AppendFormat(" AND BaseCreateTime <'{0} 23:59:59'", param.EndTime);
+                }
+            }
+            sql.AppendFormat(" GROUP BY DATE_FORMAT(BaseCreateTime,'%Y-%m-%d'),MaterielId");
+
+            sql.AppendFormat(" ) a ");
+
+            sql.AppendFormat(" JOIN ");
+            sql.AppendFormat(" ( ");
+            sql.AppendFormat("   SELECT Id,MaterielName,MaterielType,MaterielDesc,MaterielUnite from order_materiel ");
+            sql.AppendFormat("   WHERE 1=1 ");
+            sql.AppendFormat(" ) e");
+            sql.AppendFormat(" on a.MaterielId  = e.Id ");
+            sql.AppendFormat(" ORDER BY a.BuyDay");
             return sql;
         }
         #endregion

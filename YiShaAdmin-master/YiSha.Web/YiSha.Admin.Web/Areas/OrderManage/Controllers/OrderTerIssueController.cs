@@ -77,7 +77,8 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
         [AuthorizeFilter("order:orderterissue:search")]
         public async Task<ActionResult> GetPageListJson(OrderTerIssueListParam param, Pagination pagination)
         {
-            TData<List<OrderTerIssueEntity>> obj = await orderTerIssueBLL.GetPageList(param, pagination);
+            OperatorInfo user = await Operator.Instance.Current();
+            TData<List<OrderTerIssueEntity>> obj = await orderTerIssueBLL.GetPageList(param, pagination, user);
             return Json(obj);
         }
 

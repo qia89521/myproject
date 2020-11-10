@@ -11,6 +11,8 @@ using YiSha.Service.OrderManage;
 using YiSha.Web.Code;
 using YiSha.Model.Result;
 using YiSha.Enum;
+using System.Data;
+using YiSha.Model.Result.OrderManage;
 
 namespace YiSha.Business.OrderManage
 {
@@ -27,8 +29,9 @@ namespace YiSha.Business.OrderManage
         #region 获取数据
         public async Task<TData<List<OrderTerIssueEntity>>> GetList(OrderTerIssueListParam param)
         {
+            OperatorInfo user = await Operator.Instance.Current();
             TData<List<OrderTerIssueEntity>> obj = new TData<List<OrderTerIssueEntity>>();
-            obj.Data = await orderTerIssueService.GetList(param);
+            obj.Data = await orderTerIssueService.GetList(param, user);
             obj.Total = obj.Data.Count;
             obj.Tag = 1;
             return obj;
@@ -48,14 +51,31 @@ namespace YiSha.Business.OrderManage
             return obj;
         }
 
-        public async Task<TData<List<OrderTerIssueEntity>>> GetPageList(OrderTerIssueListParam param, Pagination pagination)
+        public async Task<TData<List<OrderTerIssueEntity>>> GetPageList(OrderTerIssueListParam param, Pagination pagination, OperatorInfo user)
         {
             TData<List<OrderTerIssueEntity>> obj = new TData<List<OrderTerIssueEntity>>();
-            obj.Data = await orderTerIssueService.GetPageList(param, pagination);
+            obj.Data = await orderTerIssueService.GetPageList(param, pagination,user);
             obj.Total = pagination.TotalCount;
+            obj.PageTotal = pagination.TotalPage;
             obj.Tag = 1;
             return obj;
         }
+
+        public async Task<TData<List<Response_OrderTerIssue_ChartLine>>> GetListGroupChart(OrderTerIssueListParam param, OperatorInfo user)
+        {
+            TData<List<Response_OrderTerIssue_ChartLine>> obj = new TData<List<Response_OrderTerIssue_ChartLine>>();
+
+            List<Response_OrderTerIssue_ChartLine> list = await orderTerIssueService.GetListGroup(param, user);
+            obj.Total = list.Count;
+            obj.Data = list;
+            obj.Tag = 1;
+            if (obj.Total <= 0)
+            {
+                obj.Message = "没有查询到数据";
+            }
+            return obj;
+        }
+
 
         public async Task<TData<OrderTerIssueEntity>> GetEntity(long id)
         {

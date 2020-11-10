@@ -25,10 +25,10 @@ namespace YiSha.Admin.WebApi.Controllers
         /// <param name="entity">实体数据</param>
         /// <returns></returns>
         [HttpPost]
-        public string GetSessionKey([FromBody] WXSessionKeyParam entity)
+        public async Task<string> GetSessionKey([FromBody] WXSessionKeyParam entity)
         {
             //appid, secret,code
-            string obj = wXCoomBll.GetSessionKey(entity);
+            string obj = await wXCoomBll.GetSessionKey(entity);
             return obj;
         }
     }

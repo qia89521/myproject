@@ -105,10 +105,43 @@
             <param name="id">设备id</param>
             <returns></returns>
         </member>
+        <member name="T:YiSha.Admin.WebApi.Controllers.OrderTerInputController">
+            <summary>
+            设备进货控制器
+            </summary>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.OrderTerInputController.GetPageListJson(YiSha.Model.Param.OrderManage.WebApi_OrderTerInputListParam)">
+            <summary>
+            获取数据列表
+            </summary>
+            <param name="param">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.OrderTerInputController.GetListGroupChart(YiSha.Model.Param.OrderManage.WebApi_OrderTerInputChartParam)">
+            <summary>
+            获取数据列表
+            </summary>
+            <param name="param">查询参数</param>
+            <returns></returns>
+        </member>
         <member name="T:YiSha.Admin.WebApi.Controllers.OrderTerIssueController">
             <summary>
             设备出货控制器
             </summary>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.OrderTerIssueController.GetPageListJson(YiSha.Model.Param.OrderManage.WebApi_OrderTerIssueListParam)">
+            <summary>
+            获取数据列表
+            </summary>
+            <param name="param">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.OrderTerIssueController.GetListGroupChart(YiSha.Model.Param.OrderManage.WebApi_OrderTerIssueChartParam)">
+            <summary>
+            获取数据列表
+            </summary>
+            <param name="param">查询参数</param>
+            <returns></returns>
         </member>
         <member name="T:YiSha.Admin.WebApi.Controllers.SysAppConfigController">
             <summary>
