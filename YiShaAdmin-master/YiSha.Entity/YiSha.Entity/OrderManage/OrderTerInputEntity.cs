@@ -104,7 +104,7 @@ namespace YiSha.Entity.OrderManage
         public string ShenHeManTxt { get; set; }
 
         /// <summary>
-        ///步骤  0:草稿,1:财务审核,2:售后进货,3:流程结束
+        ///步骤  0:草稿,1:财务审核,2:流程结束
         /// </summary>
         /// <returns></returns>
         public int Step { get; set; }

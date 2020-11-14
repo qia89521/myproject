@@ -13,30 +13,49 @@ namespace YiSha.Enum
     /// </summary>
     public enum SysRoleEnum
     {
+        /// <summary>
+        /// 开发者
+        /// </summary>
         [Description("系统-开发者")]
         dev = 0,
-
+        /// <summary>
+        /// 管理员
+        /// </summary>
         [Description("系统-管理员")]
         admin = 1,
-
+        /// <summary>
+        /// 财务
+        /// </summary>
         [Description("系统-财务")]
         finance = 2,
-
+        /// <summary>
+        /// 售后维护
+        /// </summary>
         [Description("系统-售后维护")]
         weihu = 3,
-
+        /// <summary>
+        /// 客服
+        /// </summary>
         [Description("系统-客服")]
         cust = 4,
-
+        /// <summary>
+        /// 普通用户
+        /// </summary>
         [Description("系统-普通用户")]
         normal = 5,
-
+        /// <summary>
+        /// 合伙人
+        /// </summary>
         [Description("系统-合伙人")]
         hehuo = 6,
-
+        /// <summary>
+        /// 代理商
+        /// </summary>
         [Description("系统-代理商")]
         delegets = 7,
-
+        /// <summary>
+        /// 推广员
+        /// </summary>
         [Description("系统-推广员")]
         seller = 8,
 

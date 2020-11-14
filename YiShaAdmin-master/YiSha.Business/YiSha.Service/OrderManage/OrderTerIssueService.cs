@@ -15,6 +15,7 @@ using YiSha.Model.Param.OrderManage;
 using YiSha.Web.Code;
 using System.Data;
 using YiSha.Model.Result.OrderManage;
+using YiSha.Enum;
 
 namespace YiSha.Service.OrderManage
 {
@@ -42,6 +43,7 @@ namespace YiSha.Service.OrderManage
             return list.ToList();
             */
             StringBuilder sql = CreateListSql(param,user);
+            //LogHelper.Info(" sql:"+sql.ToString());
             var data = await this.BaseRepository().FindList<OrderTerIssueEntity>(sql.ToString(), pagination);
             return data.list.ToList<OrderTerIssueEntity>();
         }
@@ -59,7 +61,29 @@ namespace YiSha.Service.OrderManage
             return data.ToList<Response_OrderTerIssue_ChartLine>();
         }
 
-        
+        /// <summary>
+        /// 获取审核数量
+        /// </summary>
+        /// <param name="user">当前登录用户</param>
+        ///  <param name="step">审核步骤</param>
+        /// <returns></returns>
+        public async Task<int> GetShenCount(OperatorInfo user, OutPutStepEnum step)
+        {
+            /*
+            var expression = ListFilter(param);
+            var list= await this.BaseRepository().FindList(expression, pagination);
+            return list.ToList();
+            */
+            int count= 0;
+            StringBuilder sql =CreateShenCountSql(user, step);
+            object data = await this.BaseRepository().FindObject(sql.ToString());
+            if (data != null)
+            {
+                int.TryParse(data.ToString(),out count);
+            }
+            return count;
+        }
+
 
         public async Task<OrderTerIssueEntity> GetEntity(long id)
         {
@@ -141,6 +165,14 @@ namespace YiSha.Service.OrderManage
             sql.AppendFormat("  where 1=1 ");
             if (param != null)
             {
+                if (param.Step >= 0)
+                {
+                    sql.AppendFormat(" AND Step={0}", param.Step);
+                }
+                if (param.ShenHeStatus >= 0)
+                {
+                    sql.AppendFormat(" AND ShenHeStatus={0}", param.ShenHeStatus);
+                }
                 if (!string.IsNullOrEmpty(param.SaleTxt))
                 {
                     sql.AppendFormat(" AND SaleTxt LIKE '%{0}%'", param.SaleTxt);
@@ -369,6 +401,30 @@ namespace YiSha.Service.OrderManage
             sql.AppendFormat(" ) e");
             sql.AppendFormat(" on a.MaterielId  = e.Id ");
             sql.AppendFormat(" ORDER BY a.BuyDay");
+            return sql;
+        }
+
+
+
+        /// <summary>
+        /// 创建待审核数量 查询sql
+        /// </summary>
+        /// <param name="user">当前登录用户</param>
+        /// <param name="step">步骤</param>
+        /// <returns></returns>
+        private StringBuilder CreateShenCountSql(OperatorInfo user, OutPutStepEnum step)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.AppendFormat(" SELECT COUNT(1) TotalNum FROM order_ter_issue WHERE 1=1");
+            if (step == OutPutStepEnum.Validate)
+            {
+                sql.AppendFormat(" AND ShenHeManId={0}",user.UserIdStr);
+            }
+            else
+            {
+                sql.AppendFormat(" AND SentManId={0}", user.UserIdStr);
+            }
+
             return sql;
         }
 

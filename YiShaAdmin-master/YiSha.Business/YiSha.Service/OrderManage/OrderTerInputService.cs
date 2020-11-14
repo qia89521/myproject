@@ -14,6 +14,7 @@ using YiSha.Entity.OrderManage;
 using YiSha.Model.Param.OrderManage;
 using YiSha.Web.Code;
 using YiSha.Model.Result.OrderManage;
+using YiSha.Enum;
 
 namespace YiSha.Service.OrderManage
 {
@@ -57,7 +58,28 @@ namespace YiSha.Service.OrderManage
             return data.ToList<Response_OrderTerInput_ChartLine>();
         }
 
-
+        /// <summary>
+        /// 获取审核数量
+        /// </summary>
+        /// <param name="user">当前登录用户</param>
+        ///  <param name="step">审核步骤</param>
+        /// <returns></returns>
+        public async Task<int> GetShenCount(OperatorInfo user, InPutStepEnum step)
+        {
+            /*
+            var expression = ListFilter(param);
+            var list= await this.BaseRepository().FindList(expression, pagination);
+            return list.ToList();
+            */
+            int count = 0;
+            StringBuilder sql = CreateShenCountSql(user, step);
+            object data = await this.BaseRepository().FindObject(sql.ToString());
+            if (data != null)
+            {
+                int.TryParse(data.ToString(), out count);
+            }
+            return count;
+        }
 
         public async Task<OrderTerInputEntity> GetEntity(long id)
         {
@@ -121,6 +143,11 @@ namespace YiSha.Service.OrderManage
             sql.AppendFormat("  where 1=1 ");
             if (param != null)
             {
+                if(param.Step>=0)
+                {
+                    sql.AppendFormat(" AND Step = {0}", param.Step);
+
+                }
                 if (!string.IsNullOrEmpty(param.BuyTxt))
                 {
                     sql.AppendFormat(" AND BuyTxt LIKE '%{0}%'", param.BuyTxt);
@@ -266,6 +293,23 @@ namespace YiSha.Service.OrderManage
             sql.AppendFormat(" ) e");
             sql.AppendFormat(" on a.MaterielId  = e.Id ");
             sql.AppendFormat(" ORDER BY a.BuyDay");
+            return sql;
+        }
+
+        /// <summary>
+        /// 创建待审核数量 查询sql
+        /// </summary>
+        /// <param name="user">当前登录用户</param>
+        /// <param name="step">步骤</param>
+        /// <returns></returns>
+        private StringBuilder CreateShenCountSql(OperatorInfo user, InPutStepEnum step)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.AppendFormat(" SELECT COUNT(1) TotalNum FROM order_ter_input WHERE 1=1");
+            if (step == InPutStepEnum.Validate)
+            {
+                sql.AppendFormat(" AND ShenHeManId={0}", user.UserIdStr);
+            }
             return sql;
         }
         #endregion

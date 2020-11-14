@@ -45,7 +45,8 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
         [AuthorizeFilter("order:orderterinput:search")]
         public async Task<ActionResult> GetListJson(OrderTerInputListParam param)
         {
-            TData<List<OrderTerInputEntity>> obj = await orderTerInputBLL.GetList(param);
+            OperatorInfo user = await Operator.Instance.Current();
+            TData<List<OrderTerInputEntity>> obj = await orderTerInputBLL.GetList(param,user);
             return Json(obj);
         }
 
@@ -53,7 +54,8 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
         [AuthorizeFilter("order:orderterinput:search")]
         public async Task<ActionResult> GetPageListJson(OrderTerInputListParam param, Pagination pagination)
         {
-            TData<List<OrderTerInputEntity>> obj = await orderTerInputBLL.GetPageList(param, pagination);
+            OperatorInfo user = await Operator.Instance.Current();
+            TData<List<OrderTerInputEntity>> obj = await orderTerInputBLL.GetPageList(param, pagination,user);
             return Json(obj);
         }
 
@@ -70,7 +72,8 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
         [AuthorizeFilter("order:orderterinput:add,order:orderterinput:edit")]
         public async Task<ActionResult> SaveFormJson(OrderTerInputEntity entity)
         {
-            TData<string> obj = await orderTerInputBLL.SaveForm(entity);
+            OperatorInfo user = await Operator.Instance.Current();
+            TData<string> obj = await orderTerInputBLL.SaveForm(entity, user);
             return Json(obj);
         }
 

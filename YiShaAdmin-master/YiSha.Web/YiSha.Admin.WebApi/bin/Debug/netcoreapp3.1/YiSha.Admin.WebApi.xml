@@ -79,6 +79,18 @@
             <param name="entity"></param>
             <returns></returns>
         </member>
+        <member name="T:YiSha.Admin.WebApi.Controllers.OrderMaterielController">
+            <summary>
+            物料管理控制器
+            </summary>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.OrderMaterielController.GetListJson(YiSha.Model.Param.OrderManage.OrderMaterielListParam)">
+            <summary>
+            获取物料数据列表
+            </summary>
+            <param name="param">查询参数</param>
+            <returns></returns>
+        </member>
         <member name="T:YiSha.Admin.WebApi.Controllers.OrderMoneyReceiptController">
             <summary>
             订单收据控制器
@@ -105,6 +117,18 @@
             <param name="id">设备id</param>
             <returns></returns>
         </member>
+        <member name="T:YiSha.Admin.WebApi.Controllers.OrderSupplierController">
+            <summary>
+            供应商理控制器
+            </summary>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.OrderSupplierController.GetListJson(YiSha.Model.Param.OrderManage.OrderSupplierListParam)">
+            <summary>
+            获取物料数据列表
+            </summary>
+            <param name="param">查询参数</param>
+            <returns></returns>
+        </member>
         <member name="T:YiSha.Admin.WebApi.Controllers.OrderTerInputController">
             <summary>
             设备进货控制器
@@ -124,6 +148,27 @@
             <param name="param">查询参数</param>
             <returns></returns>
         </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.OrderTerInputController.GetShenCount(System.String)">
+            <summary>
+            获取要审核的数量
+            </summary>
+            <param name="apiToken">api登录 凭证</param>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.OrderTerInputController.GetEntityById(System.Int64)">
+            <summary>
+            获取实体信息
+            </summary>
+            <param name="id">设备id</param>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.OrderTerInputController.SaveForm(YiSha.Model.Param.OrderManage.OrderTerInputParam)">
+            <summary>
+            保存信息
+            </summary>
+            <param name="entity">实体数据</param>
+            <returns></returns>
+        </member>
         <member name="T:YiSha.Admin.WebApi.Controllers.OrderTerIssueController">
             <summary>
             设备出货控制器
@@ -141,6 +186,27 @@
             获取数据列表
             </summary>
             <param name="param">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.OrderTerIssueController.GetShenCount(System.String)">
+            <summary>
+            获取要审核的数量
+            </summary>
+            <param name="apiToken">api登录 凭证</param>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.OrderTerIssueController.GetEntityById(System.Int64)">
+            <summary>
+            获取实体信息
+            </summary>
+            <param name="id">设备id</param>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.OrderTerIssueController.SaveForm(YiSha.Model.Param.OrderManage.OrderTerIssueParam)">
+            <summary>
+            保存信息
+            </summary>
+            <param name="entity">实体数据</param>
             <returns></returns>
         </member>
         <member name="T:YiSha.Admin.WebApi.Controllers.SysAppConfigController">
@@ -222,6 +288,13 @@
             获取分页数据列表
             </summary>
             <param name="listParam">小程序列表参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.UserController.GetListByRoleCode(System.String)">
+            <summary>
+            更加角色获取用数据
+            </summary>
+            <param name="roleCode">角色代码</param>
             <returns></returns>
         </member>
         <member name="M:YiSha.Admin.WebApi.Controllers.UserController.Login(YiSha.Model.Param.OrganizationManage.UserCheckLoginParam)">

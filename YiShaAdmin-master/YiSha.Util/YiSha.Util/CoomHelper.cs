@@ -199,5 +199,29 @@ namespace YiSha.Util
             return strNumber.ToString();
         }
         #endregion
+
+        #region  获取指定字符串第n次出现的位置索引
+        /// <summary>
+        /// 获取指定字符串第n次出现的位置索引
+        /// </summary>
+        /// <param name="str">原字符</param>
+        /// <param name="cha">查找的字符</param>
+        /// <param name="num">出现的次数</param>
+        /// <returns></returns>
+        public static int GetCharIndex(string str,string cha, int num)
+        {
+            int x = 0;
+            if (!string.IsNullOrEmpty(str))
+            {
+                x = str.IndexOf(cha);
+                for (var i = 0; i < num; i++)
+                {
+                    x = str.IndexOf(cha, x + 1);
+                }
+            }
+            return x;
+        }
+        #endregion
+
     }
 }

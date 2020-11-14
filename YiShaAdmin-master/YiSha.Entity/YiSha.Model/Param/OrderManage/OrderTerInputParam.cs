@@ -49,6 +49,14 @@ namespace YiSha.Model.Param.OrderManage
     public class OrderTerInputListParam
     {
         /// <summary>
+        /// 0未审核,1:审核通过,2拒绝
+        /// </summary>
+        public int ShenHeStatus { get; set; }
+        /// <summary>
+        /// 0创建1审核中2审核通过3拒绝
+        /// </summary>
+        public int Step { get; set; }
+        /// <summary>
         /// 分组方式 day,month 天和月分组
         /// </summary>
         public string GroupFlag { get; set; }
@@ -69,5 +77,57 @@ namespace YiSha.Model.Param.OrderManage
         /// 结束日期
         /// </summary>
         public string EndTime { get; set; }
+    }
+
+
+    /// <summary>
+    /// 创 建：admin
+    /// 日 期：2020-10-28 18:08
+    /// 描 述：进货审批或者修改类
+    /// </summary>
+    public class OrderTerInputParam
+    {
+        /*
+       //基本信息
+          Id: "",
+      ApiToken: "",
+
+      MaterielId: '',
+      MaterielTxt: '',
+
+      BuyId: "",
+      BuyTxt: "",
+
+      SupplierTxt: 1,
+      SupplierId: 0,
+
+      BuyNum: 1,
+      BuyPrice: 0,
+
+      //财务审核
+      ShenHeManTxt: "",
+      ShenHeManId: 0,
+      ShenHeMsg: '',
+     
+         */
+        public string Id { get; set; }
+        public string ApiToken { get; set; }
+
+        public string MaterielId { get; set; }
+        public string MaterielTxt { get; set; }
+
+        public string BuyId { get; set; }
+        public string BuyTxt { get; set; }
+
+        public string SupplierTxt { get; set; }
+        public string SupplierId { get; set; }
+
+        public string BuyNum { get; set; }
+        public string BuyPrice { get; set; }
+
+        public string ShenHeManTxt { get; set; }
+        public string ShenHeManId { get; set; }
+        public string ShenHeMsg { get; set; }
+
     }
 }

@@ -7,8 +7,18 @@
             <div class="select-list">
                 <ul>
                     <li>
-                        销售人：<input id="saleTxt" col="SaleTxt" type="text" />
+                        物料：<input id="materielTxt" col="MaterielTxt" type="text" />
                     </li>
+                    <li>
+                        申请人：<input id="saleTxt" col="SaleTxt" type="text" />
+                    </li>
+                    <li>
+                        审核步骤：<span id="step" col="Step"></span>
+                    </li>
+                    <li>
+                        审核状态：<span id="shenHeStatus" col="ShenHeStatus"></span>
+                    </li>
+
                     <li class="select-time">
                         <label>创建时间： </label>
                         <input id="startTime" col="StartTime" type="text" class="time-input" placeholder="开始时间" />
@@ -37,6 +47,15 @@
     $(function () {
         laydate.render({ elem: '#startTime', format: 'yyyy-MM-dd' });
         laydate.render({ elem: '#endTime', format: 'yyyy-MM-dd' });
+
+        $("#step").ysComboBox({
+            width: 100,
+            data: ys.getJson(@Html.Raw(typeof(OutPutStepEnum).EnumToDictionaryString()))
+        });
+        $("#shenHeStatus").ysComboBox({
+            width: 100,
+            data: ys.getJson(@Html.Raw(typeof(ShenHeStatusEnum).EnumToDictionaryString()))
+        });
 
         initGrid();
     });
@@ -112,15 +131,15 @@
                         }
                         return html;
                     }
-                }, 
+                },
                 { field: 'PrintOrderNumber', title: '打印单号' },
                 { field: 'ExpressCompany', title: '快递公司' },
                 { field: 'ExpressNumber', title: '快递单号' },
                 { field: 'Remark', title: '说明' },
-                
+
                 {
                     field: 'SentDay', title: '发货日期', align: "left"
-                   
+
                 },
                 {
                     field: 'BaseCreateTime', title: '补单时间', align: "left",
@@ -206,7 +225,7 @@
         if (ys.checkRowDelete(selectedRow)) {
             var ids = ys.getIds(selectedRow);
             ys.confirm('确认要删除选中的' + selectedRow.length + '条数据吗？', function () {
-              
+
                 ys.ajax({
                     url: '@Url.Content("~/OrderManage/OrderTerIssue/DeleteFormJson")' + '?ids=' + ids,
                     type: 'post',

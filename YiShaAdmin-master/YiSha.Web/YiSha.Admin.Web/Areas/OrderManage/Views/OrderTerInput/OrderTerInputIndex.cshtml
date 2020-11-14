@@ -12,6 +12,13 @@
                     <li>
                         采购人：<input id="buyTxt" col="MatBuyTxterielTxt" type="text" />
                     </li>
+                    <li>
+                        审核步骤：<span id="step" col="Step"></span>
+                    </li>
+                    <li>
+                        审核状态：<span id="shenHeStatus" col="ShenHeStatus"></span>
+                    </li>
+
                     <li class="select-time">
                         <label>创建时间： </label>
                         <input id="startTime" col="StartTime" type="text" class="time-input" placeholder="开始时间" />
@@ -39,6 +46,14 @@
     $(function () {
         laydate.render({ elem: '#startTime', format: 'yyyy-MM-dd' });
         laydate.render({ elem: '#endTime', format: 'yyyy-MM-dd' });
+        $("#step").ysComboBox({
+            width:100,
+            data: ys.getJson(@Html.Raw(typeof(InPutStepEnum).EnumToDictionaryString()))
+        });
+        $("#shenHeStatus").ysComboBox({
+            width: 100,
+            data: ys.getJson(@Html.Raw(typeof(ShenHeStatusEnum).EnumToDictionaryString()))
+        });
 
         initGrid();
     });

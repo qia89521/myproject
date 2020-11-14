@@ -97,7 +97,8 @@ namespace YiSha.Admin.Web.Areas.OrderManage.Controllers
         [AuthorizeFilter("order:orderterissue:add,order:orderterissue:edit")]
         public async Task<ActionResult> SaveFormJson(OrderTerIssueEntity entity)
         {
-            TData<string> obj = await orderTerIssueBLL.SaveForm(entity);
+            OperatorInfo user = await Operator.Instance.Current();
+            TData<string> obj = await orderTerIssueBLL.SaveForm(entity, user);
             return Json(obj);
         }
 

@@ -12,6 +12,7 @@ using YiSha.Admin.Web.Controllers;
 using YiSha.Entity.SaleManage;
 using YiSha.Business.SaleManage;
 using YiSha.Model.Param.SaleManage;
+using YiSha.Web.Code;
 
 namespace YiSha.Admin.Web.Areas.SaleManage.Controllers
 {
@@ -43,7 +44,8 @@ namespace YiSha.Admin.Web.Areas.SaleManage.Controllers
         [AuthorizeFilter("sale:wishuser:search")]
         public async Task<ActionResult> GetListJson(WishUserListParam param)
         {
-            TData<List<WishUserEntity>> obj = await wishUserBLL.GetList(param);
+            OperatorInfo user = await Operator.Instance.Current();
+            TData<List<WishUserEntity>> obj = await wishUserBLL.GetList(param,user);
             return Json(obj);
         }
 
@@ -51,7 +53,8 @@ namespace YiSha.Admin.Web.Areas.SaleManage.Controllers
         [AuthorizeFilter("sale:wishuser:search")]
         public async Task<ActionResult> GetPageListJson(WishUserListParam param, Pagination pagination)
         {
-            TData<List<WishUserEntity>> obj = await wishUserBLL.GetPageList(param, pagination);
+            OperatorInfo user = await Operator.Instance.Current();
+            TData<List<WishUserEntity>> obj = await wishUserBLL.GetPageList(param, pagination,user);
             return Json(obj);
         }
 

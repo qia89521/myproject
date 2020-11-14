@@ -51,8 +51,18 @@ namespace YiSha.Business.OrganizationManage
         public async Task<TData<List<UserEntity>>> GetListByRoleCode(string roleCode)
         {
             TData<List<UserEntity>> obj = new TData<List<UserEntity>>();
-            obj.Data = await userService.GetListByRoleCode(roleCode);
-            obj.Tag = 1;
+            obj.SetDefault();
+            List<UserEntity> list = await userService.GetListByRoleCode(roleCode);
+            if (list.Count > 0)
+            {
+                obj.Data = list;
+                obj.Tag = 1;
+                obj.Refresh();
+            }
+            else
+            {
+                obj.Message = "没有配置数据";
+            }
             return obj;
         }
 

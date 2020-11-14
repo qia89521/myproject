@@ -51,6 +51,18 @@ namespace YiSha.Admin.WebApi.Controllers
             return obj;
         }
 
+        /// <summary>
+        /// 更加角色获取用数据
+        /// </summary>
+        /// <param name="roleCode">角色代码</param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<TData<List<UserEntity>>> GetListByRoleCode([FromQuery] string roleCode)
+        {
+            TData<List<UserEntity>> obj = await userBLL.GetListByRoleCode(roleCode);
+            return obj;
+        }
+
         #endregion
 
         #region 提交数据

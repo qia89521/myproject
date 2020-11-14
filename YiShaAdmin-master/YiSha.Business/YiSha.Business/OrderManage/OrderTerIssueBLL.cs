@@ -25,7 +25,7 @@ namespace YiSha.Business.OrderManage
     {
         private OrderTerIssueService orderTerIssueService = new OrderTerIssueService();
         private OrderMaterielBLL orderMaterielBLL = new OrderMaterielBLL();
-       // private OrderPrintIssueBLL orderPrintIssueBLL = new OrderPrintIssueBLL();
+        // private OrderPrintIssueBLL orderPrintIssueBLL = new OrderPrintIssueBLL();
         #region 获取数据
         public async Task<TData<List<OrderTerIssueEntity>>> GetList(OrderTerIssueListParam param)
         {
@@ -54,7 +54,7 @@ namespace YiSha.Business.OrderManage
         public async Task<TData<List<OrderTerIssueEntity>>> GetPageList(OrderTerIssueListParam param, Pagination pagination, OperatorInfo user)
         {
             TData<List<OrderTerIssueEntity>> obj = new TData<List<OrderTerIssueEntity>>();
-            obj.Data = await orderTerIssueService.GetPageList(param, pagination,user);
+            obj.Data = await orderTerIssueService.GetPageList(param, pagination, user);
             obj.Total = pagination.TotalCount;
             obj.PageTotal = pagination.TotalPage;
             obj.Tag = 1;
@@ -80,8 +80,37 @@ namespace YiSha.Business.OrderManage
         public async Task<TData<OrderTerIssueEntity>> GetEntity(long id)
         {
             TData<OrderTerIssueEntity> obj = new TData<OrderTerIssueEntity>();
-            obj.Data = await orderTerIssueService.GetEntity(id);
-            if (obj.Data != null)
+            OrderTerIssueEntity entity = await orderTerIssueService.GetEntity(id);
+            if (entity != null)
+            {
+                int index = CoomHelper.GetCharIndex(entity.ReciveAddress, "-", 3);
+                if (index > 0)
+                {
+                    entity.ReciveAddre = entity.ReciveAddress.Substring(0, index);
+                    entity.ReciveZone = entity.ReciveAddress.Substring(index);
+                }
+                obj.Data = entity;
+                obj.Tag = 1;
+            }
+            return obj;
+        }
+
+        public async Task<TData<int>> GetShenCount(OperatorInfo user)
+        {
+            TData<int> obj = new TData<int>();
+            if (user.IsFinance)
+            {
+                obj.Data = await orderTerIssueService.GetShenCount(user, OutPutStepEnum.Validate);
+            }
+            else if (user.IsWeihu)
+            {
+                obj.Data = await orderTerIssueService.GetShenCount(user, OutPutStepEnum.Sent);
+            }
+            else
+            {
+                obj.Data = 0;
+            }
+            if (obj.Data > 0)
             {
                 obj.Tag = 1;
             }
@@ -90,10 +119,83 @@ namespace YiSha.Business.OrderManage
         #endregion
 
         #region 提交数据
-        public async Task<TData<string>> SaveForm(OrderTerIssueEntity entity)
+        public async Task<TData<string>> SaveForm(OrderTerIssueParam modelParam, OperatorInfo opuser)
         {
             TData<string> obj = new TData<string>();
-            var result = await CheckWorkFLow(entity);
+            obj.SetDefault();
+            try
+            {
+                OrderTerIssueEntity entity = new OrderTerIssueEntity();
+                ClassValueCopierHelper.Copy(entity, modelParam);
+
+                #region 补充数据
+                long num = 0;
+                long.TryParse(modelParam.MaterielId, out num);
+                entity.MaterielId = num;
+
+                num = 0;
+                long.TryParse(modelParam.Id, out num);
+                entity.Id = num;
+
+                num = 0;
+                long.TryParse(modelParam.SaleId, out num);
+                entity.SaleId = num;
+
+
+                int saleNum = 0;
+                int.TryParse(modelParam.SaleNum, out saleNum);
+                entity.SaleNum = saleNum;
+
+                decimal money = 0;
+                decimal.TryParse(modelParam.SalePrice, out money);
+                entity.SalePrice = money;
+
+                money = 0;
+                decimal.TryParse(modelParam.FactMoney, out money);
+                entity.FactMoney = money;
+
+
+                money = 0;
+                decimal.TryParse(modelParam.SrcPrice, out money);
+                entity.SrcPrice = money;
+
+                saleNum = 0;
+                int.TryParse(modelParam.TakeType, out saleNum);
+                entity.TakeType = saleNum;
+                
+
+                num = 0;
+                long.TryParse(modelParam.ShenHeManId, out num);
+                entity.ShenHeManId = num;
+
+                num = 0;
+                long.TryParse(modelParam.SentManId, out num);
+                entity.SentManId = num;
+                
+                if (entity.Id.IsNullOrZero())
+                {
+                    entity.BaseCreatorId = long.Parse(opuser.UserIdStr);
+                    entity.BaseCreateTime = DateTime.Now;
+                }
+                entity.ReciveAddress = modelParam.ReciveZone + modelParam.ReciveAddre;
+                entity.BaseModifyTime = DateTime.Now;
+                entity.BaseModifierId = long.Parse(opuser.UserIdStr);
+                #endregion
+
+                LogHelper.Info("【SaveForm】entity:" + JsonHelper.SerializeObject(entity));
+                obj = await SaveForm(entity, opuser);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Info("【SaveForm】ex:" + ex.ToString());
+            }
+            return obj;
+        }
+
+        public async Task<TData<string>> SaveForm(OrderTerIssueEntity entity, OperatorInfo opuser)
+        {
+            TData<string> obj = new TData<string>();
+            var result = await CheckWorkFLow(entity, opuser);
             if (result.IsSucess)
             {
                 await orderTerIssueService.SaveForm(entity);
@@ -126,7 +228,7 @@ namespace YiSha.Business.OrderManage
                 //修改物料库存和明细了
                 long? id = entity.MaterielId;
 
-                TData<string> td_result = await orderMaterielBLL.ModifyMaterielTotal(long.Parse(id + ""),true, 0-entity.SaleNum,
+                TData<string> td_result = await orderMaterielBLL.ModifyMaterielTotal(long.Parse(id + ""), true, 0 - entity.SaleNum,
                     "物料销售出库",
                     entity.Id, "order_ter_issue");
                 if (td_result.Tag == 1)
@@ -142,7 +244,7 @@ namespace YiSha.Business.OrderManage
         /// </summary>
         /// <param name="entity">数据实体</param>
         /// <returns></returns>
-        private async Task<ResultMsg> CheckWorkFLow(OrderTerIssueEntity entity)
+        private async Task<ResultMsg> CheckWorkFLow(OrderTerIssueEntity entity, OperatorInfo user)
         {
             ResultMsg result = new ResultMsg();
             //新增
@@ -154,7 +256,6 @@ namespace YiSha.Business.OrderManage
             }
             else
             {
-                OperatorInfo user = await Operator.Instance.Current();
 
                 if (entity.Step == OutPutStepEnum.Create.ParseToInt())
                 {
@@ -224,8 +325,8 @@ namespace YiSha.Business.OrderManage
         /// <param name="ids">出货单id串 逗号分隔</param>
         /// <param name="printOrderNumber">打印订单</param>
         /// <returns></returns>
-        public async Task<TData> UpdatePrintOrderNumbe(string ids, string printOrderNumber, 
-            string custName, string linkName, 
+        public async Task<TData> UpdatePrintOrderNumbe(string ids, string printOrderNumber,
+            string custName, string linkName,
             string printDay)
         {
             TData obj = new TData();
@@ -239,7 +340,7 @@ namespace YiSha.Business.OrderManage
             {
                 obj.Message = "请先选择出货数据,再更新";
             }
-           
+
             return obj;
         }
         public async Task<TData> DeleteForm(string ids)

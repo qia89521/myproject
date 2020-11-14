@@ -89,6 +89,17 @@ namespace YiSha.Entity.OrderManage
         /// </summary>
         /// <returns></returns>
         public string ReciveAddress { get; set; }
+        /// <summary>
+        /// 收货区域
+        /// </summary>
+        [NotMapped]
+        public string ReciveZone { get; set; }
+        /// <summary>
+        /// 收货详细地址
+        /// </summary>
+        [NotMapped]
+        public string ReciveAddre { get; set; }
+
 
         /// <summary>
         /// 审核人id

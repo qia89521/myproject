@@ -24,9 +24,16 @@ namespace YiSha.Business.OrderManage
         public async Task<TData<List<OrderSupplierEntity>>> GetList(OrderSupplierListParam param)
         {
             TData<List<OrderSupplierEntity>> obj = new TData<List<OrderSupplierEntity>>();
-            obj.Data = await orderSupplierService.GetList(param);
-            obj.Total = obj.Data.Count;
-            obj.Tag = 1;
+            List<OrderSupplierEntity> list = await orderSupplierService.GetList(param);
+
+            obj.SetDefault();
+            if (list.Count>0)
+            {
+                obj.Data = list;
+                obj.Total = obj.Data.Count;
+                obj.Tag = 1;
+                obj.Refresh();
+            }
             return obj;
         }
 

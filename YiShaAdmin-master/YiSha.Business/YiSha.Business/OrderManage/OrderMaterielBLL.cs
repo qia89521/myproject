@@ -25,9 +25,19 @@ namespace YiSha.Business.OrderManage
         public async Task<TData<List<OrderMaterielEntity>>> GetList(OrderMaterielListParam param)
         {
             TData<List<OrderMaterielEntity>> obj = new TData<List<OrderMaterielEntity>>();
-            obj.Data = await orderMaterielService.GetList(param);
-            obj.Total = obj.Data.Count;
-            obj.Tag = 1;
+            obj.SetDefault();
+            List<OrderMaterielEntity> list = await orderMaterielService.GetList(param);
+            if (list.Count > 0)
+            {
+                obj.Data = list;
+                obj.Total = obj.Data.Count;
+                obj.Tag = 1;
+                obj.Refresh();
+            }
+            else
+            {
+                obj.Message = "没有数据";
+            }
             return obj;
         }
 

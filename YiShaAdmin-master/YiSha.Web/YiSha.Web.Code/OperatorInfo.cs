@@ -79,6 +79,47 @@ namespace YiSha.Web.Code
             }
         }
 
+
+        /// <summary>
+        /// 是否为财务
+        /// </summary>
+        [NotMapped]
+        public bool IsFinance
+        {
+            get
+            {
+                bool isTrue = false;
+                if (this.RoleCodes != null)
+                {
+                    if (this.RoleCodes.Contains(SysRoleEnum.finance.ParseToInt().ToString()))
+                    {
+                        isTrue = true;
+                    }
+                }
+                return isTrue;
+            }
+        }
+
+        /// <summary>
+        /// 是否为售后
+        /// </summary>
+        [NotMapped]
+        public bool IsWeihu
+        {
+            get
+            {
+                bool isTrue = false;
+                if (this.RoleCodes != null)
+                {
+                    if (this.RoleCodes.Contains(SysRoleEnum.weihu.ParseToInt().ToString()))
+                    {
+                        isTrue = true;
+                    }
+                }
+                return isTrue;
+            }
+        }
+
     }
     public class RoleInfo
     {
