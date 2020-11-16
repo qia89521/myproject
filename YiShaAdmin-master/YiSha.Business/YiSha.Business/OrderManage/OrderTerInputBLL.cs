@@ -102,14 +102,22 @@ namespace YiSha.Business.OrderManage
                 OrderTerInputEntity entity = new OrderTerInputEntity();
                 ClassValueCopierHelper.Copy(entity, modelParam);
 
-                #region 补充数据
+
                 long num = 0;
+                long.TryParse(modelParam.Id, out num);
+                entity.Id = num;
+
+                if (!entity.Id.IsNullOrZero())
+                {
+                    TData<OrderTerInputEntity> tdata = await GetEntity(num);
+                    entity = tdata.Data;
+                }
+
+                #region 补充数据
+                num = 0;
                 long.TryParse(modelParam.MaterielId, out num);
                 entity.MaterielId = num;
 
-                num = 0;
-                long.TryParse(modelParam.Id, out num);
-                entity.Id = num;
 
                 num = 0;
                 long.TryParse(modelParam.BuyId, out num);
@@ -131,6 +139,9 @@ namespace YiSha.Business.OrderManage
                 long.TryParse(modelParam.ShenHeManId, out num);
                 entity.ShenHeManId = num;
 
+                saleNum = 0;
+                int.TryParse(modelParam.ShenHeStatus, out saleNum);
+                entity.ShenHeStatus = saleNum;
 
                 if (entity.Id.IsNullOrZero())
                 {

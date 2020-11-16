@@ -71,8 +71,8 @@
         ys.openDialog({
             title: id > 0 ? '编辑' : '添加',
             content: '@Url.Content("~/SystemManage/SysAppConfig/SysAppConfigForm")' + '?id=' + id,
-            width: '768px',
-            height: '550px',
+            width: '1368px',
+            height: '650px',
             callback: function (index, layero) {
                 var iframeWin = window[layero.find('iframe')[0]['name']];
                 iframeWin.saveForm(index);

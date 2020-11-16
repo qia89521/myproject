@@ -124,6 +124,15 @@ namespace YiSha.Web.Code
     public class RoleInfo
     {
         public long RoleId { get; set; }
+        /// <summary>
+        /// 角色名称
+        /// </summary>
+        public string RoleName { get; set; }
+        /// <summary>
+        /// 角色代码
+        /// </summary>
+        public string RoleCode { get; set; }
+
     }
 
 }

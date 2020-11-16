@@ -62,8 +62,9 @@ namespace YiSha.Web.Code
                 strSql.AppendFormat(" WHERE 1=1 ");
                 strSql.AppendFormat(" AND Id IN({0})", operatorInfo.RoleIds);
 
-                object roleCode = await BaseRepository().FindObject(strSql.ToString());
-                operatorInfo.RoleCodes = roleCode.ParseToString();
+                IEnumerable<RoleInfo> rolses = await BaseRepository().FindList<RoleInfo>(strSql.ToString());
+                operatorInfo.RoleCodes = string.Join(",", rolses.Select(p => p.RoleCode).ToArray());
+            
                 #endregion
             }
             return operatorInfo;

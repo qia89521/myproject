@@ -104,6 +104,7 @@ namespace YiSha.Model.Param.OrderManage
 
         public string ShenHeManTxt { get; set; }
         public string ShenHeManId { get; set; }
+        public string ShenHeStatus { get; set; }
         public string ShenHeMsg { get; set; }
 
         public string SentManTxt { get; set; }

@@ -208,7 +208,7 @@ namespace YiSha.Business.OrganizationManage
                         //登录成功业务逻辑
                         await LoginSucessFullLogic(user, platform);
                         #region 更新用户头像和昵称信息
-                        if (string.IsNullOrEmpty(user.OpenId))
+                        //if (string.IsNullOrEmpty(user.OpenId))
                         {
                             user.OpenId = openid;
                             user.WxNickName = wx_nikename;
@@ -218,6 +218,7 @@ namespace YiSha.Business.OrganizationManage
                             // await UpdateUser(user);
                         }
                         #endregion
+
 
                         obj.Data = user;
                         obj.Message = "登录成功";
@@ -677,6 +678,7 @@ namespace YiSha.Business.OrganizationManage
 
             //获取角色代码
             await GetRoleCodes(user);
+
         }
 
         /// <summary>
@@ -692,6 +694,7 @@ namespace YiSha.Business.OrganizationManage
                 user.RoleCodes = string.Join(",", rolses.Data.Select(p => p.RoleCode).ToList());
                 user.RoleTxts = string.Join(",", rolses.Data.Select(p => p.RoleName).ToList());
             }
+          
         }
         #endregion
     }

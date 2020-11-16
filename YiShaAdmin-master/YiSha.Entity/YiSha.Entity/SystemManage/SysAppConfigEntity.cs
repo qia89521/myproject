@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations.Schema;
 using YiSha.Util;
+using System.Collections.Generic;
 
 namespace YiSha.Entity.SystemManage
 {
@@ -34,5 +35,26 @@ namespace YiSha.Entity.SystemManage
         /// </summary>
         /// <returns></returns>
         public string CompanyName { get; set; }
+        /// <summary>
+        /// 欢迎界面图片，多个，分隔
+        /// </summary>
+        public string WelComeImgs { get; set; }
+
+        [NotMapped]
+        public List<string> WelComeImgList {
+
+            get {
+                List<string> list = new List<string>();
+                if (!string.IsNullOrEmpty(WelComeImgs))
+                {
+                    foreach (string s in WelComeImgs.Split(','))
+                    {
+                        list.Add(s);
+                    }
+                }
+
+                return list;
+            }
+        }
     }
 }

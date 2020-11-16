@@ -126,16 +126,28 @@ namespace YiSha.Business.OrderManage
             try
             {
                 OrderTerIssueEntity entity = new OrderTerIssueEntity();
+
+                long num = 0;
+                long.TryParse(modelParam.Id, out num);
+                entity.Id = num;
+
+                if (!entity.Id.IsNullOrZero())
+                {
+                    TData<OrderTerIssueEntity> tdata = await GetEntity(num);
+                    entity = tdata.Data;
+                }
+
                 ClassValueCopierHelper.Copy(entity, modelParam);
 
                 #region 补充数据
-                long num = 0;
-                long.TryParse(modelParam.MaterielId, out num);
-                entity.MaterielId = num;
-
                 num = 0;
                 long.TryParse(modelParam.Id, out num);
                 entity.Id = num;
+
+                num = 0;
+                long.TryParse(modelParam.MaterielId, out num);
+                entity.MaterielId = num;
+
 
                 num = 0;
                 long.TryParse(modelParam.SaleId, out num);
@@ -162,7 +174,10 @@ namespace YiSha.Business.OrderManage
                 saleNum = 0;
                 int.TryParse(modelParam.TakeType, out saleNum);
                 entity.TakeType = saleNum;
-                
+
+                saleNum = 0;
+                int.TryParse(modelParam.ShenHeStatus, out saleNum);
+                entity.ShenHeStatus = saleNum;
 
                 num = 0;
                 long.TryParse(modelParam.ShenHeManId, out num);
