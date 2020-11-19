@@ -1,0 +1,76 @@
+﻿@{
+    Layout = "~/Views/Shared/_FormWhite.cshtml";
+}
+
+<div class="wrapper animated fadeInRight">
+    <form id="form" class="form-horizontal m">
+        <div class="form-group">
+            <!---TerNumber，TerName，Title，Content，FristImg，DoManTxt，Step-->
+            <label class="col-sm-2  control-label ">设备名称<font class="red"> *</font></label>
+            <div class="col-sm-8">
+                <input id="terName" col="TerName" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2  control-label ">设备编号</label>
+            <div class="col-sm-8">
+                <input id="terNumber" col="TerNumber" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2  control-label ">标题</label>
+            <div class="col-sm-8">
+                <input id="title" col="Title" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2  control-label ">详细内容</label>
+            <div class="col-sm-8">
+                <textarea id="content" col="Content" class="form-control" style="height:60px">
+                </textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2  control-label ">处理人</label>
+            <div class="col-sm-8">
+                <input id="doManTxt" col="DoManTxt" type="text" class="form-control" />
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    var id = ys.request("id");
+    $(function () {
+        getForm();
+
+        $('#form').validate({
+            rules: {
+                terId: { required: true }
+            }
+        });
+    });
+
+    function getForm() {
+        if (id > 0) {
+            ys.ajax({
+                url: '@Url.Content("~/CustSheetManage/CustWorkSheet/GetFormJson")' + '?id=' + id,
+                type: 'get',
+                success: function (obj) {
+                    if (obj.Tag == 1) {
+                        $('#form').setWebControls(obj.Data);
+                    }
+                }
+            });
+        }
+        else {
+            var defaultData = {};
+            $('#form').setWebControls(defaultData);
+        }
+    }
+
+    function saveForm(index) {
+         parent.layer.close(index);
+    }
+</script>
+

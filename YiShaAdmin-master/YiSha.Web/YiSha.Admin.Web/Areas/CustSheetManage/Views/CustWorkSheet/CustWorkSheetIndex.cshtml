@@ -1,0 +1,154 @@
+﻿@{
+    Layout = "~/Views/Shared/_Index.cshtml";
+}
+<div class="container-div">
+    <div class="row">
+        <div id="searchDiv" class="col-sm-12 search-collapse">
+            <div class="select-list">
+                <ul>
+                    <li>
+                        设备编号：<input id="terNumber" col="TerNumber" type="text" />
+                    </li>
+                    <li>
+                        设备名称：<input id="terName" col="TerName" type="text" />
+                    </li>
+                    <li>
+                        处理状态：<span id="step" col="Step"></span>
+                    </li>
+                    <li class="select-time">
+                        <label>创建时间： </label>
+                        <input id="startTime" col="StartTime" type="text" class="time-input" placeholder="开始时间" />
+                        <span>-</span>
+                        <input id="endTime" col="EndTime" type="text" class="time-input" placeholder="结束时间" />
+                    </li>
+                    <li>
+                        <a id="btnSearch" class="btn btn-primary btn-sm" onclick="searchGrid()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="btn-group-sm hidden-xs" id="toolbar">
+            <a id="btnAdd" class="btn btn-success" onclick="showSaveForm(true)"><i class="fa fa-plus"></i> 新增</a>
+            <a id="btnEdit" class="btn btn-primary disabled" onclick="showSaveForm(false)"><i class="fa fa-edit"></i> 修改</a>
+            <a id="btnDelete" class="btn btn-danger disabled" onclick="deleteForm()"><i class="fa fa-remove"></i> 删除</a>
+        </div>
+        <div class="col-sm-12 select-table table-striped">
+            <table id="gridTable" data-mobile-responsive="true"></table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        laydate.render({ elem: '#startTime', format: 'yyyy-MM-dd' });
+        laydate.render({ elem: '#endTime', format: 'yyyy-MM-dd' });
+
+         $("#step").ysComboBox({
+            width: 100,
+            data: ys.getJson(@Html.Raw(typeof(CustWorkSheeStepEnum).EnumToDictionaryString()))
+        });
+        initGrid();
+    });
+
+    function initGrid() {
+        var queryUrl = '@Url.Content("~/CustSheetManage/CustWorkSheet/GetPageListJson")';
+
+        var status = ["待处理", "处理中", "完成","结单"];
+        $('#gridTable').ysTable({
+            url: queryUrl,
+            columns: [
+                //TerNumber，TerName，Title，Content，FristImg，DoManTxt，Step
+                { checkbox: true, visible: true },
+                { field: 'Id', title: 'Id', visible: false },
+                { field: 'TerNumber', title: '设备编号' },
+                { field: 'TerName', title: '设备名称' },
+                { field: 'Title', title: '标题' },
+                {
+                    field: '', title: '故障图',
+                    formatter: function (value, row, index) {
+                        var imageUrl =  '@GlobalContext.SystemConfig.ApiSite' +row.FristImg;
+                        return '<img class="img-circle img-xs" src="' + imageUrl + '" onclick=showImage("' + imageUrl + '") />';
+                    }
+                },
+                { field: 'Content', title: '详细内容' },
+                { field: 'DoManTxt', title: '售后' },
+                {
+                    field: 'DoManTxt', title: '状态',
+                    formatter: function (value, row, index) {
+                        return status[row.Step];
+                 }},
+                {
+                    field: 'BaseCreateTime', title: '反馈时间', align: "left",
+                    formatter: function (value, row, index) {
+                        return ys.formatDate(value, "yyyy-MM-dd HH:mm:ss");
+                    }
+                }
+            ],
+            queryParams: function (params) {
+                var pagination = $('#gridTable').ysTable('getPagination', params);
+                var queryString = $('#searchDiv').getWebControls(pagination);
+                return queryString;
+            }
+        });
+    }
+
+    function searchGrid() {
+        $('#gridTable').ysTable('search');
+        resetToolbarStatus();
+    }
+
+    function showSaveForm(bAdd) {
+        var id = 0;
+        if (!bAdd) {
+            var selectedRow = $('#gridTable').bootstrapTable('getSelections');
+            if (!ys.checkRowEdit(selectedRow)) {
+                return;
+            }
+            else {
+                id = selectedRow[0].Id;
+            }
+        }
+        ys.openDialog({
+            title: id > 0 ? '编辑' : '添加',
+            content: '@Url.Content("~/CustSheetManage/CustWorkSheet/CustWorkSheetForm")' + '?id=' + id,
+            width: '768px',
+            height: '550px',
+            callback: function (index, layero) {
+                var iframeWin = window[layero.find('iframe')[0]['name']];
+                iframeWin.saveForm(index);
+            }
+        });
+    }
+
+    function deleteForm() {
+        var selectedRow = $('#gridTable').bootstrapTable('getSelections');
+        if (ys.checkRowDelete(selectedRow)) {
+            ys.confirm('确认要删除选中的' + selectedRow.length + '条数据吗？', function () {
+                var ids = ys.getIds(selectedRow);
+                ys.ajax({
+                    url: '@Url.Content("~/CustSheetManage/CustWorkSheet/DeleteFormJson")' + '?ids=' + ids,
+                    type: 'post',
+                    success: function (obj) {
+                        if (obj.Tag == 1) {
+                            ys.msgSuccess(obj.Message);
+                            searchGrid();
+                        }
+                        else {
+                            ys.msgError(obj.Message);
+                        }
+                    }
+                });
+            });
+        }
+    }
+
+    function showImage(imageUrl) {
+        var html = '<img src="' + imageUrl + '" width="100%" height="100%" class="img-responsive" />';
+        ys.openDialogContent({
+            content: html,
+            width: 'auto',
+            height: 'auto',
+            closeBtn: true
+        });
+    }
+</script>

@@ -311,5 +311,31 @@ namespace YiSha.Enum
         Yes = 1,
 
     }
+    /// <summary>
+    /// 维修工单流程步骤 步骤 0:待处理,1:处理中,2 处理完成, 3:结单
+    /// </summary>
+    public enum CustWorkSheeStepEnum
+    {
+        /// <summary>
+        /// 待处理
+        /// </summary>
+        [Description("待处理")]
+        ToDo = 0,
+        /// <summary>
+        ///处理中
+        /// </summary>
+        [Description("处理中")]
+        Doing = 1,
+        /// <summary>
+        /// 结单
+        /// </summary>
+        [Description("完成")]
+        Done = 2,
+        /// <summary>
+        /// 结单
+        /// </summary>
+        [Description("结单")]
+        Finish = 3,
 
+    }
 }

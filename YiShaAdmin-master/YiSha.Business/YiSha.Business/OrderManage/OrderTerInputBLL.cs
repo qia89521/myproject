@@ -166,7 +166,7 @@ namespace YiSha.Business.OrderManage
         public async Task<TData<string>> SaveForm(OrderTerInputEntity entity, OperatorInfo opuser)
         {
             TData<string> obj = new TData<string>();
-            var result = await CheckWorkFLow(entity, opuser);
+            var result = CheckWorkFLow(entity, opuser);
             if (result.IsSucess)
             {
                 await orderTerInputService.SaveForm(entity);
@@ -221,7 +221,7 @@ namespace YiSha.Business.OrderManage
         /// </summary>
         /// <param name="entity">数据实体</param>
         /// <returns></returns>
-        private async Task<ResultMsg> CheckWorkFLow(OrderTerInputEntity entity,OperatorInfo user)
+        private ResultMsg CheckWorkFLow(OrderTerInputEntity entity,OperatorInfo user)
         {
             ResultMsg result = new ResultMsg();
             //新增
