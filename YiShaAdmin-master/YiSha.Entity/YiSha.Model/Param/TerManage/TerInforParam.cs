@@ -53,4 +53,32 @@ namespace YiSha.Model.Param.TerManage
         public string EndTime { get; set; }
 
     }
+
+    /// <summary>
+    /// 创 建：admin
+    /// 日 期：2020-08-14 16:05
+    /// 描 述：批量新增设备实体类
+    /// </summary>
+    public class TerInforBateAddParam
+    {
+
+        /// <summary>
+        /// 设备名称
+        /// </summary>
+        public string TerName { get; set; }
+        /// <summary>
+        /// 设备起始编号
+        /// </summary>
+        public int StartNumber { get; set; }
+        /// <summary>
+        /// 新增数量
+        /// </summary>
+        public int Count { get; set; }
+        /// <summary>
+        /// 设备类型id
+        /// </summary>
+        /// <returns></returns>
+        [JsonConverter(typeof(StringJsonConverter))]
+        public long TerPartId { get; set; }
+    }
 }

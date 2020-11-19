@@ -200,7 +200,7 @@ namespace YiSha.Util
         }
         #endregion
 
-        #region  获取指定字符串第n次出现的位置索引
+        #region  4 获取指定字符串第n次出现的位置索引
         /// <summary>
         /// 获取指定字符串第n次出现的位置索引
         /// </summary>
@@ -208,7 +208,7 @@ namespace YiSha.Util
         /// <param name="cha">查找的字符</param>
         /// <param name="num">出现的次数</param>
         /// <returns></returns>
-        public static int GetCharIndex(string str,string cha, int num)
+        public static int GetCharIndex(string str, string cha, int num)
         {
             int x = 0;
             if (!string.IsNullOrEmpty(str))
@@ -220,6 +220,109 @@ namespace YiSha.Util
                 }
             }
             return x;
+        }
+        #endregion
+
+        #region 5 时间相减
+        /// <summary>
+        /// 时间相减,默认返回相差的秒数
+        /// </summary>
+        /// <param name="time1">减数</param>
+        /// <param name="time2">被减数</param>
+        /// <param name="flag">day:返回天数，min:分钟，second:秒，hour:小时，mill：毫秒</param>
+        /// <returns></returns>
+        public static int TimeSub(DateTime time1, DateTime time2, string flag)
+        {
+            System.TimeSpan ts = time1 - time2;
+            int value = 0;
+            if (flag == "day")
+            {
+                value = ts.Days;
+            }
+            else if (flag == "hour")
+            {
+                value = ts.Days * 24 + ts.Hours;
+            }
+            else if (flag == "min")
+            {
+                value = (ts.Days * 24 + ts.Hours) * 60 + ts.Minutes;
+            }
+            else if (flag == "second")
+            {
+                value = (ts.Days * 24 * 60 + ts.Hours * 60 + ts.Minutes) * 60 + ts.Seconds;
+            }
+            else if (flag == "mill")
+            {
+                value = (ts.Days * 24 * 60 * 60 + ts.Hours * 60 * 60 + ts.Minutes * 60 + ts.Seconds) * 1000 + ts.Milliseconds;
+            }
+
+            return value;
+        }
+
+        /// <summary>
+        /// 检测是否过期,返回true 表示没有过期，false：过期
+        /// </summary>
+        /// <param name="start_time">开始时间 格式：yyyy-MM-dd</param>
+        /// <param name="end_time">结束时间 格式：yyyy-MM-dd</param>
+        ///  <param name="curtime">比较的时间</param>
+        /// <returns></returns>
+        public static bool CheckIsExpired(string start_time, string end_time, DateTime curtime)
+        {
+            DateTime stime = Convert.ToDateTime(string.Format("{0} 00:00:00", start_time));
+            DateTime etime = Convert.ToDateTime(string.Format("{0} 23:59:59", end_time));
+            if (DateTime.Compare(curtime, stime) >= 0 &&
+                DateTime.Compare(etime, curtime) >= 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #region 6 生成随机数
+        /// <summary>
+        /// 生成随机数 0-9,a-z
+        /// </summary>
+        /// <param name="len">随机数长度</param>
+        ///  <param name="flag">0：纯数字 1：纯字母 2:混合</param>
+        /// <returns></returns>
+        public static string CreateRandomWordOrNum(int len, string flag = "2")
+        {
+            List<string> list = null;
+            if (flag == "0")
+            {
+                list = new List<string>() {
+            "0","1","2","3","4","5","6","7","8","9"
+            };
+            }
+            else if (flag == "1")
+            {
+                list = new List<string>() {
+            "a","b","c","d","e","f","g","h","i","j"
+             ,"k","l","m","n","o","p","q","r","s","t"
+              ,"u","v","w","x","y","z"
+            };
+            }
+            else
+            {
+                list = new List<string>() {
+            "0","1","2","3","4","5","6","7","8","9"
+            ,"a","b","c","d","e","f","g","h","i","j"
+             ,"k","l","m","n","o","p","q","r","s","t"
+              ,"u","v","w","x","y","z"
+            };
+            }
+            Random random = new Random(GetRandomSeed());
+            StringBuilder strNumber = new StringBuilder();
+            for (int i = 1; i <= len; i++)
+            {
+                int index = random.Next(0, list.Count);
+                strNumber.Append(list[index]);
+            }
+            return strNumber.ToString();
         }
         #endregion
 

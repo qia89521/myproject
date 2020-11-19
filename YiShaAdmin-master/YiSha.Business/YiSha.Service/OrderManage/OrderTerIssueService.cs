@@ -418,10 +418,12 @@ namespace YiSha.Service.OrderManage
             sql.AppendFormat(" SELECT COUNT(1) TotalNum FROM order_ter_issue WHERE 1=1");
             if (step == OutPutStepEnum.Validate)
             {
+                sql.AppendFormat(" AND Step=1");
                 sql.AppendFormat(" AND ShenHeManId={0}",user.UserIdStr);
             }
             else
             {
+                sql.AppendFormat(" AND Step=2");
                 sql.AppendFormat(" AND SentManId={0}", user.UserIdStr);
             }
 

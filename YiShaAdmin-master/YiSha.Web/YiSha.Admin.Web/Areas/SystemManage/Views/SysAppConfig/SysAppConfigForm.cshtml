@@ -62,11 +62,12 @@
                 imgs += "," + data.response.Data;
                 $("#welComeImgs").val(imgs);
             }
+        }).on('filesuccessremove', function (event, previewId, extra) {
+            //在移除事件里取出所需数据，并执行相应的删除指令
+            alert("1111111");
         });
-
-
     });
-
+    var img_array = [];
     function getForm() {
         if (id > 0) {
             ys.ajax({
@@ -75,7 +76,8 @@
                 success: function (obj) {
                     if (obj.Tag == 1) {
                         $('#form').setWebControls(obj.Data);
-                        InitImg(obj.Data.WelComeImgList);
+                        img_array = obj.Data.WelComeImgList;
+                        InitImg(img_array);
                     }
                 }
             });
@@ -87,6 +89,7 @@
         }
     }
 
+  
     function saveForm(index) {
         if ($('#form').validate().form()) {
             var postData = $('#form').getWebControls({ Id: id });
@@ -112,6 +115,7 @@
      * 初始化数据
      * param img
      */
+  
     function InitImg(img_array) {
         var img_es = [];
         if (img_array.length > 0) {

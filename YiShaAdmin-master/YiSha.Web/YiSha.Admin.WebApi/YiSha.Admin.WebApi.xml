@@ -363,6 +363,21 @@
             <param name="entity">实体数据</param>
             <returns></returns>
         </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.WXController.SentSms(System.String)">
+            <summary>
+            发送短信
+            </summary>
+            <param name="phone">手机号</param>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.WXController.CheckSms(System.String,System.String)">
+            <summary>
+            检测短信
+            </summary>
+            <param name="phone">手机号</param>
+             <param name="code">验证码</param>
+            <returns></returns>
+        </member>
         <member name="T:YiSha.Admin.WebApi.Controllers.AuthorizeFilterAttribute">
             <summary>
             验证token和记录日志

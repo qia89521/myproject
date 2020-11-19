@@ -64,6 +64,18 @@ namespace YiSha.Service.TerManage
             return await this.BaseRepository().FindSignalModel<TerInforEntity>(sql.ToString());
 
         }
+        public async Task<List<TerInforEntity>> GetListByNumber(List<string> numbers)
+        {
+            /*
+            return await this.BaseRepository().FindEntity<TerInforEntity>(id);
+            */
+            StringBuilder sql = CreateListSqlByNumber(numbers);
+            var list= await this.BaseRepository().FindList<TerInforEntity>(sql.ToString());
+
+            return list.ToList<TerInforEntity>();
+
+        }
+       
         #endregion
 
         #region 提交数据
@@ -79,6 +91,14 @@ namespace YiSha.Service.TerManage
                 await entity.Modify();
                 await this.BaseRepository().Update(entity);
             }
+        }
+
+        public async Task<int> SaveForm(List<TerInforBateAdd> models)
+        {
+
+            StringBuilder sql = CreateBateAddSql(models);
+            int count= await this.BaseRepository().ExecuteBySql(sql.ToString());
+            return count;
         }
 
         public async Task DeleteForm(string ids)
@@ -220,6 +240,43 @@ namespace YiSha.Service.TerManage
             sql.AppendFormat(" SELECT * ");
             sql.AppendFormat(" FROM  ter_infor ");
             sql.AppendFormat(" WHERE TerNumber='{0}'", number);
+            return sql;
+        }
+
+        /// <summary>
+        /// 创建批量查询sql
+        /// </summary>
+        /// <param name="number">设备编号</param>
+        /// <returns></returns>
+        private StringBuilder CreateListSqlByNumber(List<string> numbers)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.AppendFormat(" SELECT * ");
+            sql.AppendFormat(" FROM  ter_infor ");
+            sql.AppendFormat(" WHERE TerNumber in ('{0}')", string.Join("','",numbers));
+            return sql;
+        }
+
+        private StringBuilder CreateBateAddSql(List<TerInforBateAdd> models)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.AppendFormat(" INSERT INTO ter_infor (Id,TerName,TerNumber,TerPartId,");
+            sql.AppendFormat(" BaseCreatorId,BaseCreateTime)");
+            int i = 0;
+            foreach (TerInforBateAdd model in models)
+            {
+                //INSERT INTO table (field1,field2,field3) VALUES (‘a’,”b”,”c”), (‘a’,”b”,”c”),(‘a’,”b”,”c”);
+                sql.AppendFormat(" VALUES ({0},'{1}','{2}',{3},",model.Id,model.TerName,model.TerNumber,model.TerPartId);
+                sql.AppendFormat("{0},'{1}')",model.BaseCreatorId,model.BaseCreateTime.Value.ToString("yyyy-MM-dd HH:mm:ss"));
+                
+                if(i<models.Count-1)
+                {
+                    sql.AppendFormat(",");
+                }
+
+            }
+            sql.AppendFormat(";");
+
             return sql;
         }
         #endregion

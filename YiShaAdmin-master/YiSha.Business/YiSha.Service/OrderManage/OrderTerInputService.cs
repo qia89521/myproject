@@ -308,6 +308,7 @@ namespace YiSha.Service.OrderManage
             sql.AppendFormat(" SELECT COUNT(1) TotalNum FROM order_ter_input WHERE 1=1");
             if (step == InPutStepEnum.Validate)
             {
+                sql.AppendFormat(" AND Step=1");
                 sql.AppendFormat(" AND ShenHeManId={0}", user.UserIdStr);
             }
             return sql;

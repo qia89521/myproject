@@ -32,6 +32,12 @@ namespace YiSha.Admin.Web.Areas.TerManage.Controllers
         {
             return View();
         }
+
+        [AuthorizeFilter("ter:terinfor:bateAdd")]
+        public ActionResult TerInforAdd()
+        {
+            return View();
+        }
         [AuthorizeFilter("ter:terinfor:print")]
         public async Task<IActionResult> TerInforPrint()
         {
@@ -81,6 +87,20 @@ namespace YiSha.Admin.Web.Areas.TerManage.Controllers
         #endregion
 
         #region 提交数据
+        /// <summary>
+        /// 批量新增
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [AuthorizeFilter("ter:terinfor:bateAdd")]
+        public async Task<ActionResult> BateSaveFormJson(TerInforBateAddParam entity)
+        {
+            TData<string> obj = await terInforBLL.SaveForm(entity);
+            return Json(obj);
+        }
+
+
         [HttpPost]
         [AuthorizeFilter("ter:terinfor:add,ter:terinfor:edit")]
         public async Task<ActionResult> SaveFormJson(TerInforEntity entity)

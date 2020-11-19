@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using YiSha.Util;
 using YiSha.Util.Model;
 using System.ComponentModel;
+using YiSha.Web.Code;
+using System.Threading.Tasks;
 
 namespace YiSha.Entity.TerManage
 {
@@ -167,5 +169,25 @@ namespace YiSha.Entity.TerManage
         {
             throw new NotImplementedException();
         }
+    }
+
+    public class TerInforBateAdd : BaseModifyEntity
+    {
+        //Id,TerName,TerNumber,TerPartId
+        /// <summary>
+        /// 设备名称
+        /// </summary>
+        public string TerName { get; set; }
+        /// <summary>
+        /// 设备编号
+        /// </summary>
+        public string TerNumber { get; set; }
+        /// <summary>
+        /// 设备类型id
+        /// </summary>
+        /// <returns></returns>
+        [JsonConverter(typeof(StringJsonConverter))]
+        public long TerPartId { get; set; }
+
     }
 }

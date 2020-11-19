@@ -29,6 +29,7 @@
             <a id="btnAdd" class="btn btn-success" onclick="showSaveForm(true)"><i class="fa fa-plus"></i> 新增</a>
             <a id="btnEdit" class="btn btn-primary disabled" onclick="showSaveForm(false)"><i class="fa fa-edit"></i> 修改</a>
             <a id="btnAdd" class="btn btn-success" onclick="showSaveForm(true)"><i class="fa fa-plus"></i> 新增</a>
+            <a id="btnAdd" class="btn btn-success" onclick="bateAdd(true)"><i class="fa fa-plus"></i>批量新增</a>
         </div>
 
         <div class="col-sm-12 select-table table-striped">
@@ -290,6 +291,19 @@
         });
     }
 
+    function bateAdd() {
+         ys.openDialog({
+            title: '批量新增',
+            content: '@Url.Content("~/TerManage/TerInfor/TerInforAdd")',
+            width: '768px',
+            height: '550px',
+            callback: function (index, layero) {
+                var iframeWin = window[layero.find('iframe')[0]['name']];
+                iframeWin.saveForm(index);
+            }
+        });
+    }
+
 
     function printQcode(id) {
         ys.openDialog({
@@ -298,7 +312,7 @@
         width: '493px',
         btn_es: [],
         height: '350px',
-       
+
         });
     }
 

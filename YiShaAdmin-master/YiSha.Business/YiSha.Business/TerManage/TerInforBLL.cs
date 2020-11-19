@@ -34,7 +34,7 @@ namespace YiSha.Business.TerManage
 
         public async Task<TData<List<TerInforEntity>>> GetPageList(TerInforListParam param, Pagination pagination, OperatorInfo user)
         {
-            
+
             TData<List<TerInforEntity>> obj = new TData<List<TerInforEntity>>();
             obj.Data = await terInforService.GetPageList(param, pagination, user);
             obj.Total = pagination.TotalCount;
@@ -55,11 +55,11 @@ namespace YiSha.Business.TerManage
         }
         public async Task<TerInforEntity> GetEntityByNumber(string ternumber)
         {
-            TerInforEntity  obj= await terInforService.GetEntityByNumber(ternumber);
-           
+            TerInforEntity obj = await terInforService.GetEntityByNumber(ternumber);
+
             return obj;
         }
-        
+
         #endregion
 
         #region 提交数据
@@ -239,7 +239,7 @@ namespace YiSha.Business.TerManage
         {
             TerInforEntity ter = await terInforService.GetEntity(statusModel.TerId);
             //设备一旦锁定，激活时间（FistOn）,FistPosition,FistLongitude,FistLatitude 不再编号
-           // LogHelper.Info("TerInforEntity ter:" + JsonHelper.SerializeObject(ter));
+            // LogHelper.Info("TerInforEntity ter:" + JsonHelper.SerializeObject(ter));
             if (ter.IsLock == 1)
             {
                 if (!string.IsNullOrEmpty(statusModel.W))
@@ -269,7 +269,7 @@ namespace YiSha.Business.TerManage
          * @fistLongitude：经度
          * @fistLatitude：纬度
          */
-        public async Task<TData<string>> ModifyPosition(string number,string fistLongitude, string fistLatitude,string position)
+        public async Task<TData<string>> ModifyPosition(string number, string fistLongitude, string fistLatitude, string position)
         {
             TerInforEntity ter = await terInforService.GetEntityByNumber(number);
             //设备一旦锁定，激活时间（FistOn）,FistPosition,FistLongitude,FistLatitude 不再编号
@@ -304,7 +304,7 @@ namespace YiSha.Business.TerManage
         /// <param name="fistLatitude"></param>
         /// <param name="position"></param>
         /// <returns></returns>
-        public async Task<TData<string>> BindUser(string userId,string number, string fistLongitude, string fistLatitude, string position)
+        public async Task<TData<string>> BindUser(string userId, string number, string fistLongitude, string fistLatitude, string position)
         {
             TData<string> obj = new TData<string>();
 
@@ -343,7 +343,47 @@ namespace YiSha.Business.TerManage
 
 
         }
-
+        /// <summary>
+        /// 批量新增设备
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async Task<TData<string>> SaveForm(TerInforBateAddParam model)
+        {
+            TData<string> obj = new TData<string>();
+            obj.SetDefault();
+            List<TerInforBateAdd> models = new List<TerInforBateAdd>();
+            int number = model.StartNumber;
+            for (int i = 0; i < model.Count; i++)
+            {
+                TerInforBateAdd ter = new TerInforBateAdd();
+                {
+                    await ter.Create();
+                }
+                ter.TerNumber = (number) + "";
+                ter.TerName = model.TerName;
+                ter.TerPartId = model.TerPartId;
+                models.Add(ter);
+            }
+            List<string> numbers = models.Select(p => p.TerNumber).ToList();
+            List<TerInforEntity> list = await terInforService.GetListByNumber(numbers);
+            if (list.Count > 0)
+            {
+                string nubmess = string.Join(",", list.Select(p => p.TerNumber).ToList());
+                obj.Message = string.Format("{0}编号已经存在", nubmess);
+            }
+            else
+            {
+                int count = await terInforService.SaveForm(models);
+                if (count > 0)
+                {
+                    obj.Tag = 1;
+                    obj.Refresh();
+                }
+            }
+           
+            return obj;
+        }
         public async Task<TData<string>> SaveForm(TerInforEntity entity)
         {
             TData<string> obj = new TData<string>();
