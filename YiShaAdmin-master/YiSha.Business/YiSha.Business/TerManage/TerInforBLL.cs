@@ -229,6 +229,28 @@ namespace YiSha.Business.TerManage
             return await SaveForm(ter);
         }
 
+        /// <summary>
+        /// 查询设备最编号
+        /// </summary>
+        /// <param name="id">设备id</param>
+        /// <param name="busyLink">联系方式</param>
+        /// <returns></returns>
+        public async Task<TData<string>> GetMaxNumber()
+        {
+            TData<string> obj = new TData<string>();
+            obj.SetDefault();
+            TerInforEntity entity = await terInforService.GetMaxNumberEntity();
+            if (entity != null)
+            {
+                obj.Data = entity.TerNumber;
+            }
+            else {
+                obj.Data = "0";
+            }
+            obj.Tag = 1;
+            obj.Refresh();
+            return obj;
+        }
 
         /// <summary>
         /// 更新设备状态业务

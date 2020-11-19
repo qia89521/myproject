@@ -21,7 +21,7 @@ namespace YiSha.Service.TerManage
     /// 日 期：2020-08-14 16:05
     /// 描 述：设备信息服务类
     /// </summary>
-    public class TerInforService :  RepositoryFactory
+    public class TerInforService : RepositoryFactory
     {
         #region 获取数据
         public async Task<List<TerInforEntity>> GetList(TerInforListParam param, OperatorInfo user)
@@ -50,10 +50,24 @@ namespace YiSha.Service.TerManage
             return await this.BaseRepository().FindEntity<TerInforEntity>(id);
             */
             StringBuilder sql = CreateSignalSql(id);
-           
+
             return await this.BaseRepository().FindSignalModel<TerInforEntity>(sql.ToString());
 
         }
+
+        /// <summary>
+        /// 查询最大编号记录
+        /// </summary>
+        /// <returns></returns>
+        public async Task<TerInforEntity> GetMaxNumberEntity()
+        {
+            /*
+            return await this.BaseRepository().FindEntity<TerInforEntity>(id);
+            */
+            StringBuilder sql = CreateMaxNumberEntitySql();
+            return await this.BaseRepository().FindSignalModel<TerInforEntity>(sql.ToString());
+        }
+
 
         public async Task<TerInforEntity> GetEntityByNumber(string number)
         {
@@ -70,12 +84,12 @@ namespace YiSha.Service.TerManage
             return await this.BaseRepository().FindEntity<TerInforEntity>(id);
             */
             StringBuilder sql = CreateListSqlByNumber(numbers);
-            var list= await this.BaseRepository().FindList<TerInforEntity>(sql.ToString());
+            var list = await this.BaseRepository().FindList<TerInforEntity>(sql.ToString());
 
             return list.ToList<TerInforEntity>();
 
         }
-       
+
         #endregion
 
         #region 提交数据
@@ -97,7 +111,7 @@ namespace YiSha.Service.TerManage
         {
 
             StringBuilder sql = CreateBateAddSql(models);
-            int count= await this.BaseRepository().ExecuteBySql(sql.ToString());
+            int count = await this.BaseRepository().ExecuteBySql(sql.ToString());
             return count;
         }
 
@@ -159,8 +173,8 @@ namespace YiSha.Service.TerManage
                 {
                     sql.AppendFormat(" AND TerNumber LIKE '%{0}%'", param.TerNumber);
                 }
-                
-                if(!user.IsAdminOrDev)
+
+                if (!user.IsAdminOrDev)
                 {
                     sql.AppendFormat(" AND ManageId = {0}", user.UserId);
 
@@ -253,7 +267,18 @@ namespace YiSha.Service.TerManage
             StringBuilder sql = new StringBuilder();
             sql.AppendFormat(" SELECT * ");
             sql.AppendFormat(" FROM  ter_infor ");
-            sql.AppendFormat(" WHERE TerNumber in ('{0}')", string.Join("','",numbers));
+            sql.AppendFormat(" WHERE TerNumber in ('{0}')", string.Join("','", numbers));
+            return sql;
+        }
+
+        /// <summary>
+        /// 获取最大设备编号记录
+        /// </summary>
+        /// <returns></returns>
+        private StringBuilder CreateMaxNumberEntitySql()
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.AppendFormat("  SELECT * FROM ter_infor ORDER BY TerNumber DESC LIMIT 1");
             return sql;
         }
 
@@ -266,10 +291,10 @@ namespace YiSha.Service.TerManage
             foreach (TerInforBateAdd model in models)
             {
                 //INSERT INTO table (field1,field2,field3) VALUES (‘a’,”b”,”c”), (‘a’,”b”,”c”),(‘a’,”b”,”c”);
-                sql.AppendFormat(" VALUES ({0},'{1}','{2}',{3},",model.Id,model.TerName,model.TerNumber,model.TerPartId);
-                sql.AppendFormat("{0},'{1}')",model.BaseCreatorId,model.BaseCreateTime.Value.ToString("yyyy-MM-dd HH:mm:ss"));
-                
-                if(i<models.Count-1)
+                sql.AppendFormat(" VALUES ({0},'{1}','{2}',{3},", model.Id, model.TerName, model.TerNumber, model.TerPartId);
+                sql.AppendFormat("{0},'{1}')", model.BaseCreatorId, model.BaseCreateTime.Value.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                if (i < models.Count - 1)
                 {
                     sql.AppendFormat(",");
                 }

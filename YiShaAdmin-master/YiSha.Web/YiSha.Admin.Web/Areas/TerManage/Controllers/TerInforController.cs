@@ -116,6 +116,14 @@ namespace YiSha.Admin.Web.Areas.TerManage.Controllers
             TData obj = await terInforBLL.DeleteForm(ids);
             return Json(obj);
         }
+
+
+        [HttpPost]
+        public async Task<ActionResult> GetMaxNumber()
+        {
+            TData obj = await terInforBLL.GetMaxNumber();
+            return Json(obj);
+        }
         #endregion
 
         #region 修改数据
