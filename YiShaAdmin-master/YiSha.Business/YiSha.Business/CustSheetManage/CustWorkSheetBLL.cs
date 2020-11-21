@@ -11,6 +11,8 @@ using YiSha.Service.CustSheetManage;
 using YiSha.Web.Code;
 using YiSha.Enum;
 using YiSha.Model.Result;
+using YiSha.Entity.TerManage;
+using YiSha.Business.TerManage;
 
 namespace YiSha.Business.CustSheetManage
 {
@@ -73,11 +75,73 @@ namespace YiSha.Business.CustSheetManage
         #endregion
 
         #region 提交数据
+
+        public async Task<TData<string>> SaveForm(CustWorkSheetParam modelParam, OperatorInfo opuser)
+        {
+            TData<string> obj = new TData<string>();
+            obj.SetDefault();
+            try
+            {
+                CustWorkSheetEntity entity = new CustWorkSheetEntity();
+                long num = 0;
+                long.TryParse(modelParam.Id, out num);
+                entity.Id = num;
+
+                /*
+                if (!entity.Id.IsNullOrZero())
+                {
+                    entity =await custWorkSheetService.GetEntity(entity.Id.Value) ;
+                }*/
+
+                ClassValueCopierHelper.Copy(entity, modelParam);
+
+                #region 补充数据
+                TerInforEntity ter = await new TerInforBLL().GetEntityByNumber(modelParam.TerNumber);
+                if (ter != null)
+                {
+                    entity.TerId = ter.Id.Value;
+                }
+                else
+                {
+                    obj.Message = "设备编号不存在";
+                    return obj;
+                }
+
+                num = 0;
+                long.TryParse(modelParam.DoManId, out num);
+                entity.DoManId = num;
+              
+
+                int saleNum = 0;
+                int.TryParse(modelParam.Step, out saleNum);
+                entity.Step = saleNum;
+
+                if (entity.Id.IsNullOrZero())
+                {
+                    entity.BaseCreatorId = long.Parse(opuser.UserIdStr);
+                    entity.BaseCreateTime = DateTime.Now;
+
+                }
+                entity.BaseModifyTime = DateTime.Now;
+                entity.BaseModifierId = long.Parse(opuser.UserIdStr);
+                #endregion
+
+                obj = await SaveForm(entity, opuser);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Info("【SaveForm】ex:" + ex.ToString());
+            }
+            return obj;
+        }
+
         public async Task<TData<string>> SaveForm(CustWorkSheetEntity entity, OperatorInfo opuser)
         {
             TData<string> obj = new TData<string>();
             obj.SetDefault();
-            var result = CheckWorkFLow(entity, opuser);
+            var result =await CheckWorkFLow(entity, opuser);
+
+            LogHelper.Info("【SaveForm】result:" + JsonHelper.SerializeObject(result));
             if (result.IsSucess)
             {
                 await custWorkSheetService.SaveForm(entity);
@@ -113,7 +177,7 @@ namespace YiSha.Business.CustSheetManage
         /// </summary>
         /// <param name="entity">数据实体</param>
         /// <returns></returns>
-        private ResultMsg CheckWorkFLow(CustWorkSheetEntity entity, OperatorInfo user)
+        private async Task<ResultMsg> CheckWorkFLow(CustWorkSheetEntity entity, OperatorInfo user)
         {
             ResultMsg result = new ResultMsg();
             //新增
@@ -124,10 +188,52 @@ namespace YiSha.Business.CustSheetManage
             }
             else
             {
-                if (entity.Step == CustWorkSheeStepEnum.Done.ParseToInt())
+                CustWorkSheetEntity old_entity = await custWorkSheetService.GetEntity(entity.Id.Value);
+                if (old_entity.Step == CustWorkSheeStepEnum.Done.ParseToInt())
                 {
-                    result.Msg = "已经结单不可处理";
+                    result.Msg = "已结单的售后不可再处理";
                 }
+                else
+                {
+
+                    if (old_entity.Step == CustWorkSheeStepEnum.ToDo.ParseToInt())
+                    {
+                        //如果是待处理，就不能设置已经处理完成
+                        if (old_entity.DoManId.ToString() == user.UserIdStr)
+                        {
+                            if (entity.Step == CustWorkSheeStepEnum.Doing.ParseToInt())
+                            {
+                                result.IsSucess = true;
+                            }
+                            else
+                            {
+                                result.Msg = "您还没有处理,不能越级";
+                            }
+                        }
+                        else if (old_entity.BaseCreatorId.ToString() == user.UserIdStr)
+                        {
+                            if (entity.Step == CustWorkSheeStepEnum.Finish.ParseToInt())
+                            {
+                                result.IsSucess = true;
+                            }
+                            else
+                            {
+                                result.Msg = "您无权处理";
+                            }
+                        }
+                        else
+                        {
+                            result.Msg = "无权处理";
+                        }
+                      
+                    }
+                    else
+                    {
+                        result.IsSucess = true;
+                    }
+                   
+                }
+             
             }
             return result;
         }

@@ -36,7 +36,7 @@ namespace YiSha.Entity.SaleManage
         [NotMapped]
         public string TuiJianUserTxt { get; set; }
         /// <summary>
-        /// 来源 用户来源方式
+        /// 来源 用户来源方式 0 后台添加 1分享
         /// </summary>
         /// <returns></returns>
         public string SrcFlag { get; set; }

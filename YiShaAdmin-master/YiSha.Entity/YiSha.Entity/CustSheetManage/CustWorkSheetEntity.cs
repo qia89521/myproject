@@ -98,6 +98,7 @@ namespace YiSha.Entity.CustSheetManage
         /// 售后人名称
         /// </summary>
         /// <returns></returns>
+        [NotMapped]
         public string DoManTxt { get; set; }
         /// <summary>
         /// 步骤 步骤 0:待处理,1:处理中,2 处理完成, 3:结单

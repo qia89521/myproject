@@ -70,7 +70,11 @@ namespace YiSha.Service.CustSheetManage
 
         public async Task<CustWorkSheetEntity> GetEntity(long id)
         {
-            return await this.BaseRepository().FindEntity<CustWorkSheetEntity>(id);
+            //CreateSignalSqlById
+            //return await this.BaseRepository().FindEntity<CustWorkSheetEntity>(id);
+            StringBuilder sql = CreateSignalSqlById(id);
+
+            return await this.BaseRepository().FindSignalModel<CustWorkSheetEntity>(sql.ToString());
         }
         #endregion
 

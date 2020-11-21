@@ -53,4 +53,33 @@ namespace YiSha.Model.Param.SaleManage
         /// </summary>
         public string EndTime { get; set; }
     }
+
+
+    /// <summary>
+    /// 创 建：admin
+    /// 日 期：2020-09-01 15:48
+    /// 描 述：意向用户新增参数
+    /// </summary>
+    public class WishUserParam
+    {
+        /// <summary>
+        /// api token
+        /// </summary>
+        public string ApiToken { get; set; }
+
+        /// <summary>
+        /// 用户姓名
+        /// </summary>
+        /// <returns></returns>
+        public string RealName { get; set; }
+        /// <summary>
+        /// 用户手机号
+        /// </summary>
+        /// <returns></returns>
+        public string MobilePhone { get; set; }
+        /// <summary>
+        /// 短信验证码
+        /// </summary>
+        public string SmsCode { get; set; }
+    }
 }

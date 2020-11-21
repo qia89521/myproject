@@ -9,6 +9,7 @@ using YiSha.Entity.SaleManage;
 using YiSha.Model.Param.SaleManage;
 using YiSha.Service.SaleManage;
 using YiSha.Web.Code;
+using YiSha.Business.SmsManage;
 
 namespace YiSha.Business.SaleManage
 {
@@ -54,9 +55,36 @@ namespace YiSha.Business.SaleManage
         #endregion
 
         #region 提交数据
+
+
+        //WishUserParam
+        public async Task<TData<string>> SaveForm(WishUserParam entity, OperatorInfo user)
+        {
+            TData<string> obj = new TData<string>();
+            obj.SetDefault();
+
+            #region 检测短信验证码
+            obj= new SmsCodeBLL().CheckSms(entity.MobilePhone, entity.SmsCode);
+            #endregion
+            if (obj.Tag == 1)
+            {
+                #region 封装数据
+                WishUserEntity wishModel = new WishUserEntity();
+                ClassValueCopierHelper.Copy(wishModel, entity);
+                wishModel.TuiJianUserId = long.Parse(user.UserIdStr);
+                wishModel.TuiJianUserTxt = user.RealName;
+                wishModel.SrcFlag = "1";
+                #endregion
+
+                obj = await SaveForm(wishModel);
+            }
+            return obj;
+        }
+
         public async Task<TData<string>> SaveForm(WishUserEntity entity)
         {
             TData<string> obj = new TData<string>();
+            obj.SetDefault();
             if (entity.MobilePhone.IsEmpty() || entity.RealName.IsEmpty())
             {
                 obj.Message = "手机号和姓名不能为空";
@@ -73,6 +101,7 @@ namespace YiSha.Business.SaleManage
                 await wishUserService.SaveForm(entity);
                 obj.Data = entity.Id.ParseToString();
                 obj.Tag = 1;
+                obj.Refresh();
             }
 
             return obj;

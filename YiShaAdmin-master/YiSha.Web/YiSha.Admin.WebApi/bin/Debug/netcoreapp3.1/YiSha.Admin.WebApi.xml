@@ -16,6 +16,32 @@
             <param name="json"></param>
             <returns></returns>
         </member>
+        <member name="T:YiSha.Admin.WebApi.Controllers.CustWorkSheetController">
+            <summary>
+            工单列表控制器
+            </summary>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.CustWorkSheetController.GetPageListJson(YiSha.Model.Param.CustSheetManage.WebApi_CustWorkSheetListParam)">
+            <summary>
+            获取分页数据列表
+            </summary>
+            <param name="listParam">小程序列表参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.CustWorkSheetController.GetEntityById(System.Int64)">
+            <summary>
+            获取实体信息
+            </summary>
+            <param name="id">设备id</param>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.CustWorkSheetController.SaveForm(YiSha.Model.Param.CustSheetManage.CustWorkSheetParam)">
+            <summary>
+            新增意向客户
+            </summary>
+            <param name="entity">意向客户数据实体</param>
+            <returns></returns>
+        </member>
         <member name="M:YiSha.Admin.WebApi.Controllers.DataDictController.GetList(YiSha.Model.Param.SystemManage.DataDictListParam)">
             <summary>
             获取数据字典列表
@@ -349,6 +375,13 @@
             获取分页数据列表
             </summary>
             <param name="listParam">小程序列表参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:YiSha.Admin.WebApi.Controllers.WishUserController.SaveForm(YiSha.Model.Param.SaleManage.WishUserParam)">
+            <summary>
+            新增意向客户
+            </summary>
+            <param name="entity">意向客户数据实体</param>
             <returns></returns>
         </member>
         <member name="T:YiSha.Admin.WebApi.Controllers.WXController">
